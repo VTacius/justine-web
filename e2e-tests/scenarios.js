@@ -5,38 +5,37 @@
 describe('my app', function() {
 
 
-  it('should automatically redirect to /view1 when location hash/fragment is empty', function() {
+  it('should automatically redirect to /inicio when location hash/fragment is empty', function() {
     browser.get('index.html');
-    expect(browser.getLocationAbsUrl()).toMatch("/view1");
+    expect(browser.getLocationAbsUrl()).toMatch("/inicio");
   });
 
 
-  describe('view1', function() {
+  describe('inicio', function() {
 
     beforeEach(function() {
-      browser.get('index.html#!/view1');
+      browser.get('index.html#!/inicio');
     });
 
 
-    it('should render view1 when user navigates to /view1', function() {
+    it('Debería renderizar vista inicio', function() {
       expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 1/);
+        toMatch(/Esta es la página de inicio/);
     });
 
   });
 
 
-  describe('view2', function() {
+  describe('usuario/actualizacion', function() {
 
     beforeEach(function() {
-      browser.get('index.html#!/view2');
+      browser.get('index.html#!/usuario/actualizacion');
     });
 
 
-    it('should render view2 when user navigates to /view2', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 2/);
+    it('Debería renderizar la vista de usuario/actualizacion', function() {
+      expect(element.all(by.css('[ng-view] h1')).first().getText()).
+        toMatch(/Este es nuestro hermoso formulario de actualización de datos/);
     });
-
   });
 });

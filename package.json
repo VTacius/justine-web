@@ -2,7 +2,7 @@
   "name": "justine",
   "private": true,
   "version": "0.0.0",
-  "description": "Una frontend web para una API que aún no existe",
+  "description": "Un frontend web para una API que aún no existe",
   "repository": "https://github.com/VTacius/justine-web",
   "license": "MIT",
   "devDependencies": {

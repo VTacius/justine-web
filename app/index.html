@@ -15,18 +15,31 @@
   <link rel="stylesheet" href="bower_components/pure/grids-responsive.css">
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#!/inicio">inicio</a></li>
-    <li><a href="#!/usuario/actualizacion">Actualización de Datos</a></li>
-  </ul>
-  <div ng-view class="pure-g"></div>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-  <script src="viewInicio/inicio.js"></script>
-  <script src="viewUsuario/actualizacion/usuario_actualizacion.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+    <div class="pure-g">
+        <header class="pure-u-1">
+            <div class="pure-menu">
+                <ul class="pure-menu-horizontal">
+                    <li class="pure-menu-item"><a href="#!/inicio" class="pure-menu-link">Inicio</a></li>
+                    <li class="pure-menu-item"><a href="#!/usuario/actualizacion" class="pure-menu-link">Actualización de Datos</a></li>
+                </ul>
+            </div>
+        </header>
+        <main class="pure-u-1">
+            <div ng-view class="pure-g">
+                <!-- Acá se encuentra todo el contenido disponible para la aplicación mediante ng-view -->
+            </div>
+        </main>
+        <footer class="pure-u-1">  
+            <p>Este es un footer, yo no sé si es que hay una etiqueta para eso, bien que puedo revisar</p>
+        </footer>
+    </div>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="viewInicio/inicio.js"></script>
+    <script src="viewUsuario/actualizacion/usuario_actualizacion.js"></script>
+    <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script>
 </body>
 </html>

@@ -20,7 +20,7 @@ describe('my app', function() {
 
     it('Debería renderizar vista inicio', function() {
       expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/Esta es la página de inicio/);
+        toMatch(/Panel 1 Esto es más contenido presente/);
     });
 
   });
@@ -34,7 +34,7 @@ describe('my app', function() {
 
 
     it('Debería renderizar la vista de usuario/actualizacion', function() {
-      expect(element.all(by.css('[ng-view] h1')).first().getText()).
+      expect(element.all(by.css('[ng-view] h3')).first().getText()).
         toMatch(/Este es nuestro hermoso formulario de actualización de datos/);
     });
   });

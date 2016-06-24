@@ -9,10 +9,10 @@ exports.config = {
 
   capabilities: {
     'browserName': 'chrome'
-    'seleniumAddress': 'http://192.168.2.20:4444/wd/hub'
+    /*,'seleniumAddress': 'http://192.168.2.20:4444/wd/hub'*/
   },
 
-  baseUrl: 'http://web.salud.gob.sv:8000/',
+  baseUrl: 'http://127.0.0.1:8000/',
 
   framework: 'jasmine',
 

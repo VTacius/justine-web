@@ -9,6 +9,8 @@ angular.module('myApp.inicio', ['ngRoute'])
   });
 }])
 
-.controller('InicioCtrl', [function() {
-
+.controller('InicioCtrl', ['$scope', function($scope){
+    $scope.movimiento = function(){
+        console.log("Estamos sobre un elemento");
+    };
 }]);

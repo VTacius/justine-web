@@ -1,21 +1,16 @@
 .custom-wrapper {
-    background-color: #ffd390;
     margin-bottom: 1em;
     -webkit-font-smoothing: antialiased;
     height: 2.1em;
-    overflow: hidden;
     -webkit-transition: height 0.5s;
     -moz-transition: height 0.5s;
     -ms-transition: height 0.5s;
     transition: height 0.5s;
 }
 
+/*Cuando, una vez redimensionado, abrimos el menú*/
 .custom-wrapper.open {
     height: 14em;
-}
-
-.custom-menu-3 {
-    text-align: right;
 }
 
 .custom-toggle {
@@ -28,6 +23,11 @@
     display: none;
 }
 
+.taskbar {
+    text-align: right;
+}
+
+/* Todas las que llevan .bar se refieren al las tonteritas que aparecen como menu*/
 .custom-toggle .bar {
     background-color: #777;
     display: block;
@@ -42,7 +42,7 @@
     -ms-transition: all 0.5s;
     transition: all 0.5s;
 }
-
+/*Hacen la transformación a nivel de css. Genial*/
 .custom-toggle .bar:first-child {
     -webkit-transform: translateY(-6px);
     -moz-transform: translateY(-6px);
@@ -66,12 +66,16 @@
 
 @media (max-width: 47.999em) {
 
-    .custom-menu-3 {
+    .taskbar {
         text-align: left;
     }
 
     .custom-toggle {
         display: block;
     }
-
+    
+    /*Cuando se redimensione, ocultamos el contenido*/
+    .custom-wrapper {
+        overflow: hidden;
+    }
 }

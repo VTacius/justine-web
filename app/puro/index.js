@@ -30,10 +30,11 @@ function closeMenu() {
     }
 }
 
-document.getElementById('toggle').addEventListener('click', function (e) {
-    toggleMenu();
-});
+/* El menú cambia con el click  El menú cambia con el click aa*/
+document.getElementById('toggle').addEventListener('click', toggleMenu);
 
+/* Cierra todo si cuando estaba redimensionado abrimos el menú*/
 window.addEventListener(WINDOW_CHANGE_EVENT, closeMenu);
+
 })(this, this.document);
 

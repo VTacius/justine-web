@@ -1,80 +1,52 @@
-.custom-wrapper {
-    -webkit-font-smoothing: antialiased;
-    height: 2.1em;
-    -webkit-transition: height 0.5s;
-    -moz-transition: height 0.5s;
-    -ms-transition: height 0.5s;
-    transition: height 0.5s;
+.menu {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;
+    /*Esto se lo agregran después*/
+    width: 100%;
 }
 
-/*Cuando, una vez redimensionado, abrimos el menú*/
-.custom-wrapper.open {
-    height: 14em;
+.menu-lista {
+    list-style-type: none;
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-.custom-toggle {
-    width: 34px;
-    height: 34px;
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: none;
+.menu-elemento {
+    float: left;
 }
 
-.taskbar {
-    text-align: right;
+.menu-elemento a{
+    text-decoration: none;
+} 
+
+.titulo,
+.principal,
+.barra-tareas {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    font-size: 1.2em;
+    width: 100%;
 }
 
-/* Todas las que llevan .bar se refieren al las tonteritas que aparecen como menu*/
-.custom-toggle .bar {
-    background-color: #777;
-    display: block;
-    width: 20px;
-    height: 2px;
-    border-radius: 100px;
-    position: absolute;
-    top: 18px;
-    right: 7px;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -ms-transition: all 0.5s;
-    transition: all 0.5s;
-}
-/*Hacen la transformación a nivel de css. Genial*/
-.custom-toggle .bar:first-child {
-    -webkit-transform: translateY(-6px);
-    -moz-transform: translateY(-6px);
-    -ms-transform: translateY(-6px);
-    transform: translateY(-6px);
-}
-
-.custom-toggle.x .bar {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
-.custom-toggle.x .bar:first-child {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-}
-
-@media (max-width: 47.999em) {
-
-    .taskbar {
-        text-align: left;
+@media screen and (min-width: 54em) {
+    .titulo {
+        width: 20%;
     }
-
-    .custom-toggle {
-        display: block;
+    .principal {
+        width: 69%;
     }
-    
-    /*Cuando se redimensione, ocultamos el contenido*/
-    .custom-wrapper {
-        overflow: visible;
+    .barra-tareas {
+        width: 10%;
     }
 }
+
+

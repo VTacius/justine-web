@@ -1,9 +1,0 @@
-.taskbar {
-    text-align: right;
-}
-
-@media (max-width: 47.999em) {
-    .taskbar {
-        text-align: left;
-    }
-}

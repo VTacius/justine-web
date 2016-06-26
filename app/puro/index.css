@@ -1,52 +1,87 @@
-.menu {
-    display: inline-block;
-    *display: inline;
-    zoom: 1;
-    letter-spacing: normal;
-    word-spacing: normal;
-    vertical-align: top;
-    text-rendering: auto;
-    /*Esto se lo agregran después*/
-    width: 100%;
-}
-
-.menu-lista {
-    list-style-type: none;
-    display: inline-flex;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.menu-elemento {
-    float: left;
-}
-
-.menu-elemento a{
-    text-decoration: none;
-} 
-
-.titulo,
-.principal,
-.barra-tareas {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
+.menu-brand {
+    text-transform: none;
     font-size: 1.2em;
-    width: 100%;
 }
 
-@media screen and (min-width: 54em) {
-    .titulo {
-        width: 20%;
-    }
-    .principal {
-        width: 69%;
-    }
-    .barra-tareas {
-        width: 10%;
-    }
+.completo {
+    background-color: #EEE000;
 }
 
+.pure-menu-link {
+    padding-top: 0.8em;
+}
 
+.menu-wrapper {
+    -webkit-font-smoothing: antialiased;
+    height: 2.5em;
+    overflow: hidden;
+    -webkit-transition: height 0.5s;
+    -moz-transition: height 0.5s;
+    -ms-transition: height 0.5s;
+    transition: height 0.5s;
+}
+
+.menu-wrapper.open {
+    height: 12.5em;
+}
+
+.taskbar {
+    text-align: right;
+}
+
+.custom-toggle {
+    width: 34px;
+    height: 34px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.custom-toggle .bar {
+    background-color: #777;
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 100px;
+    position: absolute;
+    top: 18px;
+    right: 7px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.custom-toggle .bar:first-child {
+    -webkit-transform: translateY(-6px);
+    -moz-transform: translateY(-6px);
+    -ms-transform: translateY(-6px);
+    transform: translateY(-6px);
+}
+
+.custom-toggle.x .bar {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.custom-toggle.x .bar:first-child {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 47.999em) {
+
+    .taskbar {
+        text-align: left;
+    }
+
+    .custom-toggle {
+        display: block;
+    }
+ }

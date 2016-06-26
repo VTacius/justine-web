@@ -11,28 +11,12 @@
   <meta name="description" content="Aplicación Institucional">
   <link rel="stylesheet" href="app.css">
   <link rel="stylesheet" href="bower_components/pure/pure.css">
-  <link rel="stylesheet" href="bower_components/pure/grids-core.css">
   <link rel="stylesheet" href="bower_components/pure/grids-responsive.css">
 </head>
 <body>
     <div class="pure-g">
         <header class="pure-u-1">
-            <div class="pure-menu custom-menu custom-menu-top">
-                <a href="#" class="pure-menu-heading custom-menu-brand">Directorio MINSAL</a>
-                <a href="#" class="custom-menu-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
-            </div>
-            <ul class="pure-menu pure-menu-horizontal pure-menu-scrollable">
-                <li class="pure-menu-item"><a href="#!/inicio" class="pure-menu-link">Inicio</a></li>
-                <li class="pure-menu-item"><a href="#!/usuario/actualizacion" class="pure-menu-link">Actualización de Datos</a></li>
-                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-                    <a href="#" id="menuLink1" class="pure-menu-link">Contact</a>
-                    <ul class="pure-menu-children">
-                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Email</a></li>
-                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Twitter</a></li>
-                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tumblr Blog</a></li>
-                    </ul>
-                </li>
-            </ul>
+            <menues class="pure-g menu-wrapper" id="menu"></menues>
         </header>
         <main class="pure-u-1">
             <div ng-view class="pure-g">
@@ -48,9 +32,6 @@
     <script src="app.js"></script>
     <script src="viewInicio/inicio.js"></script>
     <script src="viewUsuario/actualizacion/usuario_actualizacion.js"></script>
-    <script src="components/menu/dropdown.js"></script>
-    <script src="components/version/version.js"></script>
-    <script src="components/version/version-directive.js"></script>
-    <script src="components/version/interpolate-filter.js"></script>
+    <script src="components/menu/index.js"></script>
 </body>
 </html>

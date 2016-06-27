@@ -7,6 +7,10 @@ angular.module('myApp', [
   'myApp.inicio',
   'myApp.usuario.actualizacion'
 ]).
+run(function(){
+    angular.element(window).on('resize', function(){
+    })
+}).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
   $routeProvider.otherwise({redirectTo: '/inicio'});

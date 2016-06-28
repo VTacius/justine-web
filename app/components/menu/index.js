@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('componentes.menu', [])
-.controller('controladorMenu', ['$scope', function($scope){
+.controller('controladorMenu', ['$scope', '$window', function($scope, $window){
     var menu = document.getElementById('menu');
     var toggle = document.getElementById('toggle');
     $scope.usuario = 'alortiz';
@@ -27,10 +27,22 @@ angular.module('componentes.menu', [])
         menu.classList.toggle('open');
         toggle.classList.toggle('x');
     };
+    
+    $scope.closeMenu = function() {
+        if (menu.classList.contains('open')) {
+            $scope.toggleMenu();
+        }
+    }
 
 }])
-.directive('menues', [function(){
+.directive('menues', ['$window', function($window){
     return {
+        link: function(scope, element, attrs){
+            scope.width = $window.innerWidth;
+            angular.element($window).on('resize', scope.closeMenu);
+        },
+        restrict: 'E',
         templateUrl: 'components/menu/index.html'
     }
+
 }]);

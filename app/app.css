@@ -44,7 +44,7 @@ footer p {
 /*
     Todo lo siguiente se refiere al menu del componente menues
 */
-.menu-brand {
+.pure-menu-heading {
     text-transform: none;
     font-size: 1.2em;
 }

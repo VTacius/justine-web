@@ -1,10 +1,12 @@
 'use strict';
 
-angular.module('componentes.menu', [])
-.controller('controladorMenu', ['$scope', '$window', function($scope, $window){
+angular.module('componentes.menu', []).
+controller('controladorMenu', ['$scope', '$window', '__ENV', function($scope, $window, __ENV){
     var menu = document.getElementById('menu');
     var toggle = document.getElementById('toggle');
+
     $scope.usuario = 'alortiz';
+    $scope.titulo = __ENV.titulo;
 
     $scope.toggleHorizontal = function() {
         [].forEach.call(
@@ -16,12 +18,9 @@ angular.module('componentes.menu', [])
     };
 
     $scope.toggleMenu = function () {
-        // set timeout so that the panel has a chance to roll up
-        // before the menu switches states
         if (menu.classList.contains('open')) {
             setTimeout($scope.toggleHorizontal, 500);
-        }
-        else {
+        } else {
             $scope.toggleHorizontal();
         }
         menu.classList.toggle('open');
@@ -34,12 +33,11 @@ angular.module('componentes.menu', [])
         }
     }
 
-}])
-.directive('menues', ['$window', function($window){
+}]).
+directive('menues', [function(){
     return {
         link: function(scope, element, attrs){
-            scope.width = $window.innerWidth;
-            angular.element($window).on('resize', scope.closeMenu);
+            angular.element(window).on('resize', scope.closeMenu);
         },
         restrict: 'E',
         templateUrl: 'components/menu/index.html'

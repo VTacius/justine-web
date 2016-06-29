@@ -5,9 +5,10 @@ angular.module('myApp.inicio', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/inicio', {
     templateUrl: 'viewInicio/inicio.html',
-    controller: 'InicioCtrl'
+    controller: 'InicioController',
+    controllerAs: 'InicioCtrl'
   });
 }])
 
-.controller('InicioCtrl', ['$scope', function($scope){
+.controller('InicioController', ['$scope', function($scope){
 }]);

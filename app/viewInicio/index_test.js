@@ -10,7 +10,7 @@ describe('myApp.inicio module', function() {
     it('should ....', inject(function($rootScope, $controller) {
       //spec body
       scope = $rootScope.$new();
-      var inicioCtrl = $controller('InicioCtrl', {$scope: scope});
+      var inicioCtrl = $controller('InicioController', {$scope: scope});
 
       expect(inicioCtrl).toBeDefined();
     }));

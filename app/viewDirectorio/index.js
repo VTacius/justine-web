@@ -5,10 +5,11 @@ angular.module('myApp.directorio', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/directorio', {
     templateUrl: 'viewDirectorio/index.html',
-    controller: 'directorioCtrl',
+    controller: 'DirectorioController',
+    controllerAs: 'DirectorioCtrl',
   });
 }])
-.controller('directorioCtrl', ['$scope', '$http', function($scope, $http){
+.controller('DirectorioController', ['$scope', '$http', function($scope, $http){
     $scope.corpus = []; 
     $scope.fetch = function(){
         $http({method: 'GET', url: '/api/directorio.json'}).

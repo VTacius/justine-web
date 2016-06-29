@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('componentes.menu', []).
-controller('controladorMenu', ['$scope', '$window', '__ENV', function($scope, $window, __ENV){
+controller('MenuController', ['$scope', '$window', '__ENV', function($scope, $window, __ENV){
     var menu = document.getElementById('menu');
     var toggle = document.getElementById('toggle');
 

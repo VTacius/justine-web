@@ -10,7 +10,7 @@ describe('myApp.inicio module', function() {
     it('should ....', inject(function($rootScope, $controller) {
       //spec body
       scope = $rootScope.$new();
-      var directorioCtrl = $controller('directorioCtrl', {$scope: scope});
+      var directorioCtrl = $controller('Directorio', {$scope: scope});
 
       expect(directorioCtrl).toBeDefined();
     }));

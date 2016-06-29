@@ -14,6 +14,7 @@ angular.module('myApp', [
   'ngRoute',
   'componentes.menu',
   'myApp.inicio',
+  'myApp.directorio',
   'myApp.usuario.actualizacion'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

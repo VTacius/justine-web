@@ -6,8 +6,6 @@
     <div class="pure-u-1 pure-u-md-2-3">
         <h3 ng-click="fetch()">Contenido</h3>
         <div class="contenido" ng-repeat="linea in corpus" >
-            <p ng-repeat="(clave, valor) in linea" >
-                <b>{{valor.uid}}:</b>{{valor.cn}}
-            </p>
+            <p><b>{{linea.uid}}</b> {{linea.cn}}</p>
         </div>
     </div>

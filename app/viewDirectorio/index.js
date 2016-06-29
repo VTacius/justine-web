@@ -10,7 +10,7 @@ angular.module('myApp.directorio', ['ngRoute'])
   });
 }])
 .controller('DirectorioController', ['$scope', '$http', function($scope, $http){
-    $scope.corpus = []; 
+    $scope.corpus = ""; 
     $scope.fetch = function(){
         $http({method: 'GET', url: '/api/directorio.json'}).
             then(function(respuesta){

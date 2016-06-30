@@ -4,7 +4,7 @@ angular.module('myApp.inicio', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/inicio', {
-    templateUrl: 'viewInicio/inicio.html',
+    templateUrl: 'viewInicio/index.html',
     controller: 'InicioController',
     controllerAs: 'InicioCtrl'
   });

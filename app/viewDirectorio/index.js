@@ -15,7 +15,7 @@ angular.module('myApp.directorio', ['ngRoute'])
         $http({method: 'GET', url: '/api/directorio.json'}).
             then(function(respuesta){
                 console.log(respuesta);
-                $scope.corpus = respuesta.data;
+                $scope.corpus = respuesta.data.data;
                 angular.forEach($scope.corpus, function(elem){console.log(elem)});
                 console.log(typeof($scope.corpus));
                 console.log($scope.corpus);

@@ -39,6 +39,7 @@ footer p {
 .pure-table {
     padding-top: 1em;
     border: 0em;
+    width: 99%;
 }
 
 /* Hago los íconos de Font-Awesome un cuadrito bien bonito */
@@ -169,3 +170,27 @@ footer p {
 }
 
 /* Termina css para componente directorio */
+
+/* Empieza CSS para componente usuario/ */
+/* TODO: Esto necesitará eliminar aún más componentes si nos les veo uso */
+.button-success,
+.button-error,
+.button-warning,{
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success {
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+.button-error {
+    background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.button-warning {
+    background: rgb(223, 117, 20); /* this is an orange */
+}
+
+/* Termina CSS para componente usuario/*/

@@ -15,7 +15,8 @@ angular.module('myApp', [
   'componentes.menu',
   'myApp.inicio',
   'myApp.directorio',
-  'myApp.usuario.actualizacion'
+  'myApp.usuario.actualizacion',
+  'myApp.usuario.inicio'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');

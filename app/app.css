@@ -7,7 +7,7 @@
     Sobreescribo algunos originales en búsqueda de legibilidad y ahorro de espacio
 */
 
-p{
+p {
     margin-top: 0.3em;
     margin-bottom: 0.8em;
     /*Estos han funcionado bien bonito*/
@@ -17,7 +17,7 @@ p{
     text-align: justify;
 }
 
-h1,h2,h3{
+h1,h2,h3 {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 }
@@ -26,7 +26,7 @@ main {
     margin-top: 0.3em;
 }
 
-footer{
+footer {
     margin-top: 5em;
     background-color: #f5f5f5;
 }
@@ -41,6 +41,7 @@ footer p {
     border: 0em;
     width: 99%;
 }
+
 
 /* Hago los íconos de Font-Awesome un cuadrito bien bonito */
 .fa { width: 18px;
@@ -57,8 +58,10 @@ footer p {
     padding: 0em 0.6em;
 }
 
+/* ######################################################################### */
+
 /*
-    Todo lo siguiente se refiere al menu del componente menues
+    Empieza css para directiva menues
 */
 .pure-menu-heading {
     text-transform: none;
@@ -148,7 +151,11 @@ footer p {
     TERMINA css para componente menu
 */
 
-/* Empieza css para componente directorio */
+/* ######################################################################### */
+
+/* 
+    Empieza css para componente directorio 
+*/
 
 .jt-directorio-t,
 .jt-directorio-localidad, 
@@ -166,12 +173,20 @@ footer p {
 
 .jt-directorio-t-title {
     font-size: 0.95rem;
-    margin-left: 0.5em;
+    margin-left: 0.6em;
+    color: #777;
 }
 
-/* Termina css para componente directorio */
+/* 
+    Termina css para componente directorio 
+*/
 
-/* Empieza CSS para componente usuario/ */
+/* ######################################################################### */
+
+/* 
+    Empieza CSS para componente usuario/ 
+*/
+
 /* TODO: Esto necesitará eliminar aún más componentes si nos les veo uso */
 .button-success,
 .button-error,
@@ -182,15 +197,48 @@ footer p {
 }
 
 .button-success {
-    background: rgb(28, 184, 65); /* this is a green */
+    background: rgb(142, 212, 133);
 }
 
 .button-error {
-    background: rgb(202, 60, 60); /* this is a maroon */
+    background: rgb(212, 133, 133);
 }
 
 .button-warning {
     background: rgb(223, 117, 20); /* this is an orange */
 }
 
+/* Esto formatea la tabla tal y como la quiero*/
+
+/* El texto, que se pase, a lo largo, del tamaño especificado con Grid de pure será truncado*/
+.jt-truncado {
+    white-space: pre;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Configura un padding y mantiene el tamaño que se ha designado con la Grid de pure */
+.jt-celda {
+    box-sizing: border-box;
+    padding-right: 0.8em;
+    color: #333;   
+}
+
+.jt-celda-detalle {
+    color: #777;
+    font-size: 0.85em;
+    line-height: 1.8em;
+}
+
+#detalle-usuario {
+    display:none;
+}
+
+.pure-button {
+    font-size: 0.9em;
+    padding: 0.3em 0.8em;
+    color: #333;
+}
+
+    /*height: 49px;**//
 /* Termina CSS para componente usuario/*/

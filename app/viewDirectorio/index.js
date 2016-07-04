@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.directorio', ['ngRoute'])
+angular.module('justineApp.directorio', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/directorio', {

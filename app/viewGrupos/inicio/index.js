@@ -1,14 +1,14 @@
 'use strict';
 
-angular.module('justineApp.usuario.inicio', ['ngRoute'])
+angular.module('justineApp.grupos.inicio', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/usuarios/', {
-    templateUrl: 'viewUsuario/inicio/index.html',
-    controller: 'UsuarioInicioController',
-    controllerAs: 'UsuarioInicioCtrl'
+  $routeProvider.when('/grupos/', {
+    templateUrl: 'viewGrupos/inicio/index.html',
+    controller: 'GruposInicioController',
+    controllerAs: 'GruposInicioCtrl'
   });
 }])
-.controller('UsuarioInicioController', ['$scope', '$http', function($scope, $http) {
+.controller('GruposInicioController', ['$scope', '$http', function($scope, $http) {
     $scope.corpus = "";
     $scope.fetch = function(){
         $http({method: 'GET', url: '/api/listado_usuario.json'}).

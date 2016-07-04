@@ -1,0 +1,49 @@
+<div class="pure-g" ng-mouseover="$ctrl.mostrarDetalle()" ng-mouseleave="$ctrl.ocultarDetalle()">
+    <div class="pure-u-1 pure-u-lg-8-24 pure-u-xl-7-24 jt-celda"><i class="fa fa-user"></i>{{$ctrl.usuario.cn}}</div>
+    <div class="pure-u-1 pure-u-lg-8-24 pure-u-xl-5-24 jt-celda">{{$ctrl.usuario.mail}}</div>
+    <div class="pure-u-1 pure-u-lg-8-24 pure-u-xl-7-24 jt-celda jt-truncado">{{$ctrl.usuario.o}}</div>
+    <div class="pure-u-1 pure-u-lg-24-24 pure-u-xl-5-24 jt-celda">
+        <div class="pure-g">
+            <div class="pure-u-1-2 pure-u-md-1-2">
+                <button class="button-success pure-button"><i class="fa fa-edit"></i>Editar</button>
+            </div>
+            <div class="pure-u-1-2 pure-u-md-1-2">
+                <button class="button-error pure-button"><i class="fa fa-trash"></i>Borrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pure-g" ng-if="$ctrl.muestraDetalle">
+    <div class="pure-u-1 jt-celda jt-celda-detalle">
+        <i class="fa fa-bookmark"></i>{{$ctrl.usuario.title}}
+    </div>
+    <div class="pure-u-1 pure-u-xl-12-24 jt-celda jt-celda-detalle">
+        <i class="fa fa-map-marker"></i>{{$ctrl.usuario.ou}}</div>
+    <div class="pure-u-1 pure-u-xl-12-24 jt-celda jt-celda-detalle">
+        <i class="fa fa-map-marker"></i>{{$ctrl.usuario.o}}
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

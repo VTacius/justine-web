@@ -230,15 +230,11 @@ footer p {
     line-height: 1.8em;
 }
 
-#detalle-usuario {
-    display:none;
-}
-
 .pure-button {
     font-size: 0.9em;
     padding: 0.3em 0.8em;
     color: #333;
 }
 
-    /*height: 49px;**//
+/*height: 49px;**//
 /* Termina CSS para componente usuario/*/

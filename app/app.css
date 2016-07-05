@@ -230,10 +230,24 @@ footer p {
     line-height: 1.8em;
 }
 
-.pure-button {
+table .pure-button {
+    width: 100%;
+    font-size: 90%;
+    padding: 0.4em 0.5em;
+    text-align: center;
+    color: #333;
+}
+
+.botonera {
     font-size: 0.9em;
     padding: 0.3em 0.8em;
     color: #333;
+    width: 7.1em;
+    padding-right: 1em;
+}
+
+.pure-button .fa {
+    width: initial;
 }
 
 /*height: 49px;**//

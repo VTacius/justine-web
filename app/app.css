@@ -37,9 +37,9 @@ footer p {
 }
 
 .pure-table {
+    width: 99%;
     padding-top: 1em;
     border: 0em;
-    width: 99%;
 }
 
 
@@ -208,7 +208,7 @@ footer p {
     background: rgb(223, 117, 20); /* this is an orange */
 }
 
-/* Esto formatea la tabla tal y como la quiero*/
+/* Esto formatea la tabla tal y como la quiero */
 
 /* El texto, que se pase, a lo largo, del tamaño especificado con Grid de pure será truncado*/
 .jt-truncado {
@@ -222,6 +222,7 @@ footer p {
     box-sizing: border-box;
     padding-right: 0.8em;
     color: #333;   
+    font-size: 0.96em;
 }
 
 .jt-celda-detalle {
@@ -250,5 +251,68 @@ table .pure-button {
     width: initial;
 }
 
-/*height: 49px;**//
-/* Termina CSS para componente usuario/*/
+/* 
+    Termina CSS para componente usuario/
+*/
+
+/* ######################################################################### */
+
+/* 
+    Empieza CSS para componente usuario/detalle 
+*/
+
+dt, dd {
+    float: left;
+    letter-spacing: initial;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    /* Luego se sobreescriben algunas, pero siempre irá acá*/
+    padding: 0;
+    margin: 0;
+    color: #334;
+}
+
+dl {
+    width: 99%;
+    padding: 0.6em 0.4em;
+    margin: 0
+}
+
+dt {
+    width: 30%;
+    font-size: 1.2em;
+    text-align: end; 
+    font-weight: 600;
+}
+
+dd {
+    width: 70%;
+    padding-left: 0.9em;
+    margin-bottom: 1em;
+    font-size: 1.0em;
+    line-height: 1.8em;
+}
+
+.jt-dt-titulo {
+    font-size: 1.7em;
+}
+
+.jt-dd-titulo {
+    font-size: 1.25em;
+}
+
+@media (max-width: 62.5em) {
+    dt,dd {
+        width: 100%;    
+    } 
+
+    dt{
+        text-align: left;
+    }
+
+}
+
+/* 
+    Termina CSS para componente usuario/detalle 
+*/

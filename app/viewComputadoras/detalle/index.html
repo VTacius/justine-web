@@ -1,0 +1,38 @@
+<div class="pure-u-1 pure-u-md-7-24 ">
+    <div class="contenido" ng-click="fetch()">
+        <p> Una línea lo sufcientemente extensa como para demostrar hasta donde esta llegando el div, jamás pensé que alguna vez haría un maquetado como este</p>
+        <h3>Por acá vendrá apareciendo el usuario {{uid}}</h3>
+    </div>
+</div>
+<div class="pure-u-1 pure-u-md-17-24">
+    <div class="pure-g">
+        <dl>
+            <dt class="jt-dt-titulo">Contraseña:</dt>
+                <dd class="jt-dd-titulo">{{corpus.userPassword}}</dd>
+            <dt>Nombre:</dt>
+                <dd>{{corpus.cn}}</dd>
+            <dt>Localidad:</dt>
+                <dd><i>{{corpus.ou}}</i> en {{corpus.o.label}}</dd>
+            <dt>Grupo Principal: </dt>
+                <dd>{{corpus.grupo}}</dd>
+            <dt>NIT:</dt>
+                <dd>{{corpus.nit}}</dd>
+        </dl>
+        <dl>
+            <dt>Pregunta Secreta:</dt>
+                <dd>{{corpus.pregunta}}</dd>
+            <dt>Respuesta Secreta:</dt>
+                <dd>{{corpus.respuesta}}</dd>
+            <dt>Fecha de Cumpleaños:</dt>
+                <dd>{{corpus.fecha}}</dd>
+        </dl>
+        <dl>
+            <dt class="jt-dt-titulo">Correo:</dt>
+                <dd class="jt-dd-titulo">{{corpus.mail}}</dd>
+            <dt>Estado de la cuenta:</dt>
+                <dd>{{corpus.cuentaStatus}}</dd>
+            <dt>Estado del buzón:</dt>
+                <dd>{{corpus.buzonStatus}}</dd>
+        </dl>
+    </div>
+</div>

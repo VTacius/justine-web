@@ -225,7 +225,7 @@ footer p {
     box-sizing: border-box;
     padding-right: 0.8em;
     color: #333;   
-    font-size: 0.96em;
+    font-size: 1em;
 }
 
 .jt-celda-detalle {
@@ -273,7 +273,7 @@ dt, dd {
     /* Luego se sobreescriben algunas, pero siempre irá acá*/
     padding: 0;
     margin: 0;
-    color: #334;
+    color: #333;
 }
 
 dl {
@@ -285,7 +285,7 @@ dl {
 
 dt {
     width: 30%;
-    font-size: 1.2em;
+    font-size: 1.0em;
     text-align: end; 
     font-weight: 600;
 }
@@ -295,19 +295,13 @@ dd {
     padding-left: 0.9em;
     margin-bottom: 1em;
     font-size: 1.0em;
-    line-height: 1.4em;
 }
 
-.jt-dt-titulo {
-    font-size: 1.7em;
+.jt-dt-titulo,.jt-dd-titulo {
+    font-size: 1.4em;
 }
 
-.jt-dd-titulo {
-    font-size: 1.25em;
-    line-height: 1.7em;
-}
-
-@media (max-width: 67.4em) {
+@media (max-width: 60em) {
     dt,dd {
         width: 100%;    
     } 

@@ -4,7 +4,7 @@ angular.module('justineApp').
 component('filaUsuarioComponent', {
     templateUrl: 'viewGrupos/inicio/filaUsuarioComponent.html',
     bindings: {
-       usuario: '<', 
+        usuario: '<', 
     },
     controller: function($scope, $element, $attrs){
         var ctrl = this;

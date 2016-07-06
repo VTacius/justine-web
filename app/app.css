@@ -212,7 +212,10 @@ footer p {
 
 /* El texto, que se pase, a lo largo, del tamaño especificado con Grid de pure será truncado*/
 .jt-truncado {
-    white-space: pre;
+    /*pre como valor causa overflow en muchas condiciones*/
+    /*nowrap no funciona porque causa overflow, mierda*/
+    white-space: normal;
+    box-sizing: border-box;
     overflow-x: hidden;
     text-overflow: ellipsis;
 }
@@ -274,6 +277,7 @@ dt, dd {
 }
 
 dl {
+    box-sizing: border-box;
     width: 99%;
     padding: 0.6em 0.4em;
     margin: 0
@@ -291,7 +295,7 @@ dd {
     padding-left: 0.9em;
     margin-bottom: 1em;
     font-size: 1.0em;
-    line-height: 1.8em;
+    line-height: 1.4em;
 }
 
 .jt-dt-titulo {
@@ -300,9 +304,10 @@ dd {
 
 .jt-dd-titulo {
     font-size: 1.25em;
+    line-height: 1.7em;
 }
 
-@media (max-width: 62.5em) {
+@media (max-width: 56.5em) {
     dt,dd {
         width: 100%;    
     } 

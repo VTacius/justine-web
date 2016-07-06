@@ -9,13 +9,4 @@ angular.module('justineApp.computadoras.inicio', ['ngRoute'])
   });
 }])
 .controller('ComputadorasInicioController', ['$scope', '$http', function($scope, $http) {
-    $scope.corpus = "";
-    $scope.fetch = function(){
-        $http({method: 'GET', url: '/api/listado_usuario.json'}).
-        then(function(respuesta){
-                $scope.corpus=respuesta.data.data;
-            }, function(respuesta){
-                console.log(respuesta);
-            });
-        };
 }]);

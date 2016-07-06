@@ -1,0 +1,17 @@
+<div class="pure-u-1 pure-u-md-7-24 ">
+    <div class="contenido" ng-click="fetch()">
+        <p> Una línea lo sufcientemente extensa como para demostrar hasta donde esta llegando el div, jamás pensé que alguna vez haría un maquetado como este</p>
+        <h3>Acá tiene que ir nuestro hermoso formulario de búsqueda</h3>
+    </div>
+</div>
+<div class="pure-u-1 pure-u-md-17-24">
+    <table class="pure-table pure-table-horizontal">
+        <tbody>
+            <tr ng-repeat="entrada in corpus">
+                <td>
+		            <fila-usuarios usuario="entrada"></fila-usuario>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

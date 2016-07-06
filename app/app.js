@@ -11,13 +11,13 @@ if (window) {
 
 // Declare app level module which depends on views, and components
 angular.module('justineApp', [
-  'ngRoute',
-  'componentes.menu',
-  'justineApp.inicio',
-  'justineApp.directorio',
-  'justineApp.usuario.inicio',
-  'justineApp.grupos.inicio',
-  'justineApp.computadoras.inicio',
+    'ngRoute',
+    'componentes.menu',
+    'justineApp.inicio',
+    'justineApp.directorio',
+    'justineApp.usuarios.inicio',
+    'justineApp.grupos.inicio',
+    'justineApp.computadoras.inicio',
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');

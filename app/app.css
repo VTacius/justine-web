@@ -307,7 +307,7 @@ dd {
     line-height: 1.7em;
 }
 
-@media (max-width: 56.5em) {
+@media (max-width: 67.4em) {
     dt,dd {
         width: 100%;    
     } 

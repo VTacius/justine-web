@@ -18,7 +18,6 @@ angular.module('justineApp', [
   'justineApp.usuario.inicio',
   'justineApp.grupos.inicio',
   'justineApp.computadoras.inicio',
-  'justineApp.computadoras.detalle'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');

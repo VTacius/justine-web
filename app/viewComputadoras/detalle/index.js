@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 angular.module('justineApp.computadoras.detalle', ['ngRoute']).
 config(['$routeProvider', function($routeProvider){
     $routeProvider.when('/usuarios/:uid', {
@@ -18,3 +18,14 @@ controller('ComputadorasDetalleController', ['$scope', '$http', '$routeParams', 
                 console.log(respuesta);
             });
 }]);
+*/
+angular.module('justineApp').component('detalleUsuarioAlejo', {
+    templateUrl: 'viewComputadoras/detalle/index.html',
+    controller: function(){
+        console.log('El componente detalle-usuario');
+    },
+    bindings: {
+        corpus: '<'
+    }
+    
+});

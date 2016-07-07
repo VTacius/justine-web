@@ -315,3 +315,23 @@ dd {
 /* 
     Termina CSS para componente usuario/detalle 
 */
+
+/* ######################################################################### */
+
+/*
+    Comienza CSS para componente usuario/edicion
+*/
+
+.jt-edicion-form {
+    width: 99%;
+    padding-left: 0.5em;
+    box-sizing: border-box;
+}
+
+.jt-edicion-fila {
+    margin: 0.25em;
+}
+
+/*
+    Termina CSS para componente usuario/edicion
+*/

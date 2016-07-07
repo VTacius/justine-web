@@ -16,6 +16,7 @@ angular.module('justineApp', [
     'justineApp.inicio',
     'justineApp.directorio',
     'justineApp.usuarios.inicio',
+    'justineApp.usuarios.edicion',
     'justineApp.grupos.inicio',
     'justineApp.computadoras.inicio',
 ]).

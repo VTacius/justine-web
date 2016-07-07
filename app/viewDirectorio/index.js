@@ -14,11 +14,7 @@ angular.module('justineApp.directorio', ['ngRoute'])
     $scope.fetch = function(){
         $http({method: 'GET', url: '/api/directorio.json'}).
             then(function(respuesta){
-                console.log(respuesta);
                 $scope.corpus = respuesta.data.data;
-                angular.forEach($scope.corpus, function(elem){console.log(elem)});
-                console.log(typeof($scope.corpus));
-                console.log($scope.corpus);
             }, function(response){
                 console.log($scope.corpus);
             });

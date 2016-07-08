@@ -1,6 +1,17 @@
 <div class="pure-u-1 pure-u-md-7-24 ">
     <div class="contenido" ng-click="fetch()">
         <p> Una línea lo sufcientemente extensa como para demostrar hasta donde esta llegando el div, jamás pensé que alguna vez haría un maquetado como este</p>
+        <p> Asi tenemos:<br> 
+            Nombre: {{corpus.givenname}}<br>
+            Apellido: {{corpus.sn}}<br>
+            Ubicacion: {{corpus.o}}<br>
+            Oficina: {{corpus.ou}}<br>
+            Cargo: {{corpus.title}}<br>
+            Telefono: {{corpus.telephonenumber}}<br>
+            DUI: {{corpus.dui}}<br>
+            NIT: {{corpus.nit}}<br>
+            Grupo Principal: {{corpus.grupo}}<br>
+            Grupos Adicionales: {{corpus.grupos}}
     </div>
 </div>
 <div class="pure-u-1 pure-u-md-17-24">
@@ -12,58 +23,99 @@
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="givenname">Nombres</label>
-                    <input class="pure-u-1 " id="givenname" name="givenname" placeholder="Nombre"></input>
+                    <input class="pure-u-1 style-4" id="givenname" name="givenname" type="text" placeholder="Nombre" required ng-model="corpus.givenname"></input>
                 </div>
             </div>
                 
             <div class="pure-u-1 pure-u-lg-1-2"> 
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="sn">Apellidos</label>
-                    <input class="pure-u-1 " id="sn" name="sn" placeholder="Apellidos"></input>
+                    <input class="pure-u-1 style-4" id="sn" name="sn" type="text" placeholder="Apellidos" required ng-model="corpus.sn"></input>
                 </div>
             </div>
             
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="o">Establecimiento</label>
-                    <input class="pure-u-1 " id="o" name="o" placeholder="Establecimiento"></input>
+                    <input class="pure-u-1 " id="o" name="o" type="text" placeholder="Establecimiento" ng-model="corpus.o"></input>
                 </div>
             </div>
             
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="ou">Oficina</label>
-                    <input class="pure-u-1 " id="ou" name="ou" placeholder="Oficina"></input>
+                    <input class="pure-u-1 " id="ou" name="ou" type="text" placeholder="Oficina" ng-model="corpus.ou"></input>
                 </div>
             </div>
             
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="title">Cargo</label>
-                    <input class="pure-u-1 " id="title" name="title" placeholder="Cargo"></input>
+                    <input class="pure-u-1 " id="title" name="title" type="text" placeholder="Cargo" ng-model="corpus.title"></input>
                 </div>
             </div>
             
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="telephonenumber">Teléfono</label>
-                    <input class="pure-u-1 " id="telephonenumber" placeholder="Telefóno"></input>
+                    <input class="pure-u-1 " id="telephonenumber" type="text" placeholder="Telefóno" ng-model="corpus.telephonenumber"></input>
                 </div>
             </div>
             
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="dui">DUI</label>
-                    <input class="pure-u-1 " id="dui" name="dui" placeholder="DUI"></input>
+                    <input class="pure-u-1 " id="dui" name="dui" type="text" placeholder="DUI" ng-model="corpus.dui"></input>
                 </div>
             </div>
             
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="nit">NIT</label>
-                    <input class="pure-u-1 " id="nit" name="nit" placeholder="NIT"></input>
+                    <input class="pure-u-1 " id="nit" name="nit" type="text" placeholder="NIT" ng-model="corpus.nit"></input>
                 </div>
             </div>
+            
+            <div class="pure-u-1">
+                <div class="pure-g">
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <div class="pure-g jt-edicion-fila">
+                            <label class="pure-u-1 " for="grupo">Grupo Principal</label>
+                            <select class="pure-u-1 " id="grupo" name="grupo" ng-model="corpus.grupo">
+                                <option value="589">Opción 1</option>
+                                <option value="590">Opción 2</option>
+                                <option value="591">Opción 3</option>
+                                <option value="592">Opción 4</option>
+                                <option value="593">Opción 5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <div class="pure-g jt-edicion-fila">
+                            <label class="pure-u-1 " for="grupos">Grupos Adicionales</label>
+                            <select multiple class="pure-u-1 " id="grupos" name="grupos" ng-model="corpus.grupos">
+                                <option value="589">Opción 1</option>
+                                <option value="590">Opción 2</option>
+                                <option value="591">Opción 3</option>
+                                <option value="592">Opción 4</option>
+                                <option value="593">Opción 5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pure-u-1">
+                <div class="pure-g jt-edicion-fila">
+                    <div class="pure-u-1-2 jt-contenedor-boton-izquierda">
+                        <button class="button-success jt-boton-formulario pure-button ">Modificar!</button>
+                    </div>
+                    <div class="pure-u-1-2 jt-contenedor-boton-derecha">
+                        <button class="button-warning jt-boton-formulario pure-button">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </form>
 </div>

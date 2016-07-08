@@ -332,6 +332,53 @@ dd {
     margin: 0.25em;
 }
 
+legend {
+    font-size: 1.2em;
+}
+
+.jt-contenedor-boton-izquierda {
+    text-align: right;
+    box-sizing: border-box;
+    padding-right: 0.5em;
+}
+
+.jt-contenedor-boton-derecha {
+    box-sizing: border-box;
+    padding-left: 0.5em;
+}
+
+.jt-boton-formulario {
+    width: 8.5em;
+}
+
+/* Estoy por empezar a tomar estilos de http://callmenick.com/post/various-css-input-text-styles */
+
+.pure-form input[type="text"] {
+  display: block;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+}
+.pure-form input[type="text"]:focus {
+  outline: none;
+}
+
+.pure-form input[type="text"] {
+    border: none;
+    border-bottom: solid 3px #c9c9c9;
+    transition: border 0.3s;
+}
+
+.pure-form input[type="text"]:focus,
+.pure-form input[type="text"].focus {
+    border-bottom: solid 3px #969696;
+}
+
+/* Acá empiezo el trabajo para que Angular apoye la validación */
+input.ng-invalid.ng-touched {
+    border-bottom: solid 3px #690909;
+}
+
 /*
     Termina CSS para componente usuario/edicion
 */

@@ -11,6 +11,6 @@ config(['$routeProvider', function($routeProvider){
 }]).
 
 controller('UsuariosDetalleController', ['$scope', '$routeParams', function($scope, $routeParams){
-    console.log('Estamos en edicion');
     $scope.usuario = $routeParams.uid;
+    
 }]);

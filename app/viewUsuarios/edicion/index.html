@@ -15,7 +15,7 @@
     </div>
 </div>
 <div class="pure-u-1 pure-u-md-17-24">
-    <form class="pure-form jt-edicion-form">
+    <form class="pure-form jt-edicion-form" name="formularioEdicionUsuarios">
 
         <legend>Datos personales para {{usuario}}</legend>
         
@@ -24,6 +24,13 @@
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="givenname">Nombres</label>
                     <input class="pure-u-1 style-4" id="givenname" name="givenname" type="text" placeholder="Nombre" required ng-model="corpus.givenname"></input>
+                    <div class="pure-u-1 ">
+                        <i class="fa fa-user"></i>
+                        <input type="text" class="form-control" placeholder="Username" />
+                    </div>
+                    <div ng-show="formularioEdicionUsuarios.$submitted || formularioEdicionUsuarios.givenname.$touched">
+                        <label class="pure-u-1 jt-label-error" for="givenname" ng-show="formularioEdicionUsuarios.givenname.$error.required">Llenar el campo Nombres</label> 
+                    </div>
                 </div>
             </div>
                 
@@ -31,27 +38,39 @@
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="sn">Apellidos</label>
                     <input class="pure-u-1 style-4" id="sn" name="sn" type="text" placeholder="Apellidos" required ng-model="corpus.sn"></input>
+                    <div ng-show="formularioEdicionUsuarios.$submitted || formularioEdicionUsuarios.sn.$touched">
+                        <label class="pure-u-1 jt-label-error" for="sn" ng-show="formularioEdicionUsuarios.sn.$error.required"> Llenar el campo Apellido</label>
+                    </div>
                 </div>
             </div>
             
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="o">Establecimiento</label>
-                    <input class="pure-u-1 " id="o" name="o" type="text" placeholder="Establecimiento" ng-model="corpus.o"></input>
+                    <input class="pure-u-1 " id="o" name="o" type="text" placeholder="Establecimiento" required ng-model="corpus.o"></input>
+                    <div ng-show="formularioEdicionUsuarios.$submitted || formularioEdicionUsuarios.o.$touched">
+                        <label class="pure-u-1 jt-label-error" for="o" ng-show"formularioEdicionUsuarios.o.$error.required"> Llenar el campo Establecimiento</label>
+                    </div>
                 </div>
             </div>
             
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="ou">Oficina</label>
-                    <input class="pure-u-1 " id="ou" name="ou" type="text" placeholder="Oficina" ng-model="corpus.ou"></input>
+                    <input class="pure-u-1 " id="ou" name="ou" type="text" placeholder="Oficina" required ng-model="corpus.ou"></input>
+                    <div ng-show="formularioEdicionUsuarios.$submitted || formularioEdicionUsuarios.ou.$touched">
+                        <label class="pure-u-1 jt-label-error" for="o" ng-show="formularioEdicionUsuarios.ou.$error.required"> Llenar el campo Oficina</label>
+                    </div>
                 </div>
             </div>
             
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="title">Cargo</label>
-                    <input class="pure-u-1 " id="title" name="title" type="text" placeholder="Cargo" ng-model="corpus.title"></input>
+                    <input class="pure-u-1 " id="title" name="title" type="text" placeholder="Cargo" required ng-model="corpus.title"></input>
+                    <div ng-show="formularioEdicionUsuarios.$submitted || formularioEdicionUsuarios.title.$touched">
+                        <label class="pure-u-1 jt-label-error" for="title" ng-show="formularioEdicionUsuarios.title.$error.required"> Llenar el campo Cargo</label>
+                    </div>
                 </div>
             </div>
             

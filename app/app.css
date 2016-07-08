@@ -44,7 +44,8 @@ footer p {
 
 
 /* Hago los íconos de Font-Awesome un cuadrito bien bonito */
-.fa { width: 18px;
+.fa { 
+    width: 18px;
     margin-right: 3px;
     text-align: center;
 }
@@ -372,12 +373,48 @@ legend {
 .pure-form input[type="text"]:focus,
 .pure-form input[type="text"].focus {
     border-bottom: solid 3px #969696;
+    box-shadow: none;
 }
 
 /* Acá empiezo el trabajo para que Angular apoye la validación */
 input.ng-invalid.ng-touched {
     border-bottom: solid 3px #690909;
+    box-shadow: inset 0px -10px 8px -11px #690909;
 }
+
+/* Esta sería la medida para una sombra por abajo  box-shadow: 0 8px 6px -6px #85b3d4; */
+input.ng-valid.ng-touched {
+    border-bottom: solid 3px #85b3d4;
+    box-shadow: inset 0px -10px 8px -11px #85b3d4;
+}
+
+.pure-form .jt-label-error {
+    font-size: 0.8em;
+    color: #330b0b;
+    font-weight: 600;
+    padding-left: 0.8em;
+    margin-top: 0.3em;
+}
+
+/* Esta fue la respuesta a esta pregunta: http://stackoverflow.com/questions/8843571/html-input-with-background-image*/
+
+.pure-form .inner-addon {
+  position: relative;
+}
+
+.pure-form .inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align glyph */
+.pure-form .left-addon .glyphicon  { left:  0px;}
+.pure-form .right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.pure-form .left-addon input  { padding-left:  50px; }
+.pure-form .right-addon input { padding-right: 30px; }
 
 /*
     Termina CSS para componente usuario/edicion

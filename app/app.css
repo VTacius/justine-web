@@ -376,6 +376,30 @@ legend {
     box-shadow: none;
 }
 
+/**/
+
+.pure-form select {
+  display: block;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+}
+.pure-form select:focus {
+  outline: none;
+}
+
+.pure-form select {
+    border: none;
+    border-bottom: solid 3px #c9c9c9;
+    transition: border 0.3s;
+}
+
+.pure-form select:focus,
+.pure-form select.focus {
+    border-bottom: solid 3px #969696;
+    box-shadow: none;
+}
+
 /* Acá empiezo el trabajo para que Angular apoye la validación */
 input.ng-invalid.ng-touched {
     border-bottom: solid 3px #690909;

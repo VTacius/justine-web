@@ -12,5 +12,10 @@ config(['$routeProvider', function($routeProvider){
 
 controller('UsuariosDetalleController', ['$scope', '$routeParams', function($scope, $routeParams){
     $scope.usuario = $routeParams.uid;
-    
+    $scope.enviar = function(corpus){
+        console.log(corpus);
+    };
+    $scope.reiniciar = function(){
+        console.log("Pongo a corpus al valor que nos devolvió desde $http, sin hacer en este momento");
+    }
 }]);

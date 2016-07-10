@@ -13,6 +13,7 @@ if (window) {
 angular.module('justineApp', [
     'ngRoute',
     'componentes.menu',
+    'componentes.validaciones',
     'justineApp.inicio',
     'justineApp.directorio',
     'justineApp.usuarios.inicio',

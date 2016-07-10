@@ -420,26 +420,6 @@ input.ng-valid.ng-touched {
     margin-top: 0.3em;
 }
 
-/* Esta fue la respuesta a esta pregunta: http://stackoverflow.com/questions/8843571/html-input-with-background-image*/
-
-.pure-form .inner-addon {
-  position: relative;
-}
-
-.pure-form .inner-addon .glyphicon {
-  position: absolute;
-  padding: 10px;
-  pointer-events: none;
-}
-
-/* align glyph */
-.pure-form .left-addon .glyphicon  { left:  0px;}
-.pure-form .right-addon .glyphicon { right: 0px;}
-
-/* add padding  */
-.pure-form .left-addon input  { padding-left:  50px; }
-.pure-form .right-addon input { padding-right: 30px; }
-
 /*
     Termina CSS para componente usuario/edicion
 */

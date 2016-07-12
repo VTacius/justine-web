@@ -423,3 +423,26 @@ input.ng-valid.ng-touched {
 /*
     Termina CSS para componente usuario/edicion
 */
+
+/* ######################################################################### */
+
+/*
+    Comienza CSS para componente Angucomplete Alt
+*/
+.jt-resaltado {
+    color: #ff0000;
+}
+
+.busqueda_dropdown {
+    width: 100%;
+    position: absolute;
+    right: 4px;
+    top: 50px;
+    z-index: 100;
+    padding: 0px;
+    text-align: left;
+    text-align: center;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    text-align: center;
+}

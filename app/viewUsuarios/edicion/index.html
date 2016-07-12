@@ -3,9 +3,9 @@
         <p>A continuación, se dispone del siguiente formulario para actualizar información que define su relación con el Ministerio de Salud de El Salvador.</p>
 
         <p>Si cree que no puede completar sus datos con la información contenida, contácte con la Unidad de Redes y Seguridad Informática del Ministerio de Salud para solventar su inconveniente</p>
-
         <p>Siempre puede confirmar la legitimidad de este formulario con su informático más cercano, o directamente con Dirección de Tecnología de Información y Comunicaciones en Ministerio de Salud</p>
         <p> Asi tenemos:<br> 
+            {{establecimiento | json}}
             <b>Nombre:</b> {{corpus.givenname}}<br>
             <b>Apellido:</b> {{corpus.sn}}<br>
             <b>Ubicacion:</b> {{corpus.o}}<br>
@@ -58,6 +58,17 @@
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="o">Establecimiento</label>
                     <input class="pure-u-1 " id="o" name="o" type="text" placeholder="Establecimiento" ng-model="corpus.o" required></input>
+                    <div class="pure-u" angucomplete-alt id="busqueda"
+                        placeholder="Establecimiento"
+                        maxlength="50"
+                        pause="100"
+                        selected-object="establecimiento"
+                        local-data="establecimientos"
+                        search-fields="name"
+                        title-field="name"
+                        minlength="1"
+                        input-class="pure-u-1"
+                        match-class="jt-resaltado"></div>
                     <div ng-show="formularioEdicionUsuarios.$submitted || formularioEdicionUsuarios.o.$touched">
                         <label class="pure-u-1 jt-label-error" for="o" ng-show="formularioEdicionUsuarios.o.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo Establecimiento es obligatorio

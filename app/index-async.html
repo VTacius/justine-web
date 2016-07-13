@@ -1,19 +1,34 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
-  <style>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/pure/pure.css">
+    <link rel="stylesheet" href="bower_components/pure/grids-responsive.css">
+    <link rel="stylesheet" href="bower_components/pure/buttons.css">
+    <!-- Por ahora, hasta que pueda reescribirlo -->
+    <link rel="stylesheet" href=" bower_components/angucomplete-alt/angucomplete-alt.css">
+    <!-- Siempre sobreescribe, siempre -->
+    <link rel="stylesheet" href="app.css">
+    <!-- Agrego los íconos que esta vez funcionan como fuente bien chivo -->
+    <link rel="stylesheet" href="bower_components/Font-Awesome/css/font-awesome.css">
+    <style>
     [ng-cloak] {
       display: none;
     }
-  </style>
-  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+    </style>
   <script>
     // include angular loader, which allows the files to load in any order
     //@@NG_LOADER_START@@
-    // You need to run `npm run update-index-async` to inject the angular async code here
+/*
+ AngularJS v1.5.7
+ (c) 2010-2016 Google, Inc. http://angularjs.org
+ License: MIT
+*/
+(function(){'use strict';function d(b){return function(){var a=arguments[0],e;e="["+(b?b+":":"")+a+"] http://errors.angularjs.org/1.5.7/"+(b?b+"/":"")+a;for(a=1;a<arguments.length;a++){e=e+(1==a?"?":"&")+"p"+(a-1)+"=";var d=encodeURIComponent,c;c=arguments[a];c="function"==typeof c?c.toString().replace(/ \{[\s\S]*$/,""):"undefined"==typeof c?"undefined":"string"!=typeof c?JSON.stringify(c):c;e+=d(c)}return Error(e)}}(function(b){function a(c,a,b){return c[a]||(c[a]=b())}var e=d("$injector"),n=d("ng");
+b=a(b,"angular",Object);b.$$minErr=b.$$minErr||d;return a(b,"module",function(){var c={};return function(b,d,h){if("hasOwnProperty"===b)throw n("badname","module");d&&c.hasOwnProperty(b)&&(c[b]=null);return a(c,b,function(){function c(a,b,d,e){e||(e=f);return function(){e[d||"push"]([a,b,arguments]);return g}}function a(c,e){return function(a,d){d&&"function"===typeof d&&(d.$$moduleName=b);f.push([c,e,arguments]);return g}}if(!d)throw e("nomod",b);var f=[],k=[],l=[],m=c("$injector","invoke","push",
+k),g={_invokeQueue:f,_configBlocks:k,_runBlocks:l,requires:d,name:b,provider:a("$provide","provider"),factory:a("$provide","factory"),service:a("$provide","service"),value:c("$provide","value"),constant:c("$provide","constant","unshift"),decorator:a("$provide","decorator"),animation:a("$animateProvider","register"),filter:a("$filterProvider","register"),controller:a("$controllerProvider","register"),directive:a("$compileProvider","directive"),component:a("$compileProvider","component"),config:m,run:function(a){l.push(a);
+return this}};h&&m(h);return g})}})})(window)})(window);
+//# sourceMappingURL=bower_components/angular-loader/angular-loader.min.js.map
     //@@NG_LOADER_END@@
 
     // include a third-party async loader library
@@ -28,14 +43,16 @@
 
     // load all of the dependencies asynchronously.
     $script([
-      'bower_components/angular/angular.js',
-      'bower_components/angular-route/angular-route.js',
-      'app.js',
-      'view1/view1.js',
-      'view2/view2.js',
-      'components/version/version.js',
-      'components/version/version-directive.js',
-      'components/version/interpolate-filter.js'
+        'ngRoute',
+        'angucomplete-alt',
+        'componentes.menu',
+        'componentes.validaciones',
+        'justineApp.inicio',
+        'justineApp.directorio',
+        'justineApp.usuarios.inicio',
+        'justineApp.usuarios.edicion',
+        'justineApp.grupos.inicio',
+        'justineApp.computadoras.inicio',
     ], function() {
       // when all is done, execute bootstrap angular application
       angular.bootstrap(document, ['myApp']);
@@ -44,15 +61,19 @@
   <title>My AngularJS App</title>
   <link rel="stylesheet" href="app.css">
 </head>
-<body ng-cloak>
-  <ul class="menu">
-    <li><a href="#!/view1">view1</a></li>
-    <li><a href="#!/view2">view2</a></li>
-  </ul>
-
-  <div ng-view></div>
-
-  <div>Angular seed app: v<span app-version></span></div>
-
-</body>
+    <body ng-cloak>
+        <div class="pure-g">
+            <header class="pure-u-1">
+                <menues class="pure-g menu-wrapper" id="menu" ng-controller="MenuController"></menues>
+            </header>
+            <main class="pure-u-1">
+                <div ng-view class="pure-g">
+                    <!-- Acá se encuentra todo el contenido disponible para la aplicación mediante ng-view -->
+                </div>
+            </main>
+            <footer class="pure-u-1">  
+                <p>Este es un footer, en algún momento pondré un poco de contenido por aquí</p>
+            </footer>
+        </div>
+    </body>
 </html>

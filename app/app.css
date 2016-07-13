@@ -333,8 +333,11 @@ dd {
     margin: 0.25em;
 }
 
-legend {
+.pure-form legend{
     font-size: 1.2em;
+    padding-top: 1em;
+    padding-bottom: 0.5em; 
+    letter-spacing: normal;
 }
 
 .jt-contenedor-boton-izquierda {
@@ -433,6 +436,8 @@ input.ng-valid.ng-touched {
     color: #df3914;
 }
 
+/* Siempre que quiera usarse otro angucomplete-alt, habrá que declararlo acá */
+#oficina_dropdown,
 #establecimiento_dropdown {
     box-sizing: border-box;
     position: absolute;
@@ -449,4 +454,10 @@ input.ng-valid.ng-touched {
     padding: 0.5em;
     color: #df7514;
 }
+
+/*
+    Termina CSS para componente usuario/edicion
+*/
+
+/* ######################################################################### */
 

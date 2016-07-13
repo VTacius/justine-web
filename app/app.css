@@ -206,7 +206,7 @@ footer p {
 }
 
 .button-warning {
-    background: rgb(223, 117, 20); /* this is an orange */
+    background: #df7514;
 }
 
 /* Esto formatea la tabla tal y como la quiero */
@@ -430,19 +430,23 @@ input.ng-valid.ng-touched {
     Comienza CSS para componente Angucomplete Alt
 */
 .jt-resaltado {
-    color: #ff0000;
+    color: #df3914;
 }
 
-.busqueda_dropdown {
-    width: 100%;
+#establecimiento_dropdown {
+    box-sizing: border-box;
     position: absolute;
-    right: 4px;
-    top: 50px;
+    width: 98%;
+    top: 45px;
+    left: 1%;
     z-index: 100;
-    padding: 0px;
-    text-align: left;
-    text-align: center;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    text-align: center;
+    height: 500px;
+    overflow-x: scroll;
 }
+
+.angucomplete-searching {
+    font-size: 1em;   
+    padding: 0.5em;
+    color: #df7514;
+}
+

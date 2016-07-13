@@ -10,13 +10,28 @@ config(['$routeProvider', function($routeProvider){
     })
 }]).
 
-controller('UsuariosDetalleController', ['$scope', '$routeParams', function($scope, $routeParams){
+controller('UsuariosDetalleController', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http){
     $scope.usuario = $routeParams.uid;
+    
+    $scope.corpus = {};
+    var respuesta = {};
+    
+    $http({method: 'GET', url: '/api/detalle_usuario_modificacion.json'}).
+        then(function(respuesta){
+            console.log(respuesta.data.data);
+            $scope.corpus = respuesta.data.data;
+            respuesta = respuesta.data.data;
+        },function(respuesta){
+            console.log("Ha ocurrido un error, creo recordar");
+        });
+
     $scope.enviar = function(corpus){
         console.log(corpus);
     };
+
     $scope.reiniciar = function(){
         console.log("Pongo a corpus al valor que nos devolvió desde $http, sin hacer en este momento");
+        $scope.corpus = respuesta;
     };
     $scope.establecimientos = [
         {name: 'Afghanistan', code: 'AF'},

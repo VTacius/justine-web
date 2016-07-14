@@ -1,5 +1,5 @@
 <div class="pure-u-1 pure-u-md-7-24 ">
-    <div class="contenido" ng-click="fetch()">
+    <div class="contenido">
         <p> Una línea lo sufcientemente extensa como para demostrar hasta donde esta llegando el div, jamás pensé que alguna vez haría un maquetado como este</p>
         <h3>Acá tiene que ir nuestro hermoso formulario de búsqueda</h3>
     </div>
@@ -9,7 +9,7 @@
         <tbody>
             <tr ng-repeat="entrada in corpus">
                 <td>
-	                <fila-panel-usuarios usuario="entrada"></fila-panel-usuario>
+	                <fila-panel-usuarios usuario="entrada" grupos="listadogrupos"></fila-panel-usuario>
                 </td>
             </tr>
         </tbody>

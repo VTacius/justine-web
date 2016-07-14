@@ -6,10 +6,14 @@ component('detalleUsuarios', {
     controller: function(){
 
         var ctrl = this;
+
+        ctrl.grupoUsuarios = ctrl.corpus.grupo;
+        ctrl.gruposUsuarios = ctrl.corpus.grupos;
         
     },
     bindings: {
-        corpus: '<'
+        corpus: '<',
+        grupos: '<'
     }
     
 });

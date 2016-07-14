@@ -49,6 +49,7 @@ component('filaPanelUsuarios', {
         };
     },
     bindings: {
-        usuario: '<'	
+        usuario: '<',	
+        grupos: '<'
     }
 });

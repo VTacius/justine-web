@@ -4,16 +4,19 @@
     <dt>Nombre:</dt>
         <dd>{{$ctrl.corpus.cn}}</dd>
     <dt>Localidad:</dt>
-        <dd><i>{{$ctrl.corpus.ou}}</i> en {{$ctrl.corpus.o.label}}</dd>
+        <dd><i>{{$ctrl.corpus.ou.nombre}}</i> en {{$ctrl.corpus.o.nombre}}</dd>
     <dt>Grupo Principal: </dt>
-        <dd>{{$ctrl.corpus.grupo}}</dd>
+        <dd>{{$ctrl.grupoUsuarios}}</dd>
+    <dt>Grupos Adicionales: </dt>
+        <dd>{{$ctrl.gruposUsuarios}}</dd>
     <dt>NIT:</dt>
         <dd>{{$ctrl.corpus.nit}}</dd>
+    <dt>DUI:</dt>
+        <dd>{{$ctrl.corpus.dui}}</dd>
 </dl>
+<h3 class="contenido">Información para recuperación de contraseña</h3>
 <dl>
-    <dt>Pregunta Secreta:</dt>
-        <dd>{{$ctrl.corpus.pregunta}}</dd>
-    <dt>Respuesta Secreta:</dt>
+    <dt>{{$ctrl.corpus.pregunta}}</dt>
         <dd>{{$ctrl.corpus.respuesta}}</dd>
     <dt>Fecha de Cumpleaños:</dt>
         <dd>{{$ctrl.corpus.fecha}}</dd>

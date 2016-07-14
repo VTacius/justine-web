@@ -16,10 +16,10 @@
     </div>
 </div>
 <div class="pure-g" ng-if="$ctrl.muestraPanelDetalle">
-    <detalle-usuarios corpus="$ctrl.corpus"></detalle-usuarios>
+    <detalle-usuarios corpus="$ctrl.corpus" grupos="$ctrl.grupos"></detalle-usuarios>
 </div>
 <div class="pure-g" ng-if="$ctrl.muestraPanelEdicion">
-    <edicion-usuarios corpus="$ctrl.corpus"></edicion-usuarios>
+    <edicion-usuarios corpus="$ctrl.corpus" grupos="$ctrl.grupos"></edicion-usuarios>
 </div>
 <div class="pure-g" ng-if="$ctrl.muestraPanelBorrado">
     <borrado-usuarios uid="$ctrl.usuario.cn"></borrado-usuarios>

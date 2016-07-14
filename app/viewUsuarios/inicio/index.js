@@ -9,11 +9,23 @@ config(['$routeProvider', function($routeProvider) {
   });
 }])
 .controller('UsuariosInicioController', ['$scope', '$http', function($scope, $http) {
-    $scope.corpus = "";
-    $http({method: 'GET', url: '/api/listado_usuario.json'}).
-    then(function(respuesta){
-            $scope.corpus=respuesta.data.data;
+
+    $scope.corpus = {};
+    $scope.listadogrupos = {};
+
+    $http({method: 'GET', url: '/api/helpers_grupos.json'}).
+       then(function(respuesta){
+            $scope.listadogrupos = respuesta.data;
         }, function(respuesta){
+            console.log("Hay un problema en este punto");
+            console.log(respuesta);
+    });
+
+    $http({method: 'GET', url: '/api/listado_usuario.json'}).
+        then(function(respuesta){
+            $scope.corpus = respuesta.data.data;
+        }, function(respuesta){
+            console.log("Hay un problema en este punto");
             console.log(respuesta);
         });
 }]);

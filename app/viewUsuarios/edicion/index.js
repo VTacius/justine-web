@@ -60,7 +60,8 @@ component('edicionUsuarios', {
             
     },
     bindings: {
-        corpus: '<'
+        corpus: '<',
+        grupos: '<'
     }
 
 });

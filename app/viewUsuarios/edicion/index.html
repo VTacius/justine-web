@@ -160,7 +160,7 @@
                                 <i class="fa fa-exclamation-triangle"></i>Es obligatorio selecionar un Grupo principal
                             </label> 
                         </div>
-                        <select class="pure-u-1 " id="grupo" name="grupo" ng-model="$ctrl.corpus.grupo" ng-options="opcion.gidNumber as opcion.cn for opcion in $ctrl.corpus.listadoGrupos" required>
+                        <select class="pure-u-1 " id="grupo" name="grupo" ng-model="$ctrl.corpus.grupo" ng-options="opcion.gidNumber as opcion.cn for opcion in $ctrl.grupos" required>
                         </select>
                     </div>
                 </div>
@@ -172,7 +172,7 @@
                                 <i class="fa fa-exclamation-triangle"></i>Es obligatorio seleccionar un Grupo Adicional
                             </label> 
                         </div>
-                        <select multiple class="pure-u-1 " id="grupos" name="grupos" size=12 ng-model="$ctrl.corpus.grupos" ng-options="opcion.gidNumber as opcion.cn for opcion in $ctrl.corpus.listadoGrupos" required>
+                        <select multiple class="pure-u-1 " id="grupos" name="grupos" size=12 ng-model="$ctrl.corpus.grupos" ng-options="opcion.gidNumber as opcion.cn for opcion in $ctrl.grupos" required>
                         </select>
                     </div>
                 </div>

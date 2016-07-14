@@ -1,33 +1,13 @@
-<div class="pure-u-1 pure-u-md-7-24 ">
-    <div class="contenido" ng-click="fetch()">
-        <p>A continuación, se dispone del siguiente formulario para actualizar información que define su relación con el Ministerio de Salud de El Salvador.</p>
-
-        <p>Si cree que no puede completar sus datos con la información contenida, contácte con la Unidad de Redes y Seguridad Informática del Ministerio de Salud para solventar su inconveniente</p>
-        <p>Siempre puede confirmar la legitimidad de este formulario con su informático más cercano, o directamente con Dirección de Tecnología de Información y Comunicaciones en Ministerio de Salud</p>
-        <p> Asi tenemos:<br> 
-                <b>Nombre:</b> {{corpus.givenName}}<br>
-                <b>Apellido:</b> {{corpus.sn}}<br>
-                <b>Ubicacion:</b> {{corpus.o}}<br>
-                <b>Oficina:</b> {{corpus.ou}}<br>
-                <b>Cargo:</b> {{corpus.title}}<br>
-                <b>Telefono:</b> {{corpus.telephoneNumber}}<br>
-                <b>DUI:</b> {{corpus.dui}}<br>
-                <b>NIT:</b> {{corpus.nit}}<br>
-                <b>Grupo Principal:</b> {{corpus.grupo}}<br>
-                <b>Grupos Adicionales:</b> {{corpus.grupos}}
-    </div>
-</div>
-<div class="pure-u-1 pure-u-md-17-24">
     <form class="pure-form jt-edicion-form" name="formularioEdicionUsuarios" novalidate>
         
         <div class="pure-g">
 
-            <legend>Datos personales para {{uid}}</legend>
+            <legend>Datos personales para {{$ctrl.uid}}</legend>
 
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="givenname">Nombres</label>
-                    <input class="pure-u-1 " id="givenname" name="givenname" type="text" placeholder="Nombre" ng-model="corpus.givenName"required sustantivos ></input>
+                    <input class="pure-u-1 " id="givenname" name="givenname" type="text" placeholder="Nombre" ng-model="$ctrl.corpus.givenName"required sustantivos ></input>
                     <div ng-show="formularioEdicionUsuarios.$submitted || formularioEdicionUsuarios.givenname.$touched">
                         <label class="pure-u-1 jt-label-error" for="givenname" ng-show="formularioEdicionUsuarios.givenname.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo Nombres es obligatorio
@@ -42,7 +22,7 @@
             <div class="pure-u-1 pure-u-lg-1-2"> 
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="sn">Apellidos</label>
-                    <input class="pure-u-1 " id="sn" name="sn" type="text" placeholder="Apellidos" ng-model="corpus.sn" required sustantivos></input>
+                    <input class="pure-u-1 " id="sn" name="sn" type="text" placeholder="Apellidos" ng-model="$ctrl.corpus.sn" required sustantivos></input>
                     <div ng-show="formularioEdicionUsuarios.$submitted || formularioEdicionUsuarios.sn.$touched">
                         <label class="pure-u-1 jt-label-error" for="sn" ng-show="formularioEdicionUsuarios.sn.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo Apellidos es obligatorio
@@ -57,7 +37,7 @@
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="dui">DUI</label>
-                    <input class="pure-u-1 " id="dui" name="dui" type="text" placeholder="DUI" ng-model="corpus.dui" required dui></input>
+                    <input class="pure-u-1 " id="dui" name="dui" type="text" placeholder="DUI" ng-model="$ctrl.corpus.dui" required dui></input>
                     <div ng-show="formularioEdicionUsuarios.$submitted || formularioEdicionUsuarios.dui.$touched">
                         <label class="pure-u-1 jt-label-error" for="dui" ng-show="formularioEdicionUsuarios.dui.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo DUI es obligatorio
@@ -72,7 +52,7 @@
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="nit">NIT</label>
-                    <input class="pure-u-1 " id="nit" name="nit" type="text" placeholder="NIT" ng-model="corpus.nit" required nit></input>
+                    <input class="pure-u-1 " id="nit" name="nit" type="text" placeholder="NIT" ng-model="$ctrl.corpus.nit" required nit></input>
                     <div ng-show="formularioEdicionUsuarios.$submitted || formularioEdicionUsuarios.nit.$touched">
                         <label class="pure-u-1 jt-label-error" for="nit" ng-show="formularioEdicionUsuarios.nit.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo DUI es obligatorio
@@ -93,8 +73,8 @@
                         placeholder="Establecimiento"
                         maxlength="50"
                         pause="100"
-                        selected-object="seleccionaEstablecimiento"
-                        local-data="establecimientos"
+                        selected-object="$ctrl.seleccionaEstablecimiento"
+                        local-data="$ctrl.establecimientos"
                         search-fields="nombre"
                         title-field="nombre"
                         minlength="2"
@@ -103,7 +83,7 @@
                         auto-match="true"
                         field-required="true"
                         input-name="o"
-                        initial-value="corpus.o"></div>
+                        initial-value="$ctrl.corpus.o"></div>
                     <div ng-show="formularioEdicionUsuarios.$submitted || formularioEdicionUsuarios.o.$touched">
                         <label class="pure-u-1 jt-label-error" for="o" ng-show="formularioEdicionUsuarios.o.$invalid">
                             <i class="fa fa-exclamation-triangle"></i>El campo Establecimiento es obligatorio
@@ -119,8 +99,8 @@
                         placeholder="Oficina"
                         maxlength="50"
                         pause="100"
-                        selected-object="seleccionaOficina"
-                        local-data="oficinas"
+                        selected-object="$ctrl.seleccionaOficina"
+                        local-data="$ctrl.oficinas"
                         search-fields="nombre"
                         title-field="nombre"
                         minlength="2"
@@ -129,7 +109,7 @@
                         auto-match="true"
                         field-required="true"
                         input-name="ou"
-                        initial-value="corpus.ou"></div>
+                        initial-value="$ctrl.corpus.ou"></div>
                     <div ng-show="formularioEdicionUsuarios.$submitted || formularioEdicionUsuarios.ou.$touched">
                         <label class="pure-u-1 jt-label-error" for="ou" ng-show="formularioEdicionUsuarios.ou.$invalid">
                             <i class="fa fa-exclamation-triangle"></i>El campo Oficina es obligatorio
@@ -141,7 +121,7 @@
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="title">Cargo</label>
-                    <input class="pure-u-1 " id="title" name="title" type="text" placeholder="Cargo" ng-model="corpus.title" required sustantivos ></input>
+                    <input class="pure-u-1 " id="title" name="title" type="text" placeholder="Cargo" ng-model="$ctrl.corpus.title" required sustantivos ></input>
                     <div ng-show="formularioEdicionUsuarios.$submitted || formularioEdicionUsuarios.title.$touched">
                         <label class="pure-u-1 jt-label-error" for="title" ng-show="formularioEdicionUsuarios.title.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo Cargo es obligatorio
@@ -156,7 +136,7 @@
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
                     <label class="pure-u-1 " for="telephonenumber">Teléfono</label>
-                    <input class="pure-u-1 " id="telephonenumber" name="telephonenumber" type="text" placeholder="Teléfono" ng-model="corpus.telephoneNumber" required telefono></input>
+                    <input class="pure-u-1 " id="telephonenumber" name="telephonenumber" type="text" placeholder="Teléfono" ng-model="$ctrl.corpus.telephoneNumber" required telefono></input>
                     <div ng-show="formularioEdicionUsuarios.$submitted || formularioEdicionUsuarios.telephonenumber.$touched">
                         <label class="pure-u-1 jt-label-error" for="telephonenumber" ng-show="formularioEdicionUsuarios.telephonenumber.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo Teléfono es obligatorio
@@ -180,7 +160,7 @@
                                     <i class="fa fa-exclamation-triangle"></i>Es obligatorio selecionar un Grupo principal
                                 </label> 
                             </div>
-                            <select class="pure-u-1 " id="grupo" name="grupo" ng-model="corpus.grupo" ng-options="opcion.gidNumber as opcion.cn for opcion in corpus.listadoGrupos" required>
+                            <select class="pure-u-1 " id="grupo" name="grupo" ng-model="$ctrl.corpus.grupo" ng-options="opcion.gidNumber as opcion.cn for opcion in $ctrl.corpus.listadoGrupos" required>
                             </select>
                         </div>
                     </div>
@@ -192,7 +172,7 @@
                                     <i class="fa fa-exclamation-triangle"></i>Es obligatorio seleccionar un Grupo Adicional
                                 </label> 
                             </div>
-                            <select multiple class="pure-u-1 " id="grupos" name="grupos" size=12 ng-model="corpus.grupos" ng-options="opcion.gidNumber as opcion.cn for opcion in corpus.listadoGrupos" required>
+                            <select multiple class="pure-u-1 " id="grupos" name="grupos" size=12 ng-model="$ctrl.corpus.grupos" ng-options="opcion.gidNumber as opcion.cn for opcion in $ctrl.corpus.listadoGrupos" required>
                             </select>
                         </div>
                     </div>
@@ -212,4 +192,3 @@
 
         </div>
     </form>
-</div>

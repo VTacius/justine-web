@@ -7,7 +7,7 @@
                 <button class="button-success pure-button" ng-click="$ctrl.mostrarDetalleUsuario()"><i class="fa fa-info-circle"></i></button>
             </div>
             <div class="pure-u-1-3 pure-u-md-1-3">
-                <a class="button-success pure-button" href="/#!/usuarios/{{$ctrl.usuario.uid}}/edicion"><i class="fa fa-edit"></i></a>
+                <button class="button-success pure-button"><i class="fa fa-edit"></i></button>
             </div>
             <div class="pure-u-1-3 pure-u-md-1-3">
                 <button class="button-error pure-button"><i class="fa fa-trash"></i></button>
@@ -16,5 +16,6 @@
     </div>
 </div>
 <div class="pure-g" ng-if="$ctrl.muestraDetalleUsuario">
-    <detalle-usuarios corpus="$ctrl.corpus"></detalle-usuarios>
+    <!-- <detalle-usuarios corpus="$ctrl.corpus"></detalle-usuarios> -->
+    <edicion-usuarios uid="$ctrl.usuario.uid"></edicion-usuarios>
 </div>

@@ -7,21 +7,11 @@ component('edicionUsuarios', {
 
         var ctrl = this;
 
-        ctrl.corpus = {};
         ctrl.usuario = {};
        
         /*Contructor, dicho mal y rápido por poner comentario */
         ctrl.$onInit = function(){
         
-            /* Obtenemos los datos del usuario a modificar */
-            $http({method: 'GET', url: '/api/detalle_usuario_modificacion.json'}).
-                then(function(respuesta){
-                    ctrl.corpus = respuesta.data.data;
-                    ctrl.usuario = angular.copy(ctrl.corpus);
-                },function(respuesta){
-                    console.log("Ha ocurrido un error, creo recordar");
-                });
-            
             /* Obtenemos los establecimiento con los que vamos a llenar las sugerencias para Establecimientos (o) */
             $http({method: 'GET', url: '/api/establecimientos.json'}).
                 then(function(respuesta){
@@ -38,7 +28,7 @@ component('edicionUsuarios', {
         
         /* La funcionalidad en ng-click en button cancelar */
         ctrl.reiniciar = function(){
-            ctrl.formularioEdicionUsuarios.$setUntouched();
+            formularioEdicionUsuarios.$setUntouched();
             ctrl.corpus = angular.copy($scope.usuario);
         };
         
@@ -66,7 +56,7 @@ component('edicionUsuarios', {
             
     },
     bindings: {
-        uid: '<'
+        corpus: '<'
     }
 
 });

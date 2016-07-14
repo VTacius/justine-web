@@ -2,7 +2,7 @@
         
         <div class="pure-g">
 
-            <legend>Datos personales para {{$ctrl.uid}}</legend>
+            <legend>Datos personales para {{$ctrl.corpus.uid}}</legend>
 
             <div class="pure-u-1 pure-u-lg-1-2">
                 <div class="pure-g jt-edicion-fila">
@@ -182,10 +182,10 @@
             <div class="pure-u-1">
                 <div class="pure-g jt-edicion-fila">
                     <div class="pure-u-1-2 jt-contenedor-boton-izquierda">
-                        <button type="submit" class="button-success jt-boton-formulario pure-button" ng-submit="enviar(corpus)" ng-disabled="formularioEdicionUsuarios.$invalid || formularioEdicionUsuarios.$pristine">Modificar!</button>
+                        <button type="submit" class="button-success jt-boton-formulario pure-button" ng-submit="$ctrl.enviar($ctrl.corpus)" ng-disabled="formularioEdicionUsuarios.$invalid || formularioEdicionUsuarios.$pristine">Modificar!</button>
                     </div>
                     <div class="pure-u-1-2 jt-contenedor-boton-derecha">
-                        <button type="button" class="button-warning jt-boton-formulario pure-button" ng-click="reiniciar()">Cancelar</button>
+                        <button type="button" class="button-warning jt-boton-formulario pure-button" ng-click="$ctrl.reiniciar()">Cancelar</button>
                     </div>
                 </div>
             </div>

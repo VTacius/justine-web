@@ -22,5 +22,5 @@
     <edicion-usuarios corpus="$ctrl.corpus" grupos="$ctrl.grupos"></edicion-usuarios>
 </div>
 <div class="pure-g" ng-if="$ctrl.muestraPanelBorrado">
-    <borrado-usuarios uid="$ctrl.usuario.cn"></borrado-usuarios>
+    <borrado-usuarios uid="$ctrl.usuario.uid" borrar-entrada="$ctrl.borrarFila()"></borrado-usuarios>
 </div>

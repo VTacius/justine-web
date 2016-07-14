@@ -12,6 +12,7 @@ component('filaPanelUsuarios', {
         ctrl.muestraPanelEdicion = false;                   
         ctrl.muestraPanelBorrado = false;                   
 
+        /* Todo lo que este en mi alcance para mostrar los tres paneles disponibles */
         ctrl.mostrarPanel= function(panel){
             if (panel === 1){
                 /* Controlamos los panel al menos de esta manera */
@@ -47,9 +48,16 @@ component('filaPanelUsuarios', {
                 ctrl.muestraPanelBorrado = true;                   
             };
         };
+
+        /* Borro la entrada. Accedo a borrarEntrada que recibe desde nivel superior */
+        ctrl.borrarFila = function(){
+            console.log("Estoy por borrar fila desde filaPanel.borrarFila con el método borrarEntrada que recibo desde inicio");
+            ctrl.borrarEntrada(ctrl.usuario);
+        };
     },
     bindings: {
         usuario: '<',	
-        grupos: '<'
+        grupos: '<',
+        borrarEntrada: '&'
     }
 });

@@ -10,7 +10,7 @@
                 <button class="button-success pure-button" ng-click="$ctrl.mostrarPanel(2)"><i class="fa fa-edit"></i></button>
             </div>
             <div class="pure-u-1-3 pure-u-md-1-3">
-                <button class="button-error pure-button"><i class="fa fa-trash"></i></button>
+                <button class="button-error pure-button" ng-click="$ctrl.mostrarPanel(3)"><i class="fa fa-trash"></i></button>
             </div>
         </div>
     </div>
@@ -20,4 +20,7 @@
 </div>
 <div class="pure-g" ng-if="$ctrl.muestraPanelEdicion">
     <edicion-usuarios corpus="$ctrl.corpus"></edicion-usuarios>
+</div>
+<div class="pure-g" ng-if="$ctrl.muestraPanelBorrado">
+    <borrado-usuarios uid="$ctrl.usuario.cn"></borrado-usuarios>
 </div>

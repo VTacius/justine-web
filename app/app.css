@@ -323,14 +323,15 @@ dd {
     Comienza CSS para componente usuario/edicion
 */
 
-.jt-edicion-form {
-    width: 99%;
-    padding-left: 0.5em;
+.jt-form {
+    width: 96%;
+    padding-left: 2%;
     box-sizing: border-box;
 }
 
 .jt-edicion-fila {
     margin: 0.25em;
+    
 }
 
 .pure-form legend{
@@ -455,9 +456,23 @@ input.ng-valid.ng-touched {
     color: #df7514;
 }
 
+/* Parece que debería controlar el comportamiento de los componentes personalizados en lo que a CSS se refiere  */
+edicion-usuarios,
+borrado-usuarios {
+    width: 100%;
+}
+
 /*
     Termina CSS para componente usuario/edicion
 */
 
 /* ######################################################################### */
 
+/*
+    Comienza CSS para componente borrado-usuarios
+*/
+
+/* TODO: Hay un pequeño problema cuando se esta en mínimos, aunque no parece referirse al tamaño habrá que tomarlo en cuenta */
+.pure-form .jt-boton-formulario-borrado {
+    width: 8.5em;
+}

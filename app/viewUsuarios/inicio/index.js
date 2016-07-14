@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('justineApp.usuarios.inicio', ['ngRoute'])
-.config(['$routeProvider', function($routeProvider) {
+angular.module('justineApp.usuarios.inicio', ['ngRoute']).
+config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/usuarios/', {
     templateUrl: 'viewUsuarios/inicio/index.html',
     controller: 'UsuariosInicioController',

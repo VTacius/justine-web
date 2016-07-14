@@ -1,0 +1,20 @@
+<form class="pure-form jt-form" name="$ctrl.formularioBorradoUsuarios"  ng-submit="$ctrl.enviar($ctrl.corpus)" novalidate>
+    
+    <div class="pure-g">
+        
+        <legend>¿Desea eliminar al usuario {{$ctrl.uid}}</legend>
+
+        
+        <div class="pure-u-1">
+            <div class="pure-g jt-edicion-fila">
+                <div class="pure-u-1-2 jt-contenedor-boton-izquierda">
+                    <button type="submit" class="button-success jt-boton-formulario-borrado pure-button">Eliminar!</button>
+                </div>
+                <div class="pure-u-1-2 jt-contenedor-boton-derecha">
+                    <button type="button" class="button-warning jt-boton-formulario-borrado pure-button" ng-click="$ctrl.cancelar()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

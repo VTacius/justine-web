@@ -7,11 +7,14 @@ component('edicionUsuarios', {
 
         var ctrl = this;
 
-        ctrl.usuario = {};
+        ctrl.formularioEdicionUsuarios = {}; 
        
         /*Contructor, dicho mal y rápido por poner comentario */
         ctrl.$onInit = function(){
-        
+            
+            /* Copiamos el modelo para resetear los valores al original */
+            ctrl.usuario = angular.copy(ctrl.corpus);
+
             /* Obtenemos los establecimiento con los que vamos a llenar las sugerencias para Establecimientos (o) */
             $http({method: 'GET', url: '/api/establecimientos.json'}).
                 then(function(respuesta){
@@ -23,13 +26,14 @@ component('edicionUsuarios', {
         
         /* La funcionalidad en ng-submit de button enviar */
         ctrl.enviar = function(corpus){
+            console.log('Se supone que esta ocurre');
             console.log(corpus);
         };
         
         /* La funcionalidad en ng-click en button cancelar */
         ctrl.reiniciar = function(){
-            formularioEdicionUsuarios.$setUntouched();
-            ctrl.corpus = angular.copy($scope.usuario);
+            ctrl.formularioEdicionUsuarios.$setUntouched();
+            ctrl.corpus = angular.copy(ctrl.usuario);
         };
         
         /* Un callaback a angucomplete-alt de establecimiento */

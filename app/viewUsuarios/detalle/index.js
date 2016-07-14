@@ -7,9 +7,6 @@ component('detalleUsuarios', {
 
         var ctrl = this;
         
-        ctrl.$onInit = function(){
-            console.log('¿En que momento ocurre esto?');
-        };
     },
     bindings: {
         corpus: '<'

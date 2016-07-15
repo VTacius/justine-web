@@ -6,7 +6,8 @@ component('detalleUsuarios', {
     controller: function(){
 
         var ctrl = this;
-
+        
+        /* TODO: Sigo presentando mal los datos, hay que trabajar esta parte */
         ctrl.grupoUsuarios = ctrl.corpus.grupo;
         ctrl.gruposUsuarios = ctrl.corpus.grupos;
         

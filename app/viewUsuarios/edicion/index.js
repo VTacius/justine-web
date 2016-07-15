@@ -30,13 +30,13 @@ component('edicionUsuarios', {
             console.log(corpus);
         };
         
-        /* La funcionalidad en ng-click en button cancelar */
+        /* La funcionalidad en ng-click de button cancelar */
         ctrl.reiniciar = function(){
             ctrl.formularioEdicionUsuarios.$setUntouched();
             ctrl.corpus = angular.copy(ctrl.usuario);
         };
         
-        /* Un callaback a angucomplete-alt de establecimiento */
+        /* Un callback a angucomplete-alt de establecimiento */
         ctrl.seleccionaEstablecimiento = function(seleccionado){
             if (seleccionado){
                 ctrl.corpus.o = seleccionado.originalObject;

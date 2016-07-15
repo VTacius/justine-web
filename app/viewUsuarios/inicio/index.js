@@ -12,7 +12,8 @@ config(['$routeProvider', function($routeProvider) {
 
     $scope.corpus = {};
     $scope.listadogrupos = {};
-
+    
+    /* Obtener el listado de grupos en este punto debería evitar hacerlo muchas veces, provee por otro lado una forma lógica de refresco  */
     $http({method: 'GET', url: '/api/helpers_grupos.json'}).
        then(function(respuesta){
             $scope.listadogrupos = respuesta.data;
@@ -20,7 +21,8 @@ config(['$routeProvider', function($routeProvider) {
             console.log("Hay un problema en este punto");
             console.log(respuesta);
     });
-
+    
+    /* El listado de usuarios existentes es parte del controlador que pertenece a UsuariosInicioCtrl */
     $http({method: 'GET', url: '/api/listado_usuario.json'}).
         then(function(respuesta){
             $scope.corpus = respuesta.data.data;
@@ -28,7 +30,6 @@ config(['$routeProvider', function($routeProvider) {
             console.log("Hay un problema en este punto");
             console.log(respuesta);
         });
-
         
     $scope.borrarEntradaListado = function(detalle){
         console.log("Estamos por borrar a alguien de la lista");

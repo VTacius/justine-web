@@ -1,15 +1,15 @@
 <div class="pure-u-1 pure-u-md-7-24 ">
     <div class="contenido">
         <p> Una línea lo suficientemente extensa como para demostrar hasta donde esta llegando el div, jamás pensé que alguna vez haría un maquetado como este</p>
-        <h3 ng-click="borrarEntrada()">Acá tiene que ir nuestro hermoso formulario de búsqueda</h3>
+        <input type="text" class="pure-u-1" ng-model="filtroUsuario"></input>
     </div>
 </div>
 <div class="pure-u-1 pure-u-md-17-24">
     <table class="pure-table pure-table-horizontal">
         <tbody>
-            <tr ng-repeat="usuario in corpus">
+            <tr ng-repeat="entrada in corpus | filter:filtroUsuario">
                 <td>
-	                <fila-panel-usuarios usuario="usuario" grupos="listadogrupos" borrar-entrada="borrarEntradaListado(usuario)"></fila-panel-usuario>
+	            <fila-panel-usuarios usuario="entrada" grupos="listadogrupos" borrar-entrada="borrarEntradaListado(usuario)"></fila-panel-usuario>
                 </td>
             </tr>
         </tbody>

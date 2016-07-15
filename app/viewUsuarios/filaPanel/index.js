@@ -11,41 +11,35 @@ component('filaPanelUsuarios', {
         ctrl.muestraPanelDetalle = false;
         ctrl.muestraPanelEdicion = false;                   
         ctrl.muestraPanelBorrado = false;                   
+        
+        /* Decido cual de todos los paneles debe estar visible o no */
+        var gestionaVisibilidad = function(detalle, edicion, borrado){
+            ctrl.muestraPanelDetalle = detalle;
+            ctrl.muestraPanelEdicion = edicion;                   
+            ctrl.muestraPanelBorrado = borrado;                   
+        };
+
+        /* Obtiene los datos desde una fuente externa. Pensé, pensé que aparecería en el scope de Chrome */
+        var obtenerDetalleUsuario = function(detalle, edicion, borrado){
+            console.log('Estoy obteniendo datos');
+            $http({method: 'GET', url: '/api/detalle_usuario.json'}).
+                then(function(respuesta){
+                    ctrl.corpus = respuesta.data.data;
+                    gestionaVisibilidad(detalle, edicion, borrado);
+                }, function(respuesta){
+                    console.log(respuesta);
+                });
+    
+        };
 
         /* Todo lo que este en mi alcance para mostrar los tres paneles disponibles */
         ctrl.mostrarPanel= function(panel){
             if (panel === 1){
-                /* Controlamos los panel al menos de esta manera */
-                ctrl.muestraPanelDetalle = true;
-                ctrl.muestraPanelEdicion = false;                   
-                ctrl.muestraPanelBorrado = false;                   
-               
-                /* Si abrimos el panel, vamos a necesitar llenar los datos */
-                $http({method: 'GET', url: '/api/detalle_usuario.json'}).
-                    then(function(respuesta){
-                        ctrl.corpus = respuesta.data.data;
-                    }, function(respuesta){
-                        console.log(respuesta);
-                    });
-
+                obtenerDetalleUsuario(true, false, false);
             }else if(panel === 2){
-                /* Controlamos los panel */
-                ctrl.muestraPanelEdicion = true;                   
-                ctrl.muestraPanelDetalle = false;
-                ctrl.muestraPanelBorrado = false;                   
-
-                /* Si abrimos el panel  Obtenemos los datos del usuario a modificar */
-                $http({method: 'GET', url: '/api/detalle_usuario_modificacion.json'}).
-                    then(function(respuesta){
-                        ctrl.corpus = respuesta.data.data;
-                    },function(respuesta){
-                        console.log("Ha ocurrido un error, creo recordar");
-                    });
-            
+                obtenerDetalleUsuario(false, true, false);
             }else if(panel === 3){
-                ctrl.muestraPanelDetalle = false;
-                ctrl.muestraPanelEdicion = false;                   
-                ctrl.muestraPanelBorrado = true;                   
+                obtenerDetalleUsuario(false, false, true);
             };
         };
 

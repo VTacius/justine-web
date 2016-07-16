@@ -15,6 +15,7 @@ angular.module('justineApp', [
     'angucomplete-alt',
     'componentes.menu',
     'componentes.validaciones',
+    'componentes.filtros',
     'justineApp.inicio',
     'justineApp.directorio',
     'justineApp.usuarios.inicio',

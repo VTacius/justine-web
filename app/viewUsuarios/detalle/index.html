@@ -3,7 +3,7 @@
         <dt class="jt-dt-titulo">Contraseña:</dt>
             <dd class="jt-dd-titulo">{{$ctrl.usuarioDetalle.userPassword}}</dd>
         <dt>Grupo Principal: </dt>
-            <dd>{{$ctrl.grupoUsuarios}}</dd>
+            <dd>{{$ctrl.grupos|grupeante: $ctrl.grupoUsuarios}}</dd>
         <dt>Grupos Adicionales: </dt>
             <dd>{{$ctrl.gruposUsuarios}}</dd>
         <dt>NIT:</dt>

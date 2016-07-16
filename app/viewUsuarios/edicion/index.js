@@ -8,12 +8,13 @@ component('edicionUsuarios', {
         var ctrl = this;
 
         ctrl.formularioEdicionUsuarios = {}; 
+        ctrl.requerirOficina = true;
        
         /*Contructor, dicho mal y rápido por poner comentario */
         ctrl.$onInit = function(){
             
             /* Copiamos el modelo para resetear los valores al original */
-            ctrl.detalle_original = angular.copy(ctrl.corpus);
+            ctrl.detalle_original = angular.copy(ctrl.usuario);
 
             /* Obtenemos los establecimiento con los que vamos a llenar las sugerencias para Establecimientos (o) */
             $http({method: 'GET', url: '/api/establecimientos.json'}).
@@ -25,35 +26,47 @@ component('edicionUsuarios', {
         };
         
         /* La funcionalidad en ng-submit de button enviar */
-        ctrl.enviar = function(corpus){
+        ctrl.enviar = function(usuario){
             console.log('Se supone que esta ocurre');
-            console.log(corpus);
+            console.log(usuario);
         };
         
         /* La funcionalidad en ng-click de button cancelar */
         ctrl.reiniciar = function(){
             ctrl.formularioEdicionUsuarios.$setUntouched();
-            ctrl.corpus = angular.copy(ctrl.detalle_original);
+            ctrl.usuario = angular.copy(ctrl.detalle_original);
         };
-        
+       
+        var obtenerOficinas = function(oficina){
+            $http({method: 'GET', url: '/api/oficinas/' + oficina + '.json'}).
+                then(function(respuesta){
+                    console.log("Vamos a llenar oficinas, eso es seguro");
+                    ctrl.oficinas = respuesta.data;
+                    if (!ctrl.oficinas){
+                        ctrl.requerirOficina = false; 
+                        console.log("Pues que debería llenarse a fuerza oficina");
+                    }  
+                }, function(respuesta){
+                    ctrl.requerirOficina = false; 
+                    ctrl.oficinas = [];
+                    console.log("Algo malo pasó en este momento");
+                });
+            
+        };
         /* Un callback a angucomplete-alt de establecimiento */
         ctrl.seleccionaEstablecimiento = function(seleccionado){
             if (seleccionado){
-                ctrl.corpus.o = seleccionado.originalObject;
-                $http({method: 'GET', url: '/api/oficinas.json'}).
-                    then(function(respuesta){
-                        console.log("Vamos a llenar oficinas, eso es seguro");
-                        ctrl.oficinas = respuesta.data;
-                    }, function(respuesta){
-                        console.log("Algo malo pasó en este momento");
-                    });
+                ctrl.usuario.o = seleccionado.originalObject;
+                console.log(ctrl.usuario.o);
+                console.log(ctrl.usuario.o.id);
+                obtenerOficinas(ctrl.usuario.o.id);
             };
         };
 
         /* Un callaback a angucomplete-alt de oficina */
         ctrl.seleccionaOficina = function(seleccionado){
             if (seleccionado){
-                ctrl.corpus.ou = seleccionado.originalObject;
+                ctrl.usuario.ou = seleccionado.originalObject;
             };
         }; 
 

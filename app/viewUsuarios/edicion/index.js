@@ -13,7 +13,7 @@ component('edicionUsuarios', {
         ctrl.$onInit = function(){
             
             /* Copiamos el modelo para resetear los valores al original */
-            ctrl.usuario = angular.copy(ctrl.corpus);
+            ctrl.detalle_original = angular.copy(ctrl.corpus);
 
             /* Obtenemos los establecimiento con los que vamos a llenar las sugerencias para Establecimientos (o) */
             $http({method: 'GET', url: '/api/establecimientos.json'}).
@@ -33,7 +33,7 @@ component('edicionUsuarios', {
         /* La funcionalidad en ng-click de button cancelar */
         ctrl.reiniciar = function(){
             ctrl.formularioEdicionUsuarios.$setUntouched();
-            ctrl.corpus = angular.copy(ctrl.usuario);
+            ctrl.corpus = angular.copy(ctrl.detalle_original);
         };
         
         /* Un callback a angucomplete-alt de establecimiento */
@@ -60,7 +60,8 @@ component('edicionUsuarios', {
             
     },
     bindings: {
-        corpus: '<',
+        usuario: '<',
+        usuarioDetalle: '<',
         grupos: '<'
     }
 

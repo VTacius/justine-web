@@ -25,7 +25,7 @@ config(['$routeProvider', function($routeProvider) {
     /* El listado de usuarios existentes es parte del controlador que pertenece a UsuariosInicioCtrl */
     $http({method: 'GET', url: '/api/listado_usuario.json'}).
         then(function(respuesta){
-            $scope.corpus = respuesta.data.data;
+            $scope.corpus = respuesta.data;
         }, function(respuesta){
             console.log("Hay un problema en este punto");
             console.log(respuesta);
@@ -33,11 +33,9 @@ config(['$routeProvider', function($routeProvider) {
         
     $scope.borrarEntradaListado = function(detalle){
         console.log("Estamos por borrar a alguien de la lista");
-        console.log(detalle);
         var indice = $scope.corpus.indexOf(detalle)
         if (indice >= 0){
             $scope.corpus.splice(indice, 1);
-            /* Acá funcionalidad para precisamente borrar al usuario de la base de datos $http */
         }
     };
 }]);

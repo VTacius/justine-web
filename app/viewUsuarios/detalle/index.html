@@ -1,31 +1,31 @@
 <dl>
     <dt class="jt-dt-titulo">Contraseña:</dt>
-        <dd class="jt-dd-titulo">{{$ctrl.corpus.userPassword}}</dd>
+        <dd class="jt-dd-titulo">{{$ctrl.usuario.o}}</dd>
     <dt>Nombre:</dt>
-        <dd>{{$ctrl.corpus.givenName}} {{$ctrl.corpus.sn}}</dd>
+        <dd>{{$ctrl.usuario.givenName}} {{$ctrl.usuario.ou}}</dd>
     <dt>Localidad:</dt>
-        <dd><i>{{$ctrl.corpus.ou.nombre}}</i> en {{$ctrl.corpus.o.nombre}}</dd>
+        <dd><i>{{$ctrl.usuarioDetalle.ou.nombre}}</i> en {{$ctrl.usuarioDetalle.o.nombre}}</dd>
     <dt>Grupo Principal: </dt>
         <dd>{{$ctrl.grupoUsuarios}}</dd>
     <dt>Grupos Adicionales: </dt>
         <dd>{{$ctrl.gruposUsuarios}}</dd>
     <dt>NIT:</dt>
-        <dd>{{$ctrl.corpus.nit}}</dd>
+        <dd>{{$ctrl.usuarioDetalle.nit}}</dd>
     <dt>DUI:</dt>
-        <dd>{{$ctrl.corpus.dui}}</dd>
+        <dd>{{$ctrl.usuarioDetalle.dui}}</dd>
 </dl>
 <h3 class="contenido">Información para recuperación de contraseña</h3>
 <dl>
-    <dt>{{$ctrl.corpus.pregunta}}</dt>
-        <dd>{{$ctrl.corpus.respuesta}}</dd>
+    <dt>{{$ctrl.usuarioDetalle.pregunta}}</dt>
+        <dd>{{$ctrl.usuarioDetalle.respuesta}}</dd>
     <dt>Fecha de Cumpleaños:</dt>
-        <dd>{{$ctrl.corpus.fecha}}</dd>
+        <dd>{{$ctrl.usuarioDetalle.fecha}}</dd>
 </dl>
 <dl>
     <dt class="jt-dt-titulo">Correo:</dt>
-        <dd class="jt-dd-titulo">{{$ctrl.corpus.mail}}</dd>
+        <dd class="jt-dd-titulo">{{$ctrl.usuarioDetalle.mail}}</dd>
     <dt>Estado de la cuenta:</dt>
-        <dd>{{$ctrl.corpus.cuentaStatus}}</dd>
+        <dd>{{$ctrl.usuarioDetalle.cuentaStatus}}</dd>
     <dt>Estado del buzón:</dt>
-        <dd>{{$ctrl.corpus.buzonStatus}}</dd>
+        <dd>{{$ctrl.usuarioDetalle.buzonStatus}}</dd>
 </dl>

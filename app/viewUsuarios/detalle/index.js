@@ -6,14 +6,15 @@ component('detalleUsuarios', {
     controller: function(){
 
         var ctrl = this;
-        
+        console.log(ctrl.usuario); 
         /* TODO: Sigo presentando mal los datos, hay que trabajar esta parte */
-        ctrl.grupoUsuarios = ctrl.corpus.grupo;
-        ctrl.gruposUsuarios = ctrl.corpus.grupos;
+        ctrl.grupoUsuarios = ctrl.usuarioDetalle.grupo;
+        ctrl.gruposUsuarios = ctrl.usuarioDetalle.grupos;
         
     },
     bindings: {
-        corpus: '<',
+        usuario: '<',
+        usuarioDetalle: '<',
         grupos: '<'
     }
     

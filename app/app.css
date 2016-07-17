@@ -285,14 +285,14 @@ dl {
 }
 
 dt {
-    width: 30%;
+    width: 37%;
     font-size: 1.0em;
     text-align: end; 
     font-weight: 600;
 }
 
 dd {
-    width: 70%;
+    width: 63%;
     padding-left: 0.9em;
     margin-bottom: 1em;
     font-size: 1.0em;
@@ -309,6 +309,17 @@ dd {
 
     dt{
         text-align: left;
+    }
+
+}
+
+@media (min-width: 80em) {
+    dt {
+        width: 32%;    
+    } 
+
+    dd {
+        width: 68%;
     }
 
 }

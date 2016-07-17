@@ -10,6 +10,7 @@ filter('grupeante', function() {
         for (var i = 0; i < listadoGrupos.length; i++){
             if (listadoGrupos[i]['gidNumber'] == gid){
                 salida = listadoGrupos[i]['cn']
+                return salida
             }
         };        
 

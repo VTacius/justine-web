@@ -5,13 +5,13 @@
         <dt>Grupo Principal: </dt>
             <dd>{{$ctrl.grupos|grupeante: $ctrl.grupoUsuarios}}</dd>
         <dt>Grupos Adicionales: </dt>
-            <dd>{{$ctrl.gruposUsuarios}}</dd>
+            <dd><span ng-repeat="grupos in $ctrl.gruposUsuarios">{{$ctrl.grupos|grupeante: grupos}}{{$last ? ' ':', '}}</span></dd>
         <dt>NIT:</dt>
             <dd>{{$ctrl.usuarioDetalle.nit}}</dd>
         <dt>DUI:</dt>
             <dd>{{$ctrl.usuarioDetalle.dui}}</dd>
     </dl>
-    <h3 class="contenido">Información para recuperación de contraseña</h3>
+    <h3 class="contenido">Recuperación de contraseña</h3>
     <dl>
         <dt>{{$ctrl.usuarioDetalle.pregunta}}</dt>
             <dd>{{$ctrl.usuarioDetalle.respuesta}}</dd>
@@ -25,5 +25,7 @@
             <dd>{{$ctrl.usuarioDetalle.cuentaStatus}}</dd>
         <dt>Estado del buzón:</dt>
             <dd>{{$ctrl.usuarioDetalle.buzonStatus}}</dd>
+        <dt>Uso de espacio:</dt>
+            <dd>{{$ctrl.usuarioDetalle.usoBuzon}}</dd>
     </dl>
 </div>

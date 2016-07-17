@@ -23,7 +23,7 @@
     <detalle-usuarios usuario="$ctrl.usuario" usuario-detalle="$ctrl.corpus" grupos="$ctrl.grupos"></detalle-usuarios>
 </div>
 <div class="pure-g" ng-if="$ctrl.muestraPanelEdicion">
-    <edicion-usuarios usuario="$ctrl.usuario" usuario-detalle="$ctrl.corpus" grupos="$ctrl.grupos"></edicion-usuarios>
+    <edicion-usuarios usuario="$ctrl.usuario" usuario-detalle="$ctrl.corpus" editar-entrada="$ctrl.editarFila()"  grupos="$ctrl.grupos"></edicion-usuarios>
 </div>
 <div class="pure-g" ng-if="$ctrl.muestraPanelBorrado">
     <borrado-usuarios usuario="$ctrl.usuario" usuario-detalle="$ctrl.corpus" borrar-entrada="$ctrl.borrarFila()"></borrado-usuarios>

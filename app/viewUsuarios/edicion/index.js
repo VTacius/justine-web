@@ -27,8 +27,11 @@ component('edicionUsuarios', {
         
         /* La funcionalidad en ng-submit de button enviar */
         ctrl.enviar = function(usuario){
-            console.log('Se supone que esta ocurre');
+            console.log('Estoy a punto de enviar información a modificar al backend');
             console.log(usuario);
+            console.log(ctrl.usuarioDetalle);
+            /* Pues que propago el cambio por toda la aplicación para que puedan modificarse */
+            ctrl.editarEntrada();
         };
         
         /* La funcionalidad en ng-click de button cancelar */
@@ -66,7 +69,7 @@ component('edicionUsuarios', {
         /* Un callaback a angucomplete-alt de oficina */
         ctrl.seleccionaOficina = function(seleccionado){
             if (seleccionado){
-                ctrl.usuario.ou = seleccionado.originalObject;
+                ctrl.usuario.ou = seleccionado.originalObject.nombre;
             };
         }; 
 
@@ -75,7 +78,8 @@ component('edicionUsuarios', {
     bindings: {
         usuario: '<',
         usuarioDetalle: '<',
-        grupos: '<'
+        grupos: '<',
+        editarEntrada: '&'
     }
 
 });

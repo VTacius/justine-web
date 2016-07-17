@@ -30,12 +30,21 @@ config(['$routeProvider', function($routeProvider) {
             console.log("Hay un problema en este punto");
             console.log(respuesta);
         });
-        
+
+    /* Hemos subido hasta acá para asegurar que la entrada será borrada en tiempo real de la lista */
     $scope.borrarEntradaListado = function(detalle){
         console.log("Estamos por borrar a alguien de la lista");
         var indice = $scope.corpus.indexOf(detalle)
         if (indice >= 0){
             $scope.corpus.splice(indice, 1);
-        }
+        };
+    };
+
+    /* Subí hasta acá para asegurar que la entrada usuario será editada en tiempo real de la lista, precisamente en otros componentes que la usan de esa forma */
+    $scope.editarEntradaListado = function(detalle){
+        var indice = $scope.corpus.indexOf(detalle)
+        if (indice >=0){
+            $scope.corpus[indice] = detalle;
+        };
     };
 }]);

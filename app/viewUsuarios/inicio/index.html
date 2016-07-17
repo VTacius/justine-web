@@ -9,7 +9,7 @@
         <tbody>
             <tr ng-repeat="entrada in corpus | filter:filtroUsuario">
                 <td>
-	            <fila-panel-usuarios usuario="entrada" grupos="listadogrupos" borrar-entrada="borrarEntradaListado(entrada)"></fila-panel-usuario>
+	            <fila-panel-usuarios usuario="entrada" grupos="listadogrupos" editar-usuario="editarEntradaListado(entrada)" borrar-entrada="borrarEntradaListado(entrada)"></fila-panel-usuario>
                 </td>
             </tr>
         </tbody>

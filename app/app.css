@@ -363,7 +363,8 @@ dd {
     padding-left: 0.5em;
 }
 
-.jt-boton-formulario {
+/* Hay un problema cuando se está en 481 px */
+.pure-form .jt-boton-formulario {
     width: 8.5em;
 }
 

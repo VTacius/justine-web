@@ -487,4 +487,86 @@ borrado-usuarios {
 /* TODO: Hay un pequeño problema cuando se esta en mínimos, aunque no parece referirse al tamaño habrá que tomarlo en cuenta */
 .pure-form .jt-boton-formulario-borrado {
     width: 8.5em;
+
+}
+
+/*
+    Termina CSS para componente usuario/borrado
+*/
+
+/* ######################################################################### */
+
+
+/*
+    Comienza CSS para componente jt-switch
+*/
+
+.jt-switch {
+    position: relative;
+    display: inline-block;
+    width: 99%;
+    height: 1.7em;
+}
+
+.jt-switch input {
+    display:none;
+}
+
+.jt-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Este es el color que se llega por defecto */
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    /* Esto permite que se vea el texto */
+    z-index: -1;
+    /* Le damos apariencia de botón */
+    border-radius: 2px;
+}
+
+.jt-switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 50%;
+    background-color: white;
+    
+    /* Animación al cambio */
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+
+.jt-switch input:checked + .slider {
+  background-color: #85bad4;
+}
+
+.jt-switch input:focus + .slider {
+  box-shadow: 0 0 1px #85bad4;
+}
+
+.jt-switch input:checked + .slider:before {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+    /* Forma de bottón */
+    border-radius: initial;
+}
+
+.jt-switch-text {
+    z-index: 1;
+    display: flex;
+    position: relative;
+    top: 20%;
+}
+
+.jt-switch-text .on,
+.jt-switch-text .off {
+    display: block;
+    width: 50%;
+    text-align:center;
 }

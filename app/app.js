@@ -14,6 +14,7 @@ angular.module('justineApp', [
     'ngRoute',
     'angucomplete-alt',
     'componentes.menu',
+    'componentes.switch',
     'componentes.validaciones',
     'componentes.filtros',
     'justineApp.inicio',

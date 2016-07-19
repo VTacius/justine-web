@@ -1,4 +1,4 @@
-'use strict';
+'use strict' ;
 
 angular.module('justineApp').
 component('edicionUsuarios', {
@@ -9,6 +9,11 @@ component('edicionUsuarios', {
 
         ctrl.formularioEdicionUsuarios = {}; 
         ctrl.requerirOficina = true;
+
+        /* Será más bien para dejar en claro como va todo esto */
+        ctrl.establecimientos = [];
+        ctrl.usuarioOriginal = {};
+        ctrl.usuarioDetalleOriginal = {};
        
         /*Contructor, dicho mal y rápido por poner comentario */
         ctrl.$onInit = function(){
@@ -24,7 +29,6 @@ component('edicionUsuarios', {
             /* Copiamos el modelo para resetear los valores al original */
             ctrl.usuarioOriginal = angular.copy(ctrl.usuario);
             ctrl.usuarioDetalleOriginal = angular.copy(ctrl.usuarioDetalle);
-            ctrl.estadoSamba = angular.copy(ctrl.usuarioDetalle.sambaAcctFlags['estado']);
             
             console.log('Copio datos para luego resetearlos');
             console.log(ctrl.usuarioDetalle);
@@ -36,18 +40,33 @@ component('edicionUsuarios', {
             console.log('Estoy a punto de enviar información a modificar al backend');
             console.log(usuario);
             console.log(ctrl.usuarioDetalle);
-            console.log(ctrl.estadoSamba);
-            ctrl.usuarioDetalle.sambaAcctFlags['estado'] = ctrl.estadoSamba;
             /* Pues que propago el cambio por toda la aplicación para que puedan modificarse */
             ctrl.editarEntrada();
         };
 
-        /* La funcionalidad de cambiar el estado de jt-switch */
+        /* La funcionalidad de cambiar el estado de jt-switch para sambaAcctFlags */
         ctrl.actualizaSambaFlags = function(estado){
-            ctrl.estadoSamba = estado;
             ctrl.usuarioDetalle.sambaAcctFlags['estado'] = estado;
             
             console.log('Actualizo banderas desde componente edicion');
+            console.log(estado);
+            console.log(ctrl.usuarioDetalle);
+        };
+        
+        /* La funcionalidad de cambiar el estado de jt-switch para cuentaStatus */
+        ctrl.actualizaCuentaStatus = function(estado){
+            ctrl.usuarioDetalle.cuentaStatus['estado'] = estado;
+            
+            console.log('Actualizo banderas desde componente edicion a cuentaStatus');
+            console.log(estado);
+            console.log(ctrl.usuarioDetalle);
+        };
+        
+        /* La funcionalidad de cambiar el estado de jt-switch para buzonStatus */
+        ctrl.actualizaBuzonStatus = function(estado){
+            ctrl.usuarioDetalle.buzonStatus['estado'] = estado;
+            
+            console.log('Actualizo banderas desde componente edicion a buzonStatus');
             console.log(estado);
             console.log(ctrl.usuarioDetalle);
         };
@@ -61,6 +80,8 @@ component('edicionUsuarios', {
             console.log(ctrl.usuarioDetalleOriginal);
             ctrl.usuarioDetalle = angular.copy(ctrl.usuarioDetalleOriginal);
         };
+
+        /* Versan sobre el comportamiento de los componentes establecimiento y oficina */
       
         /* Usada en seleccionaEstablecimiento, entre otras cosas porque odio ver tanto identado */
         var obtenerOficinas = function(oficina){

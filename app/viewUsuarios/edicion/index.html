@@ -202,6 +202,20 @@
         
         <legend>Atributos Zimbra</legend>
 
+        <div class="pure-u-1 pure-u-lg-1-2">
+            <div class="pure-g jt-edicion-fila">
+                <label class="pure-u-1 " for="buzonstatus">Estado del Buzón</label>
+                <jt-switch class="pure-u-1" corpus="$ctrl.usuarioDetalle.buzonStatus" actualiza="$ctrl.actualizaBuzonStatus(estado)"></jt-switch>
+            </div>
+        </div>
+        
+        <div class="pure-u-1 pure-u-lg-1-2">
+            <div class="pure-g jt-edicion-fila">
+                <label class="pure-u-1 " for="cuentastatus">Estado de la Cuenta</label>
+                <jt-switch class="pure-u-1" corpus="$ctrl.usuarioDetalle.cuentaStatus" actualiza="$ctrl.actualizaCuentaStatus(estado)"></jt-switch>
+            </div>
+        </div>
+
         
         <div class="pure-u-1">
             <div class="pure-g jt-edicion-fila">

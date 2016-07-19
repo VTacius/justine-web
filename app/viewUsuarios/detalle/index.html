@@ -3,9 +3,9 @@
         <dt class="jt-dt-titulo">Contraseña:</dt>
             <dd class="jt-dd-titulo">{{$ctrl.usuarioDetalle.userPassword}}</dd>
         <dt>Grupo Principal: </dt>
-            <dd>{{$ctrl.grupos|grupeante: $ctrl.grupoUsuarios}}</dd>
+            <dd>{{$ctrl.grupos|grupeante: $ctrl.usuarioDetalle.grupo}}</dd>
         <dt>Grupos Adicionales: </dt>
-            <dd><span ng-repeat="grupos in $ctrl.gruposUsuarios">{{$ctrl.grupos|grupeante: grupos}}{{$last ? ' ':', '}}</span></dd>
+            <dd><span ng-repeat="grupos in $ctrl.usuarioDetalle.grupos">{{$ctrl.grupos|grupeante: grupos}}{{$last ? ' ':', '}}</span></dd>
         <dt>NIT:</dt>
             <dd>{{$ctrl.usuarioDetalle.nit}}</dd>
         <dt>DUI:</dt>
@@ -22,9 +22,9 @@
         <dt class="jt-dt-titulo">Correo:</dt>
             <dd class="jt-dd-titulo">{{$ctrl.usuarioDetalle.mail}}</dd>
         <dt>Estado de la cuenta:</dt>
-            <dd>{{$ctrl.usuarioDetalle.cuentaStatus}}</dd>
+            <dd>{{$ctrl.usuarioDetalle.cuentaStatus.estado ? $ctrl.usuarioDetalle.cuentaStatus.on : $ctrl.usuarioDetalle.cuentaStatus.off}}</dd>
         <dt>Estado del buzón:</dt>
-            <dd>{{$ctrl.usuarioDetalle.buzonStatus}}</dd>
+            <dd>{{$ctrl.usuarioDetalle.buzonStatus.estado ? $ctrl.usuarioDetalle.buzonStatus.on : $ctrl.usuarioDetalle.buzonStatus.off}}</dd>
         <dt>Uso de espacio:</dt>
             <dd>{{$ctrl.usuarioDetalle.usoBuzon}}</dd>
     </dl>

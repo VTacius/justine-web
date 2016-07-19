@@ -23,11 +23,12 @@ component('edicionUsuarios', {
 
             /* Copiamos el modelo para resetear los valores al original */
             ctrl.usuarioOriginal = angular.copy(ctrl.usuario);
-            console.log(ctrl.usuarioDetalle);
             ctrl.usuarioDetalleOriginal = angular.copy(ctrl.usuarioDetalle);
             ctrl.estadoSamba = angular.copy(ctrl.usuarioDetalle.sambaAcctFlags['estado']);
+            
+            console.log('Copio datos para luego resetearlos');
+            console.log(ctrl.usuarioDetalle);
             console.log(ctrl.usuarioDetalle.sambaAcctFlags['estado']);
-
         };
         
         /* La funcionalidad en ng-submit de button enviar */
@@ -43,10 +44,12 @@ component('edicionUsuarios', {
 
         /* La funcionalidad de cambiar el estado de jt-switch */
         ctrl.actualizaSambaFlags = function(estado){
-            console.log('Actualizo banderas');
-            console.log(estado);
             ctrl.estadoSamba = estado;
             ctrl.usuarioDetalle.sambaAcctFlags['estado'] = estado;
+            
+            console.log('Actualizo banderas desde componente edicion');
+            console.log(estado);
+            console.log(ctrl.usuarioDetalle);
         };
         
         /* La funcionalidad en ng-click de button cancelar */
@@ -80,8 +83,8 @@ component('edicionUsuarios', {
         ctrl.seleccionaEstablecimiento = function(seleccionado){
             if (seleccionado){
                 ctrl.usuario.o = seleccionado.originalObject;
-                console.log(ctrl.usuario.o);
-                console.log(ctrl.usuario.o.id);
+                /*console.log(ctrl.usuario.o);
+                console.log(ctrl.usuario.o.id);*/
                 obtenerOficinas(ctrl.usuario.o.id);
             };
         };

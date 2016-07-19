@@ -505,7 +505,10 @@ borrado-usuarios {
     position: relative;
     display: inline-block;
     width: 99%;
-    height: 1.7em;
+    height: 1.8em;
+    /* TODO: Así estaría en verdadera sintonía con los demás botones, pero sigo teniendo problemas con el alto */
+    /*font-size: 90%;
+    padding: 0.4em 0.5em;*/
 }
 
 .jt-switch input {

@@ -6,16 +6,19 @@ component('jtSwitch', {
     controller: function(){ 
         var ctrl = this;
 
-        ctrl.valor = ctrl.buzon.estado;
-        ctrl.onTexto = 'onTexto' in ctrl.buzon ? ctrl.buzon.onTexto : "Activo";
-        ctrl.offTexto = ctrl.buzon.offTexto ? ctrl.buzon.offTexto : "Inactivo";
+        ctrl.valor = ctrl.corpus.estado;
+        console.log(ctrl.corpus.estado);
+        ctrl.on = 'on' in ctrl.corpus ? ctrl.corpus.on : "Activo";
+        ctrl.off = ctrl.corpus.off ? ctrl.corpus.off : "Inactivo";
         
         ctrl.retornaValor = function(){
+            console.log('Vamos a actualizar componente');
+            console.log(ctrl.valor);
             ctrl.actualiza({'estado': ctrl.valor});
         };
     },
     bindings: {
-        buzon: '<',
+        corpus: '<',
         actualiza: '&'
     }
 });

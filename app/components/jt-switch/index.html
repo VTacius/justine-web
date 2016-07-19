@@ -1,8 +1,9 @@
 <label class="jt-switch">
-    <input type="checkbox"></input>
+    <input type="checkbox" ng-model=$ctrl.valor ng-click="$ctrl.retornaValor()"></input>
     <div class="slider"></div>
     <span class="jt-switch-text">
         <span class="on">{{$ctrl.onTexto}}</span>
         <span class="off">{{$ctrl.offTexto}}</span>
     </span>
 </label> 
+<div class="contenido">{{$ctrl.valor}}</div>

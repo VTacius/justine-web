@@ -1,8 +1,11 @@
 <div class="pure-u-1 pure-u-md-7-24 ">
     <div class="contenido">
         <p> Una línea lo suficientemente extensa como para demostrar hasta donde esta llegando el div, jamás pensé que alguna vez haría un maquetado como este</p>
-        <input type="text" class="pure-u-1" ng-model="filtroUsuario"></input>
-        <jt-switch off-texto="entrada" on-texto="Bloqueado"></jt-switch>
+        <form class="pure-form">
+            <input type="text" class="pure-u-1" ng-model="filtroUsuario"></input>
+            <jt-switch buzon="buzon" actualiza="actualizaBuzon(estado)"></jt-switch>
+        </form>
+        <p>{{buzon.estado}}</p>
     </div>
 </div>
 <div class="pure-u-1 pure-u-md-17-24">

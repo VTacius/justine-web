@@ -520,7 +520,7 @@ borrado-usuarios {
     right: 0;
     bottom: 0;
     /* Este es el color que se llega por defecto */
-    background-color: #ccc;
+    background-color: #d48585;
     -webkit-transition: .4s;
     transition: .4s;
     /* Esto permite que se vea el texto */

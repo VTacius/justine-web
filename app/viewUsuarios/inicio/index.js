@@ -5,50 +5,53 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/usuarios/', {
     templateUrl: 'viewUsuarios/inicio/index.html',
     controller: 'UsuariosInicioController',
-    controllerAs: 'UsuariosInicioCtrl'
+    controllerAs: '$ctrl'
   });
 }])
-.controller('UsuariosInicioController', ['$scope', '$http', function($scope, $http) {
-
-    $scope.corpus = {};
-    $scope.listadogrupos = {};
-    $scope.buzon = {estado: true, mensaje: "Activo"};
-    $scope.actualizaBuzon = function(estado){
-        $scope.buzon.estado = estado;
+.controller('UsuariosInicioController', ['$http', function($http) {
+    var ctrl = this;
+    ctrl.corpus = {};
+    ctrl.listadogrupos = {};
+    ctrl.buzon = {estado: true, mensaje: "Activo"};
+    ctrl.actualizaBuzon = function(estado){
+        ctrl.buzon.estado = estado;
     };
     
     /* Obtener el listado de grupos en este punto debería evitar hacerlo muchas veces, provee por otro lado una forma lógica de refresco  */
     $http({method: 'GET', url: '/api/helpers_grupos.json'}).
        then(function(respuesta){
-            $scope.listadogrupos = respuesta.data;
+            ctrl.listadogrupos = respuesta.data;
         }, function(respuesta){
-            console.log("Hay un problema en este punto");
-            console.log(respuesta);
+            console.log("Hay un problema con el servidor en este punto");
     });
     
     /* El listado de usuarios existentes es parte del controlador que pertenece a UsuariosInicioCtrl */
     $http({method: 'GET', url: '/api/listado_usuario.json'}).
         then(function(respuesta){
-            $scope.corpus = respuesta.data;
+            ctrl.corpus = respuesta.data;
         }, function(respuesta){
-            console.log("Hay un problema en este punto");
-            console.log(respuesta);
+            console.log("Hay un problema con el servidor en este punto");
         });
 
-    /* Hemos subido hasta acá para asegurar que la entrada será borrada en tiempo real de la lista */
-    /* El nombre dado al parámetro debe ser usado cuando se pase esta función en binding al siguiente componente */
-    $scope.borrarEntradaListado = function(entrada){
-        var indice = $scope.corpus.indexOf(entrada)
+    /* Operación borrado sube hasta este punto para asegurar que la entrada será borrada en tiempo real de la lista 
+     * El nombre dado al parámetro ("entrada") debe ser usado cuando se pase esta función en binding al siguiente componente
+     *
+     * */
+    ctrl.borrarEntradaListado = function(entrada){
+        var indice = ctrl.corpus.indexOf(entrada)
         if (indice >= 0){
-            $scope.corpus.splice(indice, 1);
+            ctrl.corpus.splice(indice, 1);
         };
     };
 
-    /* Subí hasta acá para asegurar que la entrada usuario será editada en tiempo real de la lista, precisamente en otros componentes que la usan de esa forma */
-    $scope.editarEntradaListado = function(detalle){
-        var indice = $scope.corpus.indexOf(detalle)
+    /* Operación edición sube a este punto para que los cambios hechos sean accesibles a otros componentes que usan la información del usuario
+     * que tomó de la lista o de la que se corresponde con detalleUsuario  
+     *
+     * */
+    ctrl.editarEntradaListado = function(detalle){
+        var indice = ctrl.corpus.indexOf(detalle)
         if (indice >=0){
-            $scope.corpus[indice] = detalle;
+            ctrl.corpus[indice] = detalle;
         };
     };
 }]);

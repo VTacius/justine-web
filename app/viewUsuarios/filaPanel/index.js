@@ -21,7 +21,7 @@ component('filaPanelUsuarios', {
 
         /* Obtiene los datos desde una fuente externa. Pensé, pensé que aparecería en el scope de Chrome */
         var obtenerDetalleUsuario = function(detalle, edicion, borrado){
-            console.log('Estoy obteniendo datos');
+            console.log('filaPanel.obtenerDetalleUsuario: Estoy obteniendo datos');
             /* TODO: Será necesario cuidar que esto no se realize innecesarimente */
             $http({method: 'GET', url: '/api/detalle_usuario.json'}).
                 then(function(respuesta){
@@ -45,12 +45,9 @@ component('filaPanelUsuarios', {
         };
 
         /* Edito la entrada. Me aseguro que esos detalles sean actualizados en otros componentes */
-        ctrl.editarFila = function(){
-            console.log('Estoy por editar fila desde filaPanel.editarFila con el método editarEntrada que recibo desde inicio');
-            console.log(ctrl.usuario);
-            console.log(ctrl.corpus);
+        ctrl.editarFila = function(usuario){
             /* Subo hacia inicio, necesito que otros componentes puedan ver los cambios */
-            ctrl.editarEntrada(ctrl.usuario);
+            ctrl.editarEntrada({'entrada': ctrl.usuario});
             /*
              * Acá edito efectivamente al usuario en el servidor backend mediante una peticion
              * backend. Espero que recuerdes que acá hace falta la información de detalle usuario

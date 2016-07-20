@@ -23,52 +23,34 @@ component('edicionUsuarios', {
                 then(function(respuesta){
                     ctrl.establecimientos = respuesta.data;
                 }, function(respuesta){
-                    console.log("Acá pasó un error en el servidor, más que nada");
+                    console.log("Hay un problema con el servidor en este punto");
                 });
 
             /* Copiamos el modelo para resetear los valores al original */
             ctrl.usuarioOriginal = angular.copy(ctrl.usuario);
             ctrl.usuarioDetalleOriginal = angular.copy(ctrl.usuarioDetalle);
             
-            console.log('Copio datos para luego resetearlos');
-            console.log(ctrl.usuarioDetalle);
-            console.log(ctrl.usuarioDetalle.sambaAcctFlags['estado']);
         };
         
         /* La funcionalidad en ng-submit de button enviar */
         ctrl.enviar = function(usuario){
-            console.log('Estoy a punto de enviar información a modificar al backend');
-            console.log(usuario);
-            console.log(ctrl.usuarioDetalle);
             /* Pues que propago el cambio por toda la aplicación para que puedan modificarse */
-            ctrl.editarEntrada();
+            ctrl.editarEntrada({'entrada': usuario});
         };
 
         /* La funcionalidad de cambiar el estado de jt-switch para sambaAcctFlags */
         ctrl.actualizaSambaFlags = function(estado){
             ctrl.usuarioDetalle.sambaAcctFlags['estado'] = estado;
-            
-            console.log('Actualizo banderas desde componente edicion');
-            console.log(estado);
-            console.log(ctrl.usuarioDetalle);
         };
         
         /* La funcionalidad de cambiar el estado de jt-switch para cuentaStatus */
         ctrl.actualizaCuentaStatus = function(estado){
             ctrl.usuarioDetalle.cuentaStatus['estado'] = estado;
-            
-            console.log('Actualizo banderas desde componente edicion a cuentaStatus');
-            console.log(estado);
-            console.log(ctrl.usuarioDetalle);
         };
         
         /* La funcionalidad de cambiar el estado de jt-switch para buzonStatus */
         ctrl.actualizaBuzonStatus = function(estado){
             ctrl.usuarioDetalle.buzonStatus['estado'] = estado;
-            
-            console.log('Actualizo banderas desde componente edicion a buzonStatus');
-            console.log(estado);
-            console.log(ctrl.usuarioDetalle);
         };
         
         /* La funcionalidad en ng-click de button cancelar */
@@ -77,7 +59,6 @@ component('edicionUsuarios', {
             ctrl.usuario = angular.copy(ctrl.usuarioOriginal);
             /* El siguiente no funciona, extrañamente tengo la impresión que debería */
             /* Es que creo que debo subir de componente para que la idea funcione */
-            console.log(ctrl.usuarioDetalleOriginal);
             ctrl.usuarioDetalle = angular.copy(ctrl.usuarioDetalleOriginal);
         };
 

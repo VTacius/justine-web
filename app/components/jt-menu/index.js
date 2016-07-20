@@ -35,13 +35,13 @@ controller('MenuController', ['$scope', '$window', '__ENV', function($scope, $wi
     }
 
 }]).
-directive('menues', [function(){
+directive('jtMenu', [function(){
     return {
         link: function(scope, element, attrs){
             angular.element(window).on('resize', scope.closeMenu);
         },
         restrict: 'E',
-        templateUrl: 'components/menu/index.html'
+        templateUrl: 'components/jt-menu/index.html'
     }
 
 }]);

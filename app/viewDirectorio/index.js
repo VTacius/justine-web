@@ -6,17 +6,16 @@ angular.module('justineApp.directorio', ['ngRoute'])
   $routeProvider.when('/directorio', {
     templateUrl: 'viewDirectorio/index.html',
     controller: 'DirectorioController',
-    controllerAs: 'DirectorioCtrl',
+    controllerAs: '$ctrl',
   });
 }])
-.controller('DirectorioController', ['$scope', '$http', function($scope, $http){
-    $scope.corpus = ""; 
-    $scope.fetch = function(){
-        $http({method: 'GET', url: '/api/directorio.json'}).
-            then(function(respuesta){
-                $scope.corpus = respuesta.data.data;
-            }, function(response){
-                console.log($scope.corpus);
-            });
-   };
+.controller('DirectorioController', ['$http', function($http){
+    var ctrl = this;
+    ctrl.corpus = []; 
+    $http({method: 'GET', url: '/api/directorio.json'}).
+        then(function(respuesta){
+            ctrl.corpus = respuesta.data.data;
+        }, function(response){
+            console.log(ctrl.corpus);
+        });
 }]);

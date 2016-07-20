@@ -1,12 +1,12 @@
     <div class="pure-u-1 pure-u-md-7-24"> 
-        <div class="contenido" ng-click="fetch()">
-            <p><b>Panel 1</b> Esto es más contenido presente en una especie de variable que no alcanzo a legisar de todo modo posible, luego se encuentra en un horario que esta fuera de mis expectativas y ya no puedo adivinar en país debo estar a esta hora</p>
+        <div class="contenido">
+            <p><b>Panel 1</b> Esta es una linea suficientemente extensa como para que pueda verse el cambio que hace respecto a otro contenido, así le es natural a la vista buscar posibles errores sin tener que adiviar mediante colores de fondo u otras tonterías</p>
         </div>
     </div>
     <div class="pure-u-1 pure-u-md-17-24">
         <table class="pure-table pure-table-horizontal pure-table-striped">
             <tbody>
-                <tr ng-repeat="entrada in corpus" >
+                <tr ng-repeat="entrada in $ctrl.corpus" >
                     <td>
                         <div class="pure-u-1 jt-directorio-t">
                             <b class="jt-directorio-t-cn">{{entrada.cn}}</b> <span class="jt-directorio-t-title"><i>{{entrada.title}}</i></span>

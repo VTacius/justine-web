@@ -23,7 +23,7 @@ component('filaPanelUsuarios', {
         var obtenerDetalleUsuario = function(detalle, edicion, borrado){
             console.log('filaPanel.obtenerDetalleUsuario: Estoy obteniendo datos');
             /* TODO: Será necesario cuidar que esto no se realize innecesarimente */
-            $http({method: 'GET', url: '/api/detalle_usuario.json'}).
+            $http({method: 'GET', url: '/api/usuario_detalle.json'}).
                 then(function(respuesta){
                     ctrl.corpus = respuesta.data.data;
                     gestionaVisibilidad(detalle, edicion, borrado);

@@ -26,7 +26,7 @@ config(['$routeProvider', function($routeProvider) {
     });
     
     /* El listado de usuarios existentes es parte del controlador que pertenece a UsuariosInicioCtrl */
-    $http({method: 'GET', url: '/api/listado_usuario.json'}).
+    $http({method: 'GET', url: '/api/usuario_listado.json'}).
         then(function(respuesta){
             ctrl.corpus = respuesta.data;
         }, function(respuesta){

@@ -151,30 +151,15 @@
         <legend>Atributos Posix y Samba</legend>
         
         <div class="pure-u-1 pure-u-lg-1-2">
-            <div class="pure-g jt-edicion-fila">
-                <label class="pure-u-1 " for="loginshell">Shell por defecto</label>
-                <select class="pure-u-1" id="loginshell" name="loginshell" ng-model="$ctrl.usuarioDetalle.loginShell" required>
-                    <option value="bash">/bin/bash</option>
-                    <option value="false">/bin/false</option>
-                </select>
-                <div ng-show="$ctrl.formularioEdicionUsuarios.$submitted || $ctrl.formularioEdicionUsuarios.loginshell.$touched">
-                    <label class="pure-u-1 jt-label-error" for="loginshell" ng-show="$ctrl.formularioEdicionUsuarios.loginshell.$error.required">
-                        <i class="fa fa-exclamation-triangle"></i>El campo Shell es obligatorio
-                    </label> 
-                </div>
-            </div>
-        </div>
-        
-        <div class="pure-u-1 pure-u-lg-1-2">
-            <div class="pure-g jt-edicion-fila">
-                <label class="pure-u-1 " for="sambaacctflags">Estado de la Cuenta</label>
-                <jt-switch class="pure-u-1" corpus="$ctrl.usuarioDetalle.sambaAcctFlags" actualiza="$ctrl.actualizaSambaFlags(estado)"></jt-switch>
-            </div>
-        </div>
-        
-        <div class="pure-u-1">
             <div class="pure-g">
-                <div class="pure-u-1 pure-u-md-1-2">
+                <div class="pure-u-1">
+                    <div class="pure-g jt-edicion-fila">
+                        <label class="pure-u-1 " for="sambaacctflags">Estado de la Cuenta</label>
+                        <jt-switch class="pure-u-1" corpus="$ctrl.usuarioDetalle.sambaAcctFlags" actualiza="$ctrl.actualizaSambaFlags(estado)"></jt-switch>
+                    </div>
+                </div>
+        
+                <div class="pure-u-1">
                     <div class="pure-g jt-edicion-fila">
                         <label class="pure-u-1 " for="grupo">Grupo Principal</label>
                         <div ng-show="$ctrl.formularioEdicionUsuarios.$submitted || $ctrl.formularioEdicionUsuarios.grupo.$touched">
@@ -185,18 +170,33 @@
                         <select class="pure-u-1 " id="grupo" name="grupo" ng-model="$ctrl.usuarioDetalle.grupo" ng-options="opcion.gidNumber as opcion.cn for opcion in $ctrl.grupos" required></select>
                     </div>
                 </div>
-                <div class="pure-u-1 pure-u-md-1-2">
+                
+                <div class="pure-u-1">
                     <div class="pure-g jt-edicion-fila">
-                        <label class="pure-u-1 " for="grupos">Grupos Adicionales</label>
-                        <div ng-show="$ctrl.formularioEdicionUsuarios.$submitted || $ctrl.formularioEdicionUsuarios.grupos.$touched">
-                            <label class="pure-u-1 jt-label-error" for="grupos" ng-show="$ctrl.formularioEdicionUsuarios.grupos.$error.required">
-                                <i class="fa fa-exclamation-triangle"></i>Es obligatorio seleccionar un Grupo Adicional
+                        <label class="pure-u-1 " for="loginshell">Shell por defecto</label>
+                        <select class="pure-u-1" id="loginshell" name="loginshell" ng-model="$ctrl.usuarioDetalle.loginShell" required>
+                            <option value="bash">/bin/bash</option>
+                            <option value="false">/bin/false</option>
+                        </select>
+                        <div ng-show="$ctrl.formularioEdicionUsuarios.$submitted || $ctrl.formularioEdicionUsuarios.loginshell.$touched">
+                            <label class="pure-u-1 jt-label-error" for="loginshell" ng-show="$ctrl.formularioEdicionUsuarios.loginshell.$error.required">
+                                <i class="fa fa-exclamation-triangle"></i>El campo Shell es obligatorio
                             </label> 
                         </div>
-                        <select multiple class="pure-u-1 " id="grupos" name="grupos" size=12 ng-model="$ctrl.usuarioDetalle.grupos" ng-options="opcion.gidNumber as opcion.cn for opcion in $ctrl.grupos" required></select>
-                        </select>
                     </div>
                 </div>
+            </div>
+        </div>
+        
+        <div class="pure-u-1 pure-u-lg-1-2">
+            <div class="pure-g jt-edicion-fila">
+                <label class="pure-u-1 " for="grupos">Grupos Adicionales</label>
+                <div ng-show="$ctrl.formularioEdicionUsuarios.$submitted || $ctrl.formularioEdicionUsuarios.grupos.$touched">
+                    <label class="pure-u-1 jt-label-error" for="grupos" ng-show="$ctrl.formularioEdicionUsuarios.grupos.$error.required">
+                        <i class="fa fa-exclamation-triangle"></i>Es obligatorio seleccionar un Grupo Adicional
+                    </label> 
+                </div>
+                <select multiple class="pure-u-1" id="grupos" name="grupos" size=12 ng-model="$ctrl.usuarioDetalle.grupos" ng-options="opcion.gidNumber as opcion.cn for opcion in $ctrl.grupos" required></select>
             </div>
         </div>
         
@@ -213,6 +213,17 @@
             <div class="pure-g jt-edicion-fila">
                 <label class="pure-u-1 " for="cuentastatus">Estado de la Cuenta</label>
                 <jt-switch class="pure-u-1" corpus="$ctrl.usuarioDetalle.cuentaStatus" actualiza="$ctrl.actualizaCuentaStatus(estado)"></jt-switch>
+            </div>
+        </div>
+
+        <div class="pure-u-1">
+            <div class="pure-g jt-edicion-fila">
+                <label class="pure-u-1 " for="volumenbuzon">Tamaño del Buzón</label>
+                <select class="pure-u-1" id="volumenbuzon" name="volumenbuzon" ng-model="$ctrl.usuarioDetalle.volumenBuzon" required>
+                    <option value="300MB" selected>300MB</option>
+                    <option value="500MB">500MB</option>
+                    <option value="750MB">750MB</option>
+                </select>
             </div>
         </div>
 

@@ -19,7 +19,7 @@ component('edicionUsuarios', {
         ctrl.$onInit = function(){
             
             /* Obtenemos los establecimiento con los que vamos a llenar las sugerencias para Establecimientos (o) */
-            $http({method: 'GET', url: '/api/establecimientos.json'}).
+            $http({method: 'GET', url: '/api/helpers_establecimientos.json'}).
                 then(function(respuesta){
                     ctrl.establecimientos = respuesta.data;
                 }, function(respuesta){
@@ -66,7 +66,7 @@ component('edicionUsuarios', {
       
         /* Usada en seleccionaEstablecimiento, entre otras cosas porque odio ver tanto identado */
         var obtenerOficinas = function(oficina){
-            $http({method: 'GET', url: '/api/oficinas/' + oficina + '.json'}).
+            $http({method: 'GET', url: '/api/helpers_oficinas/' + oficina + '.json'}).
                 then(function(respuesta){
                     /* console.log("Vamos a llenar oficinas, eso es seguro");*/
                     ctrl.oficinas = respuesta.data;

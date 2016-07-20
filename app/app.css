@@ -340,16 +340,8 @@ dd {
     box-sizing: border-box;
 }
 
-.jt-edicion-fila {
-    margin: 0.25em;
-    
-}
-
-.pure-form legend{
-    font-size: 1.2em;
-    padding-top: 1em;
-    padding-bottom: 0.5em; 
-    letter-spacing: normal;
+.jt-form-component {
+    margin: 0.25em 0.3em;
 }
 
 .jt-contenedor-boton-izquierda {
@@ -363,69 +355,55 @@ dd {
     padding-left: 0.5em;
 }
 
-/* Hay un problema cuando se está en 481 px */
+/* TODO: Hay un problema cuando se está en 481 px */
 .pure-form .jt-boton-formulario {
     width: 8.5em;
 }
 
 /* Estoy por empezar a tomar estilos de http://callmenick.com/post/various-css-input-text-styles */
 
+.pure-form select,
 .pure-form input[type="text"] {
-  display: block;
-  appearance: none;
-  box-shadow: none;
-  border-radius: none;
-}
-.pure-form input[type="text"]:focus {
-  outline: none;
-}
-
-.pure-form input[type="text"] {
-    border: none;
-    border-bottom: solid 3px #c9c9c9;
-    transition: border 0.3s;
-}
-
-.pure-form input[type="text"]:focus,
-.pure-form input[type="text"].focus {
-    border-bottom: solid 3px #969696;
+    padding-top: 0.5em;
+    padding-bottom: 0.3em;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+    outline: none;
     box-shadow: none;
-}
-
-/**/
-
-.pure-form select {
-  display: block;
-  appearance: none;
-  box-shadow: none;
-  border-radius: none;
-}
-.pure-form select:focus {
-  outline: none;
-}
-
-.pure-form select {
     border: none;
-    border-bottom: solid 3px #c9c9c9;
+    border-bottom: solid 0.13em #c9c9c9;
+    border-bottom-left-radius: 0.15em;
+    border-bottom-right-radius: 0.15em;
     transition: border 0.3s;
 }
 
 .pure-form select:focus,
-.pure-form select.focus {
-    border-bottom: solid 3px #969696;
+.pure-form select.focus, 
+.pure-form input[type="text"]:focus,
+.pure-form input[type="text"].focus {
+    outline: none;
     box-shadow: none;
+    border-bottom: solid 0.13em #969696;
+    border-bottom-left-radius: 0.15em;
+    border-bottom-right-radius: 0.15em;
 }
+
 
 /* Acá empiezo el trabajo para que Angular apoye la validación */
-input.ng-invalid.ng-touched {
-    border-bottom: solid 3px #690909;
-    box-shadow: inset 0px -10px 8px -11px #690909;
-}
-
 /* Esta sería la medida para una sombra por abajo  box-shadow: 0 8px 6px -6px #85b3d4; */
 input.ng-valid.ng-touched {
-    border-bottom: solid 3px #85b3d4;
-    box-shadow: inset 0px -10px 8px -11px #85b3d4;
+    border-bottom: solid 0.13em #85b3d4;
+    /*box-shadow: inset 0px -10px 8px -11px #85b3d4;*/
+    box-shadow: inset 0px -9px 8px -11px #85b3d4;
+}
+
+input.ng-invalid.ng-touched {
+    border-bottom: solid 0.13em #690909;
+    box-shadow: inset 0px -9px 8px -11px #690909;
+}
+
+.pure-form label{
+    margin: 0.4em 0em 0.1em;
 }
 
 .pure-form .jt-label-error {
@@ -522,14 +500,15 @@ borrado-usuarios {
     left: 0;
     right: 0;
     bottom: 0;
-    /* Este es el color que se llega por defecto */
-    background-color: #d48585;
+    /* Estamos en off: Este es el color que se llega por defecto */
+    /* background-color: #d48585; */
+    box-shadow: inset 5px -3px 3px 0px #d48585;
     -webkit-transition: .4s;
     transition: .4s;
     /* Esto permite que se vea el texto */
     z-index: -1;
     /* Le damos apariencia de botón */
-    border-radius: 2px;
+    /*border-radius: 2px;*/
 }
 
 .jt-switch .slider:before {
@@ -544,12 +523,15 @@ borrado-usuarios {
     transition: .3s;
 }
 
+/* Estamos en On */
 .jt-switch input:checked + .slider {
-  background-color: #85bad4;
+    /* background-color: #85bad4; */
+    box-shadow: inset -5px -3px 3px 0px #85bad4;
 }
 
+/* Sigo sin tener idea de en que momento ocurre este */
 .jt-switch input:focus + .slider {
-  box-shadow: 0 0 1px #85bad4;
+    box-shadow: 0 0 1px #85bad4;
 }
 
 .jt-switch input:checked + .slider:before {
@@ -573,3 +555,22 @@ borrado-usuarios {
     width: 50%;
     text-align:center;
 }
+
+/* Quiero cambiar el fieldset */
+
+.pure-form fieldset {
+    border: none;
+    border-top: 0.1em solid #c9c9c9;
+    margin: 0 2px;
+    margin-top: 0.5em;
+    letter-spacing: normal;
+}
+
+.pure-form legend {
+    font-size: 1.05em;
+    border: 0;
+    margin: 0em 1em;
+    padding: 0em 0.3em;
+    width: initial;
+}
+

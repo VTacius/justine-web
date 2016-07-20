@@ -26,7 +26,7 @@ component('jtSwitch', {
         ctrl.on = 'on' in ctrl.corpus ? ctrl.corpus.on : "Activo";
         ctrl.off = 'off' in ctrl.corpus ? ctrl.corpus.off : "Inactivo";
        
-        /* Devolvemos a cualquier que se nuestro superior, el valor que el modelo del componente 
+        /* Devolvemos a cualquier que sea nuestro superior, el valor que el modelo del componente 
          * adquiere en su evento click, 
          * Se espera que la función tenga un sólo parámetro de nombre estado*/ 
         ctrl.retornaValor = function(){

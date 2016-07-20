@@ -5,20 +5,17 @@ component('borradoUsuarios', {
     templateUrl: 'viewUsuarios/borrado/index.html',
     controller: function(){
         var ctrl = this;
-
-        ctrl.$onInit = function(){
-            console.log('Ha sucedido');
-            console.log(ctrl.corpus);
-        };
-
+        
+        /* Devolvemos al componente superior el usuario que se nos dió para mostrar el borrado
+         * Se espera que la función tenga un parámetro de nombre usuario
+         * */
         ctrl.borrar = function(){
-            console.log("Lastimosamente, tomé demasiadas vueltas sólo para que el usuario pueda confirmar que quiere borrar");
-            ctrl.borrarEntrada();
+            ctrl.borrarEntrada({usuario: ctrl.usuario});
         }
     },
     
     bindings: {
-        corpus: '<',
+        usuario: '<',
         borrarEntrada: '&'
     }
 });

@@ -58,12 +58,9 @@ component('filaPanelUsuarios', {
              * */
         };
 
-
-        /* Borro la entrada. Accedo a borrarEntrada que recibe desde nivel superior */
-        ctrl.borrarFila = function(){
-            console.log("Estoy por borrar fila desde filaPanel.borrarFila con el método borrarEntrada que recibo desde inicio");
-            console.log(ctrl.usuario);
-            ctrl.borrarEntrada(ctrl.usuario);
+        /* Función intermedia entre el componente borrar-usuarios y el controlador inicio  */
+        ctrl.borrarFila = function(usuario){
+            ctrl.borrarEntrada({'entrada': usuario});
             /* 
              *   Acá funcionalidad para precisamente borrar al usuario de la base de datos $http 
              *   Este componente podría usarse en una URL propia, así que operaciones $http de acá no pasarán 

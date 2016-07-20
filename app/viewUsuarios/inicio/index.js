@@ -36,9 +36,9 @@ config(['$routeProvider', function($routeProvider) {
         });
 
     /* Hemos subido hasta acá para asegurar que la entrada será borrada en tiempo real de la lista */
-    $scope.borrarEntradaListado = function(detalle){
-        console.log("Estamos por borrar a alguien de la lista");
-        var indice = $scope.corpus.indexOf(detalle)
+    /* El nombre dado al parámetro debe ser usado cuando se pase esta función en binding al siguiente componente */
+    $scope.borrarEntradaListado = function(entrada){
+        var indice = $scope.corpus.indexOf(entrada)
         if (indice >= 0){
             $scope.corpus.splice(indice, 1);
         };

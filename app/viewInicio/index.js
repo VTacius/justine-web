@@ -13,4 +13,5 @@ angular.module('justineApp.inicio', ['ngRoute'])
 .controller('InicioController', ['__ENV', function(__ENV){
     var ctrl = this;
     ctrl.titulo = __ENV.titulo;
-}]);
+}])
+;

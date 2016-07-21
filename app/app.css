@@ -732,3 +732,26 @@ borrado-usuarios {
     }
     
 }
+
+/*Este es el panel, */
+.jt-panel-usuario {
+    position: absolute;
+    padding-left: 0px;
+    padding-right: 0px;
+    float: right;
+    display: none;
+    width: 300px;
+    background-color: #eee;
+    transition: 0.3s;
+    list-style: none;
+}
+.jt-panel-usuario-div{
+    margin-left: 0px;
+    padding-left: 0px;
+    float: none;
+    text-align: left;
+}
+
+.jt-panel-usuario:focus + .jt-panel-usuario-div {
+    display: flex;
+}

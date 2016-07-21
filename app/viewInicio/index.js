@@ -6,9 +6,11 @@ angular.module('justineApp.inicio', ['ngRoute'])
   $routeProvider.when('/inicio', {
     templateUrl: 'viewInicio/index.html',
     controller: 'InicioController',
-    controllerAs: 'InicioCtrl'
+    controllerAs: '$ctrl'
   });
 }])
 
-.controller('InicioController', ['$scope', function($scope){
+.controller('InicioController', ['__ENV', function(__ENV){
+    var ctrl = this;
+    ctrl.titulo = __ENV.titulo;
 }]);

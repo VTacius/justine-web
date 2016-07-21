@@ -578,70 +578,157 @@ borrado-usuarios {
     Termina CSS para componente jt-switch
 */
 
-@media (min-width: 45em) {
-    /* Como en pure-g */
-    .jt-menu {
-        letter-spacing: -0.31em;
-        text-rendering: optimizespeed;
-        font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
-        display: -webkit-flex;
-        -webkit-flex-flow: row wrap;
-        display: -ms-flexbox;
-        -ms-flex-flow: row wrap;
-        -ms-align-content: flex-start;
-        -webkit-align-content: flex-start;
-        align-content: flex-start;
-        /* Este lo agrego como propio pero temo en realidad por su comportamiento */
-        width: 100%;
-        /* Color que nav va a tener */
-        background-color: #f5f5f5;
-    }
+/* ######################################################################### */
+
+
+/*
+    Comienza CSS para componente jt-menu
+    TODO: En su primer momento, todo se reducía a una fila de 34 px, aunque yo hacía la cuenta en 2em
+*/
+
+/* Los siguientes estilos con comunes a todos */
+.jt-menu {
+    letter-spacing: -0.31em;
+    text-rendering: optimizespeed;
+    display: -webkit-flex;
+    -webkit-flex-flow: row wrap;
+    display: -ms-flexbox;
+    -ms-flex-flow: row wrap;
+    -ms-align-content: flex-start;
+    -webkit-align-content: flex-start;
+    align-content: flex-start;
+    /* Este lo agrego como propio pero temo en realidad por su comportamiento */
+    width: 100%;
+    /* Color que nav va a tener */
+    background-color: #f5f5f5;
+}
+
+.jt-seccion-izquierda,
+.jt-seccion-central,
+.jt-seccion-derecha {
+    display: inline-block;
+    box-sizing: border-box;
+    zoom: 1;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;
+    font-family: sans-serif;
+    color: #333;
+    /*Este otro lo tenía el menu original*/
+    color: #565d64;
+
+    /**/
+    align-items: center;
+}
+
+.jt-seccion-central ul, 
+.jt-seccion-central li {
+    display: inline-flex;
+}
+
+.jt-seccion-central ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
     
+.jt-seccion-central li {
+    list-style: none;
+    padding: 0.4em 1em;
+    /*background-color: aliceblue;*/
+}
+
+.jt-seccion-central a{
+    text-decoration: none;
+    color: inherit;
+    display: inline-flex;
+}
+    
+/*
+ *  Acá empiezan lo propio hasta 36.24em
+ * */
+ 
     .jt-seccion-izquierda,
-    .jt-seccion-central,
     .jt-seccion-derecha {
-        display: inline-block;
-        box-sizing: border-box;
-        zoom: 1;
-        letter-spacing: normal;
-        word-spacing: normal;
-        vertical-align: top;
-        text-rendering: auto;
-        font-family: sans-serif;
+        padding: 0.1em 1em;
+        align-self: center;
     }
     
     .jt-seccion-izquierda {
-        width: 30.3333%;
+        width: 100%;
+        text-align: center;
+        font-size: 1em;
+        padding-top: 0.4em;
     }
     
     .jt-seccion-central {
-        width: 39.3333%;
+        width: 70%;
+        display: inherit;
+        align-items: strech;
     }
     
-    .jt-seccion-central ul, 
-    .jt-seccion-central li {
-        display: inline-flex;
-    }
-    
-    .jt-seccion-central ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
-    
-    .jt-seccion-central li {
-        list-style: none;
-        background-color: aliceblue;
-        padding: 0.5em 1em;
+    .jt-seccion-central .texto, 
+    .jt-seccion-derecha .texto {
+        display: none;
     }
     
     .jt-seccion-derecha {
-        width: 30.3333%;
+        width: 30%;
         text-align: right;
+        display: block;
     }
     
+@media (min-width: 36.24em) {
+    .jt-menu {
+        height: 3em;
+    };
+
     .jt-seccion-izquierda,
     .jt-seccion-derecha {
         padding: 0.5em 1em;
     }
+
+    .jt-seccion-central li {
+        padding: 0.5em 1em;
+    }
+    .jt-seccion-izquierda {
+        font-size: 1.2em;
+        width: 34%;
+        text-align: initial;
+    }
+    
+    .jt-seccion-central {
+        width: 40%;
+    }
+    
+    .jt-seccion-derecha {
+        width: 26%;
+        text-align: right;
+    }
+}
+@media (min-width: 48em) {
+    .jt-seccion-central .texto{ 
+        display: initial;
+    }
+}
+
+@media (min-width: 60em) {
+    .jt-seccion-izquierda {
+        width: 30%;
+    }
+    
+    .jt-seccion-central {
+        width: 40%;
+    }
+    
+    .jt-seccion-derecha .texto{ 
+        display: initial;
+    }
+    
+    .jt-seccion-derecha {
+        width: 30%;
+        text-align: right;
+    }
+    
 }

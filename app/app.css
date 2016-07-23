@@ -597,178 +597,176 @@ borrado-usuarios {
     -ms-align-content: flex-start;
     -webkit-align-content: flex-start;
     align-content: flex-start;
+    /* Acá empiezo el trabajo propio*/
     /* Este lo agrego como propio pero temo en realidad por su comportamiento */
     width: 100%;
     /* Color que nav va a tener */
     background-color: #f5f5f5;
+    box-sizing: border-box;
 }
 
 .jt-menu-seccion-izquierda,
 .jt-menu-seccion-central,
 .jt-menu-seccion-derecha {
+    /* Este así lo específica pure-css para los cajones a los que se le configura tamaños */
     display: inline-block;
-    box-sizing: border-box;
-    zoom: 1;
     letter-spacing: normal;
     word-spacing: normal;
-    vertical-align: top;
-    text-rendering: auto;
+    zoom: 1;
     font-family: sans-serif;
     color: #333;
-    /*Este otro lo tenía el menu original*/
+    /* Este color para el texto me parece interesante */
     color: #565d64;
-
+    /* Explorer 11, pero ni modo */
     align-items: center;
 }
 
-.jt-menu-seccion-central .jt-menu-elemento, 
-.jt-menu-seccion-central .jt-menu-elemento-enlace {
-    display: inline-flex;
+.jt-menu-elemento {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
+/* Define los li de cada enlace */
+.jt-menu-elemento-enlace {
+    list-style: none;
+    float: left;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.jt-menu-seccion-central a {
+    text-decoration: none;
+    color: inherit;
+    /* Así la selección ocurre en todo la cajita */
+    display: block;
+}
+
+/* Definimos de la forma más natural posible un poco el comportamiento a la hora de seleccionar */
+.jt-menu-seccion-central a:hover, 
+.jt-menu-seccion-central a.hover {
+    color: inherit;
+    display: block;
+    background-color: #f5f5f5;
+}
+
+
+/**
+ * Acá empiezo el tamaño por defecto 
+ * */
+.jt-menu-seccion-izquierda {
+    width: 100%;
+    text-align: center;
+    padding-top: 0.5em;
+}
+
+.jt-menu-seccion-central {
+    width: 70%;
+}
+
+.jt-menu-seccion-derecha {
+    width: 30%;
+    text-align: end;
+    padding-right: 1em;
+}
+
+.jt-menu-seccion-central,
+.jt-menu-seccion-derecha {
+    padding-bottom: 0.4em;
+    padding-top: 0.3em;
+    box-sizing: border-box;
+}
+
+.jt-menu-seccion-central .texto,
+.jt-menu-seccion-derecha .texto {
+    /* Oculto el texto y me ahorro todo ese espacio */
+    display: none;
+}
+
+
+@media (min-width: 36.24em) {
+    .jt-menu {
+        height: 3.375em;
+        padding-bottom: 1em;
+        align-items: flex-end;
+    }
+   
+    /* Es que el texto tiene aproximadamente este padding-bottom bien raro */
+    .jt-menu .fa {
+        padding-bottom: 0.25em;
+    }
+    
+    .jt-menu-seccion-izquierda,
+    .jt-menu-seccion-central,
+    .jt-menu-seccion-derecha {
+        box-sizing: border-box;
+        padding: 0;
+    }
+    .jt-menu-seccion-izquierda {
+        font-size: 1.2em;
+        padding-left: 1em;
+        width: 33%;
+        text-align: left;
+    }
+    
+    .jt-menu-seccion-central {
+        width: 49%;
+    }
+    
+    .jt-menu-seccion-derecha {
+        padding-right: 1em;
+        text-align: end;
+        width: 18%;
+    }
+    
+}
+
+@media (min-width: 48em) {
+
+    .jt-menu {
+        height: 3.375em;
+        padding-bottom: 1em;
+        align-items: flex-end;
+    }
+    
+    .jt-menu-seccion-central .texto {
+        /* Oculto el texto y me ahorro todo ese espacio */
+        display: initial;
+    }
+
+}
+
+@media (min-width: 60em) {
+    
+    .jt-menu-seccion-derecha .texto {
+        /* Oculto el texto y me ahorro todo ese espacio */
+        display: initial;
+    }
+
+}
+
+/* Empiezan estilos para subenlaces */
 .jt-menu-elemento-subenlace {
     position: absolute;
+    top: 7em;
+    margin: 0;
+    padding: 0;
     list-style-type: none;
-    margin: 0px;
-    /* El padding de ambos jt-menu-seccion-central jt-menu-elemento*/
-    margin-left: 2em;
-    padding: 0px;
-    top: 3.27em;
-    top: 6.57em;
-    background-color: #eee;
+    /* Este color para el texto me parece interesante */
+    background-color: #feefff;
 }
 
 .jt-menu-elemento-subenlace li {
     padding: 0.5em 0.7em;
 }
-.jt-menu-seccion-central .jt-menu-elemento {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-    
-.jt-menu-seccion-central .jt-menu-elemento-enlace {
-    list-style: none;
-    padding: 0.4em 1em;
-    padding-top: 0.25em;
-    /*background-color: aliceblue;*/
-}
-
-.jt-menu-seccion-central a{
-    text-decoration: none;
-    color: inherit;
-    display: inline-flex;
-}
-    
-/*
- *  Acá empiezan lo propio hasta 36.24em
- * */
- 
-    .jt-menu-seccion-izquierda,
-    .jt-menu-seccion-derecha {
-        padding: 0.5em 1em;
-        padding-top: 0.25em;
-        align-self: center;
-    }
-    
-    .jt-menu-seccion-izquierda {
-        width: 100%;
-        text-align: center;
-        font-size: 1em;
-        padding-bottom: 0em;
-    }
-    
-    .jt-menu-seccion-central {
-        width: 70%;
-        display: inherit;
-        align-items: strech;
-    }
-    
-    .jt-menu-seccion-central .texto, 
-    .jt-menu-seccion-derecha .texto {
-        display: none;
-    }
-    
-    .jt-menu-seccion-derecha {
-        width: 30%;
-        text-align: right;
-        display: block;
-    }
-    
-@media (min-width: 36.24em) {
-    .jt-menu {
-        height: 3.27em;
-    };
-
-    .jt-menu-seccion-izquierda,
-    .jt-menu-seccion-derecha {
-        padding: 0.5em 1em;
-    }
-
-    .jt-menu-seccion-central .jt-menu-elemento-enlace {
-        padding: 0.5em 1em;
-    }
-    .jt-menu-seccion-izquierda {
-        font-size: 1.2em;
-        padding: 0.5em 1em;
-        width: 34%;
-        text-align: initial;
-    }
-    
-    .jt-menu-seccion-central {
-        width: 40%;
-    }
-    
-    .jt-menu-seccion-derecha {
-        width: 26%;
-        text-align: right;
-        padding: 0.5em 1em;
-    }
-    
-}
-@media (min-width: 48em) {
-    .jt-menu-seccion-central .texto{ 
-        display: initial;
-    }
-}
-
-@media (min-width: 60em) {
-    .jt-menu-seccion-izquierda {
-        width: 30%;
-    }
-    
-    .jt-menu-seccion-central {
-        width: 40%;
-    }
-    
-    .jt-menu-seccion-derecha .texto{ 
-        display: initial;
-    }
-    
-    .jt-menu-seccion-derecha {
-        width: 30%;
-        text-align: right;
-    }
-    
-}
 
 /*Este es el panel, */
 .jt-menu-panel-usuario {
-    position: absolute;
-    right: 0;
-    padding: 0px;
-    margin: 0px;
-    top: 3.27;
-    top: 6.57em;
-    width: 300px;
-    background-color: #eee;
-    transition: 0.3s;
-    list-style: none;
+
 }
+
 .jt-menu-panel-usuario-div{
-    margin-left: 0px;
-    padding-left: 0px;
-    float: none;
-    text-align: left;
+
 }
+
 

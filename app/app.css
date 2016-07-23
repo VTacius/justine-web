@@ -631,6 +631,8 @@ borrado-usuarios {
 .jt-menu-elemento-enlace {
     list-style: none;
     float: left;
+    padding-top: 0.25em;
+    padding-bottom: 0.4em;
     padding-left: 1em;
     padding-right: 1em;
 }
@@ -643,11 +645,12 @@ borrado-usuarios {
 }
 
 /* Definimos de la forma más natural posible un poco el comportamiento a la hora de seleccionar */
-.jt-menu-seccion-central a:hover, 
-.jt-menu-seccion-central a.hover {
+.jt-menu-elemento-enlace:hover, 
+.jt-menu-elemento-enlace.hover {
     color: inherit;
     display: block;
-    background-color: #f5f5f5;
+    background-color: #565d64;
+    color: #333;
 }
 
 
@@ -672,8 +675,6 @@ borrado-usuarios {
 
 .jt-menu-seccion-central,
 .jt-menu-seccion-derecha {
-    padding-bottom: 0.4em;
-    padding-top: 0.3em;
     box-sizing: border-box;
 }
 
@@ -686,11 +687,18 @@ borrado-usuarios {
 
 @media (min-width: 36.24em) {
     .jt-menu {
-        height: 3.375em;
-        padding-bottom: 1em;
         align-items: flex-end;
     }
-   
+
+    .jt-menu-seccion-izquierda{
+        line-height: 2.8em;
+    }
+
+    .jt-menu-seccion-central,
+    .jt-menu-seccion-derecha {
+        line-height: 3.375em;
+        
+    }
     /* Es que el texto tiene aproximadamente este padding-bottom bien raro */
     .jt-menu .fa {
         padding-bottom: 0.25em;
@@ -719,16 +727,18 @@ borrado-usuarios {
         width: 18%;
     }
     
+    .jt-menu-elemento-enlace {
+        padding-top: 0em;
+        padding-bottom: 0em;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+
+    
 }
 
 @media (min-width: 48em) {
 
-    .jt-menu {
-        height: 3.375em;
-        padding-bottom: 1em;
-        align-items: flex-end;
-    }
-    
     .jt-menu-seccion-central .texto {
         /* Oculto el texto y me ahorro todo ese espacio */
         display: initial;
@@ -743,6 +753,15 @@ borrado-usuarios {
         display: initial;
     }
 
+}
+
+/* Definimos de la forma más natural posible un poco el comportamiento a la hora de seleccionar */
+.jt-menu-elemento-enlace:hover, 
+.jt-menu-elemento-enlace.hover {
+    color: inherit;
+    display: block;
+    background-color: #565d64;
+    color: #333;
 }
 
 /* Empiezan estilos para subenlaces */

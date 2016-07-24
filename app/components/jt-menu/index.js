@@ -8,5 +8,6 @@ component('jtMenu', {
         var ctrl = this;
        
         ctrl.titulo = __ENV.titulo;
+        ctrl.sesion = __ENV.sesion;
     }
 })

@@ -2,6 +2,28 @@
     <div class="jt-menu-seccion-izquierda">{{$ctrl.titulo}}</div> 
     <div class="jt-menu-seccion-central">
         <ul class="jt-menu-elemento">
+            <li class="jt-menu-elemento-enlace" ng-repeat="enlace in $ctrl.sesion.menufica">
+                <a ng-href="/#!/{{enlace.href}}"><span class="fa {{enlace.icon}}"></span><span class="texto">{{enlace.titulo}}</span></a>
+            </li>
+        </ul>
+    </div> 
+    <div class="jt-menu-seccion-derecha">
+        <span class="fa fa-edit"></span><span class="texto">Bienvenido, {{$ctrl.sesion.uid}}</span>
+        <ul class="jt-menu-panel-usuario">
+            <li>
+                    <p>{{$ctrl.sesion.gecos}}</p>
+                    <p>Editar Datos Personales </p>
+                    <p>Cerrar Sesión </p>
+            </li>
+        </ul>
+    </div> 
+</div>
+
+<!-- Estas son las posibilidades del menú
+<div class="jt-menu">
+    <div class="jt-menu-seccion-izquierda">{{$ctrl.titulo}}</div> 
+    <div class="jt-menu-seccion-central">
+        <ul class="jt-menu-elemento">
             <li class="jt-menu-elemento-enlace">
                 <a href="#"><span class="fa fa-user"></span><span class="texto">Usuarios</span></a>
             </li>
@@ -30,3 +52,4 @@
         </ul>
     </div> 
 </div>
+-->

@@ -23,7 +23,8 @@ h1,h2,h3 {
 }
 
 main {
-    margin-top: 0.3em;
+    /* 0.3 originales y 3.375 del menú  */
+    margin-top: 3.675em;
 }
 
 footer {
@@ -508,6 +509,8 @@ borrado-usuarios {
     /* Color que nav va a tener */
     background-color: #f5f5f5;
     box-sizing: border-box;
+    /* Nos ponemos serios con el diseño. El menú fijo es un éxito desde donde se le mire */
+    position: fixed;
 }
 
 .jt-menu-seccion-izquierda,
@@ -536,8 +539,10 @@ borrado-usuarios {
     float: left;
     padding-top: 0.25em;
     padding-bottom: 0.4em;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    /* Un pequeño delay en el cambio de fondo y no sé, es que se mira como más bonito  */
+    transition: 0.3s;
 }
 
 .jt-menu-seccion-central a {
@@ -547,23 +552,25 @@ borrado-usuarios {
     display: block;
 }
 
-/* Definimos de la forma más natural posible un poco el comportamiento a la hora de seleccionar */
-.jt-menu-elemento-enlace:hover, 
-.jt-menu-elemento-enlace.hover {
-    color: inherit;
-    display: block;
-    background-color: #565d64;
-    color: #333;
-}
-
 
 /**
  * Acá empiezo el tamaño por defecto 
  * */
+
 .jt-menu-seccion-izquierda {
     width: 100%;
     text-align: center;
     padding-top: 0.5em;
+}
+
+.jt-menu-seccion-izquierda a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.jt-menu-seccion-izquierda a:hover,
+.jt-menu-seccion-izquierda a.hover{
+    color: #333;
 }
 
 .jt-menu-seccion-central {
@@ -574,11 +581,20 @@ borrado-usuarios {
     width: 30%;
     text-align: end;
     padding-right: 1em;
+    /* Para que parezca el enlace que no es */
+    cursor: pointer;
+    /* Para darle un delay bien bonito, otra onda */
+    transition: 0.3s;
 }
 
-.jt-menu-seccion-central,
 .jt-menu-seccion-derecha {
     box-sizing: border-box;
+}
+
+.jt-menu-seccion-derecha:hover,
+.jt-menu-seccion-derecha.hover {
+    background-color: #cbcbcb;
+    color: #333;
 }
 
 .jt-menu-seccion-central .texto,
@@ -694,7 +710,16 @@ borrado-usuarios {
     border-bottom-right-radius: 0.2em;
 }
 
-/*Este es el panel, */
+/*
+    Termina CSS para componente jt-menu
+*/
+
+/* ######################################################################### */
+
+/*
+    Comienza CSS para jt-menu-panel
+*/
+
 .jt-menu-panel-usuario {
     position: relative;
     float: right;
@@ -739,7 +764,35 @@ borrado-usuarios {
 
 .jt-menu-panel-usuario li p {
     text-align: right;
-    padding: 0.1em 0.8em;
-    line-height: normal;
+    line-height: 2em;
+    /* Sobreescribo valores que yo mismo hago */
+    margin: 0;
 }
 
+.jt-menu-panel-usuario li p a, 
+.jt-menu-panel-usuario-titulo {
+   padding-left: 0.8em; 
+   padding-right: 0.95em; 
+}
+
+.jt-menu-panel-usuario-titulo {
+   font-weight: 700; 
+}
+
+.jt-menu-panel-usuario li p a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    font-size: 0.95em;
+}
+
+.jt-menu-panel-usuario li p a:hover {
+    background-color: #cbcbcb;
+    color: #333;
+}
+
+/*
+    Termina CSS para jt-menu-panel
+*/
+
+/* ######################################################################### */

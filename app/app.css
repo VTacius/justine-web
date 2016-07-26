@@ -58,22 +58,19 @@ footer p {
     margin: 0em 1em;
     padding: 0em 0.3em;
     width: initial;
+    letter-spacing: normal;
 }
 
 
 /* Hago los íconos de Font-Awesome un cuadrito bien bonito */
 .fa { 
-    width: 18px;
-    margin-right: 3px;
+    width: 1.25em;
+    margin-right: 0.1875em;
     text-align: center;
 }
 
 .contenido {
-    /**color: #777;*/
     color: #333;
-    /* Esta es mi primera decisión de buen gusto: Con 0.5 parezco tener más espacio, pero parece menos limpio
-    padding: 0em 0.5em;
-    */
     padding: 0em 0.6em;
 }
 
@@ -134,18 +131,6 @@ footer p {
     background: #df7514;
 }
 
-/* Esto formatea la tabla tal y como la quiero */
-
-/* El texto, que se pase, a lo largo, del tamaño especificado con Grid de pure será truncado*/
-.jt-truncado {
-    /*pre como valor causa overflow en muchas condiciones*/
-    /*nowrap no funciona porque causa overflow, mierda*/
-    white-space: normal;
-    box-sizing: border-box;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-}
-
 /* Configura un padding y mantiene el tamaño que se ha designado con la Grid de pure */
 .jt-celda {
     box-sizing: border-box;
@@ -179,6 +164,28 @@ table .pure-button {
 .pure-button .fa {
     width: initial;
 }
+
+/*
+    Comienza el CSS para componente filaPanel
+*/
+
+.jt-fila-panel .fa {
+    display: block;   
+    width: 9%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.jt-fila-panel .texto {
+    display: block;   
+    width: 89%;
+    float: left;
+    box-sizing: border-box;
+}
+
+/*
+    Termina el CSS para componente filaPanel
+*/
 
 /* 
     Termina CSS para componente usuario/
@@ -511,6 +518,8 @@ borrado-usuarios {
     box-sizing: border-box;
     /* Nos ponemos serios con el diseño. El menú fijo es un éxito desde donde se le mire */
     position: fixed;
+    /* Aseguramos que el menu este sobre todo el demás contenidos, con lo cual lo oculta */
+    z-index: 10;
 }
 
 .jt-menu-seccion-izquierda,

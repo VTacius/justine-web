@@ -1,20 +1,22 @@
-<div class="pure-g">
+<div class="pure-g jt-fila-panel">
     <div class="pure-u-1 pure-u-lg-9-24  pure-u-xl-8-24  jt-celda">
-        <i class="fa fa-user"></i>{{$ctrl.usuario.givenName}} {{$ctrl.usuario.sn}}
+        <i class="fa fa-user"></i>
+        <span class="texto">{{$ctrl.usuario.givenName}} {{$ctrl.usuario.sn}}</span>
     </div>
-    <div class="pure-u-1 pure-u-lg-15-24 pure-u-xl-13-24 jt-celda jt-truncado">
-        <span><i class="fa fa-map-marker"></i><i>{{$ctrl.usuario.ou}}</i> <span ng-if="$ctrl.usuario.ou && $ctrl.usuario.o.nombre">en</span> <strong>{{$ctrl.usuario.o.nombre}}</strong>
+    <div class="pure-u-1 pure-u-lg-15-24 pure-u-xl-13-24 jt-celda">
+        <i class="fa fa-map-marker"></i>
+        <span class="texto">{{$ctrl.usuario.ou}}</i><span ng-if="$ctrl.usuario.ou && $ctrl.usuario.o.nombre"> en </span> <strong>{{$ctrl.usuario.o.nombre}}</strong></span>
     </div>
     <div class="pure-u-1 pure-u-lg-24-24 pure-u-xl-3-24  jt-celda">
         <div class="pure-g">
             <div class="pure-u-1-3 pure-u-md-1-3">
-                <button class="button-success pure-button" ng-click="$ctrl.mostrarPanel(1)"><i class="fa fa-info-circle"></i></button>
+                <button class="button-success pure-button izquierda" ng-click="$ctrl.mostrarPanel(1)"><i class="fa fa-info-circle"></i></button>
             </div>
             <div class="pure-u-1-3 pure-u-md-1-3">
-                <button class="button-success pure-button" ng-click="$ctrl.mostrarPanel(2)"><i class="fa fa-edit"></i></button>
+                <button class="button-success pure-button centro" ng-click="$ctrl.mostrarPanel(2)"><i class="fa fa-edit"></i></button>
             </div>
             <div class="pure-u-1-3 pure-u-md-1-3">
-                <button class="button-error pure-button" ng-click="$ctrl.mostrarPanel(3)"><i class="fa fa-trash"></i></button>
+                <button class="button-error pure-button derecha" ng-click="$ctrl.mostrarPanel(3)"><i class="fa fa-trash"></i></button>
             </div>
         </div>
     </div>

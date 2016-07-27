@@ -55,8 +55,8 @@ footer p {
 .pure-form legend {
     font-size: 1.05em;
     border: 0;
-    margin: 0em 1em;
     padding: 0em 0.3em;
+    padding-left: 0em;
     width: initial;
     letter-spacing: normal;
 }
@@ -157,7 +157,8 @@ table .pure-button {
     Comienza el CSS para componente filaPanel
 */
 
-.jt-fila-panel .fa {
+.jt-fila-panel .fa-user ,
+.jt-fila-panel .fa-map-marker {
     display: block;   
     width: 1.3125em;
     float: left;
@@ -168,10 +169,7 @@ table .pure-button {
     display: -webkit-box;   
     display: table;
     box-sizing: border-box;
-}
-
-.jt-fila-panel-botonera {
-    margin-top: 0em;
+    line-height: 1.4em;
 }
 
 .pure-button.izquierda {
@@ -188,10 +186,19 @@ table .pure-button {
     border-bottom-left-radius: 0;
 }
 
-@media (max-width: 64em) {
+.jt-fila-panel-botonera {
+    margin-top: 0.4em;
+}
+
+@media (min-width: 80em) {
     .jt-fila-panel-botonera {
-        margin-top: 0.4em;
+        margin-top: 0em;
     }
+    
+    .jt-fila-panel {
+        height: 2.75em;
+    }
+
 }
 
 /*
@@ -278,9 +285,11 @@ dd {
 */
 
 .jt-form {
-    width: 96%;
-    padding-left: 2%;
+    width: 98%;
+    margin-left: 2%;
     box-sizing: border-box;
+    margin-top: 0.5em;
+    margin-bottom: 0.6em;
 }
 
 .jt-form-component {
@@ -406,6 +415,10 @@ borrado-usuarios {
 */
 
 /* TODO: Hay un pequeño problema cuando se esta en mínimos, aunque no parece referirse al tamaño habrá que tomarlo en cuenta */
+.jt-form-borrado legend {
+    margin-bottom: 0.5em;
+}
+
 .pure-form .jt-boton-formulario-borrado {
     width: 8.5em;
 

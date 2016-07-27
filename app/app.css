@@ -153,6 +153,22 @@ table .pure-button {
     color: #333;
 }
 
+.jt-busqueda {
+    position: fixed;
+    width: 100%;
+    top: 3.38em;
+}
+
+.jt-tabla-contenido {
+    margin-top: 4.5em;
+}
+
+/* 
+    Termina css para componente usuario/
+*/
+
+/* ######################################################################### */
+
 /*
     Comienza el CSS para componente filaPanel
 */
@@ -285,11 +301,11 @@ dd {
 */
 
 .jt-form {
-    width: 98%;
+    width: 96%;
     margin-left: 2%;
     box-sizing: border-box;
     margin-top: 0.5em;
-    margin-bottom: 0.6em;
+    margin-bottom: 0.9em;
 }
 
 .jt-form-component {
@@ -340,6 +356,31 @@ dd {
     border-bottom-right-radius: 0.15em;
 }
 
+/* Hablando de componentes bonitos, estoy haciendo un input con icono de la siguiente forma */
+.jt-input-iconico {
+    display: block;
+    position: relative;
+}
+
+.jt-input-iconico-ico {
+    position: absolute;
+    top: 0.7em;
+    left: 0.3em;    
+}
+
+input[type="text"].jt-input-iconico-in {
+    padding-left: 1.8em;   
+    width: 99%;
+    font-size: 1.25em;
+}
+
+.jt-formulario-busqueda {
+    margin-left: 0;
+    margin-bottom: 1.7em;
+     margin-top: 0; 
+    padding-top: 0.5em;
+    background-color: #fff;
+}
 
 /* Acá empiezo el trabajo para que Angular apoye la validación */
 /* Esta sería la medida para una sombra por abajo  box-shadow: 0 8px 6px -6px #85b3d4; */

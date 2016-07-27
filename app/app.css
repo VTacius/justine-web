@@ -153,34 +153,45 @@ table .pure-button {
     color: #333;
 }
 
-.botonera {
-    font-size: 0.9em;
-    padding: 0.3em 0.8em;
-    color: #333;
-    width: 7.1em;
-    padding-right: 1em;
-}
-
-.pure-button .fa {
-    width: initial;
-}
-
 /*
     Comienza el CSS para componente filaPanel
 */
 
 .jt-fila-panel .fa {
     display: block;   
-    width: 9%;
+    width: 1.3125em;
     float: left;
     box-sizing: border-box;
 }
 
 .jt-fila-panel .texto {
-    display: block;   
-    width: 89%;
-    float: left;
+    display: -webkit-box;   
+    display: table;
     box-sizing: border-box;
+}
+
+.jt-fila-panel-botonera {
+    margin-top: 0em;
+}
+
+.pure-button.izquierda {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.pure-button.centro {
+    border-radius: 0px;
+}
+
+.pure-button.derecha {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+@media (max-width: 64em) {
+    .jt-fila-panel-botonera {
+        margin-top: 0.4em;
+    }
 }
 
 /*

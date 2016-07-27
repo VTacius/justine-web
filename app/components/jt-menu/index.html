@@ -4,8 +4,11 @@
     </div> 
     <div class="jt-menu-seccion-central">
         <ul class="jt-menu-elemento">
-            <li class="jt-menu-elemento-enlace" ng-repeat="enlace in $ctrl.sesion.menufica">
-                <a ng-href="/#!/{{enlace.href}}"><span class="fa {{enlace.icon}}"></span><span class="texto">{{enlace.titulo}}</span></a>
+            <li class="jt-menu-elemento-enlace" ng-repeat="enlace in $ctrl.sesion.menufica" ng-click="$ctrl.mostrarSubMenu($index)">
+                <span class="fa {{enlace.icon}}"></span><span class="texto">{{enlace.titulo}}</span>
+                <ul class="jt-menu-elemento-subenlace" ng-show="$ctrl.muestraSubMenu($index)" id="{{$index}}">
+                    <li ng-repeat="subenlace in enlace.subenlaces"><a ng-href="/#!/{{enlace.href}}/{{subenlace.href}}"><span class="fa {{subenlace.icon}}"></span><span class="texto">{{subenlace.titulo}}</span></a></li>
+                </ul>
             </li>
         </ul>
     </div> 
@@ -32,7 +35,6 @@
             <li class="jt-menu-elemento-enlace">
                 <a href="#"><span class="fa fa-users"></span><span class="texto">Grupos</span></a>
                 <ul class="jt-menu-elemento-subenlace">
-                    <li>Elemento</li>
                     <li>Elemento extenso</li>
                     <li>Elemento 3</li>
                     <li>Elemento 4</li>

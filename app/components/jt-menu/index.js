@@ -14,8 +14,21 @@ component('jtMenu', {
         /* Empezamos los comportamientos */
         ctrl.mostrarPanel = false;
 
+        ctrl.indiceActivo = 100;
+
+        ctrl.muestraSubMenu = function(indice){
+            return indice === ctrl.indiceActivo;
+        }
+
+        ctrl.mostrarSubMenu = function(indice){
+            ctrl.indiceActivo = indice;
+        }
+
         ctrl.muestraPanel = function(estado){
             ctrl.mostrarPanel = estado;
+            
+            /* Tambień ocultamos el submenú en este momento */
+            ctrl.indiceActivo = 100;
         }
     }
 })

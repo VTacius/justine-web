@@ -2,7 +2,7 @@
 
 angular.module('justineApp.usuarios.inicio', ['ngRoute']).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/usuarios/', {
+  $routeProvider.when('/usuarios/panel', {
     templateUrl: 'viewUsuarios/inicio/index.html',
     controller: 'UsuariosInicioController',
     controllerAs: '$ctrl'

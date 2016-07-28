@@ -173,6 +173,8 @@ table .pure-button {
     Comienza el CSS para componente filaPanel
 */
 
+/* Para agregar un ícono a filaPanel, hay que declararlo acá */
+.jt-fila-panel .fa-at,
 .jt-fila-panel .fa-user ,
 .jt-fila-panel .fa-map-marker {
     display: block;   

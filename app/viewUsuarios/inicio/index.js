@@ -12,10 +12,6 @@ config(['$routeProvider', function($routeProvider) {
     var ctrl = this;
     ctrl.corpus = {};
     ctrl.listadogrupos = {};
-    ctrl.buzon = {estado: true, mensaje: "Activo"};
-    ctrl.actualizaBuzon = function(estado){
-        ctrl.buzon.estado = estado;
-    };
     
     /* Obtener el listado de grupos en este punto debería evitar hacerlo muchas veces, provee por otro lado una forma lógica de refresco  */
     $http({method: 'GET', url: '/api/helpers_grupos.json'}).

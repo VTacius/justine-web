@@ -1,0 +1,272 @@
+<form class="pure-form jt-form" name="$ctrl.formularioUsuarios" ng-submit="$ctrl.enviar($ctrl.usuario)" novalidate>
+    
+    <fieldset>
+        <legend>Datos Generales</legend>
+        <div class="pure-g">
+
+            <div class="pure-u-1 pure-u-xl-1-2">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1" for="givenname">Nombres</label>
+                    <input class="pure-u-1" id="givenname" name="givenname" type="text" placeholder="Nombre" ng-model="$ctrl.usuario.givenName" required sustantivos></input>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.givenname.$touched">
+                        <label class="pure-u-1 jt-label-error" for="givenname" ng-show="$ctrl.formularioUsuarios.givenname.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>El campo Nombres es obligatorio
+                        </label> 
+                        <label class="pure-u-1 jt-label-error" for="givenname" ng-show="$ctrl.formularioUsuarios.givenname.$error.sustantivos">
+                            <i class="fa fa-exclamation-triangle"></i>Revise el nombre ingresado
+                        </label> 
+                    </div>
+                </div>
+            </div>
+                
+            <div class="pure-u-1 pure-u-xl-1-2"> 
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1" for="sn">Apellidos</label>
+                    <input class="pure-u-1" id="sn" name="sn" type="text" placeholder="Apellidos" ng-model="$ctrl.usuario.sn" sustantivos></input>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.sn.$touched">
+                        <label class="pure-u-1 jt-label-error" for="sn" ng-show="$ctrl.formularioUsuarios.sn.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>El campo Apellidos es obligatorio
+                        </label> 
+                        <label class="pure-u-1 jt-label-error" for="sn" ng-show="formularioUsuarios.sn.$error.sustantivos">
+                            <i class="fa fa-exclamation-triangle"></i>Revise los apellidos ingresados
+                        </label> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pure-u-1 pure-u-xl-1-2">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1" for="dui">DUI</label>
+                    <input class="pure-u-1" id="dui" name="dui" type="text" placeholder="DUI" ng-model="$ctrl.usuario.dui" dui></input>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.dui.$touched">
+                        <label class="pure-u-1 jt-label-error" for="dui" ng-show="$ctrl.formularioUsuarios.dui.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>El campo DUI es obligatorio
+                        </label> 
+                        <label class="pure-u-1 jt-label-error" for="dui" ng-show="$ctrl.formularioUsuarios.dui.$error.dui">
+                            <i class="fa fa-exclamation-triangle"></i>Revise el número de DUI ingresado
+                        </label> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pure-u-1 pure-u-xl-1-2">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1" for="nit">NIT</label>
+                    <input class="pure-u-1" id="nit" name="nit" type="text" placeholder="NIT" ng-model="$ctrl.usuario.nit" nit></input>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.nit.$touched">
+                        <label class="pure-u-1 jt-label-error" for="nit" ng-show="$ctrl.formularioUsuarios.nit.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>El campo DUI es obligatorio
+                        </label> 
+                        <label class="pure-u-1 jt-label-error" for="nit" ng-show="$ctrl.formularioUsuarios.nit.$error.nit">
+                            <i class="fa fa-exclamation-triangle"></i>Revise el número de DUI ingresado
+                        </label> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pure-u-1">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1" for="jvs">JVS</label>
+                    <jt-switch class="pure-u-1 pure-u-md-1-4" corpus="$ctrl.usuario.jvs" actualiza="$ctrl.actualizaJtSwitch('jvs', estado)"></jt-switch>
+                    <input class="pure-u-1 pure-u-md-3-4" id="jvs" name="jvs" type="text" placeholder="NIT" ng-model="$ctrl.usuario.jvs.valor" ng-disabled="!$ctrl.usuario.jvs.estado"></input>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.jvs.$touched">
+                        <label class="pure-u-1 jt-label-error" for="jvs" ng-show="$ctrl.formularioUsuarios.jvs.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>El campo DUI es obligatorio
+                        </label> 
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Atributos administrativos</legend>
+        <div class="pure-g">
+
+            <div class="pure-u-1 pure-u-xl-1-2">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1 " for="o">Establecimiento</label>
+                    <div class="pure-u-1" angucomplete-alt id="establecimiento"
+                        placeholder="Establecimiento"
+                        maxlength="50"
+                        pause="100"
+                        selected-object="$ctrl.seleccionaEstablecimiento"
+                        local-data="$ctrl.establecimientos"
+                        search-fields="nombre"
+                        title-field="nombre"
+                        minlength="2"
+                        input-class="pure-u-1"
+                        match-class="jt-resaltado"
+                        auto-match="true"
+                        field-required="true"
+                        input-name="o"
+                        initial-value="$ctrl.usuario.o"></div>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.o.$touched">
+                        <label class="pure-u-1 jt-label-error" for="o" ng-show="$ctrl.formularioUsuarios.o.$invalid">
+                            <i class="fa fa-exclamation-triangle"></i>El campo Establecimiento es obligatorio
+                        </label> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pure-u-1 pure-u-xl-1-2">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1 " for="ou">Oficina</label>
+                    <div class="pure-u-1" angucomplete-alt id="oficina"
+                        placeholder="Oficina"
+                        maxlength="50"
+                        pause="100"
+                        selected-object="$ctrl.seleccionaOficina"
+                        local-data="$ctrl.oficinas"
+                        search-fields="nombre"
+                        title-field="nombre"
+                        minlength="2"
+                        input-class="pure-u-1"
+                        match-class="jt-resaltado"
+                        auto-match="true"
+                        field-required="$ctrl.requerirOficina"
+                        input-name="ou"
+                        initial-value="$ctrl.usuario.ou"></div>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.ou.$touched">
+                        <label class="pure-u-1 jt-label-error" for="ou" ng-show="$ctrl.formularioUsuarios.ou.$invalid">
+                            <i class="fa fa-exclamation-triangle"></i>El campo Oficina es obligatorio
+                        </label> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pure-u-1 pure-u-xl-1-2">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1 " for="title">Cargo</label>
+                    <input class="pure-u-1 " id="title" name="title" type="text" placeholder="Cargo" ng-model="$ctrl.usuario.title" sustantivos ></input>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.title.$touched">
+                        <label class="pure-u-1 jt-label-error" for="title" ng-show="$ctrl.formularioUsuarios.title.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>El campo Cargo es obligatorio
+                        </label> 
+                        <label class="pure-u-1 jt-label-error" for="title" ng-show="$ctrl.formularioUsuarios.title.$error.sustantivos">
+                            <i class="fa fa-exclamation-triangle"></i>Revise el cargo ingresado
+                        </label> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pure-u-1 pure-u-xl-1-2">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1 " for="telephonenumber">Teléfono</label>
+                    <input class="pure-u-1 " id="telephonenumber" name="telephonenumber" type="text" placeholder="Teléfono" ng-model="$ctrl.usuario.telephoneNumber" telefono></input>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.telephonenumber.$touched">
+                        <label class="pure-u-1 jt-label-error" for="telephonenumber" ng-show="$ctrl.formularioUsuarios.telephonenumber.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>El campo Teléfono es obligatorio
+                        </label> 
+                        <label class="pure-u-1 jt-label-error" for="telephonenumber" ng-show="$ctrl.formularioUsuarios.telephonenumber.$error.telefono">
+                            <i class="fa fa-exclamation-triangle"></i>Revise el teléfono ingresado
+                        </label> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    
+    <fieldset ng-if="$ctrl.mostrarCampos()">    
+        <legend>Atributos Posix y Samba</legend>
+        
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-xl-1-2">
+                <div class="pure-g">
+                    <div class="pure-u-1">
+                        <div class="pure-g jt-form-component">
+                            <label class="pure-u-1 " for="sambaacctflags">Estado de la Cuenta</label>
+                            <jt-switch class="pure-u-1" corpus="$ctrl.usuario.sambaAcctFlags" actualiza="$ctrl.actualizaJtSwitch('sambaAcctFlags', estado)"></jt-switch>
+                        </div>
+                    </div>
+            
+                    <div class="pure-u-1">
+                        <div class="pure-g jt-form-component">
+                            <label class="pure-u-1 " for="grupo">Grupo Principal</label>
+                            <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.grupo.$touched">
+                                <label class="pure-u-1 jt-label-error" for="grupo" ng-show="$ctrl.formularioUsuarios.grupo.$error.required">
+                                    <i class="fa fa-exclamation-triangle"></i>Es obligatorio selecionar un Grupo principal
+                                </label> 
+                            </div>
+                            <select class="pure-u-1 " id="grupo" name="grupo" ng-model="$ctrl.usuario.grupo" ng-options="opcion.gidNumber as opcion.cn for opcion in $ctrl.grupos"></select>
+                        </div>
+                    </div>
+                    
+                    <div class="pure-u-1">
+                        <div class="pure-g jt-form-component">
+                            <label class="pure-u-1 " for="loginshell">Shell por defecto</label>
+                            <select class="pure-u-1" id="loginshell" name="loginshell" ng-model="$ctrl.usuario.loginShell">
+                                <option value="bash">/bin/bash</option>
+                                <option value="false">/bin/false</option>
+                            </select>
+                            <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.loginshell.$touched">
+                                <label class="pure-u-1 jt-label-error" for="loginshell" ng-show="$ctrl.formularioUsuarios.loginshell.$error.required">
+                                    <i class="fa fa-exclamation-triangle"></i>El campo Shell es obligatorio
+                                </label> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pure-u-1 pure-u-xl-1-2">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1 " for="grupos">Grupos Adicionales</label>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.grupos.$touched">
+                        <label class="pure-u-1 jt-label-error" for="grupos" ng-show="$ctrl.formularioUsuarios.grupos.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>Es obligatorio seleccionar un Grupo Adicional
+                        </label> 
+                    </div>
+                    <select multiple class="pure-u-1" id="grupos" name="grupos" size=10 ng-model="$ctrl.usuario.grupos" ng-options="opcion.gidNumber as opcion.cn for opcion in $ctrl.grupos"></select>
+                </div>
+            </div>
+        
+        </div>
+    </fieldset>
+    
+    <fieldset ng-if="$ctrl.mostrarCampos()">
+        <legend>Atributos Zimbra</legend>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-xl-1-2">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1 " for="buzonstatus">Estado del Buzón</label>
+                    <jt-switch class="pure-u-1" corpus="$ctrl.usuario.buzonStatus" actualiza="$ctrl.actualizaJtSwitch('buzonStatus', estado)"></jt-switch>
+                </div>
+            </div>
+            
+            <div class="pure-u-1 pure-u-xl-1-2">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1 " for="cuentastatus">Estado de la Cuenta</label>
+                    <jt-switch class="pure-u-1" corpus="$ctrl.usuario.cuentaStatus" actualiza="$ctrl.actualizaJtSwitch('cuentaStatus', estado)"></jt-switch>
+                </div>
+            </div>
+
+            <div class="pure-u-1">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1 " for="volumenbuzon">Tamaño del Buzón</label>
+                    <select class="pure-u-1" id="volumenbuzon" name="volumenbuzon" ng-model="$ctrl.usuario.volumenBuzon">
+                        <option value="300MB" selected>300MB</option>
+                        <option value="500MB">500MB</option>
+                        <option value="750MB">750MB</option>
+                    </select>
+                </div>
+            </div>
+
+            
+        </div>
+    </fieldset>
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <div class="pure-g jt-form-component">
+                <div class="pure-u-1-2 jt-contenedor-boton-izquierda">
+                    <button type="submit" class="button-success jt-boton-formulario pure-button" >Modificar!</button>
+                </div>
+                <div class="pure-u-1-2 jt-contenedor-boton-derecha">
+                    <button type="button" class="button-warning jt-boton-formulario pure-button" ng-click="$ctrl.reiniciar()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

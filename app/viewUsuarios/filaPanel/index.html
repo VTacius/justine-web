@@ -1,9 +1,13 @@
 <div class="pure-g jt-fila-panel">
-    <div class="pure-u-1 pure-u-lg-9-24  pure-u-xl-8-24  jt-celda">
+    <div class="pure-u-1 pure-u-lg-8-24  pure-u-xl-6-24  jt-celda">
         <i class="fa fa-user"></i>
         <span class="texto">{{$ctrl.usuario.givenName}} {{$ctrl.usuario.sn}}</span>
     </div>
-    <div class="pure-u-1 pure-u-lg-15-24 pure-u-xl-13-24 jt-celda">
+    <div class="pure-u-1 pure-u-lg-5-24  pure-u-xl-3-24  jt-celda">
+        <i class="fa fa-at"></i>
+        <span class="texto">{{$ctrl.usuario.uid}}</span>
+    </div>
+    <div class="pure-u-1 pure-u-lg-11-24 pure-u-xl-12-24 jt-celda">
         <i class="fa fa-map-marker"></i>
         <span class="texto">
             <i>{{$ctrl.usuario.ou}}</i><span ng-if="$ctrl.usuario.ou && $ctrl.usuario.o.nombre"> en </span> <strong>{{$ctrl.usuario.o.nombre}}</strong></span>

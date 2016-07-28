@@ -7,7 +7,7 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1" for="givenname">Nombres</label>
-                    <input class="pure-u-1" id="givenname" name="givenname" type="text" placeholder="Nombre" ng-model="$ctrl.usuario.givenName" required sustantivos></input>
+                    <input class="pure-u-1" id="givenname" name="givenname" type="text" placeholder="Nombre" ng-model="$ctrl.usuario.givenName" sustantivos></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.givenname.$touched">
                         <label class="pure-u-1 jt-label-error" for="givenname" ng-show="$ctrl.formularioUsuarios.givenname.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo Nombres es obligatorio
@@ -48,30 +48,43 @@
                     </div>
                 </div>
             </div>
-            
+           
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1" for="nit">NIT</label>
-                    <input class="pure-u-1" id="nit" name="nit" type="text" placeholder="NIT" ng-model="$ctrl.usuario.nit" nit></input>
-                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.nit.$touched">
-                        <label class="pure-u-1 jt-label-error" for="nit" ng-show="$ctrl.formularioUsuarios.nit.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>El campo DUI es obligatorio
-                        </label> 
-                        <label class="pure-u-1 jt-label-error" for="nit" ng-show="$ctrl.formularioUsuarios.nit.$error.nit">
-                            <i class="fa fa-exclamation-triangle"></i>Revise el número de DUI ingresado
+                    <input class="pure-u-1" id="nit" name="nit" type="text" placeholder="NIT" ng-model="$ctrl.usuarioDetalle.nit" nit></input>
+                    <div ng-show="$ctrl.formularioEdicionUsuarios.$submitted || $ctrl.formularioEdicionUsuarios.nit.$touched">
+                        <label class="pure-u-1 jt-label-error" for="nit" ng-show="$ctrl.formularioEdicionUsuarios.nit.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>El campo NIT es obligatorio
+                        </label>
+                        <label class="pure-u-1 jt-label-error" for="nit" ng-show="$ctrl.formularioEdicionUsuarios.nit.$error.nit">
+                            <i class="fa fa-exclamation-triangle"></i>Revise el número de NIT ingresado
+                        </label>
+                    </div>
+                </div>
+            </div>
+ 
+            
+            <div class="pure-u-1 pure-u-xl-1-2">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1" for="jvs">JVS</label>
+                    <jt-switch class="pure-u-1 pure-u-lg-6-24" corpus="$ctrl.usuario.jvs" actualiza="$ctrl.actualizaJtSwitch('jvs', estado)"></jt-switch>
+                    <input class="pure-u-1 pure-u-lg-18-24" id="jvs" name="jvs" type="text" placeholder="JVS" ng-model="$ctrl.usuario.jvs.valor" ng-disabled="!$ctrl.usuario.jvs.estado"></input>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.jvs.$touched">
+                        <label class="pure-u-1 jt-label-error" for="jvs" ng-show="$ctrl.formularioUsuarios.jvs.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>El campo JVS es obligatorio
                         </label> 
                     </div>
                 </div>
             </div>
-            
-            <div class="pure-u-1">
+         
+            <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
-                    <label class="pure-u-1" for="jvs">JVS</label>
-                    <jt-switch class="pure-u-1 pure-u-md-1-4" corpus="$ctrl.usuario.jvs" actualiza="$ctrl.actualizaJtSwitch('jvs', estado)"></jt-switch>
-                    <input class="pure-u-1 pure-u-md-3-4" id="jvs" name="jvs" type="text" placeholder="NIT" ng-model="$ctrl.usuario.jvs.valor" ng-disabled="!$ctrl.usuario.jvs.estado"></input>
+                    <label class="pure-u-1" for="fecha">Fecha de Nacimiento</label>
+                    <input class="pure-u-1" id="fecha" name="fecha" type="text" placeholder="Fecha de Nacimiento" ng-model="$ctrl.usuario.fecha"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.jvs.$touched">
-                        <label class="pure-u-1 jt-label-error" for="jvs" ng-show="$ctrl.formularioUsuarios.jvs.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>El campo DUI es obligatorio
+                        <label class="pure-u-1 jt-label-error" for="fecha" ng-show="$ctrl.formularioUsuarios.fecha.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>El campo Fecha es obligatorio
                         </label> 
                     </div>
                 </div>
@@ -168,7 +181,38 @@
         </div>
     </fieldset>
     
-    <fieldset ng-if="$ctrl.mostrarCampos()">    
+    <fieldset ng-if="$ctrl.mostrarCampos('recuperacion')">
+        <legend>Recuperación de Contraseña</legend>
+    
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-xl-1-2">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1" for="pregunta">Pregunta Secreta</label>
+                    <input class="pure-u-1" id="pregunta" name="pregunta" type="text" placeholder="Nombre" ng-model="$ctrl.usuario.pregunta"></input>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.pregunta.$touched">
+                        <label class="pure-u-1 jt-label-error" for="pregunta" ng-show="$ctrl.formularioUsuarios.pregunta.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>El campo Nombres es obligatorio
+                        </label> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pure-u-1 pure-u-xl-1-2">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1" for="respuesta">Respuesta</label>
+                    <input class="pure-u-1" id="respuesta" name="respuesta" type="text" placeholder="Nombre" ng-model="$ctrl.usuario.respuesta"></input>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.respuesta.$touched">
+                        <label class="pure-u-1 jt-label-error" for="respuesta" ng-show="$ctrl.formularioUsuarios.respuesta.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>El campo Nombres es obligatorio
+                        </label> 
+                    </div>
+                </div>
+            </div>
+        </div>
+                
+    </fieldset>
+    
+    <fieldset ng-if="$ctrl.mostrarCampos('samba')">    
         <legend>Atributos Posix y Samba</legend>
         
         <div class="pure-g">
@@ -225,7 +269,7 @@
         </div>
     </fieldset>
     
-    <fieldset ng-if="$ctrl.mostrarCampos()">
+    <fieldset ng-if="$ctrl.mostrarCampos('zimbra')">
         <legend>Atributos Zimbra</legend>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-xl-1-2">

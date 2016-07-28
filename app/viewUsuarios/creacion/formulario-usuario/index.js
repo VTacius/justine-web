@@ -47,8 +47,14 @@ component('formularioUsuario', {
         /* Esto se corresponde con la funcionalidad de los componentes */
 
         /* Hay controles que se muestran según {{Sigo sin ponerne de acuerdo sobre que lo controlará}} */
-        ctrl.mostrarCampos = function(){
-            return false;
+        ctrl.mostrarCampos = function(clave){
+            if (ctrl.accion === "creacion" && (clave ==="zimbra" || clave ==="samba" )){
+                return true;
+            } else if (ctrl.accion === "actualizacion" && (clave === "recuperacion")){
+                return true;
+            } else {
+                return false;
+            }
         }
 
         /* Funcionalidad para cambiar el estado de jt-switch */
@@ -82,13 +88,15 @@ component('formularioUsuario', {
         ctrl.enviar = function(usuario){
             console.log('Envío desde el componente que especifica al formulario');
             console.log(usuario);
-            ctrl.accion({'corpus': usuario});
+            ctrl.ejecucion({'corpus': usuario});
         }
         
     },
 
     bindings: {
         corpus: '<',
-        accion: '&'
+        accion: '<',
+        grupos: '<',
+        ejecucion: '&'
     }
 })

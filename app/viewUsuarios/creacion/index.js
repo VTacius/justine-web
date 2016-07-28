@@ -40,9 +40,8 @@ angular.module('justineApp.usuarios.creacion', ['ngRoute'])
         },
         "jvs":{
             "estado": true,
-            "on": "No Aplica",
-            "off": "Aplica",
-            "valor": "123465789"
+            "off": "No Aplica",
+            "on": "Aplica",
         },
     }
     

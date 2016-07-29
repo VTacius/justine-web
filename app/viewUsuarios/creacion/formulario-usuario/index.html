@@ -10,10 +10,10 @@
                     <input class="pure-u-1" id="givenname" name="givenname" type="text" placeholder="Nombre" ng-model="$ctrl.usuario.givenName" sustantivos></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.givenname.$touched">
                         <label class="pure-u-1 jt-label-error" for="givenname" ng-show="$ctrl.formularioUsuarios.givenname.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>El campo Nombres es obligatorio
+                            <i class="fa fa-exclamation-triangle"></i>El campo Apellidos es obligatorio
                         </label> 
-                        <label class="pure-u-1 jt-label-error" for="givenname" ng-show="$ctrl.formularioUsuarios.givenname.$error.sustantivos">
-                            <i class="fa fa-exclamation-triangle"></i>Revise el nombre ingresado
+                        <label class="pure-u-1 jt-label-error" for="givenname" ng-show="formularioUsuarios.givenname.$error.sustantivos">
+                            <i class="fa fa-exclamation-triangle"></i>Revise los apellidos ingresados
                         </label> 
                     </div>
                 </div>
@@ -81,10 +81,13 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1" for="fecha">Fecha de Nacimiento</label>
-                    <input class="pure-u-1" id="fecha" name="fecha" type="text" placeholder="Fecha de Nacimiento" ng-model="$ctrl.usuario.fecha"></input>
-                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.jvs.$touched">
+                    <input class="pure-u-1" id="fecha" name="fecha" type="date" placeholder="Fecha de Nacimiento" ng-model="$ctrl.usuario.fecha"></input>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.fecha.$touched">
                         <label class="pure-u-1 jt-label-error" for="fecha" ng-show="$ctrl.formularioUsuarios.fecha.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo Fecha es obligatorio
+                        </label> 
+                        <label class="pure-u-1 jt-label-error" for="fecha" ng-show="$ctrl.formularioUsuarios.fecha.$error.date">
+                            <i class="fa fa-exclamation-triangle"></i>Revise su campo fecha
                         </label> 
                     </div>
                 </div>
@@ -200,10 +203,10 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1" for="respuesta">Respuesta</label>
-                    <input class="pure-u-1" id="respuesta" name="respuesta" type="text" placeholder="Nombre" ng-model="$ctrl.usuario.respuesta"></input>
+                    <input class="pure-u-1" id="respuesta" name="respuesta" type="text" placeholder="Respuesta" ng-model="$ctrl.usuario.respuesta"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.respuesta.$touched">
                         <label class="pure-u-1 jt-label-error" for="respuesta" ng-show="$ctrl.formularioUsuarios.respuesta.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>El campo Nombres es obligatorio
+                            <i class="fa fa-exclamation-triangle"></i>Necesita configurar una respuesta
                         </label> 
                     </div>
                 </div>
@@ -216,6 +219,22 @@
         <legend>Atributos Posix y Samba</legend>
         
         <div class="pure-g">
+    
+            <div class="pure-u-1" ng-if="$ctrl.mostrarCampos('username')">
+                <div class="pure-g jt-form-component">
+                    <label class="pure-u-1 " for="uid">Username</label>
+                    <input class="pure-u-1" id="uid" name="uid" type="text" placeholder="Username" ng-model="$ctrl.usuario.uid"></input>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.uid.$touched">
+                        <label class="pure-u-1 jt-label-error" for="uid" ng-show="$ctrl.formularioUsuarios.uid.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>Necesita configurar el nombre de usuario
+                        </label> 
+                        <label class="pure-u-1 jt-label-error" for="uid" ng-show="$ctrl.formularioUsuarios.uid.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>El nombre de usuario necesita ser único
+                        </label> 
+                    </div>
+                </div>
+            </div>
+
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g">
                     <div class="pure-u-1">

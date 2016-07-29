@@ -48,7 +48,9 @@ component('formularioUsuario', {
 
         /* Hay controles que se muestran según {{Sigo sin ponerne de acuerdo sobre que lo controlará}} */
         ctrl.mostrarCampos = function(clave){
-            if (ctrl.accion === "creacion" && (clave ==="zimbra" || clave ==="samba" )){
+            if (ctrl.accion === "creacion" && (clave ==="zimbra" || clave ==="samba" || clave ==="username" )){
+                return true;
+            } else if (ctrl.accion === "edicion" && (clave ==="zimbra" || clave ==="samba" )){
                 return true;
             } else if (ctrl.accion === "actualizacion" && (clave === "recuperacion")){
                 return true;

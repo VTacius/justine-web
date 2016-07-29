@@ -332,7 +332,8 @@ dd {
 /* Estoy por empezar a tomar estilos de http://callmenick.com/post/various-css-input-text-styles */
 
 .pure-form select,
-.pure-form input[type="text"] {
+.pure-form input[type="text"], 
+.pure-form input[type="date"] {
     padding-top: 0.5em;
     padding-bottom: 0.3em;
     padding-left: 0.6em;
@@ -347,9 +348,8 @@ dd {
 }
 
 .pure-form select:focus,
-.pure-form select.focus, 
 .pure-form input[type="text"]:focus,
-.pure-form input[type="text"].focus {
+.pure-form input[type="date"]:focus {
     outline: none;
     box-shadow: none;
     border-bottom: solid 0.13em #969696;

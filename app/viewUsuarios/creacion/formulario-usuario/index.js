@@ -64,12 +64,17 @@ component('formularioUsuario', {
             console.log(modelo);
             ctrl.usuario[modelo]['estado'] = estado;
         }
-
+        
+        /* La idea es guardar el establecimiento en un auxiliar, como hice antes */
+        ctrl.establecimiento = {
+            "id":"343",
+            "nombre":"UCSF Sensuntepeque CA"
+        };
         /* Un callback a angucomplete-alt de establecimiento */
         ctrl.seleccionaEstablecimiento = function(seleccionado){
             if (seleccionado){
-                ctrl.usuario.o = seleccionado.originalObject;
-                obtenerOficinas(ctrl.usuario.o.id);
+                ctrl.establecimiento = seleccionado.originalObject;
+                obtenerOficinas(ctrl.establecimiento.id);
             };
         };
 
@@ -89,6 +94,7 @@ component('formularioUsuario', {
         /* Funcionalidad asociada con submit del formulario, que requiere enviar los datos del formulario hacia un nivel padre */
         ctrl.enviar = function(usuario){
             console.log('Envío desde el componente que especifica al formulario');
+            usuario.o = ctrl.establecimiento;
             console.log(usuario);
             ctrl.ejecucion({'corpus': usuario});
         }

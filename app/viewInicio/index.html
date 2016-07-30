@@ -9,12 +9,30 @@
             <div class="pure-u-1"> 
                 <div class="contenido">
                     <form class="pure-form jt-form">
-                        <div class="jt-input-iconico">
-                            <i class="fa fa-search jt-input-iconico-ico"></i>
-                            <input class="pure-u-1 jt-input-iconico-in" type="text"></input>
+                        <div class="pure-u-1 jt-form-component">
+                            <div class="jt-input-iconico">
+                                <i class="fa fa-search jt-input-iconico-ico"></i>
+                                <input class="pure-u-1 jt-input-iconico-in" type="text"></input>
+                            </div>
+                        </div>
+                        <div class="pure-u-1 jt-form-component">
+                            <input class="pure-u-1" type="text"></input>
+                            <md-autocomplete 
+                                md-selected-item="seleccionado" 
+                                md-min-length="3" 
+                                md-search-text="$ctrl.textoBusqueda" 
+                                md-items="establecimiento in $ctrl.busquedaEstablecimiento($ctrl.textoBusqueda)" 
+                                md-item-text="establecimiento.nombre"
+                                md-select-on-match="true"
+                                md-selected-item="$ctrl.usuario.o" 
+                                md-selected-item-change="$ctrl.cambioItem(seleccionado)"
+                                required>
+                                <span md-highlight-text="searchText">{{establecimiento.nombre}}</span>
+                            </md-autocomplete>
                         </div>
                     </form>
                 </div>
+                <span>{{$ctrl.usuario.o}}</span>
             </div>
             <div class="pure-u-1 pure-u-md-1-2">
                 <div class="contenido">

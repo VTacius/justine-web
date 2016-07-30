@@ -12,6 +12,7 @@ if (window) {
 // Declare app level module which depends on views, and components
 angular.module('justineApp', [
     'ngRoute',
+    'ngMaterial',
     'angucomplete-alt',
     'componentes.menu',
     'componentes.switch',

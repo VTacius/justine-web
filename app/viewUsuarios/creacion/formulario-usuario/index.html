@@ -10,10 +10,10 @@
                     <input class="pure-u-1" id="givenname" name="givenname" type="text" placeholder="Nombre" ng-model="$ctrl.usuario.givenName" sustantivos></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.givenname.$touched">
                         <label class="pure-u-1 jt-label-error" for="givenname" ng-show="$ctrl.formularioUsuarios.givenname.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>El campo Apellidos es obligatorio
+                            <i class="fa fa-exclamation-triangle"></i>El campo Nombres es obligatorio
                         </label> 
-                        <label class="pure-u-1 jt-label-error" for="givenname" ng-show="formularioUsuarios.givenname.$error.sustantivos">
-                            <i class="fa fa-exclamation-triangle"></i>Revise los apellidos ingresados
+                        <label class="pure-u-1 jt-label-error" for="givenname" ng-show="$ctrl.formularioUsuarios.givenname.$error.sustantivos">
+                            <i class="fa fa-exclamation-triangle"></i>Revise el nombre ingresado
                         </label> 
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                         <label class="pure-u-1 jt-label-error" for="sn" ng-show="$ctrl.formularioUsuarios.sn.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo Apellidos es obligatorio
                         </label> 
-                        <label class="pure-u-1 jt-label-error" for="sn" ng-show="formularioUsuarios.sn.$error.sustantivos">
+                        <label class="pure-u-1 jt-label-error" for="sn" ng-show="$ctrl.formularioUsuarios.sn.$error.sustantivos">
                             <i class="fa fa-exclamation-triangle"></i>Revise los apellidos ingresados
                         </label> 
                     </div>
@@ -52,12 +52,12 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1" for="nit">NIT</label>
-                    <input class="pure-u-1" id="nit" name="nit" type="text" placeholder="NIT" ng-model="$ctrl.usuarioDetalle.nit" nit></input>
-                    <div ng-show="$ctrl.formularioEdicionUsuarios.$submitted || $ctrl.formularioEdicionUsuarios.nit.$touched">
-                        <label class="pure-u-1 jt-label-error" for="nit" ng-show="$ctrl.formularioEdicionUsuarios.nit.$error.required">
+                    <input class="pure-u-1" id="nit" name="nit" type="text" placeholder="NIT" ng-model="$ctrl.usuario.nit" nit></input>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.nit.$touched">
+                        <label class="pure-u-1 jt-label-error" for="nit" ng-show="$ctrl.formularioUsuarios.nit.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo NIT es obligatorio
                         </label>
-                        <label class="pure-u-1 jt-label-error" for="nit" ng-show="$ctrl.formularioEdicionUsuarios.nit.$error.nit">
+                        <label class="pure-u-1 jt-label-error" for="nit" ng-show="$ctrl.formularioUsuarios.nit.$error.nit">
                             <i class="fa fa-exclamation-triangle"></i>Revise el número de NIT ingresado
                         </label>
                     </div>
@@ -69,10 +69,13 @@
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1" for="jvs">JVS</label>
                     <jt-switch class="pure-u-1 pure-u-lg-6-24" corpus="$ctrl.usuario.jvs" actualiza="$ctrl.actualizaJtSwitch('jvs', estado)"></jt-switch>
-                    <input class="pure-u-1 pure-u-lg-18-24" id="jvs" name="jvs" type="text" placeholder="JVS" ng-model="$ctrl.usuario.jvs.valor" ng-disabled="!$ctrl.usuario.jvs.estado"></input>
+                    <input class="pure-u-1 pure-u-lg-18-24" id="jvs" name="jvs" type="text" placeholder="JVS" ng-model="$ctrl.usuario.jvs.valor" jvs ng-disabled="!$ctrl.usuario.jvs.estado"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.jvs.$touched">
                         <label class="pure-u-1 jt-label-error" for="jvs" ng-show="$ctrl.formularioUsuarios.jvs.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo JVS es obligatorio
+                        </label> 
+                        <label class="pure-u-1 jt-label-error" for="jvs" ng-show="$ctrl.formularioUsuarios.jvs.$error.jvs">
+                            <i class="fa fa-exclamation-triangle"></i>Revise el JVS ingresado
                         </label> 
                     </div>
                 </div>

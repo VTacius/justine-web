@@ -4,6 +4,7 @@ var RE_NOMBRE = /^([A-Zd]{1}([a-záéíóú]+|\s|$)\s{0,1}){1,4}$/
 var RE_NIT = /^\d{4}-\d{6}-\d{3}-\d{1}$/;
 var RE_DUI = /^\d{9}-\d{1}$/;
 var RE_TELEFONO = /^\d{4}(-*\d{4})*$/;
+var RE_JVS = /^\d{1,12}$/;
 
 angular.module('componentes.validaciones', []).
 
@@ -67,8 +68,26 @@ directive('telefono', function(){
         require: 'ngModel',
         link: function(scope, elm, attrs, ctrl) {
             ctrl.$validators.telefono = function(modelValue, viewValue){
-                if (RE_TELEFONO.test(viewValue)){ return true;
-                    return true
+                if (RE_TELEFONO.test(viewValue)){ 
+                    return true;
+                };
+
+                if (ctrl.$isEmpty(modelValue)){
+                    return true;
+                };
+
+                return false;
+            }
+        }
+    }
+}).
+directive('jvs', function(){
+    return {
+        require: 'ngModel',
+        link: function(scope, elm, attrs, ctrl) {
+            ctrl.$validators.jvs = function(modelValue, viewValue){
+                if (RE_JVS.test(viewValue)){ 
+                    return true;
                 };
 
                 if (ctrl.$isEmpty(modelValue)){

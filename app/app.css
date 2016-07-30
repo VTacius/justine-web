@@ -357,6 +357,11 @@ dd {
     border-bottom-right-radius: 0.15em;
 }
 
+.pure-form select[disabled],
+.pure-form input[type="text"][disabled],
+.pure-form input[type="date"][disabled] {
+    background-color: inherit;
+}
 /* Hablando de componentes bonitos, estoy haciendo un input con icono de la siguiente forma */
 .jt-input-iconico {
     display: block;

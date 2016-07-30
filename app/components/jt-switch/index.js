@@ -16,16 +16,11 @@ component('jtSwitch', {
             /** console.log("Algo pasó y debe ser registrado");
             console.log("Este es el estado actual del componte");
             console.log(ctrl.corpus.estado); */
-            ctrl.valor = ctrl.corpus.estado;
+            ctrl.valor = ctrl.corpus;
         };
 
-        /* Parece ser que en $onChanges esta cambio sucede más natural
-        ctrl.valor = ctrl.corpus.estado;
-        console.log("Este es el estado actual del componte");
-        console.log(ctrl.corpus.estado);*/
-
-        ctrl.on = 'on' in ctrl.corpus ? ctrl.corpus.on : "Activo";
-        ctrl.off = 'off' in ctrl.corpus ? ctrl.corpus.off : "Inactivo";
+        ctrl.on = ctrl.mensajes ? ctrl.mensajes.on : "Activo";
+        ctrl.off = ctrl.mensajes ? ctrl.mensajes.off : "Inactivo";
        
         /* Devolvemos a cualquier que sea nuestro superior, el valor que el modelo del componente 
          * adquiere en su evento click, 
@@ -38,6 +33,7 @@ component('jtSwitch', {
     },
     bindings: {
         corpus: '<',
+        mensajes: '<',
         actualiza: '&'
     }
 });

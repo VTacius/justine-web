@@ -40,7 +40,7 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1" for="dui">DUI</label>
-                    <input class="pure-u-1" id="dui" name="dui" type="text" placeholder="DUI" ng-model="$ctrl.usuario.dui" dui></input>
+                    <input class="pure-u-1" id="dui" name="dui" type="text" placeholder="DUI" ng-model="$ctrl.usuario.dui" dui ng-required="$ctrl.requerirCampo('dui')"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.dui.$touched">
                         <label class="pure-u-1 jt-label-error" for="dui" ng-show="$ctrl.formularioUsuarios.dui.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo DUI es obligatorio
@@ -56,7 +56,7 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1" for="nit">NIT</label>
-                    <input class="pure-u-1" id="nit" name="nit" type="text" placeholder="NIT" ng-model="$ctrl.usuario.nit" nit></input>
+                    <input class="pure-u-1" id="nit" name="nit" type="text" placeholder="NIT" ng-model="$ctrl.usuario.nit" nit ng-required="$ctrl.requerirCampo('nit')"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.nit.$touched">
                         <label class="pure-u-1 jt-label-error" for="nit" ng-show="$ctrl.formularioUsuarios.nit.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo NIT es obligatorio
@@ -73,8 +73,8 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1" for="jvs">JVS</label>
-                    <jt-switch class="pure-u-1 pure-u-lg-6-24" corpus="$ctrl.usuario.jvs" actualiza="$ctrl.actualizaJtSwitch('jvs', estado)"></jt-switch>
-                    <input class="pure-u-1 pure-u-lg-18-24" id="jvs" name="jvs" type="text" placeholder="JVS" ng-model="$ctrl.usuario.jvs.valor" jvs ng-disabled="!$ctrl.usuario.jvs.estado"></input>
+                    <jt-switch class="pure-u-1 pure-u-lg-6-24" corpus="$ctrl.usuario.jvs.estado" actualiza="$ctrl.actualizaJtSwitch('jvs', estado)" mensajes="$ctrl.jtSwitchMensajes('jvs')"></jt-switch>
+                    <input class="pure-u-1 pure-u-lg-18-24" id="jvs" name="jvs" type="text" placeholder="JVS" ng-model="$ctrl.usuario.jvs.valor" jvs ng-disabled="!$ctrl.usuario.jvs.estado" ng-required="$ctrl.requerirCampo('jvs')"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.jvs.$touched">
                         <label class="pure-u-1 jt-label-error" for="jvs" ng-show="$ctrl.formularioUsuarios.jvs.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo JVS es obligatorio
@@ -90,7 +90,7 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1" for="fecha">Fecha de Nacimiento</label>
-                    <input class="pure-u-1" id="fecha" name="fecha" type="date" placeholder="Fecha de Nacimiento" ng-model="$ctrl.usuario.fecha"></input>
+                    <input class="pure-u-1" id="fecha" name="fecha" type="date" placeholder="Fecha de Nacimiento" ng-model="$ctrl.usuario.fecha" ng-required="$ctrl.requerirCampo('fecha')"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.fecha.$touched">
                         <label class="pure-u-1 jt-label-error" for="fecha" ng-show="$ctrl.formularioUsuarios.fecha.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo Fecha es obligatorio
@@ -167,7 +167,7 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1 " for="title">Cargo</label>
-                    <input class="pure-u-1 " id="title" name="title" type="text" placeholder="Cargo" ng-model="$ctrl.usuario.title" sustantivos ></input>
+                    <input class="pure-u-1 " id="title" name="title" type="text" placeholder="Cargo" ng-model="$ctrl.usuario.title" sustantivos ng-required="$ctrl.requerirCampo('title')"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.title.$touched">
                         <label class="pure-u-1 jt-label-error" for="title" ng-show="$ctrl.formularioUsuarios.title.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo Cargo es obligatorio
@@ -183,7 +183,7 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1 " for="telephonenumber">Teléfono</label>
-                    <input class="pure-u-1 " id="telephonenumber" name="telephonenumber" type="text" placeholder="Teléfono" ng-model="$ctrl.usuario.telephoneNumber" telefono></input>
+                    <input class="pure-u-1 " id="telephonenumber" name="telephonenumber" type="text" placeholder="Teléfono" ng-model="$ctrl.usuario.telephoneNumber" telefono ng-required="$ctrl.requerirCampo('telephonenumber')"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.telephonenumber.$touched">
                         <label class="pure-u-1 jt-label-error" for="telephonenumber" ng-show="$ctrl.formularioUsuarios.telephonenumber.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo Teléfono es obligatorio
@@ -202,14 +202,14 @@
     
         <div class="pure-g">
             
-            <!-- Pregunta Secreta (pregunta) es obligatorio cuando aparece en accion = "actualizacion" -->
+            <!-- Pregunta Secreta (pregunta) es obligatorio cuando aparece en accion = "actualizacion", y como sólo aparecen allí no vale la pena hacer más trabajo -->
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1" for="pregunta">Pregunta Secreta</label>
-                    <input class="pure-u-1" id="pregunta" name="pregunta" type="text" placeholder="Nombre" ng-model="$ctrl.usuario.pregunta"></input>
+                    <input class="pure-u-1" id="pregunta" name="pregunta" type="text" placeholder="Nombre" ng-model="$ctrl.usuario.pregunta" required></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.pregunta.$touched">
                         <label class="pure-u-1 jt-label-error" for="pregunta" ng-show="$ctrl.formularioUsuarios.pregunta.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>El campo Nombres es obligatorio
+                            <i class="fa fa-exclamation-triangle"></i>Necesita configurar una pregunta secreta
                         </label> 
                     </div>
                 </div>
@@ -219,10 +219,10 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1" for="respuesta">Respuesta</label>
-                    <input class="pure-u-1" id="respuesta" name="respuesta" type="text" placeholder="Respuesta" ng-model="$ctrl.usuario.respuesta"></input>
+                    <input class="pure-u-1" id="respuesta" name="respuesta" type="text" placeholder="Respuesta" ng-model="$ctrl.usuario.respuesta" required></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.respuesta.$touched">
                         <label class="pure-u-1 jt-label-error" for="respuesta" ng-show="$ctrl.formularioUsuarios.respuesta.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>Necesita configurar una respuesta
+                            <i class="fa fa-exclamation-triangle"></i>Necesita configurar una respuesta a su pregunta secreta
                         </label> 
                     </div>
                 </div>
@@ -240,7 +240,7 @@
             <div class="pure-u-1" ng-if="$ctrl.mostrarCampos('username')">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1 " for="uid">Username</label>
-                    <input class="pure-u-1" id="uid" name="uid" type="text" placeholder="Username" ng-model="$ctrl.usuario.uid"></input>
+                    <input class="pure-u-1" id="uid" name="uid" type="text" placeholder="Username" ng-model="$ctrl.usuario.uid" required></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.uid.$touched">
                         <label class="pure-u-1 jt-label-error" for="uid" ng-show="$ctrl.formularioUsuarios.uid.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>Necesita configurar el nombre de usuario
@@ -259,7 +259,10 @@
                     <div class="pure-u-1">
                         <div class="pure-g jt-form-component">
                             <label class="pure-u-1 " for="sambaacctflags">Estado de la Cuenta</label>
-                            <jt-switch class="pure-u-1" corpus="$ctrl.usuario.sambaAcctFlags" actualiza="$ctrl.actualizaJtSwitch('sambaAcctFlags', estado)"></jt-switch>
+                            <jt-switch class="pure-u-1" 
+                                corpus="$ctrl.usuario.sambaAcctFlags" 
+                                actualiza="$ctrl.actualizaJtSwitch('sambaAcctFlags', estado)" 
+                                mensajes="$ctrl.jtSwitchMensajes('sambaAcctFlags')"></jt-switch>
                         </div>
                     </div>
             
@@ -276,7 +279,7 @@
                         </div>
                     </div>
                     
-                    <!-- Shell por defecto (shell) debería ser obligatoria. TODO: Debería seleccionarse un valor por defecto (grupo) -->
+                    <!-- Shell por defecto (shell) debería ser obligatoria. TODO: Debería seleccionarse un valor por defecto -->
                     <div class="pure-u-1">
                         <div class="pure-g jt-form-component">
                             <label class="pure-u-1 " for="loginshell">Shell por defecto</label>
@@ -318,7 +321,7 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1 " for="buzonstatus">Estado del Buzón</label>
-                    <jt-switch class="pure-u-1" corpus="$ctrl.usuario.buzonStatus" actualiza="$ctrl.actualizaJtSwitch('buzonStatus', estado)"></jt-switch>
+                    <jt-switch class="pure-u-1" corpus="$ctrl.usuario.buzonStatus" actualiza="$ctrl.actualizaJtSwitch('buzonStatus', estado)" mensajes="$ctrl.jtSwitchMensajes('buzonStatus')"></jt-switch>
                 </div>
             </div>
             
@@ -326,7 +329,7 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1 " for="cuentastatus">Estado de la Cuenta</label>
-                    <jt-switch class="pure-u-1" corpus="$ctrl.usuario.cuentaStatus" actualiza="$ctrl.actualizaJtSwitch('cuentaStatus', estado)"></jt-switch>
+                    <jt-switch class="pure-u-1" corpus="$ctrl.usuario.cuentaStatus" actualiza="$ctrl.actualizaJtSwitch('cuentaStatus', estado)" mensajes="$ctrl.jtSwitchMensajes('cuentaStatus')"></jt-switch>
                 </div>
             </div>
 

@@ -27,6 +27,8 @@ component('filaPanelUsuarios', {
                 then(function(respuesta){
                     ctrl.corpus = respuesta.data.data;
                     gestionaVisibilidad(detalle, edicion, borrado);
+                    /* Esto es algo por el momento, pero sigo sin */
+                    ctrl.datos = angular.merge( ctrl.corpus, ctrl.usuario);
                 }, function(respuesta){
                     console.log(respuesta);
                 });
@@ -47,7 +49,9 @@ component('filaPanelUsuarios', {
         /* Edito la entrada. Me aseguro que esos detalles sean actualizados en otros componentes */
         ctrl.editarFila = function(usuario){
             /* Subo hacia inicio, necesito que otros componentes puedan ver los cambios */
-            ctrl.editarEntrada({'entrada': ctrl.usuario});
+            ctrl.editarEntrada({'entrada': usuario});
+            console.log("No es por nada, quiero revisar que ocurra esto");
+            console.log(usuario);
             /*
              * Acá edito efectivamente al usuario en el servidor backend mediante una peticion
              * backend. Espero que recuerdes que acá hace falta la información de detalle usuario

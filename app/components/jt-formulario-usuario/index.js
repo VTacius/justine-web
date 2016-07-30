@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('justineApp').
+angular.module('componentes.formularios', []).
 
-component('formularioUsuario', {
-    templateUrl: 'viewUsuarios/creacion/formulario-usuario/index.html',
+component('jtFormularioUsuario', {
+    templateUrl: 'components/jt-formulario-usuario/index.html',
     controller: function ($http) {
         var ctrl = this;
 

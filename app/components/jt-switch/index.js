@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('componentes.switch', []).
+
 component('jtSwitch', {
     templateUrl: 'components/jt-switch/index.html',
     controller: function(){ 

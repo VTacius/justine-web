@@ -12,14 +12,15 @@ if (window) {
 // Declare app level module which depends on views, and components
 angular.module('justineApp', [
     'ngRoute',
-    'ngMaterial',
     'angucomplete-alt',
     'componentes.menu',
     'componentes.switch',
     'componentes.validaciones',
     'componentes.filtros',
+    'componentes.formularios',
     'justineApp.inicio',
     'justineApp.directorio',
+    'justineApp.usuario.actualizacion',
     'justineApp.usuarios.inicio',
     'justineApp.usuarios.creacion',
     'justineApp.grupos.inicio',

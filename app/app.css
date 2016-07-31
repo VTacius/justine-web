@@ -133,10 +133,10 @@ footer p {
 /* Configura un padding y mantiene el tamaño que se ha designado con la Grid de pure */
 .jt-celda {
     box-sizing: border-box;
-    padding-right: 0.8em;
     color: #333;   
     font-size: 1em;
 }
+
 
 .jt-celda-detalle {
     color: #777;
@@ -156,10 +156,12 @@ table .pure-button {
     position: fixed;
     width: 100%;
     top: 3.38em;
+    z-index: 2;
+    background-color: #fff;
 }
 
 .jt-tabla-contenido {
-    margin-top: 4.5em;
+    margin-top: 3.9em;
 }
 
 /* 
@@ -173,8 +175,12 @@ table .pure-button {
 */
 
 /* Para agregar un ícono a filaPanel, hay que declararlo acá */
-/* Parece que igual esta vez funciona bien con tan sólo asignar a fa, espero descubrir que es lo que se arruina de esta forma */
-.jt-fila-panel .fa {
+.jt-celda .fa-desktop,
+.jt-celda .fa-at,
+.jt-celda .fa-users,
+.jt-celda .fa-user,
+.jt-celda .fa-tags,
+.jt-celda .fa-map-marker {
     display: block;   
     width: 1.3125em;
     float: left;
@@ -234,20 +240,21 @@ table .pure-button {
 dt, dd {
     float: left;
     letter-spacing: initial;
+    word-spacing: 0.04em;
     box-sizing: border-box;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    /* Luego se sobreescriben algunas, pero siempre irá acá*/
     padding: 0;
     margin: 0;
     color: #333;
+    line-height: 1.4em;
 }
 
 dl {
     box-sizing: border-box;
-    width: 99%;
     padding: 0.6em 0.4em;
-    margin: 0
+    margin: 0;
+    display: flex;
 }
 
 dt {
@@ -260,7 +267,6 @@ dt {
 dd {
     width: 63%;
     padding-left: 0.9em;
-    margin-bottom: 1em;
     font-size: 1.0em;
 }
 
@@ -301,10 +307,9 @@ dd {
 */
 
 .jt-form {
-    width: 96%;
-    margin-left: 2%;
+    width: 100%;
     box-sizing: border-box;
-    margin-top: 0.5em;
+    margin-top: 0.6em;
     margin-bottom: 0.9em;
 }
 
@@ -381,10 +386,11 @@ input[type="text"].jt-input-iconico-in {
 
 .jt-formulario-busqueda {
     margin-left: 0;
-    margin-bottom: 1.7em;
-     margin-top: 0; 
+    margin-bottom: 0.1em;
+    margin-top: 0; 
     padding-top: 0.5em;
     background-color: #fff;
+    width: 99%;
 }
 
 /* Acá empiezo el trabajo para que Angular apoye la validación */
@@ -446,6 +452,7 @@ input.ng-invalid.ng-touched {
 
 /* Parece que debería controlar el comportamiento de los componentes personalizados en lo que a CSS se refiere  */
 edicion-usuarios,
+detalle-usuarios,
 borrado-usuarios {
     width: 100%;
 }
@@ -476,6 +483,20 @@ borrado-usuarios {
 
 /* ######################################################################### */
 
+
+/*
+    Comienza CSS para componente usuario/creacion
+*/
+.jt-formulario-creacion {
+    padding-left: 1.1%;
+    padding-right: 1.1%;
+}
+
+/*
+    Termina CSS para componente usuario/borrado
+*/
+
+/* ######################################################################### */
 
 /*
     Comienza CSS para componente jt-switch
@@ -733,7 +754,7 @@ label.jt-switch {
     
 }
 
-@media (min-width: 48em) {
+@media (min-width: 49.625em) {
 
     .jt-menu-seccion-central .texto {
         /* Oculto el texto y me ahorro todo ese espacio */

@@ -27,7 +27,7 @@
     </div>
 </div>
 <div class="pure-g" ng-if="$ctrl.muestraPanelDetalle">
-    <detalle-usuarios usuario="$ctrl.usuario" usuario-detalle="$ctrl.corpus" grupos="$ctrl.grupos"></detalle-usuarios>
+    <detalle-usuarios usuario="$ctrl.usuario" usuario-detalle="$ctrl.usuarioDetalle" grupos="$ctrl.grupos"></detalle-usuarios>
 </div>
 <div class="pure-g" ng-if="$ctrl.muestraPanelEdicion">
     <jt-formulario-usuario corpus="$ctrl.usuario" corpus-detalle="$ctrl.usuarioDetalle" accion="'edicion'" ejecucion="$ctrl.editarFila(corpus, corpusDetalle)" grupos="$ctrl.grupos"></formulario-usuario>

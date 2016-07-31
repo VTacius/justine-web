@@ -1,11 +1,25 @@
-<div class="pure-u-1 pure-u-md-7-24 ">
-    <div class="contenido" ng-click="fetch()">
-        <p> Una línea lo sufcientemente extensa como para demostrar hasta donde esta llegando el div, jamás pensé que alguna vez haría un maquetado como este</p>
-        <h3>Controlador para Grupos </h3>
+<div class="pure-u-1 ">
+    <div class="contenido jt-busqueda">
+        <form class="pure-form jt-form jt-formulario-busqueda" novalidate>
+            <div class="jt-input-iconico">
+                <i class="fa fa-search jt-input-iconico-ico"></i>
+                <input class="pure-u-1 jt-input-iconico-in" type="text" ng-model="$ctrl.filtroUsuario"></input>
+            </div>
+        </form>
     </div>
 </div>
-<div class="pure-u-1 pure-u-md-17-24">
-    <div class="contenido">
-        <p> Lo siento, no has puesto contenido por estos lados, pero supongo que ya vas por buen camino y todo eso</p>
-    </div>
+<div class="pure-u-1 ">
+    <table class="pure-table pure-table-horizontal jt-tabla-contenido">
+        <tbody>
+            <!-- <tr ng-repeat="entrada in $ctrl.corpus | filter:$ctrl.filtroUsuario">-->
+            <tr ng-repeat="entrada in $ctrl.corpus">
+                <td>
+	            <fila-panel-grupos grupo="entrada" 
+                                         editar-grupo="$ctrl.editarEntradaListado(entrada)" 
+                                         borrar-entrada="$ctrl.borrarEntradaListado(entrada)">
+                    </fila-panel-grupos>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

@@ -173,9 +173,8 @@ table .pure-button {
 */
 
 /* Para agregar un ícono a filaPanel, hay que declararlo acá */
-.jt-fila-panel .fa-at,
-.jt-fila-panel .fa-user ,
-.jt-fila-panel .fa-map-marker {
+/* Parece que igual esta vez funciona bien con tan sólo asignar a fa, espero descubrir que es lo que se arruina de esta forma */
+.jt-fila-panel .fa {
     display: block;   
     width: 1.3125em;
     float: left;

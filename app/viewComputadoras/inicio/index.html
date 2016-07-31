@@ -1,9 +1,25 @@
-<div class="pure-u-1 pure-u-md-7-24 ">
-    <div class="contenido" ng-click="fetch()">
-        <p> Una línea lo sufcientemente extensa como para demostrar hasta donde esta llegando el div, jamás pensé que alguna vez haría un maquetado como este</p>
-        <h3>Controlador para computadoras</h3>
+<div class="pure-u-1 ">
+    <div class="contenido jt-busqueda">
+        <form class="pure-form jt-form jt-formulario-busqueda" novalidate>
+            <div class="jt-input-iconico">
+                <i class="fa fa-search jt-input-iconico-ico"></i>
+                <input class="pure-u-1 jt-input-iconico-in" type="text" ng-model="$ctrl.filtroUsuario"></input>
+            </div>
+        </form>
     </div>
 </div>
-<div class="pure-u-1 pure-u-md-17-24">
-    <p class="contenido">Lo siento, no has trabajado nada aún pero ya vas por buen camino</p>
+<div class="pure-u-1 ">
+    <table class="pure-table pure-table-horizontal jt-tabla-contenido">
+        <tbody>
+            <!-- <tr ng-repeat="entrada in $ctrl.corpus | filter:$ctrl.filtroUsuario">-->
+            <tr ng-repeat="entrada in $ctrl.corpus">
+                <td>
+	            <fila-panel-computadoras computadora="entrada" 
+                                         editar-entrada="$ctrl.editarEntradaListado(entrada)" 
+                                         borrar-entrada="$ctrl.borrarEntradaListado(entrada)">
+                    </fila-panel-computadoras>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

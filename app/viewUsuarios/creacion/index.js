@@ -21,36 +21,29 @@ angular.module('justineApp.usuarios.creacion', ['ngRoute'])
             console.log("Hay un problema con el servidor en este punto");
     });
 
+    /*Este es un objeto falso con tal que no joda */
+    ctrl.usuario = {};
+
     /* Estos son datos que quiero que la cuenta tenga por defecto */
-    ctrl.usuario = {
-        "sambaAcctFlags": {
-            "estado": false,
-            "off": "Bloqueada",
-            "on": "Activa"
-        },
-        "buzonStatus": {
-            "estado": false,
-            "off": "Bloqueada",
-            "on": "Activa"
-        },
-        "cuentaStatus":{
-            "estado": false,
-            "off": "Cerrada",
-            "on": "Activa"
-        },
+    ctrl.usuarioDetalle = {
+        "sambaAcctFlags": false,
+        "buzonStatus": false,
+        "cuentaStatus": false,
         "jvs":{
-            "estado": true,
-            "off": "No Aplica",
-            "on": "Aplica",
+            "estado": false,
+            "valor": null
         },
     }
     
     /* Esto se corresponde con la funcionalidad de los componentes */
 
     /* La funcionalidad asociada con submit del formulario */
-    ctrl.creacion = function(usuario){
-        console.log("Estoy en el controlador Padre, vista pues");
+    ctrl.creacion = function(usuario, usuarioDetalle){
+        console.log("Estoy en el controlador Padre, vista creacion pues");
         console.log(usuario);
+        console.log(usuarioDetalle);
+        var objetoCambio = angular.merge({}, usuario, usuarioDetalle);
+        console.log(objetoCambio);
     }
 
 }]);

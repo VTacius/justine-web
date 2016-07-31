@@ -17,7 +17,6 @@ angular.module('justineApp', [
     'componentes.switch',
     'componentes.validaciones',
     'componentes.filtros',
-    'componentes.formularios',
     'justineApp.inicio',
     'justineApp.directorio',
     'justineApp.usuario.actualizacion',

@@ -1,19 +1,27 @@
 'use strict';
 
-angular.module('componentes.formularios', []).
-
+angular.module('justineApp').
 component('jtFormularioUsuario', {
-    templateUrl: 'components/jt-formulario-usuario/index.html',
+    templateUrl: 'viewUsuarios/jt-formulario-usuario/index.html',
     controller: function (__ENV, $http) {
         var ctrl = this;
+        
+        /* "Declarar" el formulario en este punto permite manipularlo a este nivel. Por otra parte, parecía haber problemas con el nombre en cierto momento*/
+        ctrl.formularioUsuarios = {};
 
         /* Lista de establecimientos que usamos para las sugerencias en Establecimientos (o) */
         ctrl.establecimientos = [];
 
         /* Por defecto, el componente Oficina (ou) no es obligatorio pues no sabemos si hay datos disponibles para sugerir */
         ctrl.requerirOficina = false;
+        /* Lista de establecimientos que mostramos como sugerencias al usuario para el campo Establecimientos (o) */
+        ctrl.establecimientos = [];
+        /* Acá guardamos el contenido original de ctrl.corpus recibido mediante bindings, y al que no modificamos en el trancurso de la aplicación */
+        ctrl.usuarioOriginal = {};
+        /* TODO: Acá guardamos el contenido original de ctrl.usuarioDetalle recibido mediante bindings, y al que no modificamos en el trancurso de la aplicación */
+        ctrl.usuarioDetalleOriginal = {};
         
-        /* Inicializando el componente */
+        /* Inicializando el componente. Recuerda que todo $http pertenece naturalmente a este lugar */
         ctrl.$onInit = function(){
 
             /* Obtenemos los establecimiento con los que vamos a llenar las sugerencias para Establecimientos (o) */
@@ -26,10 +34,11 @@ component('jtFormularioUsuario', {
 
         };
 
-        /*Capturo mejor los cambios en los datos que componentes superiores nos envían */
+        /* Capturo mejor los cambios en los datos que componentes superiores nos envían mediante bindings */
         ctrl.$onChanges = function(){
             /* Obtenemos usuario desde componente padre, mediante el binding corpus */
             ctrl.usuario = ctrl.corpus; 
+            ctrl.usuarioDetalle = ctrl.corpusDetalle;
            
            /* Es capaz de almacenar el objecto seleccionado en Establecimiento (o), o de inicializar su valor en el formulario */
             ctrl.establecimiento = angular.copy(ctrl.usuario.o); 
@@ -37,7 +46,7 @@ component('jtFormularioUsuario', {
             /* Convertimos el atributo fecha a algo que el input="date" sea capaz de entender 
              * Hasta ahora, una fecha inválida (Valores null, por ejemplo), no causa nada tan malo
              * */
-            ctrl.usuario.fecha = new Date(ctrl.usuario.fecha);
+            ctrl.usuarioDetalle.fecha = new Date(ctrl.usuarioDetalle.fecha);
 
             /* Inicializa | almacena el objeto seleccionado en Oficina (ou) */
             ctrl.oficina =  angular.copy(ctrl.usuario.ou);
@@ -90,7 +99,7 @@ component('jtFormularioUsuario', {
          * Reviso contra usuarioOriginal porque no lo hemos manipulado de ninguna forma en el curso de toda la aplicación
          * */
         var campoPreviamenteConfigurado = function(campo){
-            return ctrl.usuarioOriginal[campo] ? true : false;
+            return ctrl.usuarioDetalleOriginal[campo] ? true : false;
         };
 
         /* Establecemos la obligatoriedad de los controles que no lo son siempre */
@@ -119,10 +128,10 @@ component('jtFormularioUsuario', {
         ctrl.actualizaJtSwitch = function(modelo, estado) {
             console.log(modelo);
             /* El único caso es jvs, que es un objeto donde guardamos dos datos */
-            if ('estado' in ctrl.usuario[modelo]){
-                ctrl.usuario[modelo]['estado'] = estado;
+            if ('estado' in ctrl.usuarioDetalle[modelo]){
+                ctrl.usuarioDetalle[modelo]['estado'] = estado;
             } else {
-                ctrl.usuario[modelo] = estado;
+                ctrl.usuarioDetalle[modelo] = estado;
             }
         }
         
@@ -145,6 +154,7 @@ component('jtFormularioUsuario', {
         ctrl.reiniciar = function(){
             ctrl.formularioUsuarios.$setUntouched();
             ctrl.usuario = angular.copy(ctrl.usuarioOriginal);
+            ctrl.usuario = angular.copy(ctrl.usuarioDetalleOriginal);
         };
 
         /* 
@@ -152,8 +162,8 @@ component('jtFormularioUsuario', {
          * También se ocupa de asociar ctrl.establecimiento y ctrl.oficina al objeto que enviamos como usuario
          *
          * */
-        ctrl.enviar = function(usuario){
-            console.log('Envío desde el componente que especifica al formulario');
+        ctrl.enviar = function(usuario, usuarioDetalle){
+            console.log('Envío desde el componente que especifica al formulario: jt-formulario-usuario');
             usuario.o = ctrl.establecimiento;
             /* Si oficina no es requerida por no haber sugerencias. el usuario puede escribir cualquier cosa o borrar el contenidos,
              * así que habría que revisar directamente el control 
@@ -161,13 +171,14 @@ component('jtFormularioUsuario', {
              * */
             usuario.ou = ctrl.requerirOficina ? ctrl.oficina : ctrl.formularioUsuarios.ou.$modelValue;
             console.log(usuario);
-            ctrl.ejecucion({'corpus': usuario});
+            ctrl.ejecucion({'corpus': usuario, 'corpusDetalle': usuarioDetalle});
         }
         
     },
 
     bindings: {
         corpus: '<',
+        corpusDetalle: '<',
         accion: '<',
         grupos: '<',
         ejecucion: '&'

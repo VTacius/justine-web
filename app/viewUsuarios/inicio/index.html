@@ -11,7 +11,8 @@
 <div class="pure-u-1 ">
     <table class="pure-table pure-table-horizontal jt-tabla-contenido">
         <tbody>
-            <tr ng-repeat="entrada in $ctrl.corpus | filter:$ctrl.filtroUsuario">
+            <!-- <tr ng-repeat="entrada in $ctrl.corpus | filter:$ctrl.filtroUsuario">-->
+            <tr ng-repeat="entrada in $ctrl.corpus">
                 <td>
 	            <fila-panel-usuarios usuario="entrada" 
                                          grupos="$ctrl.listadogrupos" 

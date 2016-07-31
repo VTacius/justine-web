@@ -7,7 +7,6 @@ component('filaPanelUsuarios', {
 
         var ctrl = this;
         
-        ctrl.corpus = {};
         ctrl.muestraPanelDetalle = false;
         ctrl.muestraPanelEdicion = false;                   
         ctrl.muestraPanelBorrado = false;                   
@@ -19,16 +18,16 @@ component('filaPanelUsuarios', {
             ctrl.muestraPanelBorrado = borrado;                   
         };
 
-        /* Obtiene los datos desde una fuente externa. Pensé, pensé que aparecería en el scope de Chrome */
+        /* Obtenemos el detalle de usuarios */
         var obtenerDetalleUsuario = function(detalle, edicion, borrado){
             console.log('filaPanel.obtenerDetalleUsuario: Estoy obteniendo datos');
             /* TODO: Será necesario cuidar que esto no se realize innecesarimente */
             $http({method: 'GET', url: '/api/usuario_detalle.json'}).
                 then(function(respuesta){
-                    ctrl.corpus = respuesta.data.data;
+                    ctrl.usuarioDetalle = respuesta.data.data;
+                    console.log(ctrl.usuarioDetalle);
                     gestionaVisibilidad(detalle, edicion, borrado);
                     /* Esto es algo por el momento, pero sigo sin */
-                    ctrl.datos = angular.merge( ctrl.corpus, ctrl.usuario);
                 }, function(respuesta){
                     console.log(respuesta);
                 });
@@ -47,11 +46,15 @@ component('filaPanelUsuarios', {
         };
 
         /* Edito la entrada. Me aseguro que esos detalles sean actualizados en otros componentes */
-        ctrl.editarFila = function(usuario){
-            /* Subo hacia inicio, necesito que otros componentes puedan ver los cambios */
+        ctrl.editarFila = function(usuario, usuarioDetalle){
+            /* Subo hacia inicio, aunque en realidad solo necesito los datos ligeros de usuario y no de usuarioDetalle */
             ctrl.editarEntrada({'entrada': usuario});
             console.log("No es por nada, quiero revisar que ocurra esto");
             console.log(usuario);
+            console.log(usuarioDetalle);
+            console.log('Así es el objeto que enviaremos a la horca');
+            objetoCambio = angular.merge(usuarioDetalle, usuario);
+            console.log(objetoCambio);
             /*
              * Acá edito efectivamente al usuario en el servidor backend mediante una peticion
              * backend. Espero que recuerdes que acá hace falta la información de detalle usuario

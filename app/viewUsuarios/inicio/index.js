@@ -10,7 +10,11 @@ config(['$routeProvider', function($routeProvider) {
 }])
 .controller('UsuariosInicioController', ['$http', function($http) {
     var ctrl = this;
+
+    /* La lista de usuarios */
     ctrl.corpus = {};
+
+    /* La lista de grupos a enviar a los formularios de edición de usuarios */
     ctrl.listadogrupos = {};
     
     /* Obtener el listado de grupos en este punto debería evitar hacerlo muchas veces, provee por otro lado una forma lógica de refresco  */
@@ -21,7 +25,7 @@ config(['$routeProvider', function($routeProvider) {
             console.log("Hay un problema con el servidor en este punto");
     });
     
-    /* El listado de usuarios existentes es parte del controlador que pertenece a UsuariosInicioCtrl */
+    /* Una listado de usuarios con datos ligeros es la forma en que creamos la tabla con elementos fila-panel  */
     $http({method: 'GET', url: '/api/usuario_listado.json'}).
         then(function(respuesta){
             ctrl.corpus = respuesta.data;
@@ -34,6 +38,8 @@ config(['$routeProvider', function($routeProvider) {
      *
      * */
     ctrl.borrarEntradaListado = function(entrada){
+        console.log("Llegamos tan arriba borrando");
+        console.log(entrada);
         var indice = ctrl.corpus.indexOf(entrada)
         if (indice >= 0){
             ctrl.corpus.splice(indice, 1);
@@ -45,6 +51,8 @@ config(['$routeProvider', function($routeProvider) {
      *
      * */
     ctrl.editarEntradaListado = function(detalle){
+        console.log("Llegamos tan arriba editando");
+        console.log(detalle);
         var indice = ctrl.corpus.indexOf(detalle)
         if (indice >=0){
             ctrl.corpus[indice] = detalle;

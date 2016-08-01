@@ -3,7 +3,7 @@
         <form class="pure-form jt-form jt-formulario-busqueda" novalidate>
             <div class="jt-input-iconico">
                 <i class="fa fa-search jt-input-iconico-ico"></i>
-                <input class="pure-u-1 jt-input-iconico-in" type="text" ng-model="$ctrl.filtroUsuario"></input>
+                <input class="pure-u-1 jt-input-iconico-in" type="text" ng-model="$ctrl.filtroUsuario" ng-change="$ctrl.llenaListado($ctrl.filtroUsuario)"></input>
             </div>
         </form>
     </div>
@@ -12,7 +12,7 @@
     <table class="pure-table pure-table-horizontal jt-tabla-contenido">
         <tbody>
             <!-- <tr ng-repeat="entrada in $ctrl.corpus | filter:$ctrl.filtroUsuario">-->
-            <tr ng-repeat="entrada in $ctrl.corpus">
+            <tr ng-repeat="entrada in $ctrl.corpus | jtBuscador:$ctrl.filtroUsuario">
                 <td>
 	            <fila-panel-usuarios usuario="entrada" 
                                          grupos="$ctrl.listadogrupos" 

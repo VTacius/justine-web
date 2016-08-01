@@ -24,9 +24,30 @@ config(['$routeProvider', function($routeProvider) {
         }, function(respuesta){
             console.log("Hay un problema con el servidor en este punto");
     });
+
+    /* Empieza el trabajo para llenar el listado bajo demanda */
+    /* NO: EL CONTENIDO ORIGINAL EN REALIDAD NUNCA CAMBIA, ASÍ QUE NO PUEDO VERIFICAR QUE SE ESTE HACIENDO MÁS PEQUEÑO */
+    ctrl.llenaListado = function(contenido){
+        console.log("Estamos cambiando");
+        console.log(contenido);
+        if (ctrl.corpus.length < 2){
+            console.log("Creo que puedo aumentar un poco eso");
+            var contenidoRemoto = [{
+                "ou": "Unidad De Salud Ambiental", 
+                "givenName": "Ana del Carmen", 
+                "sn": "Hern\u00e1ndez Ramos", 
+                "o": {
+                    "nombre": "Secretar\u00eda de Estado SS Ministerio de Salud", 
+                    "id": 1038
+                }, 
+                "uid": "dlhernandez"
+            }]
+            ctrl.corpus.concat(contenidoRemoto);
+        }
+    };
     
     /* Una listado de usuarios con datos ligeros es la forma en que creamos la tabla con elementos fila-panel  */
-    $http({method: 'GET', url: '/api/usuario_listado.json'}).
+    $http({method: 'GET', url: '/api/usuario_listado_alfa.json'}).
         then(function(respuesta){
             ctrl.corpus = respuesta.data;
         }, function(respuesta){

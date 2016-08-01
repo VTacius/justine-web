@@ -888,9 +888,72 @@ label.jt-switch {
     background-color: #cbcbcb;
     color: #333;
 }
-
 /*
     Termina CSS para jt-menu-panel
 */
 
 /* ######################################################################### */
+
+/*
+ * Comienza CSS para componente alertas
+ *
+ */
+
+.alerta {
+    margin-left: 1%;
+    width: 100%;
+    min-height: 3.8em;
+    padding: 0.6em 1.5em;
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: 0.1em;
+    color: #333;
+    border-left-width: 1em;
+    border-left-style: inset;
+}
+
+.alerta.alerta-error {
+    background-color: rgba(177, 120, 120, 0.3);
+    border-left-color: #d48585;
+}
+
+.alerta.alerta-aviso {
+    background-color: #85bad4;
+    background-color: rgba(120, 158, 177, 0.3);
+    border-left-color: #85bad4;
+}
+
+.alerta p,h4 {
+    margin: 0;
+}
+
+.alerta h4 {
+    margin: 0;
+    line-height: 1.5em;
+}
+
+.alerta p {
+    font-size: initial;
+    line-height: initial;
+    text-indent: 1em;
+    font-size: 0.95em;
+    line-height: 1.3em;
+}
+
+.alerta span.fa.fa-close {
+    margin-right: -0.4em;
+    padding-top: 0.5em;
+}
+
+.alerta span{
+    cursor: pointer;
+    float: right;
+    width: 1.5em;
+    height: 1.5em;
+    text-align: end;
+}
+
+/*
+ * Termina CSS para componente alertas
+ *
+ */

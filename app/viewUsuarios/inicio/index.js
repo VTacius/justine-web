@@ -12,11 +12,15 @@ config(['$routeProvider', function($routeProvider) {
     var ctrl = this;
 
     /* La lista de usuarios */
-    ctrl.corpus = {};
+    ctrl.corpus = [];
 
     /* La lista de grupos a enviar a los formularios de edición de usuarios */
-    ctrl.listadogrupos = {};
-    
+    ctrl.listadogrupos = [];
+
+    /* No me gusta del todo lo que estoy emulando, pero así podré mantener el estado del buscador 
+     * y evitar la búsqueda innecesaria que podría ocasionar el retroceso */
+    ctrl.longitudBusqueda = 0;
+
     /* Obtener el listado de grupos en este punto debería evitar hacerlo muchas veces, provee por otro lado una forma lógica de refresco  */
     $http({method: 'GET', url: '/api/helpers_grupos.json'}).
        then(function(respuesta){
@@ -26,24 +30,23 @@ config(['$routeProvider', function($routeProvider) {
     });
 
     /* Empieza el trabajo para llenar el listado bajo demanda */
-    /* NO: EL CONTENIDO ORIGINAL EN REALIDAD NUNCA CAMBIA, ASÍ QUE NO PUEDO VERIFICAR QUE SE ESTE HACIENDO MÁS PEQUEÑO */
+    /* Parece que al final no es dentro del filtro que eso va a a suceder alguna vez, aunque debo decir que este no es tan mala idea,
+     * así podré mantener el modelo una vez vaya hacía atrás */
     ctrl.llenaListado = function(contenido){
         console.log("Estamos cambiando");
-        console.log(contenido);
-        if (ctrl.corpus.length < 2){
+        if (contenido.length >= ctrl.longitudBusqueda && contenido.length > 2 && (contenido.length % 2) === 0){
             console.log("Creo que puedo aumentar un poco eso");
-            var contenidoRemoto = [{
-                "ou": "Unidad De Salud Ambiental", 
-                "givenName": "Ana del Carmen", 
-                "sn": "Hern\u00e1ndez Ramos", 
-                "o": {
-                    "nombre": "Secretar\u00eda de Estado SS Ministerio de Salud", 
-                    "id": 1038
-                }, 
-                "uid": "dlhernandez"
-            }]
-            ctrl.corpus.concat(contenidoRemoto);
-        }
+            $http({method: 'GET', url: '/api/usuario_listado_beta.json'}).
+                then(function(respuesta){
+                    console.log(respuesta.data);
+                    /* De esos momentos donde AngularJS se hace tan melindroso */
+                    var remoto = [].concat(ctrl.corpus, respuesta.data);
+                    ctrl.corpus = remoto;
+                }, function(respuesta){
+                    console.log("Hay un problema con el servidor en este punto");
+                });
+        };
+        ctrl.longitudBusqueda = angular.copy(contenido.length);
     };
     
     /* Una listado de usuarios con datos ligeros es la forma en que creamos la tabla con elementos fila-panel  */

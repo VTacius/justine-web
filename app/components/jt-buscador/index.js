@@ -2,31 +2,6 @@
 
 var nombres = ['givenName', 'sn', 'uid'];
 
-var buscadorRemoto = function(busqueda){
-    console.log("Como ya casi no hay componentes, supongo que tengo que ir a buscarlos yo mismo al backend"); 
-    console.log(busqueda);
-    return     [{
-        "ou": "Unidad De Salud Ambiental", 
-        "givenName": "Ana del Carmen", 
-        "sn": "Hern\u00e1ndez Ramos", 
-        "o": {
-            "nombre": "Secretar\u00eda de Estado SS Ministerio de Salud", 
-            "id": 1038
-        }, 
-        "uid": "dlhernandez"
-    }];
-
-    /*
-    $http({url:'/api/usuario_listado_beta.json', method: 'GET'}).then(
-        function(respuesta){
-            console.log(respuesta.data.data);
-            return respuesta.data.data;
-        }, function(respuesta){
-            console.log('Algo malo sucedió con el servidor');
-        });
-    */
-};
-
 /* Aún corriendole sin nada, resulta que se ejecuta siete veces antes que el contenido salga a la luz*/
 angular.module('componentes.buscador', []).
 filter('jtBuscador', function(){
@@ -34,7 +9,6 @@ filter('jtBuscador', function(){
     return function(contenido, filtro){
         var resultados = [];
         if (angular.isUndefined(filtro)){
-            console.log('No hay filtro, no hay trabajo');
             resultados = contenido;    
         } else {
             var busqueda = filtro.toLowerCase();
@@ -56,31 +30,4 @@ filter('jtBuscador', function(){
         };
         return resultados;
     };
-}).
-filter('jtDevolvedor', function(){
-   return function(contenido){
-        var resultado = [];
-        var contenidoRemoto = [];
-        /*
-        if ((resultados.length) <= 30 && (busqueda.length % 3) === 0){
-            var contenidoRemoto = buscadorRemoto(busqueda);
-            console.log(contenidoRemoto);
-            resultados = resultados.concat(contenidoRemoto);
-        };
-        */
-        if (contenido.length < 20){
-            contenidoRemoto = [{
-                "ou": "Unidad De Salud Ambiental", 
-                "givenName": "Ana del Carmen", 
-                "sn": "Hern\u00e1ndez Ramos", 
-                "o": {
-                    "nombre": "Secretar\u00eda de Estado SS Ministerio de Salud", 
-                    "id": 1038
-                }, 
-                "uid": "dlhernandez"
-        }]
-        }
-        resultado = contenido.concat(contenidoRemoto);
-        return resultado;
-    } 
 });

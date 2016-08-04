@@ -29,19 +29,40 @@ config(['$routeProvider', function($routeProvider) {
             console.log("Hay un problema con el servidor en este punto");
     });
 
-    /* Empieza el trabajo para llenar el listado bajo demanda */
-    /* Parece que al final no es dentro del filtro que eso va a a suceder alguna vez, aunque debo decir que este no es tan mala idea,
-     * así podré mantener el modelo una vez vaya hacía atrás */
+    /*
+     * Se considera que este método no esta optimizado, por tanto, ante cualquier 
+     * duda sobre el rendimiento debe considerársele responsable
+     * */
+    var busquedaItem = function(arreglo, valor){
+        for (var i = 0; i < arreglo.length; i++){
+            if (arreglo[i].uid === valor){
+                return true;
+                break;
+            };
+        };
+    };
+
+    /*
+     * La idea, por este momento, es que la búsqueda sea independiente del número de registros que se muestran
+     * La búsqueda ocurre cada dos letras, y cuidamos que no ocurra cuando el usuario va en retroceso
+     *
+     *
+     * */
     ctrl.llenaListado = function(contenido){
-        console.log("Estamos cambiando");
         if (contenido.length >= ctrl.longitudBusqueda && contenido.length > 2 && (contenido.length % 2) === 0){
-            console.log("Creo que puedo aumentar un poco eso");
+            /* Recuerda que será a contenido lo que envíes como búsqueda */
             $http({method: 'GET', url: '/api/usuario_listado_beta.json'}).
                 then(function(respuesta){
-                    console.log(respuesta.data);
-                    /* De esos momentos donde AngularJS se hace tan melindroso */
-                    var remoto = [].concat(ctrl.corpus, respuesta.data);
-                    ctrl.corpus = remoto;
+                    angular.forEach(respuesta.data, function(item){
+                        /* No creo que incumpla la regla de que justine-web debería encargarse de mostrar datos
+                         * sin tener que manipularlos, porque tampoco no podemos suponer que el backend tenga plena
+                         * conciencia de lo que estoy haciendo en este punto
+                         * */
+                        if (!busquedaItem(ctrl.corpus, item.uid)){
+                            /* No pos, creo que a esta altura ya queda claro que puedo entrar */
+                            ctrl.corpus.push(item);
+                        };
+                    }); 
                 }, function(respuesta){
                     console.log("Hay un problema con el servidor en este punto");
                 });

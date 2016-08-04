@@ -53,7 +53,7 @@ component('filaPanelUsuarios', {
             console.log(usuario);
             console.log(usuarioDetalle);
             console.log('Así es el objeto que enviaremos a la horca');
-            objetoCambio = angular.merge(usuarioDetalle, usuario);
+            var objetoCambio = angular.merge(usuarioDetalle, usuario);
             console.log(objetoCambio);
             /*
              * Acá edito efectivamente al usuario en el servidor backend mediante una peticion

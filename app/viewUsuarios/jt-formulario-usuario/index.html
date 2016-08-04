@@ -74,7 +74,7 @@
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1" for="jvs">JVS</label>
                     <jt-switch class="pure-u-1 pure-u-lg-6-24" corpus="$ctrl.usuarioDetalle.jvs.estado" actualiza="$ctrl.actualizaJtSwitch('jvs', estado)" mensajes="$ctrl.jtSwitchMensajes('jvs')"></jt-switch>
-                    <input class="pure-u-1 pure-u-lg-18-24" id="jvs" name="jvs" type="text" placeholder="JVS" ng-model="$ctrl.usuarioDetalle.jvs.valor" jvs ng-disabled="!$ctrl.usuario.jvs.estado" ng-required="$ctrl.requerirCampo('jvs')"></input>
+                    <input class="pure-u-1 pure-u-lg-18-24" id="jvs" name="jvs" type="text" placeholder="JVS" ng-model="$ctrl.usuarioDetalle.jvs.valor" jvs ng-disabled="!$ctrl.usuarioDetalle.jvs.estado" ng-required="$ctrl.requerirCampo('jvs')"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.jvs.$touched">
                         <label class="pure-u-1 jt-label-error" for="jvs" ng-show="$ctrl.formularioUsuarios.jvs.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>El campo JVS es obligatorio

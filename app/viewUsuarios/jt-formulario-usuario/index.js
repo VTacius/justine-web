@@ -126,9 +126,8 @@ component('jtFormularioUsuario', {
 
         /* Funcionalidad para cambiar el estado de jt-switch */
         ctrl.actualizaJtSwitch = function(modelo, estado) {
-            console.log(modelo);
             /* El único caso es jvs, que es un objeto donde guardamos dos datos */
-            if ('estado' in ctrl.usuarioDetalle[modelo]){
+            if (angular.isObject(ctrl.usuarioDetalle[modelo])){
                 ctrl.usuarioDetalle[modelo]['estado'] = estado;
             } else {
                 ctrl.usuarioDetalle[modelo] = estado;

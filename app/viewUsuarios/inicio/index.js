@@ -8,7 +8,7 @@ config(['$routeProvider', function($routeProvider) {
     controllerAs: '$ctrl'
   });
 }])
-.controller('UsuariosInicioController', ['$http', function($http) {
+.controller('UsuariosInicioController', ['$http', '__ENV', function($http, __ENV) {
     var ctrl = this;
 
     /* La lista de usuarios */
@@ -50,7 +50,7 @@ config(['$routeProvider', function($routeProvider) {
      * */
     ctrl.llenaListado = function(contenido){
         if (contenido.length >= ctrl.longitudBusqueda && contenido.length > 2 && (contenido.length % 2) === 0){
-            /* Recuerda que será a contenido lo que envíes como búsqueda */
+           /* Recuerda que será a contenido lo que envíes como búsqueda */
             $http({method: 'GET', url: '/api/usuario_listado_beta.json'}).
                 then(function(respuesta){
                     angular.forEach(respuesta.data, function(item){
@@ -71,7 +71,8 @@ config(['$routeProvider', function($routeProvider) {
     };
     
     /* Una listado de usuarios con datos ligeros es la forma en que creamos la tabla con elementos fila-panel  */
-    $http({method: 'GET', url: '/api/usuario_listado_alfa.json'}).
+    
+    $http({method: 'GET', url: __ENV['api']['getUsuarios']}).  
         then(function(respuesta){
             ctrl.corpus = respuesta.data;
         }, function(respuesta){

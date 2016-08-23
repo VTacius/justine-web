@@ -7,7 +7,7 @@ angular.module('justineApp.usuarios.creacion', ['ngRoute'])
     controllerAs: '$ctrl'
   });
 }])
-.controller('UsuariosCreacionController', ['$http', function($http) {
+.controller('UsuariosCreacionController', ['$http', '__ENV', function($http, __ENV) {
     var ctrl = this;
    
     /* Enviamos el formulario los datos que algunos componente requieren para mostrar datos */ 
@@ -19,7 +19,7 @@ angular.module('justineApp.usuarios.creacion', ['ngRoute'])
             ctrl.listadogrupos = respuesta.data;
         }, function(respuesta){
             console.log("Hay un problema con el servidor en este punto");
-    });
+        });
 
     /*Este es un objeto falso con tal que no joda */
     ctrl.usuario = {};
@@ -44,6 +44,17 @@ angular.module('justineApp.usuarios.creacion', ['ngRoute'])
         console.log(usuarioDetalle);
         var objetoCambio = angular.merge({}, usuario, usuarioDetalle);
         console.log(objetoCambio);
-    }
-
+        $http.post(__ENV['api']['postUsuarios'], {'corpus': objetoCambio}).
+            then(function(respuesta){ 
+                /* Acá deberíamos tratar con nuestro sistema de mensajes para el usuario
+                    Es encantador lo sencillo que debería ser
+                */
+                ctrl.mensajes = respuesta.data;
+                console.log('Hemos tenido una milagrosa creación de usuario');
+                console.log(respuesta);
+            }, function(respuesta){
+                console.log(respuesta);
+                console.log('Hay un problema con el servidor en este punto');
+            });
+        }
 }]);

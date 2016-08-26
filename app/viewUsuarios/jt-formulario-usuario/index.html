@@ -1,4 +1,4 @@
-<form class="pure-form jt-form" name="$ctrl.formularioUsuarios" ng-submit="$ctrl.enviar($ctrl.usuario, $ctrl.usuarioDetalle)" novalidate>
+<form class="pure-form jt-form" name="$ctrl.formularioUsuarios" ng-submit="$ctrl.enviar($ctrl.formularioUsuarios.$valid, $ctrl.usuario, $ctrl.usuarioDetalle)" novalidate>
     
     <fieldset>
         <legend>Datos Generales</legend>
@@ -240,12 +240,12 @@
             <div class="pure-u-1" ng-if="$ctrl.mostrarCampos('username')">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1 " for="uid">Username</label>
-                    <input class="pure-u-1" id="uid" name="uid" type="text" placeholder="Username" ng-model="$ctrl.usuario.uid" required></input>
+                    <input class="pure-u-1" id="uid" name="uid" type="text" placeholder="Username" ng-model="$ctrl.usuario.uid" required uid></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.uid.$touched">
                         <label class="pure-u-1 jt-label-error" for="uid" ng-show="$ctrl.formularioUsuarios.uid.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>Necesita configurar el nombre de usuario
                         </label> 
-                        <label class="pure-u-1 jt-label-error" for="uid" ng-show="$ctrl.formularioUsuarios.uid.$error.required">
+                        <label class="pure-u-1 jt-label-error" for="uid" ng-show="$ctrl.formularioUsuarios.uid.$error.uid">
                             <i class="fa fa-exclamation-triangle"></i>El nombre de usuario necesita ser único
                         </label> 
                     </div>
@@ -333,14 +333,16 @@
                 </div>
             </div>
 
-            <!-- Tamaño del Buzón (volumenbuzon) debería ser obligatorio, pero debe tener una selección por defecto -->
+            <!-- Tamaño del Buzón (volumenbuzon) es obligatorio, nos aseguramos que tenga configurado por defecto el menor tamaño posible -->
             <div class="pure-u-1">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1 " for="volumenbuzon">Tamaño del Buzón</label>
-                    <select class="pure-u-1" id="volumenbuzon" name="volumenbuzon" ng-model="$ctrl.usuarioDetalle.volumenBuzon">
-                        <option value="300MB" selected>300MB</option>
-                        <option value="500MB">500MB</option>
-                        <option value="750MB">750MB</option>
+                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.volumenBuzon.$touched">
+                        <label class="pure-u-1 jt-label-error" for="grupo" ng-show="$ctrl.formularioUsuarios.volumenbuzon.$error.required">
+                            <i class="fa fa-exclamation-triangle"></i>Es obligatorio selecionar un Volumen para la cuenta de usuario
+                        </label> 
+                    </div>
+                    <select class="pure-u-1" id="volumenbuzon" name="volumenbuzon" ng-model="$ctrl.usuarioDetalle.volumenBuzon" ng-options="opcion.id as opcion.name for opcion in $ctrl.volumenes" ng-required="$ctrl.requerirCampo('volumenBuzon')">
                     </select>
                 </div>
             </div>

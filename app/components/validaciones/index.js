@@ -98,4 +98,21 @@ directive('jvs', function(){
             }
         }
     }
-});
+}).
+directive('uid', ['$http', '$q', function($http, $q){
+    return {
+        require: 'ngModel',
+        link: function(scope, elm, attrs, ctrl) {
+            ctrl.$asyncValidators.uid = function(modelValue, viewValue){
+                /* Pequeña obra de arte. No entiendo como algo tan sencillo puede funcionar tan bien, y eso es un framework*/
+                return $http.get('http://dev.salud.gob.sv:6543/usuarios/' + viewValue ).then(
+                    function(respuesta){
+                        return $q.reject(false);
+                    }, function(respuesta){
+                        return $q.resolve(true);
+                    });
+            };
+            
+        }
+    }
+}]);

@@ -6,7 +6,11 @@ component('jtFormularioUsuario', {
     controller: function (__ENV, $http) {
         var ctrl = this;
         
-        /* "Declarar" el formulario en este punto permite manipularlo a este nivel. Por otra parte, parecía haber problemas con el nombre en cierto momento*/
+        /* Volumen del Buzón: Debería ser configurable desde al menos el componente superior */
+        ctrl.volumenes = [{id: 300, name: '300MB'}, {id: 500, name: '500MB'}, {id: 750, name: '750MB'}];
+    
+        /* "Declarar" el formulario en este punto permite manipularlo a este nivel. Por otra parte, parecía haber problemas 
+            con el nombre en cierto momento*/
         ctrl.formularioUsuarios = {};
 
         /* Lista de establecimientos que usamos para las sugerencias en Establecimientos (o) */
@@ -14,18 +18,23 @@ component('jtFormularioUsuario', {
 
         /* Por defecto, el componente Oficina (ou) no es obligatorio pues no sabemos si hay datos disponibles para sugerir */
         ctrl.requerirOficina = false;
+
         /* Lista de establecimientos que mostramos como sugerencias al usuario para el campo Establecimientos (o) */
         ctrl.establecimientos = [];
-        /* Acá guardamos el contenido original de ctrl.corpus recibido mediante bindings, y al que no modificamos en el trancurso de la aplicación */
+
+        /* Acá guardamos el contenido original de ctrl.corpus recibido mediante bindings, y al que no modificamos en el 
+            trancurso de la aplicación */
         ctrl.usuarioOriginal = {};
-        /* TODO: Acá guardamos el contenido original de ctrl.usuarioDetalle recibido mediante bindings, y al que no modificamos en el trancurso de la aplicación */
+        
+        /* TODO: Acá guardamos el contenido original de ctrl.usuarioDetalle recibido mediante bindings, y al que no modificamos 
+            en el trancurso de la aplicación */
         ctrl.usuarioDetalleOriginal = {};
         
         /* Inicializando el componente. Recuerda que todo $http pertenece naturalmente a este lugar */
         ctrl.$onInit = function(){
 
             /* Obtenemos los establecimiento con los que vamos a llenar las sugerencias para Establecimientos (o) */
-            $http({method: 'GET', url: '/api/helpers_establecimientos.json'}).
+            $http.get(_ENV['api']['helpers']['establecimientos']).
                 then(function(respuesta){
                     ctrl.establecimientos = respuesta.data;
                 }, function(respuesta){
@@ -60,6 +69,32 @@ component('jtFormularioUsuario', {
          *
          * /
         
+        /*
+         * Podemos llamar a esta la evaluación final de datos a enviar, después claro que han sido validados por angular
+         *
+         */
+        var validacionDatos = function(objeto){
+            var datos = {};
+            angular.forEach(objeto, function(valor, clave){
+                console.log(clave, valor, typeof(valor));
+                if (valor !== null){
+                    console.log(valor);
+                    if (angular.isObject(valor)){
+                        console.log(valor);
+                        console.log(valor.valor);
+                        if (valor.valor !== null){
+                            console.log('Vamos a configurar a este', clave, valor);                            
+                            datos[clave] = valor;
+                        };
+                    }else{
+                        console.log('Vamos a configurar a este', clave, valor);                            
+                        datos[clave] = valor;
+                    };
+                };
+            });
+            return datos;
+        };
+
         /* Usada en seleccionaEstablecimiento, llenamos las sugerencias de oficinas con las propias del establecimiento */
         var obtenerOficinas = function(oficina){
             $http({method: 'GET', url: '/api/helpers_oficinas/' + oficina + '.json'}).
@@ -75,7 +110,6 @@ component('jtFormularioUsuario', {
                 });
 
         };
-
 
         /*
          * Empezamos a trabajar en la funcionalidad de los componentes
@@ -104,9 +138,9 @@ component('jtFormularioUsuario', {
 
         /* Establecemos la obligatoriedad de los controles que no lo son siempre */
         ctrl.requerirCampo = function(campo){
-            var controlesCreacion = [];
-            var controlesEdicion = ['dui', 'nit', 'jvs', 'fecha', 'title'];
-            var controlesActualizacion = ['dui', 'nit', 'jvs', 'fecha', 'title'];
+            var controlesCreacion = ['volumenBuzon'];
+            var controlesEdicion = ['dui', 'nit', 'jvs', 'fecha', 'title', 'volumenBuzon'];
+            var controlesActualizacion = ['dui', 'nit', 'jvs', 'fecha', 'title', 'volumenBuzon'];
             if (ctrl.accion == "creacion" && ( controlesCreacion.indexOf(campo) >= 0)){
                 return true;
             }else if(ctrl.accion == "edicion" && ( controlesEdicion.indexOf(campo) >= 0)){    
@@ -152,6 +186,7 @@ component('jtFormularioUsuario', {
         /* La funcionalidad en ng-click de button cancelar */
         ctrl.reiniciar = function(){
             ctrl.formularioUsuarios.$setUntouched();
+            ctrl.formularioUsuarios.$setPristine();
             ctrl.usuario = angular.copy(ctrl.usuarioOriginal);
             ctrl.usuario = angular.copy(ctrl.usuarioDetalleOriginal);
         };
@@ -161,16 +196,29 @@ component('jtFormularioUsuario', {
          * También se ocupa de asociar ctrl.establecimiento y ctrl.oficina al objeto que enviamos como usuario
          *
          * */
-        ctrl.enviar = function(usuario, usuarioDetalle){
-            console.log('Envío desde el componente que especifica al formulario: jt-formulario-usuario');
-            usuario.o = ctrl.establecimiento;
-            /* Si oficina no es requerida por no haber sugerencias. el usuario puede escribir cualquier cosa o borrar el contenidos,
-             * así que habría que revisar directamente el control 
-             *
-             * */
-            usuario.ou = ctrl.requerirOficina ? ctrl.oficina : ctrl.formularioUsuarios.ou.$modelValue;
-            console.log(usuario);
-            ctrl.ejecucion({'corpus': usuario, 'corpusDetalle': usuarioDetalle});
+        ctrl.enviar = function(validacion, usuario, usuarioDetalle){
+            console.log('Envío desde el componente que especifica a jt-formulario-usuario');
+            var corpus = validacionDatos(usuario);
+            var corpusDetalle = validacionDatos(usuarioDetalle);
+            console.log(corpus);
+            console.log(corpusDetalle);
+            if (validacion){
+                usuario.o = ctrl.establecimiento;
+                /* 
+                 * Si oficina no es requerida por no haber sugerencias. el usuario puede escribir cualquier cosa o borrar el contenidos,
+                 * así que habría que revisar directamente el contenido del control en busca de que asignar
+                 *
+                 */
+                usuario.ou = ctrl.requerirOficina ? ctrl.oficina : ctrl.formularioUsuarios.ou.$modelValue;
+
+                /* No vamos a enviar datos vacíos a niveles superiores, ellos ya no necesitan tratar esos problemas*/
+                var corpus = validacionDatos(usuario);
+                var corpusDetalle = validacionDatos(usuario);
+                
+                ctrl.ejecucion({'corpus': corpus, 'corpusDetalle': corpusDetalle});
+            }else{
+                console.log('El componente formulario sólo envia datos cuando se esta validado');
+            }
         }
         
     },

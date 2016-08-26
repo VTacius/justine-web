@@ -72,7 +72,7 @@ config(['$routeProvider', function($routeProvider) {
     
     /* Una listado de usuarios con datos ligeros es la forma en que creamos la tabla con elementos fila-panel  */
     
-    $http({method: 'GET', url: __ENV['api']['getUsuarios']}).  
+    $http.get(__ENV['api']['usuarios']['listado']).  
         then(function(respuesta){
             ctrl.corpus = respuesta.data;
         }, function(respuesta){

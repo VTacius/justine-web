@@ -8,7 +8,9 @@ component('jtFormularioUsuario', {
         
         /* Volumen del Buzón: Debería ser configurable desde al menos el componente superior */
         ctrl.volumenes = [{id: 300, name: '300MB'}, {id: 500, name: '500MB'}, {id: 750, name: '750MB'}];
-    
+        /* Titulo en butón enviar: Debería ser configurable desde al menos el componente superior */
+        ctrl.mensajeBoton = {'creacion': 'Creación', 'edicion': 'Editar', 'actualizacion': 'Actualizacion'}
+
         /* "Declarar" el formulario en este punto permite manipularlo a este nivel. Por otra parte, parecía haber problemas 
             con el nombre en cierto momento*/
         ctrl.formularioUsuarios = {};
@@ -34,7 +36,7 @@ component('jtFormularioUsuario', {
         ctrl.$onInit = function(){
 
             /* Obtenemos los establecimiento con los que vamos a llenar las sugerencias para Establecimientos (o) */
-            $http.get(_ENV['api']['helpers']['establecimientos']).
+            $http.get(__ENV['api']['helpers']['establecimientos']).
                 then(function(respuesta){
                     ctrl.establecimientos = respuesta.data;
                 }, function(respuesta){
@@ -70,24 +72,22 @@ component('jtFormularioUsuario', {
          * /
         
         /*
-         * Podemos llamar a esta la evaluación final de datos a enviar, después claro que han sido validados por angular
+         * La cuestión es que algunos controles se empeñan en enviar datos aún cuando están vacíos, diversos motivos y tal 
          *
          */
         var validacionDatos = function(objeto){
             var datos = {};
             angular.forEach(objeto, function(valor, clave){
-                console.log(clave, valor, typeof(valor));
-                if (valor !== null){
-                    console.log(valor);
-                    if (angular.isObject(valor)){
-                        console.log(valor);
-                        console.log(valor.valor);
-                        if (valor.valor !== null){
-                            console.log('Vamos a configurar a este', clave, valor);                            
-                            datos[clave] = valor;
-                        };
-                    }else{
-                        console.log('Vamos a configurar a este', clave, valor);                            
+                if (angular.isObject(valor)){
+                    if (valor.valor !== null){
+                        datos[clave] = valor;
+                    };
+                }else if (angular.isString(valor)){
+                    if (valor !== ""){
+                        datos[clave] = valor;
+                    }
+                }else if (angular.isDefined(valor)) {
+                    if (valor !== null){
                         datos[clave] = valor;
                     };
                 };
@@ -118,11 +118,11 @@ component('jtFormularioUsuario', {
 
         /* Hay controles que se muestran según el binding accion, que especifica para que se usará el formulario */
         ctrl.mostrarCampos = function(clave){
-            if (ctrl.accion === "creacion" && (clave ==="zimbra" || clave ==="samba" || clave ==="username" )){
+            if (ctrl.accion === 'creacion' && (clave ==='zimbra' || clave ==='samba' || clave ==='username' )){
                 return true;
-            } else if (ctrl.accion === "edicion" && (clave ==="zimbra" || clave ==="samba" )){
+            } else if (ctrl.accion === 'edicion' && (clave ==='zimbra' || clave ==='samba' )){
                 return true;
-            } else if (ctrl.accion === "actualizacion" && (clave === "recuperacion")){
+            } else if (ctrl.accion === 'actualizacion' && (clave === 'recuperacion')){
                 return true;
             } else {
                 return false;
@@ -198,10 +198,6 @@ component('jtFormularioUsuario', {
          * */
         ctrl.enviar = function(validacion, usuario, usuarioDetalle){
             console.log('Envío desde el componente que especifica a jt-formulario-usuario');
-            var corpus = validacionDatos(usuario);
-            var corpusDetalle = validacionDatos(usuarioDetalle);
-            console.log(corpus);
-            console.log(corpusDetalle);
             if (validacion){
                 usuario.o = ctrl.establecimiento;
                 /* 
@@ -211,9 +207,9 @@ component('jtFormularioUsuario', {
                  */
                 usuario.ou = ctrl.requerirOficina ? ctrl.oficina : ctrl.formularioUsuarios.ou.$modelValue;
 
-                /* No vamos a enviar datos vacíos a niveles superiores, ellos ya no necesitan tratar esos problemas*/
+                /* No vamos a enviar datos vacíos a niveles superiores, ellos ya no necesitan tratar esos problemas */
                 var corpus = validacionDatos(usuario);
-                var corpusDetalle = validacionDatos(usuario);
+                var corpusDetalle = validacionDatos(usuarioDetalle);
                 
                 ctrl.ejecucion({'corpus': corpus, 'corpusDetalle': corpusDetalle});
             }else{

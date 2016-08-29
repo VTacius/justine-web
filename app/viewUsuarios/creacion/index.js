@@ -31,6 +31,7 @@ angular.module('justineApp.usuarios.creacion', ['ngRoute'])
         'volumenBuzon': 300,
         'sambaAcctFlags': false,
         'buzonStatus': false,
+        'loginShell': 'false',
         'cuentaStatus': false,
         'jvs':{
             'estado': false,
@@ -51,6 +52,8 @@ angular.module('justineApp.usuarios.creacion', ['ngRoute'])
                    Es encantador lo sencillo que debería ser
                 */
                 ctrl.mensajes = respuesta.data;
+                console.log(respuesta.data);
+                console.log(respuesta);
             }, function(respuesta){
                 console.log('Hay un problema con el servidor en este punto');
             });

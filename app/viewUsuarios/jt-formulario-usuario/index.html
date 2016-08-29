@@ -279,11 +279,11 @@
                         </div>
                     </div>
                     
-                    <!-- Shell por defecto (shell) debería ser obligatoria. TODO: Debería seleccionarse un valor por defecto -->
+                    <!-- Shell por defecto (shell) debería ser obligatoria. Nos aseguramos que tenga configurada /bin/false -->
                     <div class="pure-u-1">
                         <div class="pure-g jt-form-component">
                             <label class="pure-u-1 " for="loginshell">Shell por defecto</label>
-                            <select class="pure-u-1" id="loginshell" name="loginshell" ng-model="$ctrl.usuarioDetalle.loginShell">
+                            <select class="pure-u-1" id="loginshell" name="loginshell" ng-model="$ctrl.usuarioDetalle.loginShell" required>
                                 <option value="bash">/bin/bash</option>
                                 <option value="false">/bin/false</option>
                             </select>
@@ -354,7 +354,7 @@
         <div class="pure-u-1">
             <div class="pure-g jt-form-component">
                 <div class="pure-u-1-2 jt-contenedor-boton-izquierda">
-                    <button type="submit" class="button-success jt-boton-formulario pure-button" >Modificar!</button>
+                    <button type="submit" class="button-success jt-boton-formulario pure-button" >{{$ctrl.mensajeBoton[$ctrl.accion]}}!</button>
                 </div>
                 <div class="pure-u-1-2 jt-contenedor-boton-derecha">
                     <button type="button" class="button-warning jt-boton-formulario pure-button" ng-click="$ctrl.reiniciar()">Cancelar</button>

@@ -1,16 +1,17 @@
-<div class="pure-u-1 pure-u-md-1-3" ng-click="mostrarVentana = false"> 
+<div class="pure-u-1 pure-u-md-1-3" > 
     <div class="contenido">
-        <p><b ng-init="mostrarVentana = true">Panel 1</b> Esto es más contenido presente en una especie de variable que no alcanzo a legisar de todo modo posible, luego se encuentra en un horario que esta fuera de mis expectativas y ya no puedo adivinar en país debo estar a esta hora</p>
+        <p><b>Panel 1</b> Esto es más contenido presente en una especie de variable que no alcanzo a legisar de todo modo posible, luego se encuentra en un horario que esta fuera de mis expectativas y ya no puedo adivinar en país debo estar a esta hora</p>
     </div>
 </div>
 <div class="pure-u-1 pure-u-md-2-3">
     <div class="pure-u-1">
         <div class="pure-g">
             <div class="pure-u-1"> 
-                <jt-alerta tipo="'aviso'" cerrado="false" titulo="'El servidor acaba de devolver una mensaje con el siguiente contenido:'" mensaje="'Esto es más contenido presente en una especie de variable que no alcanzo a'"></jt-alerta>
-                <jt-alerta tipo="'aviso'" cerrado="mostrarVentana" titulo="'El servidor acaba de devolver una mensaje con el siguiente contenido:'" mensaje="'Esto es más contenido presente en una especie de variable que no alcanzo a'"></jt-alerta>
-                <jt-alerta tipo="'error'" cerrado="true" titulo="'El servidor acaba de devolver una mensaje con el siguiente contenido:'" mensaje="'El usuario acaba de ser creado con los datos recibidos'" codigo="'1324'"></jt-alerta>
-                <jt-alerta tipo="'error'" titulo="'El servidor acaba de devolver una mensaje con el siguiente contenido:'"></jt-alerta>
+                <jt-alerta tipo="'aviso'" codigo="'200'" titulo="'Acción Realizada'" mensaje="'Esto es más contenido presente en una especie de variable que no alcanzo a'"></jt-alerta>
+                <jt-alerta tipo="'aviso'" codigo="'201'" titulo="'Creación de usuario exitosa'" mensaje="'El usuario opineda se creo con éxito'"></jt-alerta>
+                <jt-alerta tipo="'error'" codigo="'404'" titulo="'La última operación terminó con problemas'" mensaje="'El usuario acaba de ser creado con los datos recibidos'"></jt-alerta>
+                <jt-alerta tipo="'error'" codigo="'403'" titulo="'El servidor acaba de devolver una mensaje con el siguiente contenido:'"></jt-alerta>
+                <jt-alerta tipo="'error'" codigo="'-1'" titulo="'El servidor acaba de devolver una mensaje con el siguiente contenido:'"></jt-alerta>
                 <div class="contenido">
                     <form class="pure-form jt-form">
                         <div class="pure-u-1 jt-form-component">

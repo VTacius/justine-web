@@ -11,15 +11,21 @@ angular.module('justineApp.usuarios.creacion', ['ngRoute'])
 .controller('UsuariosCreacionController', ['$http', '__ENV', function($http, __ENV) {
     var ctrl = this;
    
+    /* Configuro al elemento jt-alerta. TODO: Sigo sin resolver si esta vez no mostraremos más de uno */
+    /* TODO: Sigo sin resolver en que momento evito la repetición del código de este método */
+    ctrl.alerta = {};
+
     /* Enviamos el formulario los datos que algunos componente requieren para mostrar datos */ 
     ctrl.listadogrupos = [];
     
-    /* Obtener el listado de grupos en este punto debería evitar hacerlo muchas veces, provee por otro lado una forma lógica de refresco  */
+    /* En este punto, obtener acá el listado de grupos implica que si venimos de crear uno, la lista lo va a incluir. */
     $http({method: 'GET', url: __ENV['api']['grupos']['listado']}).
        then(function(respuesta){
             ctrl.listadogrupos = respuesta.data;
         }, function(respuesta){
-            console.log("Hay un problema con el servidor en este punto");
+            ctrl.alerta.titulo = 'El servidor devuelve un mensaje de error:'
+            ctrl.alerta.codigo = respuesta.status
+            ctrl.alerta.tipo = 'error'
         });
 
     /*Este es un objeto falso con tal que no joda */
@@ -48,14 +54,18 @@ angular.module('justineApp.usuarios.creacion', ['ngRoute'])
         
         $http.post(__ENV['api']['usuarios']['creacion'], {'corpus': objetoCambio}).
             then(function(respuesta){ 
-                /* Acá deberíamos tratar con nuestro sistema de mensajes para el usuario
-                   Es encantador lo sencillo que debería ser
-                */
+                /* Creamos al usuario correctamente. Podemos mostrar una alerta saludable */
                 ctrl.mensajes = respuesta.data;
                 console.log(respuesta.data);
-                console.log(respuesta);
+                ctrl.alerta.codigo = respuesta.status; 
+                ctrl.alerta.tipo = 'aviso';
+                ctrl.alerta.titulo = "Creación de usuario satisfactoria";
+                ctrl.alerta.mensaje = "Usuario tal y tal creado";
             }, function(respuesta){
-                console.log('Hay un problema con el servidor en este punto');
+                ctrl.alerta.codigo = respuesta.status; 
+                ctrl.alerta.tipo = 'error';
+                ctrl.alerta.titulo = "El servidor devuelve un mensaje de error";
+                ctrl.alerta.mensaje = null;
             });
     }
 }]);

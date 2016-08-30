@@ -11,6 +11,9 @@ component('jtFormularioUsuario', {
         /* Titulo en butón enviar: Debería ser configurable desde al menos el componente superior */
         ctrl.mensajeBoton = {'creacion': 'Creación', 'edicion': 'Editar', 'actualizacion': 'Actualizacion'}
 
+        /* Configuro al elemento jt-alerta. TODO: Sigo sin resolver si esta vez no mostraremos más de uno */
+        ctrl.alerta = {};
+
         /* "Declarar" el formulario en este punto permite manipularlo a este nivel. Por otra parte, parecía haber problemas 
             con el nombre en cierto momento*/
         ctrl.formularioUsuarios = {};
@@ -40,9 +43,10 @@ component('jtFormularioUsuario', {
                 then(function(respuesta){
                     ctrl.establecimientos = respuesta.data;
                 }, function(respuesta){
-                    console.log("Hay un problema con el servidor en este punto");
-                });
-
+                    ctrl.alerta.titulo = 'El servidor acaba de devolver una mensaje con el siguiente contenido:';
+                    ctrl.alerta.codigo = respuesta.status;
+                    ctrl.alerta.tipo = 'error';
+                }); 
         };
 
         /* Capturo mejor los cambios en los datos que componentes superiores nos envían mediante bindings */
@@ -105,7 +109,6 @@ component('jtFormularioUsuario', {
                 }, function(respuesta){
                     /* Hubo un error, creo que algo podríamos hacer en este punto */
                     ctrl.requerirOficina = false;
-                    /* Que de hecho no será tan necesario cuando esto este bien hecho */
                     ctrl.oficinas = [];
                 });
 

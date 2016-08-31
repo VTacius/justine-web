@@ -3,8 +3,10 @@
 angular.module('justineApp').
 component('jtAlerta', {
     templateUrl: 'components/jt-alertas/index.html',
-    controller: function(){
+    controller: function(__ENV){
         var ctrl = this;
+
+        ctrl.mensajes = __ENV['jtAlerta'];
        
         /* Asociada al botoncito de cerrado */ 
         ctrl.cerrar = function(){
@@ -25,10 +27,10 @@ component('jtAlerta', {
                 que igual no es su culpa pero es mejor que el lo diga, sin embargo, por el momento, ocurre sólo en un error 404 
                 que no puedo controlar aún en el backend
             */
-            if (codigo == -1) {
-                ctrl.jtTitulo = 'El cliente web presenta un problema';
-                ctrl.jtMensaje = 'Existe un problema de comunicación con el servidor remoto';
-            }else{
+            if (codigo in ctrl.mensajes) {
+                ctrl.jtTitulo = titulo;
+                ctrl.jtMensaje = ctrl.mensajes[codigo]['mensaje'];
+            } else {
                 ctrl.jtTitulo = titulo;
                 ctrl.jtMensaje = mensaje;
             };

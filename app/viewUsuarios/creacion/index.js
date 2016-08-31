@@ -12,7 +12,6 @@ angular.module('justineApp.usuarios.creacion', ['ngRoute'])
     var ctrl = this;
    
     /* Configuro al elemento jt-alerta. TODO: Sigo sin resolver si esta vez no mostraremos más de uno */
-    /* TODO: Sigo sin resolver en que momento evito la repetición del código de este método */
     ctrl.alerta = {};
 
     /* Enviamos el formulario los datos que algunos componente requieren para mostrar datos */ 
@@ -24,6 +23,7 @@ angular.module('justineApp.usuarios.creacion', ['ngRoute'])
             ctrl.listadogrupos = respuesta.data;
         }, function(respuesta){
             ctrl.alerta.titulo = 'El servidor devuelve un mensaje de error:'
+            ctrl.alerta.mensaje = 'El usuarios tal y tal ha sido actualizado con éxito';
             ctrl.alerta.codigo = respuesta.status
             ctrl.alerta.tipo = 'error'
         });

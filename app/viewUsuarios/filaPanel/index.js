@@ -6,6 +6,9 @@ component('filaPanelUsuarios', {
 
         var ctrl = this;
         
+        /* Configuro al elemento jt-alerta. TODO: Sigo sin resolver si esta vez no mostraremos más de uno */
+        ctrl.alerta = {};
+    
         /*Señala al panel que debe estar activo */
         ctrl.panelActivo = 0;
 
@@ -32,20 +35,33 @@ component('filaPanelUsuarios', {
 
         /* Edito la entrada. Me aseguro que esos detalles sean actualizados en otros componentes */
         ctrl.editarFila = function(uid, usuario, usuarioDetalle){
-            /* Subo hacia inicio, aunque en realidad solo necesito los datos ligeros de usuario y no de usuarioDetalle */
-            ctrl.editarEntrada({'entrada': usuario});
             var objetoCambio = {'corpus': angular.merge(usuarioDetalle, usuario)};
+            console.log(objetoCambio);
             /*
-             * Acá edito efectivamente al usuario en el servidor backend mediante una peticion
-             * backend. Espero que recuerdes que acá hace falta la información de detalle usuario
+             * Acá edito efectivamente al usuario en el servidor backend mediante una peticion backend. 
              *
              * */
             $http.put(__ENV['api']['usuarios']['actualizacion'] + uid, objetoCambio).
                 then(function(respuesta){
                     console.log(respuesta);
+                    ctrl.alerta.titulo = 'Actualización ejecutada';
+                    ctrl.alerta.mensaje = 'El usuarios tal y tal ha sido actualizado con éxito';
+                    ctrl.alerta.codigo = respuesta.status;
+                    ctrl.alerta.tipo = 'aviso';
+                    
                 }, function(respuesta){
                     console.log(respuesta);
+                    ctrl.alerta.titulo = 'Error actualizando usuario'
+                    ctrl.alerta.mensaje = null;
+                    ctrl.alerta.codigo = respuesta.status;
+                    ctrl.alerta.tipo = 'error';
                 })
+            
+            /* 
+             * Subo hacia componente superior inicio, bastan los los datos ligeros de usuario y no de usuarioDetalle 
+             * 
+             * */
+            ctrl.editarEntrada({'entrada': usuario});
         };
 
         /* Función intermedia entre el componente borrar-usuarios y el controlador inicio  */

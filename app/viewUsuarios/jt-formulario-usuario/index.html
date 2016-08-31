@@ -285,12 +285,16 @@
                         <div class="pure-g jt-form-component">
                             <label class="pure-u-1 " for="loginshell">Shell por defecto</label>
                             <select class="pure-u-1" id="loginshell" name="loginshell" ng-model="$ctrl.usuarioDetalle.loginShell" required>
+                                <option value="">--Escoja una opción--</option>
                                 <option value="bash">/bin/bash</option>
                                 <option value="false">/bin/false</option>
                             </select>
                             <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.loginshell.$touched">
                                 <label class="pure-u-1 jt-label-error" for="loginshell" ng-show="$ctrl.formularioUsuarios.loginshell.$error.required">
                                     <i class="fa fa-exclamation-triangle"></i>El campo Shell es obligatorio
+                                </label> 
+                                <label class="pure-u-1 jt-label-error" for="loginshell" ng-show="$ctrl.formularioUsuarios.loginshell.$error.integer">
+                                    <i class="fa fa-exclamation-triangle"></i>Revise el campo seleccionado
                                 </label> 
                             </div>
                         </div>

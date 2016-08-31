@@ -71,7 +71,7 @@ config(['$routeProvider', function($routeProvider) {
     };
     
     /* Una listado de usuarios con datos ligeros es la forma en que creamos la tabla con elementos fila-panel  */
-    /* TODO: Este no es el mejor lugar para $http, por ahora ni modo */
+    /* TODO: Este no es el mejor lugar para $http, es necesario revisar documentacion de controladores */
     $http.get(__ENV['api']['usuarios']['listado']).  
         then(function(respuesta){
             ctrl.corpus = respuesta.data;

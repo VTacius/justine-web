@@ -54,8 +54,39 @@ component('jtFormularioUsuario', {
             /* Obtenemos usuario desde componente padre, mediante el binding corpus */
             ctrl.usuario = ctrl.corpus; 
             ctrl.usuarioDetalle = ctrl.corpusDetalle;
-           
-           /* Es capaz de almacenar el objecto seleccionado en Establecimiento (o), o de inicializar su valor en el formulario */
+          
+             
+            /*TODO: Aunque sea de hecho un caso aislado, necesitamos crear un filtro para estas cosas */ 
+            /* Si el campo grupo no es de un entero, nada, borro la clave */
+            /*if ('grupo' in ctrl.usuarioDetalle){
+                var grupo = parseInt(ctrl.usuarioDetalle.grupo)
+                if (grupo){
+                    ctrl.usuarioDetalle['grupo'] = grupo;
+                    console.log(grupo);
+                } else {
+                    console.log('Borraré', ctrl.usuarioDetalle['grupo']);
+                    delete ctrl.usuarioDetalle['grupo'];
+                } 
+            };
+            */
+            /* Si algunos de los grupos adicionales no es un enteros, borro la clave completa */ 
+            /*if ('grupos' in ctrl.usuarioDetalle){
+                var grupos = [];
+                angular.forEach(ctrl.usuarioDetalle.grupos, function(valor, clave){
+                    var grupo = parseInt(valor)
+                    if (grupo){
+                        grupos.push(grupo);
+                    }  
+                });
+                if (grupos.length === 0){
+                    delete ctrl.usuarioDetalle['grupos'];
+                }else{
+                    ctrl.usuarioDetalle['grupos'] = grupos;
+                    console.log(grupos);
+                };
+            };*/
+            
+            /* Es capaz de almacenar el objecto seleccionado en Establecimiento (o), o de inicializar su valor en el formulario */
             ctrl.establecimiento = angular.copy(ctrl.usuario.o); 
 
             /* Convertimos el atributo fecha a algo que el input="date" sea capaz de entender 
@@ -66,7 +97,12 @@ component('jtFormularioUsuario', {
             /* Inicializa | almacena el objeto seleccionado en Oficina (ou) */
             ctrl.oficina =  angular.copy(ctrl.usuario.ou);
         
-            /* Almacenamos el modelo, así podremos resetear el formulario de ser necesario */
+            /* 
+             * Almacenamos el modelo, así podremos resetear el formulario de ser necesario
+             * Almacenamos después de una posible validación de datos  
+             *
+             * */
+            /* TODO: ¿Acaso no estamos guardando usuario detalle */
             ctrl.usuarioOriginal = angular.copy(ctrl.usuario);
         }
        
@@ -77,6 +113,7 @@ component('jtFormularioUsuario', {
         
         /*
          * La cuestión es que algunos controles se empeñan en enviar datos aún cuando están vacíos, diversos motivos y tal 
+         * TODO: Acá estamos viendo otro filtro bien bonito
          *
          */
         var validacionDatos = function(objeto){

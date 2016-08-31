@@ -945,7 +945,7 @@ label.jt-switch {
     padding-top: 0.5em;
 }
 
-.alerta span{
+.alerta span.fa {
     cursor: pointer;
     float: right;
     width: 1.5em;

@@ -13,7 +13,7 @@
         <tbody>
             <tr ng-repeat="entrada in $ctrl.corpus | jtBuscador:$ctrl.filtroUsuario as contenido">
                 <td>
-	            <fila-panel-usuarios usuario="entrada" 
+	                <fila-panel-usuarios usuario="entrada" 
                                          grupos="$ctrl.listadogrupos" 
                                          editar-usuario="$ctrl.editarEntradaListado(entrada)" 
                                          borrar-entrada="$ctrl.borrarEntradaListado(entrada)">

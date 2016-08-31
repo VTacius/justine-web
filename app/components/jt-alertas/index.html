@@ -1,5 +1,5 @@
 <div class="alerta alerta-{{$ctrl.tipo}}" ng-if="$ctrl.mostrar">
     <span class="fa fa-close" ng-click="$ctrl.cerrar()"></span>
-    <h4>{{$ctrl.codigo}}: {{$ctrl.jtTitulo}}:</h4>
+    <h4>{{$ctrl.codigo}}: {{$ctrl.jtTitulo}}<span ng-show="$ctrl.jtMensaje">:</span></h4>
     <p ng-if="$ctrl.jtMensaje">{{$ctrl.jtMensaje}}</p>
 </div>

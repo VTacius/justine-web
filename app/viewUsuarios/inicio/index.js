@@ -22,7 +22,7 @@ config(['$routeProvider', function($routeProvider) {
     ctrl.longitudBusqueda = 0;
 
     /* Obtener el listado de grupos en este punto debería evitar hacerlo muchas veces, provee por otro lado una forma lógica de refresco  */
-    $http({method: 'GET', url: '/api/helpers_grupos.json'}).
+    $http.get(__ENV['api']['grupos']['listado']).
        then(function(respuesta){
             ctrl.listadogrupos = respuesta.data;
         }, function(respuesta){
@@ -71,7 +71,7 @@ config(['$routeProvider', function($routeProvider) {
     };
     
     /* Una listado de usuarios con datos ligeros es la forma en que creamos la tabla con elementos fila-panel  */
-    
+    /* TODO: Este no es el mejor lugar para $http, por ahora ni modo */
     $http.get(__ENV['api']['usuarios']['listado']).  
         then(function(respuesta){
             ctrl.corpus = respuesta.data;
@@ -94,11 +94,13 @@ config(['$routeProvider', function($routeProvider) {
 
     /* Operación edición sube a este punto para que los cambios hechos sean accesibles a otros componentes que usan la información del usuario
      * que tomó de la lista o de la que se corresponde con detalleUsuario  
+     * pero la operación con la API debió realizarse más abajo
      *
      * */
     ctrl.editarEntradaListado = function(detalle){
         console.log("Llegamos tan arriba editando");
         console.log(detalle);
+        
         var indice = ctrl.corpus.indexOf(detalle)
         if (indice >=0){
             ctrl.corpus[indice] = detalle;

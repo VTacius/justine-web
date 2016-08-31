@@ -214,7 +214,7 @@ component('jtFormularioUsuario', {
                 var corpus = validacionDatos(usuario);
                 var corpusDetalle = validacionDatos(usuarioDetalle);
                 
-                ctrl.ejecucion({'corpus': corpus, 'corpusDetalle': corpusDetalle});
+                ctrl.ejecucion({'uid': usuario.uid, 'corpus': corpus, 'corpusDetalle': corpusDetalle});
             }else{
                 console.log('El componente formulario sólo envia datos cuando se esta validado');
             }

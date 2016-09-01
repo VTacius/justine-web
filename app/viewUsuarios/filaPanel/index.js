@@ -24,11 +24,14 @@ component('filaPanelUsuarios', {
             $http.get(__ENV['api']['usuarios']['detalle'] + usuario ).
                 then(function(respuesta){
                     ctrl.usuarioDetalle = respuesta.data.mensaje;
-                    console.log(ctrl.usuarioDetalle);
                     /* Configuro el panel visible  */
                     ctrl.panelActivo = panel;
                 }, function(respuesta){
                     console.log(respuesta);
+                    ctrl.alerta.titulo = 'Error obteniendo datos de usuario';
+                    ctrl.alerta.mensaje = null;
+                    ctrl.alerta.codigo = respuesta.status;
+                    ctrl.alerta.tipo = 'error';
                 });
     
         };
@@ -36,14 +39,12 @@ component('filaPanelUsuarios', {
         /* Edito la entrada. Me aseguro que esos detalles sean actualizados en otros componentes */
         ctrl.editarFila = function(uid, usuario, usuarioDetalle){
             var objetoCambio = {'corpus': angular.merge(usuarioDetalle, usuario)};
-            console.log(objetoCambio);
             /*
              * Acá edito efectivamente al usuario en el servidor backend mediante una peticion backend. 
              *
              * */
             $http.put(__ENV['api']['usuarios']['actualizacion'] + uid, objetoCambio).
                 then(function(respuesta){
-                    console.log(respuesta);
                     ctrl.alerta.titulo = 'Actualización ejecutada';
                     ctrl.alerta.mensaje = 'El usuarios tal y tal ha sido actualizado con éxito';
                     ctrl.alerta.codigo = respuesta.status;

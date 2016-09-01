@@ -26,7 +26,11 @@ config(['$routeProvider', function($routeProvider) {
        then(function(respuesta){
             ctrl.listadogrupos = respuesta.data;
         }, function(respuesta){
-            console.log("Hay un problema con el servidor en este punto");
+            console.log(respuesta);
+            ctrl.alerta.titulo = 'Error obteniendo listado de usuarios';
+            ctrl.alerta.mensaje = null;
+            ctrl.alerta.codigo = respuesta.status;
+            ctrl.alerta.tipo = 'error';
     });
 
     /*
@@ -64,7 +68,11 @@ config(['$routeProvider', function($routeProvider) {
                         };
                     }); 
                 }, function(respuesta){
-                    console.log("Hay un problema con el servidor en este punto");
+                    console.log(respuesta);
+                    ctrl.alerta.titulo = 'Error obteniendo listado de usuarios';
+                    ctrl.alerta.mensaje = null;
+                    ctrl.alerta.codigo = respuesta.status;
+                    ctrl.alerta.tipo = 'error';
                 });
         };
         ctrl.longitudBusqueda = angular.copy(contenido.length);
@@ -76,7 +84,11 @@ config(['$routeProvider', function($routeProvider) {
         then(function(respuesta){
             ctrl.corpus = respuesta.data;
         }, function(respuesta){
-            console.log("Hay un problema con el servidor en este punto");
+            console.log(respuesta);
+            ctrl.alerta.titulo = 'Error obteniendo listado de usuarios';
+            ctrl.alerta.mensaje = null;
+            ctrl.alerta.codigo = respuesta.status;
+            ctrl.alerta.tipo = 'error';
         });
 
     /* Operación borrado sube hasta este punto para asegurar que la entrada será borrada en tiempo real de la lista 
@@ -98,9 +110,6 @@ config(['$routeProvider', function($routeProvider) {
      *
      * */
     ctrl.editarEntradaListado = function(detalle){
-        console.log("Llegamos tan arriba editando");
-        console.log(detalle);
-        
         var indice = ctrl.corpus.indexOf(detalle)
         if (indice >=0){
             ctrl.corpus[indice] = detalle;

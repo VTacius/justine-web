@@ -14,24 +14,20 @@ component('jtFormularioUsuario', {
         /* Configuro al elemento jt-alerta. TODO: Sigo sin resolver si esta vez no mostraremos más de uno */
         ctrl.alerta = {};
 
-        /* "Declarar" el formulario en este punto permite manipularlo a este nivel. Por otra parte, parecía haber problemas 
-            con el nombre en cierto momento*/
+        /* Hacemos que el formulario este disponible en este ambito */
         ctrl.formularioUsuarios = {};
-
-        /* Lista de establecimientos que usamos para las sugerencias en Establecimientos (o) */
-        ctrl.establecimientos = [];
 
         /* Por defecto, el componente Oficina (ou) no es obligatorio pues no sabemos si hay datos disponibles para sugerir */
         ctrl.requerirOficina = false;
 
-        /* Lista de establecimientos que mostramos como sugerencias al usuario para el campo Establecimientos (o) */
+        /* Lista de establecimientos que usamos para las sugerencias en Establecimientos (o) */
         ctrl.establecimientos = [];
 
         /* Acá guardamos el contenido original de ctrl.corpus recibido mediante bindings, y al que no modificamos en el 
             trancurso de la aplicación */
         ctrl.usuarioOriginal = {};
         
-        /* TODO: Acá guardamos el contenido original de ctrl.usuarioDetalle recibido mediante bindings, y al que no modificamos 
+        /* Acá guardamos el contenido original de ctrl.usuarioDetalle recibido mediante bindings, y al que no modificamos 
             en el trancurso de la aplicación */
         ctrl.usuarioDetalleOriginal = {};
         
@@ -43,7 +39,9 @@ component('jtFormularioUsuario', {
                 then(function(respuesta){
                     ctrl.establecimientos = respuesta.data;
                 }, function(respuesta){
+                    console.log(respuesta);
                     ctrl.alerta.titulo = 'El servidor acaba de devolver una mensaje con el siguiente contenido:';
+                    ctrl.alerta.mensaje = null;
                     ctrl.alerta.codigo = respuesta.status;
                     ctrl.alerta.tipo = 'error';
                 }); 
@@ -55,37 +53,6 @@ component('jtFormularioUsuario', {
             ctrl.usuario = ctrl.corpus; 
             ctrl.usuarioDetalle = ctrl.corpusDetalle;
           
-             
-            /*TODO: Aunque sea de hecho un caso aislado, necesitamos crear un filtro para estas cosas */ 
-            /* Si el campo grupo no es de un entero, nada, borro la clave */
-            /*if ('grupo' in ctrl.usuarioDetalle){
-                var grupo = parseInt(ctrl.usuarioDetalle.grupo)
-                if (grupo){
-                    ctrl.usuarioDetalle['grupo'] = grupo;
-                    console.log(grupo);
-                } else {
-                    console.log('Borraré', ctrl.usuarioDetalle['grupo']);
-                    delete ctrl.usuarioDetalle['grupo'];
-                } 
-            };
-            */
-            /* Si algunos de los grupos adicionales no es un enteros, borro la clave completa */ 
-            /*if ('grupos' in ctrl.usuarioDetalle){
-                var grupos = [];
-                angular.forEach(ctrl.usuarioDetalle.grupos, function(valor, clave){
-                    var grupo = parseInt(valor)
-                    if (grupo){
-                        grupos.push(grupo);
-                    }  
-                });
-                if (grupos.length === 0){
-                    delete ctrl.usuarioDetalle['grupos'];
-                }else{
-                    ctrl.usuarioDetalle['grupos'] = grupos;
-                    console.log(grupos);
-                };
-            };*/
-            
             /* Es capaz de almacenar el objecto seleccionado en Establecimiento (o), o de inicializar su valor en el formulario */
             ctrl.establecimiento = angular.copy(ctrl.usuario.o); 
 
@@ -102,8 +69,8 @@ component('jtFormularioUsuario', {
              * Almacenamos después de una posible validación de datos  
              *
              * */
-            /* TODO: ¿Acaso no estamos guardando usuario detalle */
             ctrl.usuarioOriginal = angular.copy(ctrl.usuario);
+            ctrl.usuarioDetalleOriginal = angular.copy(ctrl.usuarioDetalle);
         }
        
         /*
@@ -144,7 +111,7 @@ component('jtFormularioUsuario', {
                     /* Sólo si hay datos de la oficina tiene sentido que llenar el componente sea obligatorio */
                     ctrl.requerirOficina = (ctrl.oficinas.length > 0) ? true : false;
                 }, function(respuesta){
-                    /* Hubo un error, creo que algo podríamos hacer en este punto */
+                    console.log(respuesta);
                     ctrl.requerirOficina = false;
                     ctrl.oficinas = [];
                 });
@@ -169,22 +136,15 @@ component('jtFormularioUsuario', {
             }
         }
        
-        /* En edicion, un campo siempre es requerido cuando antes alguien ya le había asignado un valor.
-         * Reviso contra usuarioOriginal porque no lo hemos manipulado de ninguna forma en el curso de toda la aplicación
-         * */
-        var campoPreviamenteConfigurado = function(campo){
-            return ctrl.usuarioDetalleOriginal[campo] ? true : false;
-        };
-
         /* Establecemos la obligatoriedad de los controles que no lo son siempre */
         ctrl.requerirCampo = function(campo){
-            var controlesCreacion = ['volumenBuzon'];
-            var controlesEdicion = ['dui', 'nit', 'jvs', 'fecha', 'title', 'volumenBuzon'];
-            var controlesActualizacion = ['dui', 'nit', 'jvs', 'fecha', 'title', 'volumenBuzon'];
+            var controlesCreacion = [];
+            var controlesEdicion = ['dui', 'nit', 'jvs', 'fecha', 'title', 'telephoneNumber'];
+            var controlesActualizacion = ['dui', 'nit', 'jvs', 'fecha', 'title', 'telephoneNumber'];
             if (ctrl.accion == "creacion" && ( controlesCreacion.indexOf(campo) >= 0)){
                 return true;
             }else if(ctrl.accion == "edicion" && ( controlesEdicion.indexOf(campo) >= 0)){    
-                return campoPreviamenteConfigurado(campo);
+                return angular.isDefined(ctrl.usuarioDetalleOriginal[campo]);
             }else if(ctrl.accion == "actualizacion" && ( controlesActualizacion.indexOf(campo) >= 0)){
                 return true;
             };
@@ -228,7 +188,7 @@ component('jtFormularioUsuario', {
             ctrl.formularioUsuarios.$setUntouched();
             ctrl.formularioUsuarios.$setPristine();
             ctrl.usuario = angular.copy(ctrl.usuarioOriginal);
-            ctrl.usuario = angular.copy(ctrl.usuarioDetalleOriginal);
+            ctrl.usuarioDetalle = angular.copy(ctrl.usuarioDetalleOriginal);
         };
 
         /* 
@@ -237,8 +197,8 @@ component('jtFormularioUsuario', {
          *
          * */
         ctrl.enviar = function(validacion, usuario, usuarioDetalle){
-            console.log('Envío desde el componente que especifica a jt-formulario-usuario');
             if (validacion){
+                console.log('Estoy a punto de enviar una actualización');
                 usuario.o = ctrl.establecimiento;
                 /* 
                  * Si oficina no es requerida por no haber sugerencias. el usuario puede escribir cualquier cosa o borrar el contenidos,
@@ -253,8 +213,9 @@ component('jtFormularioUsuario', {
                 
                 ctrl.ejecucion({'uid': usuario.uid, 'corpus': corpus, 'corpusDetalle': corpusDetalle});
             }else{
-                console.log('El componente formulario sólo envia datos cuando se esta validado');
+                console.log('No esta debidamente validado');
             }
+            return;
         }
         
     },

@@ -12,7 +12,7 @@
                     <input class="pure-u-1" id="givenname" name="givenname" type="text" placeholder="Nombre" ng-model="$ctrl.usuario.givenName" required sustantivos></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.givenname.$touched">
                         <label class="pure-u-1 jt-label-error" for="givenname" ng-show="$ctrl.formularioUsuarios.givenname.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>El campo Nombres es obligatorio
+                            <i class="fa fa-exclamation-triangle"></i>Debe configurar al menos un nombre
                         </label> 
                         <label class="pure-u-1 jt-label-error" for="givenname" ng-show="$ctrl.formularioUsuarios.givenname.$error.sustantivos">
                             <i class="fa fa-exclamation-triangle"></i>Revise el nombre ingresado
@@ -28,7 +28,7 @@
                     <input class="pure-u-1" id="sn" name="sn" type="text" placeholder="Apellidos" ng-model="$ctrl.usuario.sn" required sustantivos></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.sn.$touched">
                         <label class="pure-u-1 jt-label-error" for="sn" ng-show="$ctrl.formularioUsuarios.sn.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>El campo Apellidos es obligatorio
+                            <i class="fa fa-exclamation-triangle"></i>Debe configurar al menos un apellido
                         </label> 
                         <label class="pure-u-1 jt-label-error" for="sn" ng-show="$ctrl.formularioUsuarios.sn.$error.sustantivos">
                             <i class="fa fa-exclamation-triangle"></i>Revise los apellidos ingresados
@@ -44,7 +44,7 @@
                     <input class="pure-u-1" id="dui" name="dui" type="text" placeholder="DUI" ng-model="$ctrl.usuarioDetalle.dui" dui ng-required="$ctrl.requerirCampo('dui')"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.dui.$touched">
                         <label class="pure-u-1 jt-label-error" for="dui" ng-show="$ctrl.formularioUsuarios.dui.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>El campo DUI es obligatorio
+                            <i class="fa fa-exclamation-triangle"></i>Debe configurar el número de DUI 
                         </label> 
                         <label class="pure-u-1 jt-label-error" for="dui" ng-show="$ctrl.formularioUsuarios.dui.$error.dui">
                             <i class="fa fa-exclamation-triangle"></i>Revise el número de DUI ingresado
@@ -60,7 +60,7 @@
                     <input class="pure-u-1" id="nit" name="nit" type="text" placeholder="NIT" ng-model="$ctrl.usuarioDetalle.nit" nit ng-required="$ctrl.requerirCampo('nit')"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.nit.$touched">
                         <label class="pure-u-1 jt-label-error" for="nit" ng-show="$ctrl.formularioUsuarios.nit.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>El campo NIT es obligatorio
+                            <i class="fa fa-exclamation-triangle"></i>Debe configurar el número de NIT
                         </label>
                         <label class="pure-u-1 jt-label-error" for="nit" ng-show="$ctrl.formularioUsuarios.nit.$error.nit">
                             <i class="fa fa-exclamation-triangle"></i>Revise el número de NIT ingresado
@@ -78,7 +78,7 @@
                     <input class="pure-u-1 pure-u-lg-18-24" id="jvs" name="jvs" type="text" placeholder="JVS" ng-model="$ctrl.usuarioDetalle.jvs.valor" jvs ng-disabled="!$ctrl.usuarioDetalle.jvs.estado" ng-required="$ctrl.requerirCampo('jvs')"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.jvs.$touched">
                         <label class="pure-u-1 jt-label-error" for="jvs" ng-show="$ctrl.formularioUsuarios.jvs.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>El campo JVS es obligatorio
+                            <i class="fa fa-exclamation-triangle"></i>Debe configurar a JVS
                         </label> 
                         <label class="pure-u-1 jt-label-error" for="jvs" ng-show="$ctrl.formularioUsuarios.jvs.$error.jvs">
                             <i class="fa fa-exclamation-triangle"></i>Revise el JVS ingresado
@@ -94,7 +94,7 @@
                     <input class="pure-u-1" id="fecha" name="fecha" type="date" placeholder="Fecha de Nacimiento" ng-model="$ctrl.usuarioDetalle.fecha" ng-required="$ctrl.requerirCampo('fecha')"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.fecha.$touched">
                         <label class="pure-u-1 jt-label-error" for="fecha" ng-show="$ctrl.formularioUsuarios.fecha.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>El campo Fecha es obligatorio
+                            <i class="fa fa-exclamation-triangle"></i>Debe configurar un campo fecha
                         </label> 
                         <label class="pure-u-1 jt-label-error" for="fecha" ng-show="$ctrl.formularioUsuarios.fecha.$error.date">
                             <i class="fa fa-exclamation-triangle"></i>Revise su campo fecha
@@ -131,7 +131,7 @@
                         initial-value="$ctrl.establecimiento"></div>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.o.$touched">
                         <label class="pure-u-1 jt-label-error" for="o" ng-show="$ctrl.formularioUsuarios.o.$invalid">
-                            <i class="fa fa-exclamation-triangle"></i>El campo Establecimiento es obligatorio
+                            <i class="fa fa-exclamation-triangle"></i>Debe configurar a establecimiento
                         </label> 
                     </div>
                 </div>
@@ -158,7 +158,7 @@
                         initial-value="$ctrl.oficina"></div>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.ou.$touched">
                         <label class="pure-u-1 jt-label-error" for="ou" ng-show="$ctrl.formularioUsuarios.ou.$invalid">
-                            <i class="fa fa-exclamation-triangle"></i>El campo Oficina es obligatorio
+                            <i class="fa fa-exclamation-triangle"></i>Debe configurar la oficina
                         </label> 
                     </div>
                 </div>
@@ -171,7 +171,7 @@
                     <input class="pure-u-1 " id="title" name="title" type="text" placeholder="Cargo" ng-model="$ctrl.usuarioDetalle.title" sustantivos ng-required="$ctrl.requerirCampo('title')"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.title.$touched">
                         <label class="pure-u-1 jt-label-error" for="title" ng-show="$ctrl.formularioUsuarios.title.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>El campo Cargo es obligatorio
+                            <i class="fa fa-exclamation-triangle"></i>Debe configurar el cargo
                         </label> 
                         <label class="pure-u-1 jt-label-error" for="title" ng-show="$ctrl.formularioUsuarios.title.$error.sustantivos">
                             <i class="fa fa-exclamation-triangle"></i>Revise el cargo ingresado
@@ -184,10 +184,10 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1 " for="telephonenumber">Teléfono</label>
-                    <input class="pure-u-1 " id="telephonenumber" name="telephonenumber" type="text" placeholder="Teléfono" ng-model="$ctrl.usuarioDetalle.telephoneNumber" telefono ng-required="$ctrl.requerirCampo('telephonenumber')"></input>
+                    <input class="pure-u-1 " id="telephonenumber" name="telephonenumber" type="text" placeholder="Teléfono" ng-model="$ctrl.usuarioDetalle.telephoneNumber" telefono ng-required="$ctrl.requerirCampo('telephoneNumber')"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.telephonenumber.$touched">
                         <label class="pure-u-1 jt-label-error" for="telephonenumber" ng-show="$ctrl.formularioUsuarios.telephonenumber.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>El campo Teléfono es obligatorio
+                            <i class="fa fa-exclamation-triangle"></i>Debe configurar un teléfono de contacto
                         </label> 
                         <label class="pure-u-1 jt-label-error" for="telephonenumber" ng-show="$ctrl.formularioUsuarios.telephonenumber.$error.telefono">
                             <i class="fa fa-exclamation-triangle"></i>Revise el teléfono ingresado
@@ -244,10 +244,10 @@
                     <input class="pure-u-1" id="uid" name="uid" type="text" placeholder="Username" ng-model="$ctrl.usuario.uid" required uid></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.uid.$touched">
                         <label class="pure-u-1 jt-label-error" for="uid" ng-show="$ctrl.formularioUsuarios.uid.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>Necesita configurar el nombre de usuario
+                            <i class="fa fa-exclamation-triangle"></i>Debe configurar el nombre de usuario
                         </label> 
                         <label class="pure-u-1 jt-label-error" for="uid" ng-show="$ctrl.formularioUsuarios.uid.$error.uid">
-                            <i class="fa fa-exclamation-triangle"></i>El nombre de usuario necesita ser único
+                            <i class="fa fa-exclamation-triangle"></i>El nombre de usuario debe ser único
                         </label> 
                     </div>
                 </div>
@@ -273,7 +273,7 @@
                             <label class="pure-u-1 " for="grupo">Grupo Principal</label>
                             <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.grupo.$touched">
                                 <label class="pure-u-1 jt-label-error" for="grupo" ng-show="$ctrl.formularioUsuarios.grupo.$error.required">
-                                    <i class="fa fa-exclamation-triangle"></i>Es obligatorio selecionar un Grupo principal
+                                    <i class="fa fa-exclamation-triangle"></i>Debe selecionar un Grupo principal
                                 </label> 
                             </div>
                             <select class="pure-u-1 " id="grupo" name="grupo" ng-model="$ctrl.usuarioDetalle.grupo" ng-options="opcion.gidNumber as opcion.cn for opcion in $ctrl.grupos" required></select>
@@ -291,10 +291,7 @@
                             </select>
                             <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.loginshell.$touched">
                                 <label class="pure-u-1 jt-label-error" for="loginshell" ng-show="$ctrl.formularioUsuarios.loginshell.$error.required">
-                                    <i class="fa fa-exclamation-triangle"></i>El campo Shell es obligatorio
-                                </label> 
-                                <label class="pure-u-1 jt-label-error" for="loginshell" ng-show="$ctrl.formularioUsuarios.loginshell.$error.integer">
-                                    <i class="fa fa-exclamation-triangle"></i>Revise el campo seleccionado
+                                    <i class="fa fa-exclamation-triangle"></i>Debe seleccionar una Shell para el usuario
                                 </label> 
                             </div>
                         </div>
@@ -306,11 +303,6 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1 " for="grupos">Grupos Adicionales</label>
-                    <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.grupos.$touched">
-                        <label class="pure-u-1 jt-label-error" for="grupos" ng-show="$ctrl.formularioUsuarios.grupos.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>Es obligatorio seleccionar un Grupo Adicional
-                        </label> 
-                    </div>
                     <select multiple class="pure-u-1" id="grupos" name="grupos" size=10 ng-model="$ctrl.usuarioDetalle.grupos" ng-options="opcion.gidNumber as opcion.cn for opcion in $ctrl.grupos"></select>
                 </div>
             </div>
@@ -344,7 +336,7 @@
                     <label class="pure-u-1 " for="volumenbuzon">Tamaño del Buzón</label>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.volumenBuzon.$touched">
                         <label class="pure-u-1 jt-label-error" for="grupo" ng-show="$ctrl.formularioUsuarios.volumenbuzon.$error.required">
-                            <i class="fa fa-exclamation-triangle"></i>Es obligatorio selecionar un Volumen para la cuenta de usuario
+                            <i class="fa fa-exclamation-triangle"></i>Debe selecionar un Volumen para la cuenta de usuario
                         </label> 
                     </div>
                     <select class="pure-u-1" id="volumenbuzon" name="volumenbuzon" ng-model="$ctrl.usuarioDetalle.volumenBuzon" ng-options="opcion.id as opcion.name for opcion in $ctrl.volumenes" ng-required="$ctrl.requerirCampo('volumenBuzon')">
@@ -358,8 +350,11 @@
     <div class="pure-g">
         <div class="pure-u-1">
             <div class="pure-g jt-form-component">
+                <label class="pure-u-1 jt-label-error" for="grupo" ng-show="($ctrl.formularioUsuarios.$dirty || $ctrl.formularioUsuarios.$submitted) && $ctrl.formularioUsuarios.$invalid">
+                    <i class="fa fa-exclamation-triangle"></i>Revise los datos introducidos al formulario
+                </label> 
                 <div class="pure-u-1-2 jt-contenedor-boton-izquierda">
-                    <button type="submit" class="button-success jt-boton-formulario pure-button" >{{$ctrl.mensajeBoton[$ctrl.accion]}}!</button>
+                    <button type="submit" class="button-success jt-boton-formulario pure-button" ng-disabled="$ctrl.formularioUsuarios.$dirty && $ctrl.formularioUsuarios.$invalid">{{$ctrl.mensajeBoton[$ctrl.accion]}}!</button>
                 </div>
                 <div class="pure-u-1-2 jt-contenedor-boton-derecha">
                     <button type="button" class="button-warning jt-boton-formulario pure-button" ng-click="$ctrl.reiniciar()">Cancelar</button>

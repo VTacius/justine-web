@@ -18,7 +18,7 @@ angular.module('justineApp.usuarios.creacion', ['ngRoute'])
     ctrl.listadogrupos = [];
     
     /* En este punto, obtener acá el listado de grupos implica que si venimos de crear uno, la lista lo va a incluir. */
-    $http({method: 'GET', url: __ENV['api']['grupos']['listado']}).
+    $http.get(__ENV['api']['grupos']['listado']).
        then(function(respuesta){
             ctrl.listadogrupos = respuesta.data;
         }, function(respuesta){

@@ -104,8 +104,8 @@ component('jtFormularioUsuario', {
         };
 
         /* Usada en seleccionaEstablecimiento, llenamos las sugerencias de oficinas con las propias del establecimiento */
-        var obtenerOficinas = function(oficina){
-            $http({method: 'GET', url: '/api/helpers_oficinas/' + oficina + '.json'}).
+        var obtenerOficinas = function(establecimiento){
+            $http.get(__ENV['api']['helpers']['oficinas'] + establecimiento).
                 then(function(respuesta){
                     ctrl.oficinas = respuesta.data;
                     /* Sólo si hay datos de la oficina tiene sentido que llenar el componente sea obligatorio */

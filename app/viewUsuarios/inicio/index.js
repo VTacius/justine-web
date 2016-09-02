@@ -53,10 +53,12 @@ config(['$routeProvider', function($routeProvider) {
      *
      * */
     ctrl.llenaListado = function(contenido){
-        if (contenido.length >= ctrl.longitudBusqueda && contenido.length > 2 && (contenido.length % 2) === 0){
-           /* Recuerda que será a contenido lo que envíes como búsqueda */
-            $http({method: 'GET', url: '/api/usuario_listado_beta.json'}).
+        /* Te cuento que no podrás ver que tan bien funciona hasta que lo hagas con datos verdaderamente reales */
+        if (contenido.length >= ctrl.longitudBusqueda && contenido.length > 1 && (contenido.length % 1) === 0){
+            /* Recuerda que será a contenido lo que envíes como búsqueda */
+            $http.get(__ENV['api']['usuarios']['busqueda'] + contenido).
                 then(function(respuesta){
+                    console.log(respuesta);
                     angular.forEach(respuesta.data, function(item){
                         /* No creo que incumpla la regla de que justine-web debería encargarse de mostrar datos
                          * sin tener que manipularlos, porque tampoco no podemos suponer que el backend tenga plena

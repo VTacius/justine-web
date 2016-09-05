@@ -17,7 +17,7 @@ config(['$routeProvider', function($routeProvider) {
     /* La lista de grupos a enviar a los formularios de edición de usuarios */
     ctrl.listadogrupos = [];
 
-    /* No me gusta del todo lo que estoy emulando, pero así podré mantener el estado del buscador 
+    /* TODO: No me gusta del todo lo que estoy emulando, pero así podré mantener el estado del buscador 
      * y evitar la búsqueda innecesaria que podría ocasionar el retroceso */
     ctrl.longitudBusqueda = 0;
 

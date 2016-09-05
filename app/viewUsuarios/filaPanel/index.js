@@ -1,4 +1,5 @@
 'use strict';
+
 angular.module('justineApp').
 component('filaPanelUsuarios', {
     templateUrl: 'viewUsuarios/filaPanel/index.html',

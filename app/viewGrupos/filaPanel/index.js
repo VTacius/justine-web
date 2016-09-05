@@ -3,70 +3,70 @@
 angular.module('justineApp').
 component('filaPanelGrupos', {
     templateUrl: 'viewGrupos/filaPanel/index.html',
-    controller: function($http){
+    controller: function(__ENV, $http){
 
         var ctrl = this;
         
-        ctrl.muestraPanelDetalle = false;
-        ctrl.muestraPanelEdicion = false;                   
-        ctrl.muestraPanelBorrado = false;                   
-        
-        /* Decido cual de todos los paneles debe estar visible o no */
-        var gestionaVisibilidad = function(detalle, edicion, borrado){
-            ctrl.muestraPanelDetalle = detalle;
-            ctrl.muestraPanelEdicion = edicion;                   
-            ctrl.muestraPanelBorrado = borrado;                   
-        };
-
-        /* Obtenemos el detalle de grupos */
-        var obtenerDetalleUsuario = function(detalle, edicion, borrado){
-            
-            gestionaVisibilidad(detalle, edicion, borrado);
-            console.log('filaPanel.obtenerDetalleUsuario: Estoy obteniendo datos');
-            /* TODO: Será necesario cuidar que esto no se realize innecesarimente 
-            $http({method: 'GET', url: '/api/usuario_detalle.json'}).
-                then(function(respuesta){
-                    ctrl.usuarioDetalle = respuesta.data.data;
-                    console.log(ctrl.usuarioDetalle);
-                    gestionaVisibilidad(detalle, edicion, borrado);
-                    /* Esto es algo por el momento, pero sigo sin 
-                }, function(respuesta){
-                    console.log(respuesta);
-                });
-                */
+        /* Configuro al elemento jt-alerta. TODO: Sigo sin resolver si esta vez no mostraremos más de uno */
+        ctrl.alerta = {};
     
+        /*Señala al panel que debe estar activo */
+        ctrl.panelActivo = 0;
+
+        /* Verifica si el panel debe estar activo o no según ctrl.panelActivo */
+        ctrl.isPanelActivo = function(panel){
+            return ctrl.panelActivo === panel;
         };
-        
 
         /* Todo lo que este en mi alcance para mostrar los tres paneles disponibles */
-        ctrl.mostrarPanel= function(panel){
-            if (panel === 1){
-                obtenerDetalleUsuario(true, false, false);
-            }else if(panel === 2){
-                obtenerDetalleUsuario(false, true, false);
-            }else if(panel === 3){
-                obtenerDetalleUsuario(false, false, true);
-            };
+        ctrl.mostrarPanel= function(panel, usuario){
+            /* Obtenemos el detalle de grupos */
+            /* TODO: Sigue debatiendome si la idea de cachear es buena en este punto */
+            $http.get(__ENV['api']['grupos']['detalle'] + usuario ).
+                then(function(respuesta){
+                    ctrl.usuarioDetalle = respuesta.data.mensaje;
+                    /* Configuro el panel visible  */
+                    ctrl.panelActivo = panel;
+                }, function(respuesta){
+                    console.log(respuesta);
+                    ctrl.alerta.titulo = 'Error obteniendo datos de Grupo';
+                    ctrl.alerta.mensaje = null;
+                    ctrl.alerta.codigo = respuesta.status;
+                    ctrl.alerta.tipo = 'error';
+                });
+    
         };
 
         /* Edito la entrada. Me aseguro que esos detalles sean actualizados en otros componentes */
-        ctrl.editarFila = function(usuario, usuarioDetalle){
-            /* Subo hacia inicio, aunque en realidad solo necesito los datos ligeros de usuario y no de usuarioDetalle */
-            ctrl.editarEntrada({'entrada': usuario});
-            console.log("No es por nada, quiero revisar que ocurra esto");
-            console.log(usuario);
-            console.log(usuarioDetalle);
-            console.log('Así es el objeto que enviaremos a la horca');
-            objetoCambio = angular.merge(usuarioDetalle, usuario);
-            console.log(objetoCambio);
+        ctrl.editarFila = function(uid, usuario, usuarioDetalle){
+            var objetoCambio = {'corpus': angular.merge(usuarioDetalle, usuario)};
             /*
-             * Acá edito efectivamente al usuario en el servidor backend mediante una peticion
-             * backend. Espero que recuerdes que acá hace falta la información de detalle usuario
+             * Acá edito efectivamente al usuario en el servidor backend mediante una peticion backend. 
              *
              * */
+            $http.put(__ENV['api']['grupos']['actualizacion'] + uid, objetoCambio).
+                then(function(respuesta){
+                    ctrl.alerta.titulo = 'Actualización ejecutada';
+                    ctrl.alerta.mensaje = 'El grupos tal y tal ha sido actualizado con éxito';
+                    ctrl.alerta.codigo = respuesta.status;
+                    ctrl.alerta.tipo = 'aviso';
+                    
+                }, function(respuesta){
+                    console.log(respuesta);
+                    ctrl.alerta.titulo = 'Error actualizando grupos'
+                    ctrl.alerta.mensaje = null;
+                    ctrl.alerta.codigo = respuesta.status;
+                    ctrl.alerta.tipo = 'error';
+                })
+            
+            /* 
+             * Subo hacia componente superior inicio, bastan los los datos ligeros de usuario y no de usuarioDetalle 
+             * 
+             * */
+            ctrl.editarEntrada({'entrada': usuario});
         };
 
-        /* Función intermedia entre el componente borrar-usuarios y el controlador inicio  */
+        /* Función intermedia entre el componente borrar-grupos y el controlador inicio  */
         ctrl.borrarFila = function(usuario){
             ctrl.borrarEntrada({'entrada': usuario});
             /* 

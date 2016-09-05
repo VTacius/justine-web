@@ -1,6 +1,6 @@
 'use strict';
 
-var RE_NOMBRE = /^([A-Zd]{1}([a-záéíóú]+|\s|$)\s{0,1}){1,4}$/ 
+var RE_NOMBRE = /^([A-Zd]{1}([a-záéíóúÁÉÍÓÚ]+|\s|$)\s{0,1}){1,4}$/ 
 var RE_NIT = /^\d{4}-\d{6}-\d{3}-\d{1}$/;
 var RE_DUI = /^\d{9}-\d{1}$/;
 var RE_TELEFONO = /^\d{4}(-*\d{4})*$/;

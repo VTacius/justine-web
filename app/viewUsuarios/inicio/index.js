@@ -50,7 +50,6 @@ config(['$routeProvider', function($routeProvider) {
      * La idea, por este momento, es que la búsqueda sea independiente del número de registros que se muestran
      * La búsqueda ocurre cada dos letras, y cuidamos que no ocurra cuando el usuario va en retroceso
      *
-     *
      * */
     ctrl.llenaListado = function(contenido){
         /* Te cuento que no podrás ver que tan bien funciona hasta que lo hagas con datos verdaderamente reales */

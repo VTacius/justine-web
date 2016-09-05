@@ -161,7 +161,10 @@ table .pure-button {
 }
 
 .jt-tabla-contenido {
-    margin-top: 3.9em;
+    /* Bajo desde 3.9, cuestión de gustos por el momento*/
+    margin-top: 3.2em;
+    /* Necesito el espacio más bien en Directorio */
+    margin-left: 0.5em;
 }
 
 /* 

@@ -58,8 +58,15 @@ component('jtFormularioUsuario', {
 
             /* Convertimos el atributo fecha a algo que el input="date" sea capaz de entender 
              * Hasta ahora, una fecha inválida (Valores null, por ejemplo), no causa nada tan malo
+             * PERO NO SIGNIFICA QUE DEBA CONFIGURARSE UN ATRIBUTO INVALID, SO MAJE
              * */
-            ctrl.usuarioDetalle.fecha = new Date(ctrl.usuarioDetalle.fecha);
+            
+            var fecha = new Date(ctrl.usuarioDetalle.fecha);
+            if ('fecha' in ctrl.usuarioDetalle){
+                ctrl.usuarioDetalle.fecha = new Date(ctrl.usuarioDetalle.fecha);
+            }else{
+                delete ctrl.usuarioDetalle.fecha;
+            }
 
             /* Inicializa | almacena el objeto seleccionado en Oficina (ou) */
             ctrl.oficina =  angular.copy(ctrl.usuario.ou);

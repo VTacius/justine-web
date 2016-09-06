@@ -168,7 +168,7 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1 " for="title">Cargo</label>
-                    <input class="pure-u-1 " id="title" name="title" type="text" placeholder="Cargo" ng-model="$ctrl.usuarioDetalle.title" sustantivos ng-required="$ctrl.requerirCampo('title')"></input>
+                    <input class="pure-u-1 " id="title" name="title" type="text" placeholder="Cargo" ng-model="$ctrl.usuario.title" sustantivos ng-required="$ctrl.requerirCampo('title')"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.title.$touched">
                         <label class="pure-u-1 jt-label-error" for="title" ng-show="$ctrl.formularioUsuarios.title.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>Debe configurar el cargo
@@ -184,7 +184,7 @@
             <div class="pure-u-1 pure-u-xl-1-2">
                 <div class="pure-g jt-form-component">
                     <label class="pure-u-1 " for="telephonenumber">Teléfono</label>
-                    <input class="pure-u-1 " id="telephonenumber" name="telephonenumber" type="text" placeholder="Teléfono" ng-model="$ctrl.usuarioDetalle.telephoneNumber" telefono ng-required="$ctrl.requerirCampo('telephoneNumber')"></input>
+                    <input class="pure-u-1 " id="telephonenumber" name="telephonenumber" type="text" placeholder="Teléfono" ng-model="$ctrl.usuario.telephoneNumber" telefono ng-required="$ctrl.requerirCampo('telephoneNumber')"></input>
                     <div ng-show="$ctrl.formularioUsuarios.$submitted || $ctrl.formularioUsuarios.telephonenumber.$touched">
                         <label class="pure-u-1 jt-label-error" for="telephonenumber" ng-show="$ctrl.formularioUsuarios.telephonenumber.$error.required">
                             <i class="fa fa-exclamation-triangle"></i>Debe configurar un teléfono de contacto

@@ -316,6 +316,12 @@ dd {
     margin-bottom: 0.9em;
 }
 
+.jt-form-auth {
+    width: 50%;
+    box-sizing: border-box;
+    margin: auto;
+}
+
 .jt-form-component {
     margin: 0.25em 0.3em;
 }

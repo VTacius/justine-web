@@ -56,7 +56,6 @@ angular.module('justineApp.usuarios.creacion', ['ngRoute'])
             then(function(respuesta){ 
                 /* Creamos al usuario correctamente. Podemos mostrar una alerta saludable */
                 ctrl.mensajes = respuesta.data;
-                console.log(respuesta.data);
                 ctrl.alerta.codigo = respuesta.status; 
                 ctrl.alerta.tipo = 'aviso';
                 ctrl.alerta.titulo = "Creación de usuario satisfactoria";

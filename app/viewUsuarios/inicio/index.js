@@ -21,6 +21,8 @@ config(['$routeProvider', function($routeProvider) {
      * y evitar la búsqueda innecesaria que podría ocasionar el retroceso */
     ctrl.longitudBusqueda = 0;
 
+    ctrl.alerta = {};
+
     /* Obtener el listado de grupos en este punto debería evitar hacerlo muchas veces, provee por otro lado una forma lógica de refresco  */
     $http.get(__ENV['api']['grupos']['listado']).
        then(function(respuesta){

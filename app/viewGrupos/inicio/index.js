@@ -1,9 +1,14 @@
-'use strict'; angular.module('justineApp.grupos.inicio', ['ngRoute']).
+'use strict'; 
+
+angular.module('justineApp.grupos.inicio', ['ngRoute']).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/grupos/panel', {
-    templateUrl: 'viewGrupos/inicio/index.html',
-    controller: 'GruposInicioController',
-    controllerAs: '$ctrl'
+    $routeProvider.when('/grupos/panel', {
+        data: {
+            roles: ['administrador']
+        },
+        templateUrl: 'viewGrupos/inicio/index.html',
+        controller: 'GruposInicioController',
+        controllerAs: '$ctrl'
   });
 }])
 .controller('GruposInicioController', ['$http', '__ENV', function($http, __ENV) {

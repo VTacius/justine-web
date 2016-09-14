@@ -2,11 +2,14 @@
 
 angular.module('justineApp.usuarios.inicio', ['ngRoute']).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/usuarios/panel', {
-    templateUrl: 'viewUsuarios/inicio/index.html',
-    controller: 'UsuariosInicioController',
-    controllerAs: '$ctrl'
-  });
+    $routeProvider.when('/usuarios/panel', {
+        data: {
+            roles: ['administrador']
+        },
+        templateUrl: 'viewUsuarios/inicio/index.html',
+        controller: 'UsuariosInicioController',
+        controllerAs: '$ctrl'
+    });
 }])
 .controller('UsuariosInicioController', ['$http', '__ENV', function($http, __ENV) {
     var ctrl = this;

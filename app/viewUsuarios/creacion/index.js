@@ -1,8 +1,11 @@
 'use strict';
 
-angular.module('justineApp.usuarios.creacion', ['ngRoute'])
-.config(['$routeProvider', function($routeProvider) { 
-    $routeProvider.when('/usuarios/creacion/', {
+angular.module('justineApp.usuarios.creacion', ['ngRoute']).
+config(['$routeProvider', function($routeProvider) { 
+    $routeProvider.when('/usuarios/creacion', {
+        data: {
+            roles: ['administrador']
+        },
         templateUrl: 'viewUsuarios/creacion/index.html',
         controller: 'UsuariosCreacionController',
         controllerAs: '$ctrl'
@@ -11,13 +14,15 @@ angular.module('justineApp.usuarios.creacion', ['ngRoute'])
 .controller('UsuariosCreacionController', ['$http', '__ENV', function($http, __ENV) {
     var ctrl = this;
    
-    /* Configuro al elemento jt-alerta. TODO: Sigo sin resolver si esta vez no mostraremos más de uno */
+    /* Configuro al elemento jt-alerta. 
+        TODO: Sigo sin resolver si esta vez no mostraremos más de uno */
     ctrl.alerta = {};
 
     /* Enviamos el formulario los datos que algunos componente requieren para mostrar datos */ 
     ctrl.listadogrupos = [];
     
-    /* En este punto, obtener acá el listado de grupos implica que si venimos de crear uno, la lista lo va a incluir. */
+    /* En este punto, obtener acá el listado de grupos implica que si venimos de crear uno, 
+        la lista lo va a incluir. */
     $http.get(__ENV['api']['grupos']['listado']).
        then(function(respuesta){
             ctrl.listadogrupos = respuesta.data;

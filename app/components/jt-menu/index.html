@@ -18,7 +18,7 @@
             <li>
                 <p class="jt-menu-panel-usuario-titulo">{{$ctrl.sesion.gecos}}</p>
                 <p><a href="/#!/usuario/actualizacion">Editar Datos Personales  <span class="fa fa-edit"></span></a></p>
-                <p><a href="/#!/sesion/cerrar">Cerrar Sesión  <span class="fa fa-external-link-square"></span></a></p>
+                <p><a href="/#!/sesion/cerrar" ng-click="$ctrl.cerrarSession()">Cerrar Sesión  <span class="fa fa-external-link-square"></span></a></p>
             </li>
         </ul>
     </div> 

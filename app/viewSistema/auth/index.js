@@ -3,12 +3,15 @@
 angular.module('justineApp.sistema.auth', ['ngRoute']).
 config(['$routeProvider', function($routeProvider) { 
     $routeProvider.when('/auth/login', {
+        data: {
+            roles: ['unauthenticated']
+        },
         templateUrl: 'viewSistema/auth/index.html',
         controller: 'sistemaAuthController',
         controllerAs: '$ctrl'
     });
 }]).
-controller('sistemaAuthController', ['$auth', function($auth){
+controller('sistemaAuthController', ['$auth', '$location', '__ENV', function($auth, $location, __ENV){
     var ctrl = this;
    
     /* Vuelvo a declarar el formulario de una manera general */ 
@@ -19,22 +22,21 @@ controller('sistemaAuthController', ['$auth', function($auth){
 
     ctrl.enviar = function(validacion, username, password){
         if (validacion){
-            console.log(username, password);
             $auth.login({
                 email: username,
                 password: password 
             }).
             then(function(respuesta){
-                console.log('Parece ser que estamos autenticados');
-                console.log(respuesta);
+                __ENV.sesion.uid = username;
+                $location.path('/inicio');
             }).
             catch(function(respuesta){
-                console.log('No nos hemos logueado aún');
-                ctrl.alerta.titulo = 'El servidor acaba de devolver una mensaje con el siguiente contenido:';
-                ctrl.alerta.mensaje = null;
+                console.log(respuesta);
+                ctrl.alerta.titulo = 'Autenticación fallida';
+                ctrl.alerta.mensaje = 'Credenciales inválidas';
                 ctrl.alerta.codigo = respuesta.status;
                 ctrl.alerta.tipo = 'error';
-            })
+            });
         };
         return; 
     };

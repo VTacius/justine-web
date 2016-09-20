@@ -1,10 +1,7 @@
 'use strict';
 
-/* Gracias a configuracion.js, tenemos un fichero de configuración que no tenemos porque subir
-a nuestra forja */
-
+/* Obtenemos información de configuracion.js */
 var env = {};
-
 if (window) {
     Object.assign(env, window.__env);
 };

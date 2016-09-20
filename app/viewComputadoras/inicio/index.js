@@ -2,13 +2,16 @@
 
 angular.module('justineApp.computadoras.inicio', ['ngRoute']).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/computadoras/panel', {
-    templateUrl: 'viewComputadoras/inicio/index.html',
-    controller: 'computadorasInicioController',
-    controllerAs: '$ctrl'
-  });
-}])
-.controller('computadorasInicioController', ['$http', function($http) {
+    $routeProvider.when('/computadoras/panel', {
+        data: {
+            roles: ['administrador', 'tecnicosuperior']
+        },
+        templateUrl: 'viewComputadoras/inicio/index.html',
+        controller: 'ComputadorasInicioController',
+        controllerAs: '$ctrl'
+    });
+}]).
+controller('ComputadorasInicioController', ['$http', function($http) {
     var ctrl = this;
 
     console.log("Ya somos computadoras");

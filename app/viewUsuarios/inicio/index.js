@@ -4,7 +4,7 @@ angular.module('justineApp.usuarios.inicio', ['ngRoute']).
 config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/usuarios/panel', {
         data: {
-            roles: ['administrador']
+            roles: ['administrador', 'tecnicosuperior']
         },
         templateUrl: 'viewUsuarios/inicio/index.html',
         controller: 'UsuariosInicioController',

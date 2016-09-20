@@ -1,14 +1,17 @@
 'use strict';
 
-angular.module('justineApp.usuario.actualizacion', ['ngRoute'])
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/usuario/actualizacion', {
-    templateUrl: 'viewUsuario/index.html',
-    controller: 'usuarioController',
-    controllerAs: '$ctrl'
-  });
-}])
-.controller('usuarioController', ['$http', function($http) {
+angular.module('justineApp.usuario.actualizacion', ['ngRoute']).
+config(['$routeProvider', function($routeProvider) {
+    $routeProvider.when('/usuario/actualizacion', {
+        data: {
+            roles: ['administrador', 'tecnicosuperior']
+        },
+        templateUrl: 'viewUsuario/index.html',
+        controller: 'UsuarioController',
+        controllerAs: '$ctrl'
+    });
+}]).
+controller('UsuarioController', ['$http', function($http) {
     
     var ctrl = this;
 

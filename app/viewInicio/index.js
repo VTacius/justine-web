@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('justineApp.inicio', ['ngRoute'])
-.config(['$routeProvider', function($routeProvider) {
+angular.module('justineApp.inicio', ['ngRoute']).
+config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/inicio', {
         data: {
             roles: ['administrador', 'tecnicosuperior']
@@ -10,9 +10,8 @@ angular.module('justineApp.inicio', ['ngRoute'])
         controller: 'InicioController',
         controllerAs: '$ctrl'
   });
-}])
-
-.controller('InicioController', ['__ENV', '$http', function(__ENV, $http){
+}]).
+controller('InicioController', ['__ENV', '$http', function(__ENV, $http){
     var ctrl = this;
     ctrl.titulo = __ENV.titulo;
 

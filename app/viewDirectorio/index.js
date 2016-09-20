@@ -2,13 +2,16 @@
 
 angular.module('justineApp.directorio', ['ngRoute']).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/directorio', {
-    templateUrl: 'viewDirectorio/index.html',
-    controller: 'DirectorioController',
-    controllerAs: '$ctrl',
-  });
-}])
-.controller('DirectorioController', ['$http', '__ENV', function($http, __ENV){
+    $routeProvider.when('/directorio', {
+        data: {
+            roles: ['administrador', 'tecnicosuperior']
+        },
+        templateUrl: 'viewDirectorio/index.html',
+        controller: 'DirectorioController',
+        controllerAs: '$ctrl',
+    });
+}]).
+controller('DirectorioController', ['$http', '__ENV', function($http, __ENV){
     var ctrl = this;
     
     /* El listado de usuarios */

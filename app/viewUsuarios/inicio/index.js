@@ -10,9 +10,15 @@ config(['$routeProvider', function($routeProvider) {
         controller: 'UsuariosInicioController',
         controllerAs: '$ctrl'
     });
-}])
-.controller('UsuariosInicioController', ['$http', '__ENV', function($http, __ENV) {
+}]).
+controller('UsuariosInicioController', ['$http', '__ENV', 'tituladorService', function($http, __ENV, tituladorService) {
     var ctrl = this;
+
+    /* Disponemos del mensaje de alerta en este controlador */
+    ctrl.alerta = {};
+    
+    /* Cambio el titulo de nuestra página */
+    tituladorService('Administración de Usuarios');
 
     /* La lista de usuarios */
     ctrl.corpus = [];
@@ -23,8 +29,6 @@ config(['$routeProvider', function($routeProvider) {
     /* TODO: No me gusta del todo lo que estoy emulando, pero así podré mantener el estado del buscador 
      * y evitar la búsqueda innecesaria que podría ocasionar el retroceso */
     ctrl.longitudBusqueda = 0;
-
-    ctrl.alerta = {};
 
     /* Obtener el listado de grupos en este punto debería evitar hacerlo muchas veces, provee por otro lado una forma lógica de refresco  */
     $http.get(__ENV['api']['grupos']['listado']).
@@ -37,7 +41,7 @@ config(['$routeProvider', function($routeProvider) {
             ctrl.alerta.codigo = respuesta.status;
             ctrl.alerta.tipo = 'error';
     });
-
+    
     /*
      * Se considera que este método no esta optimizado, por tanto, ante cualquier 
      * duda sobre el rendimiento debe considerársele responsable

@@ -11,22 +11,28 @@ config(['$routeProvider', function($routeProvider) {
         controllerAs: '$ctrl'
     });
 }]).
-controller('ComputadorasInicioController', ['$http', function($http) {
+controller('ComputadorasInicioController', ['$http', '__ENV', 'tituladorService', function($http, __ENV, tituladorService) {
     var ctrl = this;
-
-    console.log("Ya somos computadoras");
+    
+    /* Disponemos del mensaje de alerta en este controlador */
+    ctrl.alerta = {};
+    
+    /* Cambio el titulo de nuestra página */
+    tituladorService('Administración de Equipos');
 
     /* La lista de computadoras */
-    ctrl.corpus = {};
+    ctrl.corpus = [];
 
-    
-    /* Una listado de grupos con datos ligeros es la forma en que creamos la tabla con elementos fila-panel  */
-    $http({method: 'GET', url: '/api/computadoras_listado.json'}).
+    /* Una listado de computadoras con datos ligeros es la forma en que creamos la tabla con elementos fila-panel  */
+    $http.get(__ENV['api']['computadoras']['listado']).
         then(function(respuesta){
             ctrl.corpus = respuesta.data;
-            console.log(ctrl.corpus);
         }, function(respuesta){
-            console.log("Hay un problema con el servidor en este punto");
+            console.log(respuesta);
+            ctrl.alerta.titulo = 'Error obteniendo listado de computadoras';
+            ctrl.alerta.mensaje = null;
+            ctrl.alerta.codigo = respuesta.status;
+            ctrl.alerta.tipo = 'error';
         });
 
     /* Operación borrado sube hasta este punto para asegurar que la entrada será borrada en tiempo real de la lista 

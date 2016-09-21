@@ -19,10 +19,10 @@
                 <button class="button-success pure-button izquierda" ng-click="$ctrl.mostrarPanel(1, $ctrl.usuario.uid)"><i class="fa fa-info-circle"></i></button>
             </div>
             <div class="pure-u-1-3 pure-u-md-1-3">
-                <button class="button-success pure-button centro" ng-click="$ctrl.mostrarPanel(2, $ctrl.usuario.uid)"><i class="fa fa-edit"></i></button>
+                <button class="button-success pure-button centro" ng-click="$ctrl.mostrarPanel(2, $ctrl.usuario.uid)" ng-disabled="$ctrl.permisos()"><i class="fa fa-edit"></i></button>
             </div>
             <div class="pure-u-1-3 pure-u-md-1-3">
-                <button class="button-error pure-button derecha" ng-click="$ctrl.mostrarPanel(3, $ctrl.usuario.uid)"><i class="fa fa-trash"></i></button>
+                <button class="button-error pure-button derecha" ng-click="$ctrl.mostrarPanel(3, $ctrl.usuario.uid)" ng-disabled="$ctrl.permisos()"><i class="fa fa-trash"></i></button>
             </div>
         </div>
     </div>

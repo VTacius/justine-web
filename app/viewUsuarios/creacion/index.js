@@ -10,13 +10,15 @@ config(['$routeProvider', function($routeProvider) {
         controller: 'UsuariosCreacionController',
         controllerAs: '$ctrl'
     });
-}])
-.controller('UsuariosCreacionController', ['$http', '__ENV', function($http, __ENV) {
+}]).
+controller('UsuariosCreacionController', ['$http', '__ENV', 'tituladorService', function($http, __ENV, tituladorService) {
     var ctrl = this;
    
-    /* Configuro al elemento jt-alerta. 
-        TODO: Sigo sin resolver si esta vez no mostraremos más de uno */
+    /* Disponemos del mensaje de alerta en este controlador */
     ctrl.alerta = {};
+    
+    /*Cambio el titulo de nuestra página*/
+    tituladorService('Creación de Usuarios');
 
     /* Enviamos el formulario los datos que algunos componente requieren para mostrar datos */ 
     ctrl.listadogrupos = [];

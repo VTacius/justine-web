@@ -37,6 +37,12 @@ config(['$locationProvider', '$routeProvider', '$authProvider', function($locati
     $authProvider.tokenType = '';
     $authProvider.tokenPrefix = 'justineApp';
 }]).
+service('tituladorService', ['__ENV', function(__ENV){
+    return function(titulo){
+        document.title = __ENV.institucion + ' - ' +titulo;
+    };
+    
+}]).
 run(['$rootScope', '$auth', '$location', function($rootScope, $auth, $location){
     $rootScope.$on('$routeChangeStart', function(evento, datos){
         /* Sin data.roles, negamos por defecto la entrada a la página */

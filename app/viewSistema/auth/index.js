@@ -11,14 +11,17 @@ config(['$routeProvider', function($routeProvider) {
         controllerAs: '$ctrl'
     });
 }]).
-controller('SistemaAuthController', ['$auth', '$location', '$window', '$rootScope', function($auth, $location, $window, $rootScope){
+controller('SistemaAuthController', ['$auth', '$location', '$window', '$rootScope', 'tituladorService', function($auth, $location, $window, $rootScope, tituladorService){
     var ctrl = this;
    
+    /* Disponemos del mensaje de alerta en este controlador */
+    ctrl.alerta = {};
+
+    /* Cambio el titulo de nuestra página */
+    tituladorService('Entrada a Directorio Institucional');
+
     /* Vuelvo a declarar el formulario de una manera general */ 
     ctrl.formularioAuth = {};
-
-    /* Configuro al elemento jt-alerta. TODO: Sigo sin resolver si esta vez no mostraremos más de uno */
-    ctrl.alerta = {};
 
     ctrl.enviar = function(validacion, username, password){
         if (validacion){

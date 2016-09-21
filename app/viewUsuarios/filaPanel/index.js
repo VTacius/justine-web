@@ -3,7 +3,7 @@
 angular.module('justineApp').
 component('filaPanelUsuarios', {
     templateUrl: 'viewUsuarios/filaPanel/index.html',
-    controller: function(__ENV, $http){
+    controller: function(__ENV, $http, $auth){
 
         var ctrl = this;
         
@@ -16,6 +16,12 @@ component('filaPanelUsuarios', {
         /* Verifica si el panel debe estar activo o no según ctrl.panelActivo */
         ctrl.isPanelActivo = function(panel){
             return ctrl.panelActivo === panel;
+        };
+
+        /* Necesito comprobar que el usuario pueda usar ese control */
+        ctrl.permisos = function(){
+            var permisos = $auth.getPayload() ? $auth.getPayload()['rol'] : 'unauthenticated';
+            return !(permisos === 'administrador');
         };
 
         /* Todo lo que este en mi alcance para mostrar los tres paneles disponibles */

@@ -1,0 +1,13 @@
+{
+  "name": "justine-web",
+  "description": "Una frontend web para una aplicación que aún no existe",
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "purecss": "^1.0.0",
+    "vue": "^2.5.16"
+  },
+  "devDependencies": {
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "wct-browser-legacy": "^1.0.0"
+  }
+}

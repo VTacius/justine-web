@@ -1,0 +1,89 @@
+<head>
+	<script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+	<p> Este es contenido de prueba </p>
+	<div id="app">
+		{{message}}
+	</div>
+	<div id="app-2">
+		<span v-bind:title="message">
+			Al pasar el mouse un par de segundos sobre mí deberías ver cambiar el mensaje
+		</span>
+	</div>
+
+	<div id="app-3">
+		<span v-if="seen"> Ahora me ves </spam>
+	</div>
+
+	<div id="app-4">
+		<ol>
+			<li v-for="todo in todos">
+				{{todo.text}}
+			</li>
+		</ol>
+	</div>
+	
+	<div id="app-5">
+		<p>{{message}}</p>
+		<button v-on:click="reverseMessage">Reverse Message</button>
+	</div>
+
+	<div id="app-6">
+		<p>{{message}}</p>
+		<input v-model="message">
+	</div>
+
+</body>
+<script>
+	var app = new Vue({
+		el: '#app',
+		data: {
+			message: "Hola mundo Vue"
+		}
+	});
+
+	var app2 = new Vue({
+		el: "#app-2",
+		data: {
+			message: 'Cargaste esta página en ' + new Date().toLocaleString()
+		}
+	});
+
+	var app3 = new Vue({
+		el: "#app-3",
+		data: {
+			seen: true
+		}
+	});
+
+	var app4 = new Vue({
+		el: "#app-4",
+		data: {
+			todos: [
+				{text: "Aprende JavaScript"},
+				{text: "Aprende Vue"},
+				{text: "Construye algo increíble"}
+				]
+		}
+	});
+
+	var app5 = new Vue({
+		el: "#app-5",
+		data: {
+			message: "Hola con Vue.js"
+		},
+		methods: {
+			reverseMessage: function(){
+				this.message = this.message.split('').reverse().join('')
+			}
+		}
+	});
+
+	var app6 = new Vue({
+		el: '#app-6',
+		data: {
+			message: 'Hola de nuevo, mundo'
+		}
+	});
+</script>

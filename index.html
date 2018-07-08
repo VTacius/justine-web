@@ -1,5 +1,16 @@
 <head>
 	<script src="node_modules/vue/dist/vue.js"></script>
+	<script>
+		Vue.component('todo-item', {
+			template: '<li>Este es un TODO</li>'
+		});
+
+		Vue.component('toda-item', {
+			props: ['todo'],
+			template: '<li>{{ todo.text }}</li>'
+		});
+
+	</script>
 </head>
 <body>
 	<p> Este es contenido de prueba </p>
@@ -18,9 +29,7 @@
 
 	<div id="app-4">
 		<ol>
-			<li v-for="todo in todos">
-				{{todo.text}}
-			</li>
+			<todo-item v-for="todo in todos"></todo-item>
 		</ol>
 	</div>
 	
@@ -34,6 +43,11 @@
 		<input v-model="message">
 	</div>
 
+	<div id="app-7">
+		<ol>
+			<toda-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></toda-item>
+		</ol>
+	</div>
 </body>
 <script>
 	var app = new Vue({
@@ -86,4 +100,16 @@
 			message: 'Hola de nuevo, mundo'
 		}
 	});
+
+	var app7 = new Vue({
+		el: '#app-7',
+		data: {
+			groceryList: [
+				{id: 0, text: 'Vegetales'},
+				{id: 1, text: 'Queso'},
+				{id: 2, text: 'Cualquier otra cosa que un humano pueda comer'}
+				]
+		}
+	});
+
 </script>

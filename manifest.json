@@ -1,0 +1,6 @@
+{
+  "name": "justine-web",
+  "short_name": "justine-web",
+  "start_url": "/",
+  "display": "standalone"
+}

@@ -1,15 +1,14 @@
 # justine-web
 Un frontend web para una API que aún no existe
 
+## Desarrollo:
+Pues que ahora apuesto un poquito por Docker. A ver si no me arrepiento (Y para saltar esa opción, el Dockerfile da una idea de las pocas acciones a realizar)
+
+La primera vez, será necesario instalar los paquetes propios de este paquete
+docker run --rm -it -v $(pwd):/var/www  nodalpine yarn install
+
+Luego, para verificarlo podemos ejecutarse de la siguiente forma:
+docker run --rm -it -v $(pwd):/var/www -p 4000:8000 nodalpine
+
 ## Instalación:
-En este punto me parece que el usuario de esta aplicación no debería precisar de correr un bower install o algo parecido, así que aún trabajo en la forma de desplegar con todo y las librerías de terceros
-
-Sin embargo, será necesario crear un fichero `app/configuracion.js` cuyo contenido por el momento va de la siguiente forma:
-```javascript
-(function (window) {
-window.__env = window.env || {};
-window.__env.titulo = "Empresa";
-}(this))
-```
-
-
+Aún no aspiro a tratar este punto

@@ -1,115 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="es">
 <head>
+    <meta charset="utf-8">
+    <!--
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    -->
+    <title>Directorio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplicación Institucional">
+    <link rel="stylesheet" href="node_modules/purecss/build/base.css">
+    <link rel="stylesheet" href="node_modules/purecss/build/forms.css">
+    <link rel="stylesheet" href="node_modules/purecss/build/tables.css">
+    <link rel="stylesheet" href="node_modules/purecss/build/buttons.css">
+    <link rel="stylesheet" href="node_modules/purecss/build/grids.css">
+    <link rel="stylesheet" href="node_modules/purecss/build/grids-responsive.css">
+    <!-- Siempre sobreescribe, siempre -->
+    <link rel="stylesheet" href="app/app.css">
+    <!-- Agrego los íconos que esta vez funcionan como fuente bien chivo -->
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+	
+	<!-- Estos si deben cargarse antes de la aplicación -->
 	<script src="node_modules/vue/dist/vue.js"></script>
-	<script>
-		Vue.component('todo-item', {
-			template: '<li>Este es un TODO</li>'
-		});
-
-		Vue.component('toda-item', {
-			props: ['todo'],
-			template: '<li>{{ todo.text }}</li>'
-		});
-
-	</script>
+	<script src="node_modules/vue-router/dist/vue-router.js"></script>
 </head>
 <body>
-	<p> Este es contenido de prueba </p>
-	<div id="app">
-		{{message}}
-	</div>
-	<div id="app-2">
-		<span v-bind:title="message">
-			Al pasar el mouse un par de segundos sobre mí deberías ver cambiar el mensaje
-		</span>
-	</div>
-
-	<div id="app-3">
-		<span v-if="seen"> Ahora me ves </spam>
-	</div>
-
-	<div id="app-4">
-		<ol>
-			<todo-item v-for="todo in todos"></todo-item>
-		</ol>
-	</div>
-	
-	<div id="app-5">
-		<p>{{message}}</p>
-		<button v-on:click="reverseMessage">Reverse Message</button>
-	</div>
-
-	<div id="app-6">
-		<p>{{message}}</p>
-		<input v-model="message">
-	</div>
-
-	<div id="app-7">
-		<ol>
-			<toda-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></toda-item>
-		</ol>
-	</div>
+    <div class="pure-g" id="justine">
+        <header class="pure-u-1">
+            <vt-menu v-bind:datos="menu"></vt-menu>
+        </header>
+        <main class="pure-u-1">
+            <div class="pure-g">
+                <!-- La aplicación -->
+				<router-view></router-view>
+            </div>
+        </main>
+        <footer class="pure-u-1">
+            <p>Este es un footer, en algún momento pondré un poco de contenido por aquí</p>
+        </footer>
+    </div>
+	<script src="app/vistas/usuarios.js"></script>
+	<script src="app/vistas/grupos.js"></script>
+	<script src="app/componentes/menu.js"></script>
+	<script src="app/app.js"></script>
 </body>
-<script>
-	var app = new Vue({
-		el: '#app',
-		data: {
-			message: "Hola mundo Vue"
-		}
-	});
-
-	var app2 = new Vue({
-		el: "#app-2",
-		data: {
-			message: 'Cargaste esta página en ' + new Date().toLocaleString()
-		}
-	});
-
-	var app3 = new Vue({
-		el: "#app-3",
-		data: {
-			seen: true
-		}
-	});
-
-	var app4 = new Vue({
-		el: "#app-4",
-		data: {
-			todos: [
-				{text: "Aprende JavaScript"},
-				{text: "Aprende Vue"},
-				{text: "Construye algo increíble"}
-				]
-		}
-	});
-
-	var app5 = new Vue({
-		el: "#app-5",
-		data: {
-			message: "Hola con Vue.js"
-		},
-		methods: {
-			reverseMessage: function(){
-				this.message = this.message.split('').reverse().join('')
-			}
-		}
-	});
-
-	var app6 = new Vue({
-		el: '#app-6',
-		data: {
-			message: 'Hola de nuevo, mundo'
-		}
-	});
-
-	var app7 = new Vue({
-		el: '#app-7',
-		data: {
-			groceryList: [
-				{id: 0, text: 'Vegetales'},
-				{id: 1, text: 'Queso'},
-				{id: 2, text: 'Cualquier otra cosa que un humano pueda comer'}
-				]
-		}
-	});
-
-</script>
+</html>

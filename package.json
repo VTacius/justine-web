@@ -1,15 +1,12 @@
 {
   "name": "justine-web",
   "description": "Una frontend web para una aplicación que aún no existe",
+  "repository": "https://github.com/VTacius/justine-web",
+  "license": "MIT",
   "dependencies": {
     "font-awesome": "^4.7.0",
-    "http-server": "^0.11.1",
     "purecss": "^1.0.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1"
-  },
-  "devDependencies": {
-    "@webcomponents/webcomponentsjs": "^2.0.0",
-    "wct-browser-legacy": "^1.0.0"
   }
 }

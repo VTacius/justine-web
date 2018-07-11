@@ -19,5 +19,24 @@ Agregando la `-it` la consola nos muestra colores.
  docker run --rm -it -v $(pwd):/var/www -p 4000:8000 nodalpine
 ```
 
+### Fake API
+En realidad, la mejor forma de tratar este tipo de cosas es mockeando datos desde pruebas automatizadas. Como sea.
+```sh
+cd fakeapi
+docker build . -t apilne
+docker run --rm -v $(pwd):/var/www -p 3000:3000 apilne 
+```
+
+En realidad, todavía estoy que trabajo en ello. Básicamente son necesarios un par de pasos adicionales
+```sh
+docker network create webtest
+docker swarm init
+docker stack deploy  -c docker-compose.yml  webtest
+
+# De hecho, lo anterior no es del todo necesario siempre y cuando se quiera hacer algo más manual
+docker run --rm -it --net webtest -p 4000:8080 -v $(pwd):/var/www --name web nolpine
+docker run --rm -it --net webtest -p 3000:3000 -v $(pwd):/var/www --name api apilne
+```
+
 ## Instalación:
 Aún no aspiro a tratar este punto

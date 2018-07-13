@@ -12,14 +12,14 @@ const vtViewUsuarios = {
 					o: {
 						nombre: "Lugar"
 					},
-                    detalle: {
-                        userPassword: "Pass_2025",
-                        nit: "000-000",
-                        dui: "000-000",
-                        pregunta: "¿Quién soy?",
-                        respuesta: "Soi io",
-                        mail: "alortiz@salud.gob.sv",
-                    }
+                    userPassword: "Pass_2025",
+                    nit: "000-000",
+                    dui: "000-000",
+                    jvs: "000-000",
+                    anio: "23/01/1990",
+                    pregunta: "¿Quién soy?",
+                    respuesta: "Soi io",
+                    mail: "alortiz@salud.gob.sv",
 				},
 				{
 					uid: 'opineda',
@@ -29,14 +29,14 @@ const vtViewUsuarios = {
 					o: {
 						nombre: "Lugar"
 					},
-                    detalle: {
-                        userPassword: "Pass_2025",
-                        nit: "000-000",
-                        dui: "000-000",
-                        pregunta: "¿Quién soy?",
-                        respuesta: "Soi io",
-                        mail: "opineda@salud.gob.sv",
-                    }
+                    userPassword: "Pass_2025",
+                    nit: "000-000",
+                    dui: "000-000",
+                    jvs: "",
+                    anio: "23/01/1991",
+                    pregunta: "¿Quién soy?",
+                    respuesta: "Soi io",
+                    mail: "opineda@salud.gob.sv",
 
 				},
 				{
@@ -47,14 +47,14 @@ const vtViewUsuarios = {
 					o: {
 						nombre: "Lugar"
 					},
-                    detalle: {
-                        userPassword: "Pass_2025",
-                        nit: "000-000",
-                        dui: "000-000",
-                        pregunta: "¿Quién soy?",
-                        respuesta: "Soi io",
-                        mail: "kpenate@salud.gob.sv",
-                    }
+                    userPassword: "Pass_2025",
+                    nit: "000-000",
+                    dui: "000-000",
+                    jvs: "",
+                    anio: "23/12/1991",
+                    pregunta: "¿Quién soy?",
+                    respuesta: "Soi io",
+                    mail: "kpenate@salud.gob.sv",
 
 				}
 

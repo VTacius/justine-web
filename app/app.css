@@ -508,25 +508,25 @@ borrado-usuarios {
 /* ######################################################################### */
 
 /*
-    Comienza CSS para componente jt-switch
+    Comienza CSS para componente vt-switch
 */
 
-.jt-switch {
+.vt-switch {
     position: relative;
     display: inline-block;
     width: 99%;
     height: 1.8em;
 }
 
-label.jt-switch {
+label.vt-switch {
     margin-bottom: 0em;
 }
 
-.jt-switch input {
+.vt-switch input {
     display:none;
 }
 
-.jt-switch .slider {
+.vt-switch .slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -541,7 +541,7 @@ label.jt-switch {
     z-index: -1;
 }
 
-.jt-switch .slider:before {
+.vt-switch .slider:before {
     position: absolute;
     content: "";
     height: 100%;
@@ -554,16 +554,16 @@ label.jt-switch {
 }
 
 /* Estamos en On */
-.jt-switch input:checked + .slider {
+.vt-switch input:checked + .slider {
     box-shadow: inset -5px -3px 0em 0em #85bad4;
 }
 
 /* Sigo sin tener idea de en que momento ocurre este */
-.jt-switch input:focus + .slider {
+.vt-switch input:focus + .slider {
     box-shadow: 0 0 1px #85bad4;
 }
 
-.jt-switch input:checked + .slider:before {
+.vt-switch input:checked + .slider:before {
     -webkit-transform: translateX(100%);
     -ms-transform: translateX(100%);
     transform: translateX(100%);
@@ -571,15 +571,15 @@ label.jt-switch {
     border-radius: initial;
 }
 
-.jt-switch-text {
+.vt-switch-text {
     z-index: 1;
     display: flex;
     position: relative;
     top: 13%;
 }
 
-.jt-switch-text .on,
-.jt-switch-text .off {
+.vt-switch-text .on,
+.vt-switch-text .off {
     display: block;
     width: 50%;
     text-align:center;
@@ -593,7 +593,7 @@ label.jt-switch {
 
 
 /*
- * Comienza CSS para componente jt-menu 
+ * Comienza CSS para componente vt-menu 
  * */
 
 /* Los siguientes estilos con comunes a todos */

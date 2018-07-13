@@ -13,4 +13,4 @@ Vue.component('vt-botonera', {
 	    </div>
 	</div>
     `
-})
+});

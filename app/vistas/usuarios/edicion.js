@@ -1,49 +1,74 @@
 Vue.component('vt-usuario-edicion', {
     props: ['usuario'],
+    computed: {
+        userData: function(){
+            var datos = this.usuario;
+            var objeto = {};
+            Object.keys(datos).forEach(function(k){
+                objeto[k] = {
+                    valor: datos[k],
+                    error: {
+                        requerido: false,
+                        sustantivo: false,
+                        existente: false
+                    }
+                }
+                
+            });
+            return objeto; 
+        }
+    },
     methods: {
         envio: function(e){
+            /*
+            console.log(this.usuario.givenName);
+            console.log(this.usuario.sn);
+            console.log(this.usuario.dui);
+            console.log(this.usuario.nit);
+            */
             e.preventDefault();
+        },
+        cambios: function(evento, modelo){
+            console.log(this.userData);
+            var validar = new Validar(plantilla, this.usuario);
+            validar.verificar(evento.target.id, modelo);
         }
     },
     template: `
 	<div class="pure-u-1">
-        <form class="pure-form jt-form" @submit="envio" novalidate>
+        <!-- Acá había un alert, acá habrá un alert -->
+        <form class="pure-form jt-form" id="usuario" @submit="envio" novalidate>
             <fieldset>
-                <legend>Datos Generales</legend>
+                <legend>Datos Generales {{userData.sn.valor}}</legend>
                 <div class="pure-g">
 
                     <!-- Nombre (givenname) siempre es obligatorio. No vamos a crear usuario sin al menos un nombre válido -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <div class="pure-g jt-form-component">
-                            <label class="pure-u-1" for="givenname">Nombres</label>
-                            <input class="pure-u-1" id="givenname" name="givenname" type="text" placeholder="Nombre" v-model:text="usuario.givenName" required sustantivos></input>
-                        </div>
+                        <vt-entrada uid="givenName" etiqueta="Nombre" v-bind:modelo="userData.givenName" v-on:vt-cambio="cambios">
+                            <template slot="requerido"> El nombre es requerido </template>
+                            <template slot="sustantivo"> Revise el nombre escrito </template>
+                        </vt-entrada>
                     </div>
                        
                     <!-- Apellidos (sn) siempre es obligatorio, bajo las mismas condiciones que givenname -->
                     <div class="pure-u-1 pure-u-xl-1-2"> 
-                        <div class="pure-g jt-form-component">
-                            <label class="pure-u-1" for="sn">Apellidos</label>
-                            <input class="pure-u-1" id="sn" name="sn" type="text" placeholder="Apellidos" v-model:text="usuario.sn" required sustantivos></input>
-                        </div>
+                        <vt-entrada uid="sn" etiqueta="Apellido" v-bind:modelo="userData.sn" v-on:vt-cambio="cambios"></vt-entrada>
                     </div>
                    
                     <!-- DUI (dui) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <div class="pure-g jt-form-component">
-                            <label class="pure-u-1" for="dui">DUI</label>
-                            <input class="pure-u-1" id="dui" name="dui" type="text" placeholder="DUI" v-model:text="usuario.detalle.dui" dui ng-required="requerirCampo('dui')"></input>
-                        </div>
+                        <vt-entrada uid="dui" etiqueta="DUI" v-bind:modelo="userData.dui" v-on:vt-cambio="cambios"></vt-entrada>
                     </div>
                    
                     <!-- NIT (nit) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <div class="pure-g jt-form-component">
-                            <label class="pure-u-1" for="nit">NIT</label>
-                            <input class="pure-u-1" id="nit" name="nit" type="text" placeholder="NIT" v-model:text="usuario.detalle.nit" nit ng-required="requerirCampo('nit')"></input>
-                        </div>
+                        <vt-entrada uid="nit" etiqueta="NIT" v-bind:modelo="userData.nit" v-on:vt-cambio="cambios"></vt-entrada>
                     </div>
- 
+            
+                    <!-- JVS (jvs) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio cuando el control esta activo -->
+                    <div class="pure-u-1 pure-u-xl-1-2">
+                        <vt-switch uid="jvs" etiqueta="JVS" v-bind:modelo="userData.jvs" v-on:vt-cambio="cambios"></vt-switch>
+                    </div>
                 </div>
             </fieldset>
     

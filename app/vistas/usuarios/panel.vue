@@ -1,6 +1,10 @@
-Vue.component('vt-panel-usuarios', {
-	props: ['usuario'],
-	template: `
+<script>
+export default {
+	name: 'vt-panel-usuarios',
+	props: ['usuario']
+}
+</script>
+<template>
     <div class="pure-g">
 	    <div class="pure-u-1 pure-u-lg-8-24  pure-u-xl-6-24  jt-celda">
 	        <i class="fa fa-user"></i>
@@ -15,5 +19,4 @@ Vue.component('vt-panel-usuarios', {
 	        <span class="texto"><i>{{usuario.ou}}</i><span v-show="usuario.ou && usuario.o.nombre"> en </span> <strong>{{usuario.o.nombre}}</strong></span>
 	    </div>
 	</div>
-	`
-});
+</template>

@@ -2,28 +2,28 @@ function Validar (plantilla, datos){
     /* La plantilla configura la forma en que se comporta el validador */
     this.plantilla = plantilla;
     this.datos = datos;
-};
+}
 
 Validar.prototype.verificar = function(clave, valor){
     
     var ambito = this;
 
-    var validaciones = (clave in this.plantilla === true)? this.plantilla[clave].validacion: [""];
+    var validaciones = (clave in this.plantilla === true)? this.plantilla[clave].validacion: [''];
 
     validaciones.forEach(function(elm){
         if (elm in Validar.prototype === true){
             ambito[elm](clave, valor);
-        };
+        }
     });
 };
 
 Validar.prototype.nulo = function(valor){
-   return (typeof(valor.valor) === null || 
-       valor.valor === "") 
+    return (typeof(valor.valor) === null || 
+       valor.valor === ''); 
 };
 
 Validar.prototype.requerido = function(clave, valor){
-    if (typeof(valor.valor) === null || valor.valor === ""){
+    if (typeof(valor.valor) === null || valor.valor === ''){
         valor.error.requerido = true;
     } else {
         valor.error.requerido = false;
@@ -36,7 +36,7 @@ Validar.prototype.sustantivo = function(clave, valor){
     } else {
         valor.error.sustantivo = false;
     }
-}
+};
 
 Validar.prototype.existente = function(clave, valor){
     if (clave in this.datos === true && this.nulo(valor)){
@@ -44,4 +44,6 @@ Validar.prototype.existente = function(clave, valor){
     } else {
         valor.error.existente = false;
     }
-}
+}; 
+
+export { Validar };

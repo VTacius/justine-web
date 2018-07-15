@@ -1,4 +1,7 @@
-Vue.component('vt-switch', {
+
+<script>
+export default {
+    name: 'vt-switch',
     props: ['uid', 'modelo', 'etiqueta'],
     data: function(){
         return {
@@ -36,7 +39,10 @@ Vue.component('vt-switch', {
             }
         }
     },
-    template: `
+    
+}
+</script>
+<template>
     <div class="pure-g jt-form-component">
         <label class="pure-u-1" v-bind:for="uid">{{etiqueta}}</label>
         <div class="pure-u-1 pure-u-lg-6-24">
@@ -61,7 +67,6 @@ Vue.component('vt-switch', {
                 <i class="fa fa-exclamation-triangle"></i><slot name="existente">El campo no puede reemplazarse por un valor vacío</slot>
             </label> 
         </div>
-        </div>
     </div>
-    `,
-});
+    
+</template>

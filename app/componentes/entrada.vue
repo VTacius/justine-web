@@ -1,11 +1,16 @@
-Vue.component('vt-entrada', {
+<script>
+export default {
+    name: 'vt-entrada',
     props: ['uid', 'etiqueta', 'modelo'],
     data: function(){
         return {
             valor: this.modelo
         }
     },
-    template: `
+    
+}
+</script>
+<template>
     <div class="pure-g jt-form-component">
         <label class="pure-u-1" v-bind:for="uid">{{etiqueta}}</label>
         <input class="pure-u-1" v-bind:id="uid" v-bind:name="uid" type="text" placeholder="Nombre" v-model="valor.valor" v-on:change="$emit('vt-cambio', $event, modelo)"></input> 
@@ -21,5 +26,5 @@ Vue.component('vt-entrada', {
             </label> 
         </div>
     </div>
-    `
-});
+    
+</template>

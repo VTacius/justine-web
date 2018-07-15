@@ -1,15 +1,19 @@
-const vtViewGrupos = {
-	data: function(){
-		return {
-			mensaje: "Grupos: Esta es la muestra"
-		}
-	},
-	methods: {
-		cambiarMensaje: function(){
-			this.mensaje = "Grupos: Este es el nuevo mensaje";
-		}
-	},
-	template: `
+<script>
+	export default {
+		name: 'vtViewGrupos',
+		data: function(){
+			return {
+				mensaje: "Grupos: Esta es la muestra"
+			}
+		},
+		methods: {
+			cambiarMensaje: function(){
+				this.mensaje = "Grupos: Este es el nuevo mensaje";
+			}
+		},
+	}
+</script>
+<template> 
 	<div class="pure-u-1">
     	<div class="contenido">
 			<p>Este es el contenido nuevo para grupos</p>
@@ -23,5 +27,4 @@ const vtViewGrupos = {
 				En realidad, debería considerar buscar más contenido para revisar longitud</p>
     	</div>
 	</div>
-	`	
-}; 
+</template>

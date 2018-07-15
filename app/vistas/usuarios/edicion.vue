@@ -1,4 +1,12 @@
-Vue.component('vt-usuario-edicion', {
+<script>
+import vtEntrada from './../../componentes/entrada.vue';
+import vtSwitch from './../../componentes/switch.vue';
+import { Validar } from './../validacion.js';
+import { plantilla } from "./configuracion.js";
+
+export default {
+    name: 'vt-usuario-edicion',
+    components: { vtEntrada, vtSwitch },
     props: ['usuario'],
     computed: {
         userData: function(){
@@ -34,8 +42,11 @@ Vue.component('vt-usuario-edicion', {
             validar.verificar(evento.target.id, modelo);
         }
     },
-    template: `
-	<div class="pure-u-1">
+
+}
+</script>
+<template>
+    <div class="pure-u-1">
         <!-- Acá había un alert, acá habrá un alert -->
         <form class="pure-form jt-form" id="usuario" @submit="envio" novalidate>
             <fieldset>
@@ -86,5 +97,5 @@ Vue.component('vt-usuario-edicion', {
             </div>
         </form>
     </div>
-    `
-})
+    
+</template>

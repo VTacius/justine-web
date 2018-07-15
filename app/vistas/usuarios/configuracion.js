@@ -6,33 +6,35 @@ var errorPlantilla = {
 
 var plantilla = {
     uid: {
-        valor: "",
+        valor: '',
         error: errorPlantilla,
-        validacion: ["requerido"]
+        validacion: ['requerido']
     },
     givenName: {
-        valor: "",
+        valor: '',
         error: errorPlantilla,
-        validacion: ["requerido", "sustantivo"]
+        validacion: ['requerido', 'sustantivo']
     },
     sn: {
-        valor: "",
+        valor: '',
         error: errorPlantilla,
-        validacion: ["requerido", "sustantivo"]
+        validacion: ['requerido', 'sustantivo']
     },
     dui: {
-        valor: "",
+        valor: '',
         error: errorPlantilla,
-        validacion: ["existente"]
+        validacion: ['existente']
     },
     nit: {
-        valor: "",
+        valor: '',
         error: errorPlantilla,
-        validacion: ["existente"]
+        validacion: ['existente']
     },
     jvs: {
-        valor: "",
+        valor: '',
         error: errorPlantilla,
-        validacion: ["existente"]
+        validacion: ['existente']
     }
-}
+};
+
+export {plantilla};

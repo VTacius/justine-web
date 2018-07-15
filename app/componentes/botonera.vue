@@ -1,5 +1,9 @@
-Vue.component('vt-botonera', {
-	template: `
+<script>
+export default {
+	name: 'vt-botonera'	
+}
+</script>
+<template>
 	<div class="pure-g">
 	    <div class="pure-u-1-3 pure-u-md-1-3">
 	        <button class="button-success pure-button izquierda" v-on:click="$emit('vt-activar-panel', 1)"><i class="fa fa-info-circle"></i></button>
@@ -12,5 +16,5 @@ Vue.component('vt-botonera', {
 	        <button class="button-error pure-button derecha" v-on:click="$emit('vt-activar-panel', 3)"><i class="fa fa-trash"></i></button>
 	    </div>
 	</div>
-    `
-});
+	
+</template>

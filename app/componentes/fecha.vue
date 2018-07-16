@@ -6,7 +6,7 @@ export default {
     props: ['uid', 'etiqueta', 'modelo'],
     mounted: function(){
         let hoy = moment();
-        let fecha = moment(this.modelo.valor, 'DD/MM/YYYY');
+        let fecha = moment(this.valor.valor, 'DD/MM/YYYY');
 
         let local = {
             previousMonth : 'Mes anterior',
@@ -22,27 +22,52 @@ export default {
             moment().format('YYYY')
         ];
         
-        var picker = new Pikaday({
+        this.picker = new Pikaday({
             field: document.getElementById('datepicker'),
             format: 'DD/MM/YYYY',
-            onSelect: this.envio,
+            onSelect: this.seleccion,
             i18n: local,
-            yearRange,
+            yearRange
         });
-        picker.setDate(fecha.toDate())
-        picker.setMinDate(minDate.toDate());
-        picker.setMaxDate(moment().toDate());
+        this.picker.setDate(fecha.toDate())
+        this.picker.setMinDate(minDate.toDate());
+        this.picker.setMaxDate(moment().toDate());
 
     },
     methods: {
-        envio: function(e,f){
-            console.log('Cambio algo');
-            console.log(e);
+        seleccion: function(evento){
+            console.log('He seleccionado');
+            console.log(evento);
+            /* Por acá emito */
+        },
+        verificaCambio: function(fecha){
+            console.log('Empiezo a ver si verifico o no');
+            /*
+            TODO: Un día que en serio no tengas nada que hacer, deberías verificar esto exhaustivamente
+            console.log(fecha.target.value);
+            console.log(this.modelo.valor);
+            console.log(this.valor.valor);
+            */
+            if (fecha.target.value == this.valor.valor){
+                console.log('Al parecer, acá no verifico nada');
+            } else {
+                let f = moment(fecha.target.value, 'DD/MM/YYYY');
+                if (f.isValid()){
+                    console.log('Si, es válido')
+                    console.log(f);
+                } else {
+                    console.log('No es válido');
+                    f = moment(this.modelo.valor, 'DD/MM/YYYY');
+                    this.picker.setDate(f.toDate())
+                }
+                this.valor.valor = f; 
+            }
         }
     },
     data: function(){
         return {
-            valor: this.modelo
+            valor: this.modelo,
+            picker: ''
         }
     },
     
@@ -51,7 +76,7 @@ export default {
 <template>
     <div class="pure-g jt-form-component">
         <label class="pure-u-1" v-bind:for="uid">{{etiqueta}}</label>
-        <input type="text" id="datepicker">
+        <input class="pure-u-1" type="text" id="datepicker" v-on:change="verificaCambio">
         <div> <!-- Acá un ng-show si el formulario ha sido enviado o el elemento ya usado -->
             <label class="pure-u-1 jt-label-error" v-bind:for="uid" v-if="valor.error.requerido"> 
                 <i class="fa fa-exclamation-triangle"></i><slot name="requerido">Campo requerido</slot>

@@ -39,9 +39,13 @@ export default {
             e.preventDefault();
         },
         cambios: function(evento, modelo){
-            console.log(this.userData);
+            console.log(evento);
+            console.log(modelo);
             var validar = new Validar(plantilla, this.usuario);
             validar.verificar(evento.target.id, modelo);
+        },
+        cambiosFecha: function(fecha){
+            console.log(fecha);
         }
     },
 

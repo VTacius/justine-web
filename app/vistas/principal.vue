@@ -17,7 +17,7 @@ export default {
                     nit: '000-000',
                     dui: '000-000',
                     jvs: '',
-                    anio: '05/12/1991',
+                    anio: '',
                     pregunta: '¿Quién soy?',
                     respuesta: 'Soi io',
                     mail: 'kpenate@salud.gob.sv',

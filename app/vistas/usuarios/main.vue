@@ -26,7 +26,7 @@ export default {
                     nit: "000-000",
                     dui: "000-000",
                     jvs: "000-000",
-                    anio: "23/01/1990",
+                    anio: "",
                     pregunta: "¿Quién soy?",
                     respuesta: "Soi io",
                     mail: "alortiz@salud.gob.sv",

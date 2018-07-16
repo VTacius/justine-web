@@ -8,7 +8,8 @@
     "pikaday": "^1.7.0",
     "purecss": "^1.0.0",
     "vue": "^2.5.16",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuejs-datepicker": "^1.5.2"
   },
   "scripts": {
     "dev": "webpack-dev-server --watch --progress --colors",

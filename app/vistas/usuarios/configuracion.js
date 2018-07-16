@@ -34,6 +34,12 @@ var plantilla = {
         valor: '',
         error: errorPlantilla,
         validacion: ['existente']
+    },
+    anio: {
+        valor: '',
+        error: errorPlantilla,
+        validacion: ['existente']
+
     }
 };
 

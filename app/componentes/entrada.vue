@@ -13,7 +13,7 @@ export default {
 <template>
     <div class="pure-g jt-form-component">
         <label class="pure-u-1" v-bind:for="uid">{{etiqueta}}</label>
-        <input class="pure-u-1" v-bind:id="uid" v-bind:name="uid" type="text" placeholder="Nombre" v-model="valor.valor" v-on:change="$emit('vt-cambio', $event, modelo)"></input> 
+        <input class="pure-u-1" v-bind:id="uid" v-bind:name="uid" type="text" placeholder="Nombre" v-model="valor.valor" v-on:change="$emit('vt-cambio', $event, modelo)">
         <div> <!-- Acá un ng-show si el formulario ha sido enviado o el elemento ya usado -->
             <label class="pure-u-1 jt-label-error" v-bind:for="uid" v-if="valor.error.requerido"> 
                 <i class="fa fa-exclamation-triangle"></i><slot name="requerido">Campo requerido</slot>

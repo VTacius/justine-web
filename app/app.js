@@ -7,12 +7,15 @@ Vue.use(VueRouter);
 /** Componentes personalizados: Vistas */
 import vtViewGrupos from './vistas/grupos.vue';
 import vtViewUsuarios from './vistas/usuarios/main.vue';
+import vtPrincipal from './vistas/principal.vue';
+
 /** Componentes personalizados: componentes */
 import vtMenu from './componentes/menu.vue';
 import vtEntrada from './componentes/entrada.vue';
 
 /** Las rutas */
 const routes = [
+    { path: '/', component: vtPrincipal },
     { path: '/grupos', component: vtViewGrupos },
     { path: '/usuarios', component: vtViewUsuarios }
 ];

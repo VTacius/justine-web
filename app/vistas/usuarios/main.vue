@@ -85,7 +85,7 @@ export default {
 	        <form class="pure-form jt-form jt-formulario-busqueda" novalidate>
 	            <div class="jt-input-iconico">
 	                <i class="fa fa-search jt-input-iconico-ico"></i>
-	                <input class="pure-u-1 jt-input-iconico-in" type="text" v-model="filtroBusqueda"></input>
+	                <input class="pure-u-1 jt-input-iconico-in" type="text" v-model="filtroBusqueda">
 	            </div>
 	        </form>
 	    </div>

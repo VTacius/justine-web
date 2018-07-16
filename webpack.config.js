@@ -8,7 +8,9 @@ var publicPath = '/build';
 var exportPath = path.resolve(__dirname, './build');
 
 // Enviroment flag
-var plugins = [new VueLoaderPlugin()];
+var plugins = [
+    new VueLoaderPlugin()
+];
 
 // Main Settings config
 module.exports = {
@@ -40,5 +42,11 @@ module.exports = {
         alias: {
             'vue$': 'vue/dist/vue.esm.js'
         }
+    },
+    devServer: {
+        host: '0.0.0.0',
+        hot: false,
+        inline: false,
     }
-};
+};    
+    

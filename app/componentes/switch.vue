@@ -47,7 +47,7 @@ export default {
         <label class="pure-u-1" v-bind:for="uid">{{etiqueta}}</label>
         <div class="pure-u-1 pure-u-lg-6-24">
             <label class="vt-switch">
-                <input type="checkbox" v-model="estado"></input>
+                <input type="checkbox" v-model="estado">
                 <div class="slider"></div>
                 <span class="vt-switch-text">
                     <span class="on"><i class="fa fa-check"></i></span>
@@ -56,7 +56,7 @@ export default {
             </label> 
         </div>
         <div class="pure-u-1 pure-u-lg-18-24">
-            <input class="pure-u-1" v-bind:id="uid" v-bind:name="uid" type="text" placeholder="JVS" v-bind:disabled="activo" v-model="valor.valor" v-on:change="envio"></input>
+            <input class="pure-u-1" v-bind:id="uid" v-bind:name="uid" type="text" placeholder="JVS" v-bind:disabled="activo" v-model="valor.valor" v-on:change="envio">
             <label class="pure-u-1 jt-label-error" v-bind:for="uid" v-if="valor.error.requerido"> 
                 <i class="fa fa-exclamation-triangle"></i><slot name="requerido">Campo requerido</slot>
             </label> 

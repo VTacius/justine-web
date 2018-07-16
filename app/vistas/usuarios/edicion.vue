@@ -1,12 +1,14 @@
 <script>
+import Pikaday from 'pikaday';
 import vtEntrada from './../../componentes/entrada.vue';
+import vtFecha from './../../componentes/fecha.vue';
 import vtSwitch from './../../componentes/switch.vue';
 import { Validar } from './../validacion.js';
 import { plantilla } from "./configuracion.js";
 
 export default {
     name: 'vt-usuario-edicion',
-    components: { vtEntrada, vtSwitch },
+    components: { vtEntrada, vtSwitch, Pikaday, vtFecha },
     props: ['usuario'],
     computed: {
         userData: function(){
@@ -79,6 +81,9 @@ export default {
                     <!-- JVS (jvs) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio cuando el control esta activo -->
                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-switch uid="jvs" etiqueta="JVS" v-bind:modelo="userData.jvs" v-on:vt-cambio="cambios"></vt-switch>
+                    </div>
+                    <div class="pure-u-1 pure-u-xl-1-2">
+                        <vt-fecha uid="fecha" etiqueta="Fecha de nacimiento" v-bind:modelo="userData.anio" v-on:vt-cambio="cambios"></vt-fecha>
                     </div>
                 </div>
             </fieldset>

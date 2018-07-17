@@ -22,14 +22,20 @@ export default {
                     respuesta: 'Soi io',
                     mail: 'kpenate@salud.gob.sv',
 
-                }
+                },
+            establecimientos : [
+                {label: 'Lugar 1', value: '1'},
+                {label: 'Lugar 2', value: '2'},
+                {label: 'Lugar 3', value: '3'},
+                {label: 'Lugar 4', value: '4'}
+            ]
         }
     }
 }
 </script>
 <template>
     <div>
-        <vt-usuario-edicion v-bind:usuario="usuario"></vt-usuario-edicion>
+        <vt-usuario-edicion v-bind:usuario="usuario" v-bind:establecimientos="establecimientos"></vt-usuario-edicion>
     </div>
 </template>
 

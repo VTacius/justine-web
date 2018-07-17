@@ -1,6 +1,7 @@
 <script>
 import Pikaday from 'pikaday';
 import vtEntrada from './../../componentes/entrada.vue';
+import vtAutocompleta from './../../componentes/autocompleta.vue';
 import vtFecha from './../../componentes/fecha.vue';
 import vtSwitch from './../../componentes/switch.vue';
 import { Validar } from './../validacion.js';
@@ -8,8 +9,8 @@ import { plantilla } from "./configuracion.js";
 
 export default {
     name: 'vt-usuario-edicion',
-    components: { vtEntrada, vtSwitch, Pikaday, vtFecha },
-    props: ['usuario'],
+    components: { vtEntrada, vtSwitch, Pikaday, vtFecha, vtAutocompleta },
+    props: ['usuario', 'establecimientos'],
     computed: {
         userData: function(){
             var datos = this.usuario;
@@ -86,8 +87,20 @@ export default {
                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-switch uid="jvs" etiqueta="JVS" v-bind:modelo="userData.jvs" v-on:vt-cambio="cambios"></vt-switch>
                     </div>
+            
+                    <!-- Fecha de nacimiento (fecha) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-fecha uid="fecha" etiqueta="Fecha de nacimiento" v-bind:modelo="userData.anio" v-on:vt-cambio="cambios"></vt-fecha>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Atributos administrativos</legend>
+                <div class="pure-g">
+
+                    <!-- Establecimiento (o) siempre es obligatorio. TODO: Hay ciertos problemas que aún no resuelvo al escoger algunos establecimientos -->
+                    <div class="pure-u-1 pure-u-xl-1-2">
+                        <vt-autocompleta v-bind:datos="establecimientos"></vt-autocompleta>
                     </div>
                 </div>
             </fieldset>

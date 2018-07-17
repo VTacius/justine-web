@@ -4,12 +4,12 @@
   "repository": "https://github.com/VTacius/justine-web",
   "license": "MIT",
   "dependencies": {
+    "awesomplete": "^1.1.2",
     "font-awesome": "^4.7.0",
     "pikaday": "^1.7.0",
     "purecss": "^1.0.0",
     "vue": "^2.5.16",
-    "vue-router": "^3.0.1",
-    "vuejs-datepicker": "^1.5.2"
+    "vue-router": "^3.0.1"
   },
   "scripts": {
     "dev": "webpack-dev-server --watch --progress --colors",

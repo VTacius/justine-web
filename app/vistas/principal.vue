@@ -10,9 +10,7 @@ export default {
                     givenName: 'Karen',
                     sn: 'Peñate',
                     ou: 'Oficina',
-                    o: {
-                        nombre: 'Lugar'
-                    },
+                    o: 4, 
                     userPassword: 'Pass_2025',
                     nit: '000-000',
                     dui: '000-000',
@@ -24,10 +22,10 @@ export default {
 
                 },
             establecimientos : [
-                {label: 'Lugar 1', value: '1'},
-                {label: 'Lugar 2', value: '2'},
-                {label: 'Lugar 3', value: '3'},
-                {label: 'Lugar 4', value: '4'}
+                {label: 'Lugar 1', value: 1},
+                {label: 'Establecimiento externo 1', value: 2},
+                {label: 'Establecimiento interno 1', value: 3},
+                {label: 'Oficina', value: 4}
             ]
         }
     }

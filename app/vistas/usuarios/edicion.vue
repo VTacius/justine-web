@@ -100,7 +100,7 @@ export default {
 
                     <!-- Establecimiento (o) siempre es obligatorio. TODO: Hay ciertos problemas que aún no resuelvo al escoger algunos establecimientos -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-autocompleta v-bind:datos="establecimientos"></vt-autocompleta>
+                        <vt-autocompleta v-bind:uid="'o'" v-bind:etiqueta="'Establecimiento'" v-bind:datos="establecimientos" v-bind:modelo="userData.o"></vt-autocompleta>
                     </div>
                 </div>
             </fieldset>

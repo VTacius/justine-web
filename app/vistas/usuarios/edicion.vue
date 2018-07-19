@@ -57,7 +57,7 @@ export default {
         <!-- Acá había un alert, acá habrá un alert -->
         <form class="pure-form jt-form" id="usuario" @submit="envio" novalidate>
             <fieldset>
-                <legend>Datos Generales {{userData.sn.valor}}</legend>
+                <legend>Datos Generales</legend>
                 <div class="pure-g">
 
                     <!-- Nombre (givenname) siempre es obligatorio. No vamos a crear usuario sin al menos un nombre válido -->

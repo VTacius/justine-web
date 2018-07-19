@@ -2,22 +2,24 @@
 Un frontend web para una API que aún no existe
 
 ## Desarrollo:
-Pues que ahora apuesto un poquito por Docker. A ver si no me arrepiento (Y para saltar esa opción, el Dockerfile da una idea de las pocas acciones a realizar)
+Pues que ahora apuesto un poquito más por Docker. A ver si no me arrepiento (Y para saltar esa opción, el Dockerfile da una idea de las pocas acciones a realizar)
+
+Construimos a nodalpine
+```sh
+docker build . -t nodalpine --build-arg ID=$(id -u)
+```
 
 La primera vez, será necesario instalar los paquetes propios de este paquete
 ```sh
- docker run --rm -it -v $(pwd):/var/www  nodalpine yarn install
+docker run --rm -it -v $(pwd):/var/www:z nodalpine yarn install
 ```
 
-Luego, para verificarlo podemos ejecutarse de la siguiente forma:
+Lo corremos de la siguiente forma (Por alguna extraña razón que aún no entiendo, no envia el build a nuestro equipo. Pese a ello, funciona perfectamente)
 ```sh
- docker run --rm -v $(pwd):/var/www -p 4000:8080 nodalpine
+docker run --rm -it -v $(pwd):/var/www:z -p 4000:8080 nodalpine
 ```
 
-Agregando la `-it` la consola nos muestra colores. 
-```sh
- docker run --rm -it -v $(pwd):/var/www -p 4000:8000 nodalpine
-```
+Desde nuestro equipo, podemos acceder en el navegador desde `http://127.0.0.1:4000/webpack-dev-server/`. Gracias a `/webpack-dev-server`, somos capaces de un par de cosas como debugear (console.log() a morir) desde el navegador, y que este se recargue con cada cambio que hacemos
 
 ### Fake API
 En realidad, la mejor forma de tratar este tipo de cosas es mockeando datos desde pruebas automatizadas. Como sea.

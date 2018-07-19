@@ -13,7 +13,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --watch --progress --colors",
-    "build": "WEBPACK_ENV=production webpack"
+    "build": "webpack --mode development --progress --colors --watch"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

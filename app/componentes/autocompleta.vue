@@ -12,37 +12,38 @@ export default {
         }
     },
     mounted: function(){
-        console.log('Configuro al terminar de montar el objeto');
         let elemento = document.getElementById('completador');
         let v = this;
         new Awesomecomplete(elemento, {
             list: this.datos,
             replace: function(contenido){
-                console.log('Reemplazando');
-                console.log(contenido);
                 this.input.value = contenido.label;
                 v.valor.valor = contenido.value;
             }
         });
-        console.log('Cuando arranque el componente');
         let resultado = this.buscarId(this.datos, this.valor.valor)
-        this.texto = resultado.label;
+        if (resultado){
+            this.texto = resultado.label;
+        }
     },
     methods: {
+        /** Buscamos sea por label (Nombre del lugar) como por value (ID del lugar) */
         buscarId: function(lista, elemento){
             let value = lista.find(function(item){
-                console.log('comparando ' + elemento + " " + item.label);
                 return (item.label == elemento || item.value == elemento); 
             });
-            console.log('Resultado:');
-            console.log(value);
             return value;
         },
         cambios: function(valorNuevo){
-            /** TODO: Trabajar para cuando sea inválido */
-            console.log('Voy a buscar a ' + valorNuevo.originalTarget.value + ' en lista'); 
-            let resultado = this.buscarId(this.datos, valorNuevo.originalTarget.value)
-            this.valor.valor = resultado.value;
+            let resultado = this.buscarId(this.datos, valorNuevo.target.value)
+            if (resultado){
+                this.valor.valor = resultado.value;
+            } else {
+                /** Ha resultado la forma más sencilla de activar la reactividad */
+                let texto = this.texto;
+                this.texto = " ";
+                this.texto = texto;
+            }
         }
     }   
 }   

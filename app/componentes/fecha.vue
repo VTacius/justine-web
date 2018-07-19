@@ -1,11 +1,12 @@
 <script>
-import moment from 'moment';
+import vtValidacion from './validacion.vue';
 import Pikaday from 'pikaday';
+import moment from 'moment';
 
 export default {
     name: 'vt-fecha',
-    components: { moment, Pikaday },
-    props: ['uid', 'etiqueta', 'modelo'],
+    components: { vtValidacion, moment, Pikaday },
+    props: ['uid', 'etiqueta', 'modelo', 'validaciones'],
     data: function(){
         return {
             valor: this.modelo,
@@ -40,7 +41,7 @@ export default {
         this.picker.setMinDate(minDate.toDate());
         this.picker.setMaxDate(moment().toDate());
 
-        let fecha = moment(this.valor.valor, 'DD/MM/YYYY');
+        let fecha = moment(this.valor, 'DD/MM/YYYY');
         this.picker.setDate(fecha.toDate())
 
     },
@@ -48,7 +49,7 @@ export default {
         /**
          * TODO: Por el momento, estamos obligando a que si se ha establecido fecha, esta no pueda borrarse. 
          * Esta un poco mal, el carácter de requerido debería ser verificado por otro medio 
-         * TODO: Estas usando momemt por el momento. Por acá ya habías querido prescindir de ella 
+         * TODO: Estas usando moment por el momento. Por acá ya habías querido prescindir de ella 
          *   let anio = fecha.getFullYear();
          *   let mes = fecha.getMonth();
          *   let dia = fecha.getDate();
@@ -59,12 +60,12 @@ export default {
             let momento = moment(evento.target.value, 'DD/MM/YYYY');
             if (momento.isValid()){
                 let valor = momento.format('DD/MM/YYYY');
-                this.valor.valor = valor;
+                this.valor = valor;
             } else {
-                let fecha = moment(this.valor.valor, 'DD/MM/YYYY');
+                let fecha = moment(this.valor, 'DD/MM/YYYY');
                 let valor = fecha.isValid() ? fecha.format('DD/MM/YYY') : '' ;
-                this.valor.valor = ' ';
-                this.valor.valor = valor;
+                this.valor = ' ';
+                this.valor = valor;
                 this.picker.setDate(fecha.toDate())
             }
         }
@@ -74,18 +75,12 @@ export default {
 <template>
     <div class="pure-g jt-form-component">
         <label class="pure-u-1" v-bind:for="uid">{{etiqueta}}</label>
-        <input class="pure-u-1" type="text" id="datepicker" v-on:change="cambios">
-        <div> <!-- Acá un ng-show si el formulario ha sido enviado o el elemento ya usado -->
-            <label class="pure-u-1 jt-label-error" v-bind:for="uid" v-if="valor.error.requerido"> 
-                <i class="fa fa-exclamation-triangle"></i><slot name="requerido">Campo requerido</slot>
-            </label> 
-            <label class="pure-u-1 jt-label-error" v-bind:for="uid" v-if="valor.error.sustantivo">
-                <i class="fa fa-exclamation-triangle"></i><slot name="sustantivo">Revise el campo ingresado</slot>
-            </label> 
-            <label class="pure-u-1 jt-label-error" v-bind:for="uid" v-if="valor.error.existente">
-                <i class="fa fa-exclamation-triangle"></i><slot name="existente">El campo no puede reemplazarse por un valor vacío</slot>
-            </label> 
-        </div>
+        <input class="pure-u-1" type="text" id="datepicker" v-on:change="cambios" autocomplete="off">
+        <vt-validacion v-bind:uid="uid" v-bind:validaciones="validaciones" v-bind:valor="valor">
+            <template slot="requerido"><slot name="requerido"></slot></template>
+            <template slot="fecha"><slot name="fecha"></slot></template>
+            <template slot="existente"><slot name="existente"></slot></template>
+        </vt-validacion>
     </div>
     
 </template>

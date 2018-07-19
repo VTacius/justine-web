@@ -11,7 +11,6 @@ import vtPrincipal from './vistas/principal.vue';
 
 /** Componentes personalizados: componentes */
 import vtMenu from './componentes/menu.vue';
-import vtEntrada from './componentes/entrada.vue';
 
 /** Las rutas */
 const routes = [
@@ -34,5 +33,5 @@ new Vue({
             usuario: 'Francisco Alexander Rodríguez Ortíz'
         }
     },
-    components: { vtMenu, vtEntrada }
+    components: { vtMenu }
 }).$mount('#justine');

@@ -2,33 +2,15 @@
 import Pikaday from 'pikaday';
 import vtEntrada from './../../componentes/entrada.vue';
 import vtAutocompleta from './../../componentes/autocompleta.vue';
+import vtMultiautocompleta from './../../componentes/multiautocompleta.vue';
 import vtFecha from './../../componentes/fecha.vue';
 import vtSwitch from './../../componentes/switch.vue';
-import { Validar } from './../validacion.js';
 import { plantilla } from "./configuracion.js";
 
 export default {
     name: 'vt-usuario-edicion',
-    components: { vtEntrada, vtSwitch, Pikaday, vtFecha, vtAutocompleta },
-    props: ['usuario', 'establecimientos'],
-    computed: {
-        userData: function(){
-            var datos = this.usuario;
-            var objeto = {};
-            Object.keys(datos).forEach(function(k){
-                objeto[k] = {
-                    valor: datos[k],
-                    error: {
-                        requerido: false,
-                        sustantivo: false,
-                        existente: false
-                    }
-                }
-                
-            });
-            return objeto; 
-        }
-    },
+    components: { vtEntrada, vtSwitch, Pikaday, vtFecha, vtAutocompleta, vtMultiautocompleta },
+    props: ['usuario', 'establecimientos', 'grupos'],
     methods: {
         envio: function(e){
             /*
@@ -42,8 +24,6 @@ export default {
         cambios: function(evento, modelo){
             console.log(evento);
             console.log(modelo);
-            var validar = new Validar(plantilla, this.usuario);
-            validar.verificar(evento.target.id, modelo);
         },
         cambiosFecha: function(fecha){
             console.log(fecha);
@@ -62,7 +42,7 @@ export default {
 
                     <!-- Nombre (givenname) siempre es obligatorio. No vamos a crear usuario sin al menos un nombre válido -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="givenName" etiqueta="Nombre" v-bind:modelo="userData.givenName" v-on:vt-cambio="cambios">
+                        <vt-entrada uid="givenName" etiqueta="Nombre" v-bind:modelo="usuario.givenName" v-on:vt-cambio="cambios" v-bind:validaciones="['requerido', 'sustantivo', 'existente']">
                             <template slot="requerido"> El nombre es requerido </template>
                             <template slot="sustantivo"> Revise el nombre escrito </template>
                         </vt-entrada>
@@ -70,37 +50,53 @@ export default {
                        
                     <!-- Apellidos (sn) siempre es obligatorio, bajo las mismas condiciones que givenname -->
                     <div class="pure-u-1 pure-u-xl-1-2"> 
-                        <vt-entrada uid="sn" etiqueta="Apellido" v-bind:modelo="userData.sn" v-on:vt-cambio="cambios"></vt-entrada>
+                        <vt-entrada uid="sn" etiqueta="Apellido" v-bind:modelo="usuario.sn" v-on:vt-cambio="cambios" v-bind:validaciones="['requerido', 'sustantivo', 'existente']"></vt-entrada>
                     </div>
                    
                     <!-- DUI (dui) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="dui" etiqueta="DUI" v-bind:modelo="userData.dui" v-on:vt-cambio="cambios"></vt-entrada>
+                        <vt-entrada uid="dui" etiqueta="DUI" v-bind:modelo="usuario.dui" v-on:vt-cambio="cambios" v-bind:validaciones="['requerido', 'dui', 'existente']">
+                            <template slot="dui"> Revise el DUI ingresado </template>
+                        </vt-entrada>
                     </div>
                    
                     <!-- NIT (nit) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="nit" etiqueta="NIT" v-bind:modelo="userData.nit" v-on:vt-cambio="cambios"></vt-entrada>
+                        <vt-entrada uid="nit" etiqueta="NIT" v-bind:modelo="usuario.nit" v-on:vt-cambio="cambios" v-bind:validaciones="['requerido', 'nit', 'existente']"></vt-entrada>
                     </div>
             
                     <!-- JVS (jvs) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio cuando el control esta activo -->
-                    <div class="pure-u-1 pure-u-xl-1-2">
+<!--                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-switch uid="jvs" etiqueta="JVS" v-bind:modelo="userData.jvs" v-on:vt-cambio="cambios"></vt-switch>
-                    </div>
+                    </div> -->
             
                     <!-- Fecha de nacimiento (fecha) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-fecha uid="fecha" etiqueta="Fecha de nacimiento" v-bind:modelo="userData.anio" v-on:vt-cambio="cambios"></vt-fecha>
+                        <vt-fecha uid="fecha" etiqueta="Fecha de nacimiento" v-bind:modelo="usuario.anio" v-on:vt-cambio="cambios" v-bind:validaciones="['requerido', 'fecha', 'existente']"></vt-fecha>
                     </div>
                 </div>
             </fieldset>
+
             <fieldset>
-                <legend>Atributos administrativos</legend>
+                <legend>Atributos Administrativos</legend>
                 <div class="pure-g">
 
-                    <!-- Establecimiento (o) siempre es obligatorio. TODO: Hay ciertos problemas que aún no resuelvo al escoger algunos establecimientos -->
+                    <!-- establecimiento (o) siempre es obligatorio. TODO: Revisar que todos los establecimientos sean seleccionables -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-autocompleta v-bind:uid="'o'" v-bind:etiqueta="'Establecimiento'" v-bind:datos="establecimientos" v-bind:modelo="userData.o"></vt-autocompleta>
+                        <vt-autocompleta uid="o" etiqueta="Establecimiento" v-bind:datos="establecimientos" v-bind:modelo="usuario.o" v-bind:validaciones="['requerido', 'existente']"></vt-autocompleta>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>    
+                <legend>Atributos Posix y Samba</legend>
+
+                <div class="pure-g">
+                    <!-- Grupos Adicionales (grupos) no debería ser obligatorio. TODO: En realidad debería ser el control principal respecto a Grupo Principal -->
+                    <div class="pure-u-1 pure-u-xl-1-2">
+                        <vt-multiautocompleta uid="o" etiqueta="Grupos Adicionales" v-bind:datos="grupos" v-bind:modelo="usuario.grupos" v-bind:validaciones="['requerido', 'existente']">
+                            <template slot="requerido">Este mensaje esta lejos de casa</template>
+                        </vt-multiautocompleta>
                     </div>
                 </div>
             </fieldset>

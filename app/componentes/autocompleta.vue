@@ -20,9 +20,12 @@ export default {
             list: this.datos,
             replace: function(contenido){
                 this.input.value = contenido.label;
+                v.texto = contenido.label;
                 v.valor = contenido.value;
             }
         });
+
+        /* Configuramos el valor por primera vez  */
         let resultado = this.buscarId(this.datos, this.valor)
         if (resultado){
             this.texto = resultado.label;
@@ -36,20 +39,12 @@ export default {
             });
             return value;
         },
-        cambios: function(valorNuevo){
-            let resultado = this.buscarId(this.datos, valorNuevo.target.value)
-            if (resultado){
-                /** TODO: Revisa que cuando se oprime enter funcione. - No funciona con tabSelect  */
-                this.valor = resultado.value;
-                this.texto = resultado.label;
-            } else {
-                /** Así mostramos el mensaje */
-                /** De esta forma, hacemos la validación acá, enviamos a validaciones datos que desencadenen los eventos necesarios
-                 * para mostrar errores y todo eso
-                 */
-                this.texto = '';
-                this.valor = '';
-            }
+        validar: function(valor){
+            this.invalido = valor;
+            this.$emit('vt-cambio', this.uid, this.valor, this.invalido);
+        },
+        cambios: function(evento){
+            this.valor = evento.target.value;
         }
     }   
 }   
@@ -58,12 +53,12 @@ export default {
     <!-- TODO: Revisar esta maqueta, es bastante mejorable. Todas las maquetas de tipo control -->
     <div class="pure-g jt-form-component">
         <div class="pure-u-1">
-            <label v-bind:for="uid">{{etiqueta}}: {{valor}}</label>
+            <label :for="uid">{{etiqueta}}: {{valor}}</label>
         </div>
         <div class="pure-u-1">
-            <input type="text" class="pure-u-1" v-bind:id="uid" v-bind:value="texto" v-on:change="cambios">
+            <input type="text" class="pure-u-1" :id="uid" :value="texto" @change="cambios">
         </div>
-        <vt-validacion v-bind:uid="uid" v-bind:validaciones="validaciones" v-bind:valor="valor">
+        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" @vt-validar="validar" :datos="this.datos">
             <template slot="requerido"><slot name="requerido"></slot></template>
             <template slot="existente"><slot name="existente"></slot></template>
         </vt-validacion>

@@ -1,12 +1,24 @@
 <script>
 import { Validar } from './../utils/validacion.js';
+import moment from 'moment';
 
 export default {
     name: 'vt-validacion',
-    props: ['uid', 'valor', 'validaciones'],
+    props: {
+        'uid': String, 
+        'valor': String, 
+        'validaciones': Array,
+        'datos': {
+            default: function(){
+                return ['']
+            },
+            type: Array
+        }
+    },
     data: function(){
         return {
-            valido: {}
+            valido: {},
+            invalido: true
         }
     },
     mounted: function (){
@@ -19,11 +31,18 @@ export default {
     },
     watch: {
         valor: function (val){
+            this.invalido = true;
             this.validaciones.forEach(function(validacion){
                 /** TODO: Verificar que la verificación exista */
                 let verifica = this[validacion];
-                this.valido[validacion] = verifica(val)
+                if (validacion === "listado"){
+                    this.valido[validacion] = verifica(val, this.datos)
+                } else{
+                    this.valido[validacion] = verifica(val)
+                }
+                this.invalido = this.invalido && (! this.valido[validacion])
             },this);
+           this.$emit('vt-validar', !this.invalido) 
         }
     },
     methods: {
@@ -42,7 +61,7 @@ export default {
             return ! re.test(valor);
         },
         sustantivo: function(valor){
-            let re = /^(?:[A-Z][a-záéíóú]+\s{0,1})*$/;
+            let re = /^(?:[A-Z][a-záéíóúñ]+\s{0,1})*$/;
             return ! re.test(valor);
         },
         existente: function(valor){
@@ -50,8 +69,17 @@ export default {
             return false
         },
         fecha: function(valor){
-            let fecha = Date.parse(valor);
-            return ! isNaN(fecha)
+            if (valor.length > 0){
+                let momento = moment(valor, 'DD/MM/YYYY');
+                return ! momento.isValid();
+            }
+
+        },
+        listado: function(elemento, lista){
+            let value = lista.find(function(item){
+                return (item.label == elemento || item.value == elemento); 
+            });
+            return typeof(value) === 'undefined';
         }
     }
 }

@@ -21,12 +21,9 @@ export default {
             */
             e.preventDefault();
         },
-        cambios: function(evento, modelo){
-            console.log(evento);
-            console.log(modelo);
-        },
-        cambiosFecha: function(fecha){
-            console.log(fecha);
+        cambios: function(uid, modelo, validacion){
+            let resultado = validacion ? "Inválido": "Válido";
+            console.log('Sucede un algo en en ' + uid + ': "' + modelo + '" es ' + resultado );
         }
     },
 
@@ -42,7 +39,7 @@ export default {
 
                     <!-- Nombre (givenname) siempre es obligatorio. No vamos a crear usuario sin al menos un nombre válido -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="givenName" etiqueta="Nombre" v-bind:modelo="usuario.givenName" v-on:vt-cambio="cambios" v-bind:validaciones="['requerido', 'sustantivo', 'existente']">
+                        <vt-entrada uid="givenName" etiqueta="Nombre" :modelo="usuario.givenName" @vt-cambio="cambios" :validaciones="['requerido', 'sustantivo', 'existente']">
                             <template slot="requerido"> El nombre es requerido </template>
                             <template slot="sustantivo"> Revise el nombre escrito </template>
                         </vt-entrada>
@@ -50,19 +47,19 @@ export default {
                        
                     <!-- Apellidos (sn) siempre es obligatorio, bajo las mismas condiciones que givenname -->
                     <div class="pure-u-1 pure-u-xl-1-2"> 
-                        <vt-entrada uid="sn" etiqueta="Apellido" v-bind:modelo="usuario.sn" v-on:vt-cambio="cambios" v-bind:validaciones="['requerido', 'sustantivo', 'existente']"></vt-entrada>
+                        <vt-entrada uid="sn" etiqueta="Apellido" :modelo="usuario.sn" @vt-cambio="cambios" :validaciones="['requerido', 'sustantivo', 'existente']"></vt-entrada>
                     </div>
                    
                     <!-- DUI (dui) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="dui" etiqueta="DUI" v-bind:modelo="usuario.dui" v-on:vt-cambio="cambios" v-bind:validaciones="['requerido', 'dui', 'existente']">
+                        <vt-entrada uid="dui" etiqueta="DUI" :modelo="usuario.dui" @vt-cambio="cambios" :validaciones="['requerido', 'dui', 'existente']">
                             <template slot="dui"> Revise el DUI ingresado </template>
                         </vt-entrada>
                     </div>
                    
                     <!-- NIT (nit) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="nit" etiqueta="NIT" v-bind:modelo="usuario.nit" v-on:vt-cambio="cambios" v-bind:validaciones="['requerido', 'nit', 'existente']"></vt-entrada>
+                        <vt-entrada uid="nit" etiqueta="NIT" :modelo="usuario.nit" @vt-cambio="cambios" :validaciones="['requerido', 'nit', 'existente']"></vt-entrada>
                     </div>
             
                     <!-- JVS (jvs) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio cuando el control esta activo -->
@@ -72,7 +69,7 @@ export default {
             
                     <!-- Fecha de nacimiento (fecha) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-fecha uid="fecha" etiqueta="Fecha de nacimiento" v-bind:modelo="usuario.anio" v-on:vt-cambio="cambios" v-bind:validaciones="['requerido', 'fecha', 'existente']"></vt-fecha>
+                        <vt-fecha uid="fecha" etiqueta="Fecha de nacimiento" :modelo="usuario.anio" @vt-cambio="cambios" :validaciones="['requerido', 'fecha', 'existente']"></vt-fecha>
                     </div>
                 </div>
             </fieldset>
@@ -83,7 +80,7 @@ export default {
 
                     <!-- establecimiento (o) siempre es obligatorio. TODO: Revisar que todos los establecimientos sean seleccionables -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-autocompleta uid="o" etiqueta="Establecimiento" v-bind:datos="establecimientos" v-bind:modelo="usuario.o" v-bind:validaciones="['requerido', 'existente']"></vt-autocompleta>
+                        <vt-autocompleta uid="o" etiqueta="Establecimiento" v-bind:datos="establecimientos" v-bind:modelo="usuario.o" v-bind:validaciones="['requerido', 'listado', 'existente']"></vt-autocompleta>
                     </div>
                 </div>
             </fieldset>
@@ -94,21 +91,21 @@ export default {
                 <div class="pure-g">
                     <!-- Grupos Adicionales (grupos) no debería ser obligatorio. TODO: En realidad debería ser el control principal respecto a Grupo Principal -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-multiautocompleta uid="o" etiqueta="Grupos Adicionales" v-bind:datos="grupos" v-bind:modelo="usuario.grupos" v-bind:validaciones="['requerido', 'existente']">
+<!--                         <vt-multiautocompleta uid="o" etiqueta="Grupos Adicionales" v-bind:datos="grupos" v-bind:modelo="usuario.grupos" v-bind:validaciones="['requerido', 'existente']">
                             <template slot="requerido">Este mensaje esta lejos de casa</template>
-                        </vt-multiautocompleta>
+                        </vt-multiautocompleta> -->
                     </div>
                 </div>
             </fieldset>
     
             <div class="pure-g">
                 <div class="pure-u-1">
-                    <div class="pure-g jt-form-component">
+                    <div class="pure-g">
                         <div class="pure-u-1-2 jt-contenedor-boton-izquierda">
                             <button type="submit" class="button-success jt-boton-formulario pure-button">Enviar</button>
                         </div>
-                        <div class="pure-u-1-2 jt-contenedor-boton-derecha">
-                            <button type="button" class="button-warning jt-boton-formulario pure-button">Cancelar</button>
+                        <div class="pure-u-1-2">
+                            <button type="reset" class="button-warning jt-boton-formulario pure-button">Cancelar</button>
                         </div>
                     </div>
                 </div>

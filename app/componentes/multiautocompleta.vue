@@ -9,6 +9,11 @@ export default {
         return {
             valor: this.modelo
         }
+    },
+    methods: {
+        validar: function(evento, valor){
+            console.log(evento, valor);
+        }
     }
 }   
 </script>
@@ -20,7 +25,7 @@ export default {
                 {{option.label}}
             </option>
         </select>
-        <vt-validacion v-bind:uid="uid" v-bind:validaciones="validaciones" v-bind:valor="valor">
+        <vt-validacion v-bind:uid="uid" v-bind:validaciones="validaciones" v-bind:valor="valor" v-on:vt-validar="validar">
             <template slot="requerido"><slot name="requerido"></slot></template>
             <template slot="existente"><slot name="existente"></slot></template>
         </vt-validacion>

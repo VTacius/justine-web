@@ -10,6 +10,7 @@ export default {
     data: function(){
         return {
             valor: this.modelo,
+            invalido: false,
             picker: ''
         }
     },
@@ -42,13 +43,19 @@ export default {
         this.picker.setMaxDate(moment().toDate());
 
         let fecha = moment(this.valor, 'DD/MM/YYYY');
-        this.picker.setDate(fecha.toDate())
+        this.picker.setDate(fecha.toDate());
 
     },
     methods: {
         /**
-         * TODO: Por el momento, estamos obligando a que si se ha establecido fecha, esta no pueda borrarse. 
-         * Esta un poco mal, el carácter de requerido debería ser verificado por otro medio 
+         *  TODO: Debe conseguir el valor del evento
+         *  Pues parece que esto no existe
+         */
+        validar: function(valor){
+            this.invalido = valor;
+            this.$emit('vt-cambio', this.uid, this.valor, this.invalido);
+        },
+        /**
          * TODO: Estas usando moment por el momento. Por acá ya habías querido prescindir de ella 
          *   let anio = fecha.getFullYear();
          *   let mes = fecha.getMonth();
@@ -56,27 +63,16 @@ export default {
          *   let valor = dia + '/' + mes + '/' + anio;
          */
         cambios: function(evento){
-
-            let momento = moment(evento.target.value, 'DD/MM/YYYY');
-            if (momento.isValid()){
-                let valor = momento.format('DD/MM/YYYY');
-                this.valor = valor;
-            } else {
-                let fecha = moment(this.valor, 'DD/MM/YYYY');
-                let valor = fecha.isValid() ? fecha.format('DD/MM/YYY') : '' ;
-                this.valor = ' ';
-                this.valor = valor;
-                this.picker.setDate(fecha.toDate())
-            }
+            this.valor = evento.target.value;
         }
     }
 }
 </script>
 <template>
     <div class="pure-g jt-form-component">
-        <label class="pure-u-1" v-bind:for="uid">{{etiqueta}}</label>
-        <input class="pure-u-1" type="text" id="datepicker" v-on:change="cambios" autocomplete="off">
-        <vt-validacion v-bind:uid="uid" v-bind:validaciones="validaciones" v-bind:valor="valor">
+        <label class="pure-u-1" :for="uid">{{etiqueta}} <span v-if="invalido">Es inválido</span></label>
+        <input class="pure-u-1" type="text" id="datepicker" @change="cambios($event)" autocomplete="off">
+        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" @vt-validar="validar">
             <template slot="requerido"><slot name="requerido"></slot></template>
             <template slot="fecha"><slot name="fecha"></slot></template>
             <template slot="existente"><slot name="existente"></slot></template>

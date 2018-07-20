@@ -24,9 +24,9 @@ export default {
                 },
             establecimientos : [
                 {label: 'Lugar 1', value: 1},
-                {label: 'Establecimiento externo 1', value: 2},
-                {label: 'Establecimiento interno 1', value: 3},
-                {label: 'Oficina', value: 4}
+                {label: 'Establecimiento externo 2', value: 2},
+                {label: 'Establecimiento interno 3', value: 3},
+                {label: 'Oficina 4', value: 4}
             ],
             grupos : [
                 {label: 'Administradores', value: 1001},

@@ -57,7 +57,7 @@ export default {
 }
 </script>
 <template>
-    <div> <!-- Acá un ng-show si el formulario ha sido enviado o el elemento ya usado -->
+    <div class="pure-u-1"> <!-- Acá un ng-show si el formulario ha sido enviado o el elemento ya usado -->
         <label class="pure-u-1 jt-label-error" v-bind:for="uid" v-for="v in validaciones" v-bind:key="v" v-if="valido[v]"> 
             <i class="fa fa-exclamation-triangle" v-bind:name="v"></i><slot v-bind:name="v">{{v}}: Verifique el campo</slot>
         </label> 

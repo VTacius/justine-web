@@ -16,7 +16,7 @@ export default {
 <template>
     <div class="pure-g jt-form-component">
         <label class="pure-u-1" v-bind:for="uid">{{etiqueta}}</label>
-        <input class="pure-u-1" v-bind:id="uid" v-bind:name="uid" type="text" placeholder="Nombre" v-model="valor" v-on:change="$emit('vt-cambio', $event, valor)">
+        <input type="text" class="pure-u-1" v-bind:id="uid" v-bind:name="uid" placeholder="Nombre" v-model="valor" v-on:change="$emit('vt-cambio', $event, valor)">
         <vt-validacion v-bind:uid="uid" v-bind:validaciones="validaciones" v-bind:valor="valor">
             <template slot="requerido"><slot name="requerido"></slot></template>
             <template slot="sustantivo"><slot name="sustantivo"></slot></template>

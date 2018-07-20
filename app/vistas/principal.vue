@@ -39,8 +39,6 @@ export default {
 }
 </script>
 <template>
-    <div>
         <vt-usuario-edicion v-bind:usuario="usuario" v-bind:establecimientos="establecimientos" v-bind:grupos="grupos"></vt-usuario-edicion>
-    </div>
 </template>
 

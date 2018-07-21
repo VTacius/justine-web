@@ -3,7 +3,7 @@ import vtValidacion from './validacion.vue';
 
 export default {
     name: 'vt-entrada',
-    components: {vtValidacion},
+    components: { vtValidacion },
     props: ['uid', 'etiqueta', 'modelo', 'validaciones'],
     data: function(){
         return {
@@ -28,7 +28,7 @@ export default {
     <div class="pure-g jt-form-component">
         <label class="pure-u-1" :for="uid">{{etiqueta}} <span v-if="invalido">Es inválido</span></label>
         <input type="text" class="pure-u-1" :id="uid" :name="uid" placeholder="Nombre" v-model="valor" @change="cambios($event, valor, invalido)">
-        <vt-validacion v-bind:uid="uid" :validaciones="validaciones" :valor="valor" @vt-validar="validar">
+        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" @vt-validar="validar">
             <template slot="requerido"><slot name="requerido"></slot></template>
             <template slot="sustantivo"><slot name="sustantivo"></slot></template>
             <template slot="existente"><slot name="existente"></slot></template>

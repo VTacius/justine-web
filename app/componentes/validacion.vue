@@ -6,7 +6,7 @@ export default {
     name: 'vt-validacion',
     props: {
         'uid': String, 
-        'valor': String, 
+        'valor': [Number, String, Array], 
         'validaciones': Array,
         'datos': {
             default: function(){
@@ -30,26 +30,27 @@ export default {
 
     },
     watch: {
-        valor: function (val){
+        valor: function (valor){
             this.invalido = true;
             this.validaciones.forEach(function(validacion){
                 /** TODO: Verificar que la verificación exista */
-                let verifica = this[validacion];
-                if (validacion === "listado"){
-                    this.valido[validacion] = verifica(val, this.datos)
+                if (validacion === "listado" && valor.length > 0){
+                    valor = this.encontrarElemento(valor, this.datos);
+                    this.valido[validacion] = this.requerido(valor);
                 } else{
-                    this.valido[validacion] = verifica(val)
+                    let verifica = this[validacion];
+                    this.valido[validacion] = verifica(valor)
                 }
                 this.invalido = this.invalido && (! this.valido[validacion])
             },this);
-           this.$emit('vt-validar', !this.invalido) 
+           this.$emit('vt-validar', !this.invalido, valor) 
         }
     },
     methods: {
         /** Verdadero cuando no pasen la verificación */
         requerido: function(valor){
             /** Verifica que un array tenga valores */
-            return valor.length === 0
+            return typeof(valor) === "undefined" || valor.length === 0
         },
         nit: function(valor){
             /** TODO: Revisalo y verifica que valide tanto en UNA cadena correcta como en valor nulo */
@@ -75,11 +76,15 @@ export default {
             }
 
         },
-        listado: function(elemento, lista){
-            let value = lista.find(function(item){
-                return (item.label == elemento || item.value == elemento); 
+        encontrarElemento: function(valor, lista){
+            return lista.find(function(item){
+                return (item.label == valor || item.value == valor); 
             });
-            return typeof(value) === 'undefined';
+        },
+        listado: function(valor, lista){
+            if (valor.length > 0){
+                return this.encontrarElemento(valor, lista);
+            }
         }
     }
 }

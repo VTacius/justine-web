@@ -80,7 +80,7 @@ export default {
 
                     <!-- establecimiento (o) siempre es obligatorio. TODO: Revisar que todos los establecimientos sean seleccionables -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-autocompleta uid="o" etiqueta="Establecimiento" v-bind:datos="establecimientos" v-bind:modelo="usuario.o" v-bind:validaciones="['requerido', 'listado', 'existente']"></vt-autocompleta>
+                        <vt-autocompleta uid="o" etiqueta="Establecimiento" :modelo="usuario.o" @vt-cambio="cambios" :datos="establecimientos" :validaciones="['requerido', 'listado', 'existente']"></vt-autocompleta>
                     </div>
                 </div>
             </fieldset>
@@ -91,9 +91,9 @@ export default {
                 <div class="pure-g">
                     <!-- Grupos Adicionales (grupos) no debería ser obligatorio. TODO: En realidad debería ser el control principal respecto a Grupo Principal -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-<!--                         <vt-multiautocompleta uid="o" etiqueta="Grupos Adicionales" v-bind:datos="grupos" v-bind:modelo="usuario.grupos" v-bind:validaciones="['requerido', 'existente']">
+                        <vt-multiautocompleta uid="o" etiqueta="Grupos Adicionales" :modelo="usuario.grupos" @vt-cambios="cambios" :datos="grupos" :validaciones="['requerido', 'existente']">
                             <template slot="requerido">Este mensaje esta lejos de casa</template>
-                        </vt-multiautocompleta> -->
+                        </vt-multiautocompleta>
                     </div>
                 </div>
             </fieldset>

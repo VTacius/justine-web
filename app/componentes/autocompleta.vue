@@ -39,12 +39,14 @@ export default {
             });
             return value;
         },
-        validar: function(valor){
-            this.invalido = valor;
+        validar: function(validez, resultado){
+            this.invalido = validez;
+            this.valor =  (typeof(resultado) === "undefined") ? this.valor: resultado.value;
             this.$emit('vt-cambio', this.uid, this.valor, this.invalido);
         },
         cambios: function(evento){
-            this.valor = evento.target.value;
+            this.texto = evento.target.value;
+            this.valor = " ";
         }
     }   
 }   
@@ -56,10 +58,11 @@ export default {
             <label :for="uid">{{etiqueta}}: {{valor}}</label>
         </div>
         <div class="pure-u-1">
-            <input type="text" class="pure-u-1" :id="uid" :value="texto" @change="cambios">
+            <input class="pure-u-1" type="text" :id="uid" :value="texto" @change="cambios($event)">
         </div>
-        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" @vt-validar="validar" :datos="this.datos">
+        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="texto" @vt-validar="validar" :datos="this.datos">
             <template slot="requerido"><slot name="requerido"></slot></template>
+            <template slot="listado"><slot name="listado"></slot></template>
             <template slot="existente"><slot name="existente"></slot></template>
         </vt-validacion>
     </div>

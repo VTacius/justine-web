@@ -3,8 +3,8 @@ import vtValidacion from './validacion.vue';
 
 export default {
     name: 'vt-multiautocompleta',
-    props: ['uid', 'etiqueta', 'modelo', 'datos', 'validaciones'],
     components: { vtValidacion },
+    props: ['uid', 'etiqueta', 'modelo', 'datos', 'validaciones'],
     data: function(){
         return {
             valor: this.modelo
@@ -25,7 +25,7 @@ export default {
                 {{option.label}}
             </option>
         </select>
-        <vt-validacion v-bind:uid="uid" v-bind:validaciones="validaciones" v-bind:valor="valor" v-on:vt-validar="validar">
+        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" @vt-validar="validar">
             <template slot="requerido"><slot name="requerido"></slot></template>
             <template slot="existente"><slot name="existente"></slot></template>
         </vt-validacion>

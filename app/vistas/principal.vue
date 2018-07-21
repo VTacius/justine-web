@@ -11,7 +11,7 @@ export default {
                     givenName: 'Karen',
                     sn: 'Peñate',
                     ou: 'Oficina',
-                    o: '2', 
+                    o: 2, 
                     userPassword: 'Pass_2025',
                     nit: '4444-666666-333-1',
                     dui: '12345678-0',

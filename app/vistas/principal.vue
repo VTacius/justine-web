@@ -31,8 +31,8 @@ export default {
             ],
             grupos : [
                 {label: 'Administradores', value: 1001},
-                {label: 'Navegacion Web', value: 1002},
-                {label: 'Navegacion limitada', value: 1003},
+                {label: 'Navegación Web', value: 1002},
+                {label: 'Navegación limitada', value: 1003},
                 {label: 'Usuarios', value: 1004}
             ]
         }

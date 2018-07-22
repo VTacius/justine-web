@@ -25,27 +25,27 @@ export default {
             }
         });
 
-        /* Configuramos el valor por primera vez  */
-        let resultado = this.buscarId(this.datos, this.valor)
-        if (resultado){
-            this.texto = resultado.label;
-        }
+        /** Configuramos el valor por primera vez  */
+        /** TODO: Por ahora presenta el inconveniente de valida dos veces, después todo bien  */
+        this.texto = this.valor;
     },
     methods: {
-        /** Buscamos sea por label (Nombre del lugar) como por value (ID del lugar) */
-        buscarId: function(lista, elemento){
-            let value = lista.find(function(item){
-                return (item.label == elemento || item.value == elemento); 
-            });
-            return value;
-        },
         validar: function(validez, resultado){
             this.invalido = validez;
-            this.valor =  (typeof(resultado) === "undefined") ? this.valor: resultado.value;
+            if (typeof(resultado) === "undefined"){
+                this.valor = this.valor
+            } else {
+                this.valor = resultado.value;
+                this.texto = resultado.label;
+            }
             this.$emit('vt-cambio', this.uid, this.valor, this.invalido);
         },
         cambios: function(evento){
             this.texto = evento.target.value;
+            /** 
+             * Como no sabemos si el valor será válido, lo borramos a la espera que la 
+             * validación nos lo diga
+             */
             this.valor = " ";
         }
     }   

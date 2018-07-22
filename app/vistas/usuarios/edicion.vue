@@ -83,7 +83,11 @@ export default {
 
                     <!-- establecimiento (o) siempre es obligatorio. TODO: Revisar que todos los establecimientos sean seleccionables -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-autocompleta uid="o" etiqueta="Establecimiento" :modelo="usuario.o" @vt-cambio="cambios" :datos="establecimientos" :validaciones="validacion('o')"></vt-autocompleta>
+                        <vt-autocompleta uid="o" etiqueta="Establecimiento" :modelo="usuario.o" @vt-cambio="cambios" :datos="establecimientos" :validaciones="validacion('o')">
+                            <template slot="requerido">Debe escoger un establecimiento</template>
+                            <template slot="listado">No es un establecimiento válido</template>
+                            <template slot="existente">No puede borrar el establecimiento. Escoja otro válido</template>
+                        </vt-autocompleta>
                     </div>
                 </div>
             </fieldset>

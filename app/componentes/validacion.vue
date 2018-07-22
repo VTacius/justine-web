@@ -35,7 +35,7 @@ export default {
             /** Reseteamos el valor con cada verificación */
             this.invalido = true;
             this.validaciones.forEach(function(validacion){
-                if (validacion === "listado" && valor.length > 0){
+                if (validacion === "listado" && ( typeof(valor) === 'undefined' || valor.length > 0 || Number.isInteger(valor))){
                     valor = this.encontrarElemento(valor, this.datos);
                     this.valido[validacion] = this.requerido(valor);
                 } else if (validacion === 'existente'){
@@ -104,10 +104,10 @@ export default {
         },
         
         listado: function(valor, lista){
-            if (valor.length > 0){
+            if (valor.length > 0 || Number.isInteger(valor)){
                 return this.encontrarElemento(valor, lista);
             }
-        }
+        },
     }
 }
 </script>

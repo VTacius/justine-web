@@ -33,7 +33,7 @@ export default {
         
         this.picker = new Pikaday({
             i18n: locale,
-            field: document.getElementById('datepicker'),
+            field: document.getElementById(this.uid),
             format: 'DD/MM/YYYY',
             keyboardInput: false,
             yearRange
@@ -71,7 +71,7 @@ export default {
 <template>
     <div class="pure-g jt-form-component">
         <label class="pure-u-1" :for="uid">{{etiqueta}} <span v-if="invalido">Es inválido</span></label>
-        <input class="pure-u-1" type="text" id="datepicker" @change="cambios($event)" autocomplete="off">
+        <input class="pure-u-1" type="text" :id="uid" @change="cambios($event)" autocomplete="off">
         <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" @vt-validar="validar">
             <template v-for="v in validaciones" :slot="v"><slot :name="v"></slot></template>
         </vt-validacion>

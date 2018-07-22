@@ -26,8 +26,7 @@ export default {
             </option>
         </select>
         <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" @vt-validar="validar">
-            <template slot="requerido"><slot name="requerido"></slot></template>
-            <template slot="existente"><slot name="existente"></slot></template>
+            <template v-for="v in validaciones" :slot="v"><slot :name="v"></slot></template>
         </vt-validacion>
     </div>
 </template>

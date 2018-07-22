@@ -7,6 +7,7 @@ export default {
     props: {
         'uid': String, 
         'valor': [Number, String, Array], 
+        'valorViejo': [Number, String, Array],
         'validaciones': Array,
         'datos': {
             default: function(){
@@ -31,44 +32,63 @@ export default {
     },
     watch: {
         valor: function (valor){
+            /** Reseteamos el valor con cada verificación */
             this.invalido = true;
             this.validaciones.forEach(function(validacion){
-                /** TODO: Verificar que la verificación exista */
                 if (validacion === "listado" && valor.length > 0){
                     valor = this.encontrarElemento(valor, this.datos);
                     this.valido[validacion] = this.requerido(valor);
-                } else{
+                } else if (validacion === 'existente'){
+                    this.valido[validacion] = this.existente(valor, this.valorViejo)
+                    /** ¿Debo incluir valor viejo al emitir? */
+                } else {
                     let verifica = this[validacion];
+                    /** TODO: Verificar que la verificación exista */
                     this.valido[validacion] = verifica(valor)
                 }
+                /** 
+                 * Inválido es falso si todos las verifidaciones son falsas.
+                 * Los cambiamos a true para hacer esto en una sola instrucción
+                 */
                 this.invalido = this.invalido && (! this.valido[validacion])
             },this);
-           this.$emit('vt-validar', !this.invalido, valor) 
+            /** He terminado de validar, emito el resultado y el valor que se he validado */
+            this.$emit('vt-validar', !this.invalido, valor) 
         }
     },
     methods: {
-        /** Verdadero cuando no pasen la verificación */
+        /** 
+         * Devuelven true cuando no pasan la validación
+         */
+        
+        /** Verifica que un array tenga valores */
         requerido: function(valor){
-            /** Verifica que un array tenga valores */
             return typeof(valor) === "undefined" || valor.length === 0
         },
+
         nit: function(valor){
-            /** TODO: Revisalo y verifica que valide tanto en UNA cadena correcta como en valor nulo */
             let re = /^(\d{4}-\d{6}-\d{3}-\d{1}$)*$/;
             return ! re.test(valor);
         },
+
         dui: function(valor){
             let re =  /^(\d{8}-\d{1})*$/;
             return ! re.test(valor);
         },
+
         sustantivo: function(valor){
             let re = /^(?:[A-Z][a-záéíóúñ]+\s{0,1})*$/;
             return ! re.test(valor);
         },
-        existente: function(valor){
-            /** TODO: Es posible que por ahora no tenga muy en claro como hacer este */
-            return false
+
+        existente: function(valor, valorViejo){
+            if (!this.requerido(valorViejo)){
+                return this.requerido(valor);
+            } else {
+                return false
+            }
         },
+
         fecha: function(valor){
             if (valor.length > 0){
                 let momento = moment(valor, 'DD/MM/YYYY');
@@ -76,11 +96,13 @@ export default {
             }
 
         },
+
         encontrarElemento: function(valor, lista){
             return lista.find(function(item){
                 return (item.label == valor || item.value == valor); 
             });
         },
+        
         listado: function(valor, lista){
             if (valor.length > 0){
                 return this.encontrarElemento(valor, lista);

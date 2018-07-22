@@ -96,7 +96,7 @@ export default {
                     <!-- Grupos Adicionales (grupos) no debería ser obligatorio. TODO: En realidad debería ser el control principal respecto a Grupo Principal -->
                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-multiautocompleta uid="grupos" etiqueta="Grupos Posix" :modelo="usuario.grupos" @vt-cambio="cambios" :datos="grupos" :validaciones="validacion('grupos')">
-                            <template slot="requerido">Este mensaje esta lejos de casa</template>
+                            <template slot="requerido">Al menos un grupo es requerido</template>
                         </vt-multiautocompleta>
                     </div>
                     

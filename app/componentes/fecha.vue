@@ -73,9 +73,7 @@ export default {
         <label class="pure-u-1" :for="uid">{{etiqueta}} <span v-if="invalido">Es inválido</span></label>
         <input class="pure-u-1" type="text" id="datepicker" @change="cambios($event)" autocomplete="off">
         <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" @vt-validar="validar">
-            <template slot="requerido"><slot name="requerido"></slot></template>
-            <template slot="fecha"><slot name="fecha"></slot></template>
-            <template slot="existente"><slot name="existente"></slot></template>
+            <template v-for="v in validaciones" :slot="v"><slot :name="v"></slot></template>
         </vt-validacion>
     </div>
     

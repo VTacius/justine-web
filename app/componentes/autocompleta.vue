@@ -61,9 +61,7 @@ export default {
             <input class="pure-u-1" type="text" :id="uid" :value="texto" @change="cambios($event)">
         </div>
         <vt-validacion :uid="uid" :validaciones="validaciones" :valor="texto" @vt-validar="validar" :datos="this.datos">
-            <template slot="requerido"><slot name="requerido"></slot></template>
-            <template slot="listado"><slot name="listado"></slot></template>
-            <template slot="existente"><slot name="existente"></slot></template>
+            <template v-for="v in validaciones" :slot="v"><slot :name="v"></slot></template>
         </vt-validacion>
     </div>
 </template>

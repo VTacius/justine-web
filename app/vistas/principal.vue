@@ -16,11 +16,12 @@ export default {
                     nit: '4444-666666-333-1',
                     dui: '12345678-0',
                     jvs: '',
-                    anio: '16/11/1990',
+                    fecha: '16/11/1990',
                     pregunta: '¿Quién soy?',
                     respuesta: 'Soi io',
                     mail: 'kpenate@salud.gob.sv',
-                    grupos: [1001, 1003]
+                    grupos: [1001, 1003],
+                    grupo: [1001]
                 },
             establecimientos : [
                 {label: 'Lugar 1', value: 1},
@@ -39,6 +40,6 @@ export default {
 }
 </script>
 <template>
-        <vt-usuario-edicion v-bind:usuario="usuario" v-bind:establecimientos="establecimientos" v-bind:grupos="grupos"></vt-usuario-edicion>
+        <vt-usuario-edicion configuracion="edicion" :usuario="usuario" :establecimientos="establecimientos" :grupos="grupos"></vt-usuario-edicion>
 </template>
 

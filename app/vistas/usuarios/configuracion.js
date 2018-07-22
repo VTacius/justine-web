@@ -1,46 +1,28 @@
-var errorPlantilla = {
-    requerido: false,
-    sustantivo: false,
-    existente: false
-};
-
 var plantilla = {
-    uid: {
-        valor: '',
-        error: errorPlantilla,
-        validacion: ['requerido']
-    },
     givenName: {
-        valor: '',
-        error: errorPlantilla,
-        validacion: ['requerido', 'sustantivo']
+        validacion: ['requerido', 'sustantivo', 'existente']
     },
     sn: {
-        valor: '',
-        error: errorPlantilla,
-        validacion: ['requerido', 'sustantivo']
+        validacion: ['requerido', 'sustantivo', 'existente']
     },
     dui: {
-        valor: '',
-        error: errorPlantilla,
-        validacion: ['existente']
+        validacion: ['requerido', 'dui', 'existente']
     },
     nit: {
-        valor: '',
-        error: errorPlantilla,
-        validacion: ['existente']
+        validacion: ['requerido', 'nit', 'existente']
     },
     jvs: {
-        valor: '',
-        error: errorPlantilla,
         validacion: ['existente']
     },
-    anio: {
-        valor: '',
-        error: errorPlantilla,
-        validacion: ['existente']
-
+    fecha: {
+        validacion: ['requerido', 'fecha', 'existente']
+    },
+    o:{
+        validacion: ['requerido', 'listado', 'existente']
+    },
+    grupos:{
+        validacion: ['requerido', 'existente']
     }
 };
 
-export {plantilla};
+export { plantilla };

@@ -2,20 +2,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "firefox",
-            "request": "launch",
-            "name": "justine-web",
-            "reAttach": true,
-            "url": "http://127.0.0.1:4000",
-            "pathMappings": [{
-                "url": "http://127.0.0.1:4000",
-                "path": "${workspaceFolder}"
-            }
-        
-        ]
-
-        },
-        {
           "type": "chrome",
           "request": "launch",
           "name": "vuejs: chrome",

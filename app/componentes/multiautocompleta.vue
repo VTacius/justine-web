@@ -12,16 +12,16 @@ export default {
     },
     methods: {
         validar: function(evento, valor){
-            console.log(evento, valor);
+            this.$emit('vt-cambio', this.uid, this.valor, this.invalido);
         }
     }
 }   
 </script>
 <template>
     <div class="pure-g jt-form-component">
-        <label class="pure-u-1" v-bind:for="uid">{{this.etiqueta}}</label>
-        <select multiple class="pure-u-1" v-bind:id="uid" v-bind:name="uid" size=10 v-model="valor" >
-            <option v-for="option in datos" v-bind:key="option.value" v-bind:value="option.value">
+        <label class="pure-u-1" :for="uid">{{this.etiqueta}}</label>
+        <select multiple class="pure-u-1" :id="uid" :name="uid" size=10 v-model="valor" >
+            <option v-for="option in datos" :key="option.value" :value="option.value">
                 {{option.label}}
             </option>
         </select>

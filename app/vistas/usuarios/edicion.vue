@@ -1,5 +1,4 @@
 <script>
-import Pikaday from 'pikaday';
 import vtEntrada from './../../componentes/entrada.vue';
 import vtAutocompleta from './../../componentes/autocompleta.vue';
 import vtMultiautocompleta from './../../componentes/multiautocompleta.vue';
@@ -9,21 +8,25 @@ import { plantilla } from "./configuracion.js";
 
 export default {
     name: 'vt-usuario-edicion',
-    components: { vtEntrada, vtSwitch, Pikaday, vtFecha, vtAutocompleta, vtMultiautocompleta },
-    props: ['usuario', 'establecimientos', 'grupos'],
+    configuracion: plantilla,
+    components: { vtEntrada, vtAutocompleta, vtMultiautocompleta, vtFecha, vtSwitch },
+    props: ['configuracion', 'usuario', 'establecimientos', 'grupos'],
     methods: {
         envio: function(e){
-            /*
-            console.log(this.usuario.givenName);
-            console.log(this.usuario.sn);
-            console.log(this.usuario.dui);
-            console.log(this.usuario.nit);
-            */
+            /**
+             * console.log(this.usuario.givenName);
+             * console.log(this.usuario.sn);
+             * console.log(this.usuario.dui);
+             * console.log(this.usuario.nit);
+             */
             e.preventDefault();
         },
         cambios: function(uid, modelo, validacion){
             let resultado = validacion ? "Inválido": "Válido";
             console.log('Sucede un algo en en ' + uid + ': "' + modelo + '" es ' + resultado );
+        },
+        validacion: function(elemento){
+            return this.$options.configuracion[elemento].validacion;
         }
     },
 
@@ -39,7 +42,7 @@ export default {
 
                     <!-- Nombre (givenname) siempre es obligatorio. No vamos a crear usuario sin al menos un nombre válido -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="givenName" etiqueta="Nombre" :modelo="usuario.givenName" @vt-cambio="cambios" :validaciones="['requerido', 'sustantivo', 'existente']">
+                        <vt-entrada uid="givenName" etiqueta="Nombre" :modelo="usuario.givenName" @vt-cambio="cambios" :validaciones="validacion('givenName')">
                             <template slot="requerido"> El nombre es requerido </template>
                             <template slot="sustantivo"> Revise el nombre escrito </template>
                         </vt-entrada>
@@ -47,29 +50,29 @@ export default {
                        
                     <!-- Apellidos (sn) siempre es obligatorio, bajo las mismas condiciones que givenname -->
                     <div class="pure-u-1 pure-u-xl-1-2"> 
-                        <vt-entrada uid="sn" etiqueta="Apellido" :modelo="usuario.sn" @vt-cambio="cambios" :validaciones="['requerido', 'sustantivo', 'existente']"></vt-entrada>
+                        <vt-entrada uid="sn" etiqueta="Apellido" :modelo="usuario.sn" @vt-cambio="cambios" :validaciones="validacion('sn')"></vt-entrada>
                     </div>
                    
                     <!-- DUI (dui) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="dui" etiqueta="DUI" :modelo="usuario.dui" @vt-cambio="cambios" :validaciones="['requerido', 'dui', 'existente']">
+                        <vt-entrada uid="dui" etiqueta="DUI" :modelo="usuario.dui" @vt-cambio="cambios" :validaciones="validacion('dui')">
                             <template slot="dui"> Revise el DUI ingresado </template>
                         </vt-entrada>
                     </div>
                    
                     <!-- NIT (nit) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="nit" etiqueta="NIT" :modelo="usuario.nit" @vt-cambio="cambios" :validaciones="['requerido', 'nit', 'existente']"></vt-entrada>
+                        <vt-entrada uid="nit" etiqueta="NIT" :modelo="usuario.nit" @vt-cambio="cambios" :validaciones="validacion('nit')"></vt-entrada>
                     </div>
             
                     <!-- JVS (jvs) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio cuando el control esta activo -->
-<!--                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-switch uid="jvs" etiqueta="JVS" v-bind:modelo="userData.jvs" v-on:vt-cambio="cambios"></vt-switch>
-                    </div> -->
+                    <div class="pure-u-1 pure-u-xl-1-2">
+                        <vt-entrada uid="jvs" etiqueta="JVS" :modelo="usuario.jvs" @vt-cambio="cambios" :validaciones="validacion('jvs')"></vt-entrada>
+                    </div>
             
                     <!-- Fecha de nacimiento (fecha) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-fecha uid="fecha" etiqueta="Fecha de nacimiento" :modelo="usuario.anio" @vt-cambio="cambios" :validaciones="['requerido', 'fecha', 'existente']"></vt-fecha>
+                        <vt-fecha uid="fecha" etiqueta="Fecha de nacimiento" :modelo="usuario.fecha" @vt-cambio="cambios" :validaciones="validacion('fecha')"></vt-fecha>
                     </div>
                 </div>
             </fieldset>
@@ -80,7 +83,7 @@ export default {
 
                     <!-- establecimiento (o) siempre es obligatorio. TODO: Revisar que todos los establecimientos sean seleccionables -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-autocompleta uid="o" etiqueta="Establecimiento" :modelo="usuario.o" @vt-cambio="cambios" :datos="establecimientos" :validaciones="['requerido', 'listado', 'existente']"></vt-autocompleta>
+                        <vt-autocompleta uid="o" etiqueta="Establecimiento" :modelo="usuario.o" @vt-cambio="cambios" :datos="establecimientos" :validaciones="validacion('o')"></vt-autocompleta>
                     </div>
                 </div>
             </fieldset>
@@ -89,12 +92,14 @@ export default {
                 <legend>Atributos Posix y Samba</legend>
 
                 <div class="pure-g">
+                    
                     <!-- Grupos Adicionales (grupos) no debería ser obligatorio. TODO: En realidad debería ser el control principal respecto a Grupo Principal -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-multiautocompleta uid="o" etiqueta="Grupos Adicionales" :modelo="usuario.grupos" @vt-cambios="cambios" :datos="grupos" :validaciones="['requerido', 'existente']">
+                        <vt-multiautocompleta uid="grupos" etiqueta="Grupos Posix" :modelo="usuario.grupos" @vt-cambio="cambios" :datos="grupos" :validaciones="validacion('grupos')">
                             <template slot="requerido">Este mensaje esta lejos de casa</template>
                         </vt-multiautocompleta>
                     </div>
+                    
                 </div>
             </fieldset>
     

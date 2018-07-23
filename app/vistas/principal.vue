@@ -7,22 +7,22 @@ export default {
     data: function(){
         return {
             usuario: {
-                    uid: 'kpenate',
-                    givenName: 'Karen',
-                    sn: 'Peñate',
-                    ou: 'Oficina',
-                    o: 2, 
-                    userPassword: 'Pass_2025',
-                    nit: '4444-666666-333-1',
-                    dui: '12345678-0',
-                    jvs: '',
-                    fecha: '16/11/1990',
-                    pregunta: '¿Quién soy?',
-                    respuesta: 'Soi io',
-                    mail: 'kpenate@salud.gob.sv',
-                    grupos: [1001, 1003],
-                    grupo: [1001]
-                },
+                uid: 'kpenate',
+                givenName: 'Karen',
+                sn: 'Peñate',
+                ou: 'Oficina',
+                o: 2, 
+                userPassword: 'Pass_2025',
+                nit: '4444-666666-333-1',
+                dui: '12345678-0',
+                jvs: '',
+                fecha: '16/11/1990',
+                pregunta: '¿Quién soy?',
+                respuesta: 'Soi io',
+                mail: 'kpenate@salud.gob.sv',
+                grupos: [1001, 1003],
+                grupo: 1003
+            },
             establecimientos : [
                 {label: 'Lugar 1', value: 1},
                 {label: 'Establecimiento externo 2', value: 2},

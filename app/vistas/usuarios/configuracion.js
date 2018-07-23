@@ -20,6 +20,9 @@ var plantilla = {
     o:{
         validacion: ['requerido', 'existente', 'listado']
     },
+    grupo:{
+        validacion: ['requerido', 'existente']
+    },
     grupos:{
         validacion: ['requerido', 'existente']
     }

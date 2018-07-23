@@ -9,14 +9,20 @@ export default {
     data: function(){
         return {
             valor: this.modelo,
+            autocomplete: Object,
             texto: ""
+        }
+    },
+    watch: {
+        datos: function(){
+            this.autocomplete.list = this.datos
         }
     },
     mounted: function(){
         let elemento = document.getElementById(this.uid);
         let v = this;
         /** Recuerda que el replace es necesario para que muestre label en lugar de valor */
-        new Awesomecomplete(elemento, {
+        this.autocomplete = new Awesomecomplete(elemento, {
             list: this.datos,
             replace: function(contenido){
                 this.input.value = contenido.label;

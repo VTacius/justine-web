@@ -5,25 +5,38 @@ import Multiselect from 'vue-multiselect';
 export default {
     name: 'vt-multiautocompleta',
     components: { vtValidacion, Multiselect },
-    props: ['uid', 'etiqueta', 'modelo', 'datos', 'validaciones'],
+    props: ['uid', 'etiqueta', 'modelo', 'datos', 'validaciones', 'multiple', 'filtro'],
     data: function(){
         return {
             valor: this.modelo
         }
     },
     computed: {
-        opciones: {
+        seleccionados: {
             get: function(){
+                let valor = Array.isArray(this.valor) ? this.valor : [this.valor];
                 let resultado = this.datos.filter(function(elemento){
-                    return this.valor.indexOf(elemento.value) >=0;
+                    return valor.indexOf(elemento.value) >=0;
                 },this);
                 return resultado;
             },
             set: function(newValor){
-                let resultado = newValor.map(function(elemento){
+                /** TODO: Algo más sencillo que esto, por favor */
+                let valor = Array.isArray(newValor) ? newValor : [newValor];
+                let resultado = valor.map(function(elemento){
                     return elemento.value;
                 }, this);
                 this.valor = resultado;
+            }
+        },
+        opciones: function(){
+            if(this.filtro){
+                let resultado = this.datos.filter(function(elemento){
+                    return this.filtro.indexOf(elemento.value) >= 0;
+                }, this);
+                return resultado;
+            } else {
+                return this.datos;
             }
         }
     },
@@ -42,18 +55,7 @@ export default {
         <div class="pure-u-1">
             <!-- TODO: El mismo creador dice que no deberías usar v-model -->
             <!-- TODO: cuando :multiple="false", es probable que quieras usar :hide-selected="false" y revisar :preselect-first-->
-            <multiselect v-model="opciones" :options="datos" track-by="value" label="label" :multiple="true" :hide-selected="true" :preselect-first="false">
-                    <template slot="singleLabel" slot-scope="props">
-                        <span class="option__desc">
-                            <span class="option__title">{{ props.option.label }}</span>
-                        </span>
-                    </template>
-                    <template slot="option" slot-scope="props">
-                        <div class="option__desc">
-                            <span class="option__title">{{ props.option.label }}</span>
-                        </div>
-                    </template>
-            </multiselect>
+            <multiselect v-model="seleccionados" :options="opciones" track-by="value" label="label" :multiple="multiple" :hide-selected="true" :preselect-first="false"></multiselect>
         </div>
         <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" @vt-validar="validar">
             <template v-for="v in validaciones" :slot="v"><slot :name="v"></slot></template>

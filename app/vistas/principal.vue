@@ -20,7 +20,7 @@ export default {
                 pregunta: '¿Quién soy?',
                 respuesta: 'Soi io',
                 mail: 'kpenate@salud.gob.sv',
-                grupos: [1001, 1005],
+                grupos: [1003, 1005],
                 grupo: 1003
             },
             establecimientos : [

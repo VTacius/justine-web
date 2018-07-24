@@ -9,6 +9,7 @@
     "pikaday": "^1.7.0",
     "purecss": "^1.0.0",
     "vue": "^2.5.16",
+    "vue-multiselect": "^2.1.0",
     "vue-router": "^3.0.1"
   },
   "scripts": {

@@ -20,7 +20,7 @@ export default {
                 pregunta: '¿Quién soy?',
                 respuesta: 'Soi io',
                 mail: 'kpenate@salud.gob.sv',
-                grupos: [1001, 1003],
+                grupos: [1001, 1005],
                 grupo: 1003
             },
             establecimientos : [
@@ -44,7 +44,8 @@ export default {
                 {label: 'Administradores', value: 1001},
                 {label: 'Navegación Web', value: 1002},
                 {label: 'Navegación limitada', value: 1003},
-                {label: 'Usuarios', value: 1004}
+                {label: 'Técnicos', value: 1004},
+                {label: 'Usuarios', value: 1005}
             ]
         }
     },

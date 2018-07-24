@@ -44,6 +44,10 @@ export default {
             }
 
         },
+        /** 
+         * TODO: Ahora que quiero hacerlo en otra parte, me doy cuenta que puede que esta no sea la mejor manera
+         * TODO: ¿MIXIN?
+         */
         validacion: function(elemento){
             return this.$options.configuracion[elemento].validacion;
         }

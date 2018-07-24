@@ -354,17 +354,14 @@ dd {
 .pure-form select,
 .pure-form input[type="text"], 
 .pure-form input[type="date"] {
-    padding-top: 0.5em;
-    padding-bottom: 0.3em;
-    padding-left: 0.6em;
-    padding-right: 0.6em;
+    min-height: 2.5em; 
+    padding: 0.5em 0.6em 0.3em 0.6em;
     outline: none;
     box-shadow: none;
     border: none;
-    border-bottom: solid 0.13em #c9c9c9;
+    border-bottom: solid 0.2em #c9c9c9;
     border-bottom-left-radius: 0.15em;
     border-bottom-right-radius: 0.15em;
-    transition: border 0.3s;
 }
 
 .pure-form select:focus,
@@ -372,7 +369,7 @@ dd {
 .pure-form input[type="date"]:focus {
     outline: none;
     box-shadow: none;
-    border-bottom: solid 0.13em #969696;
+    border-bottom: solid 0.2em #969696;
     border-bottom-left-radius: 0.15em;
     border-bottom-right-radius: 0.15em;
 }
@@ -975,3 +972,18 @@ label.vt-switch {
  *
  */
 
+.multiselect input[type="text"],
+.multiselect input[type="text"]:focus {
+    min-height: unset; 
+    padding: 0.15em 0 0 0 ;   
+    vertical-align: top; 
+    border: none;
+}
+
+.multiselect__tags {
+    box-shadow: none;
+    border: none;
+    border-bottom: solid 0.2em #c9c9c9;
+    border-bottom-left-radius: 0.15em;
+    border-bottom-right-radius: 0.15em;
+}

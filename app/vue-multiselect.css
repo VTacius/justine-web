@@ -470,3 +470,7 @@ fieldset[disabled] .multiselect {
         transform: rotate(2turn)
     }
 }
+
+.multiselect input {
+    border: none;
+}

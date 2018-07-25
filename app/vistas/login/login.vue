@@ -29,8 +29,9 @@ export default {
             let usuario = document.getElementById('usuario');
             let contrasenia = document.getElementById('contrasenia');
             auth.login(usuario.value, contrasenia.value);
+            let redireccion = this.redirect.length > 0 ? this.redirect : '/';
             if (auth.isLogin()){
-                this.$router.push('/' + this.redirect);
+                this.$router.push(redireccion);
             }
         },
         validacion: function(elemento){

@@ -4,10 +4,8 @@ function Autenticacion (){
 
 Autenticacion.prototype.isLogin = function(){
     if ('usuario' in this.storage){
-        console.log('Estoy auth');
         return true;
     } else {
-        console.log('Al parecer no estoy autenticado');
         return false;
     }
 };

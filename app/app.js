@@ -20,11 +20,16 @@ import Autenticacion from './autenticacion/main.js';
 
 const auth = new Autenticacion();
 
+let redireccion = function(route){
+    return {
+        redirect: route.query.redirect
+    };
+};
+
 /** Las rutas */
 const routes = [
     { path: '/', component: vtPrincipal },
-    { path: '/login', component: vtViewLogin },
-    { path: '/login?redirect=:redirect', component: vtViewLogin, props: true },
+    { path: '/login', component: vtViewLogin, props: redireccion },
     { path: '/logout', component: vtViewLogout },
     { path: '/perfil', component: vtViewPerfil, meta: {requireAuth: true} },
     { path: '/grupos', component: vtViewGrupos, meta: {requireAuth: true} },

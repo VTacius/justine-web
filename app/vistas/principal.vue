@@ -21,7 +21,13 @@ export default {
                 respuesta: 'Soi io',
                 mail: 'kpenate@salud.gob.sv',
                 grupos: [1003, 1005],
-                grupo: 1003
+                grupo: 1003,
+                title: 'Profesor designado',
+                sambaAcctFlags: true,
+                telephoneNumber: '7894',
+                loginShell: '/bin/bash',
+                cuentaStatus: true,
+                buzonStatus: true
             },
             establecimientos : [
                 {label: 'Lugar 1', value: 1},

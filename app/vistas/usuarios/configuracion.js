@@ -28,6 +28,32 @@ var plantilla = {
     },
     grupos:{
         validacion: ['requerido', 'existente']
+    },
+    title:{
+        validacion: ['existente']
+    },
+    telephoneNumber: {
+        validacion: ['telefono', 'existente']
+    },
+    pregunta: {
+        validacion: ['existente']
+    },
+    respuesta: {
+        validacion: ['existente']
+    },
+    loginShell: {
+        validacion: ['requerido']
+    },
+    componentes: {
+        samba: {
+            mostrar: true,
+        },
+        recuperacion: {
+            mostrar: true,
+        },
+        zimbra: {
+            mostrar: true,
+        }
     }
 };
 

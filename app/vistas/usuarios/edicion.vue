@@ -13,6 +13,10 @@ export default {
     data: function(){
         return {
            gruposSeleccionados: this.usuario.grupos,
+           shells: [
+               {label: 'Bash', value: '/bin/bash'},
+               {label: 'False', value: '/bin/false'}
+           ]
         }
     },
     methods: {
@@ -43,7 +47,15 @@ export default {
 
         },
         validacion: function(elemento){
-            return this.$options.configuracion[elemento].validacion;
+            let config = this.$options.configuracion;
+            let validacion = elemento in config ? config[elemento].validacion : [''];
+            return validacion;
+        },
+        mostrar: function(elemento){
+            let config = this.$options.configuracion.componentes;
+            /** Por defecto, vamos a mostrar todos los componentes */
+            let mostrar = elemento in config ? config[elemento].mostrar : true;
+            return mostrar;
         }
     },
 
@@ -53,6 +65,7 @@ export default {
     <div class="pure-u-1">
         <!-- Acá había un alert, acá habrá un alert -->
         <form class="pure-form jt-form" id="usuario" @submit="envio" novalidate>
+            
             <fieldset>
                 <legend>Datos Generales</legend>
                 <div class="pure-g">
@@ -96,6 +109,7 @@ export default {
 
             <fieldset>
                 <legend>Atributos Administrativos</legend>
+
                 <div class="pure-g">
 
                     <!-- establecimiento (o) siempre es obligatorio. TODO: Revisar que todos los establecimientos sean seleccionables -->
@@ -115,13 +129,39 @@ export default {
                             <template slot="existente">No puede borrar la Oficina. Escoja otro válido</template>
                         </vt-autocompleta>
                     </div>
+                    
+                    <!-- Cargo (title) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
+                    <div class="pure-u-1 pure-u-xl-1-2">
+                        <vt-entrada uid="title" etiqueta="Cargo" :modelo="usuario.title" @vt-cambios="cambios" :validaciones="validacion('title')"></vt-entrada>
+                    </div>
+            
+                    <!-- Teléfono (telephoneNumber) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
+                    <div class="pure-u-1 pure-u-xl-1-2">
+                        <vt-entrada uid="telephoneNumber" etiqueta="Número teléfonico" :modelo="usuario.telephoneNumber" @vt-cambios="cambios" :validaciones="validacion('telephoneNumber')"></vt-entrada>
+                    </div>
+
                 </div>
             </fieldset>
 
-            <fieldset>    
+            <fieldset v-show="mostrar('samba')">    
                 <legend>Atributos Posix y Samba</legend>
 
                 <div class="pure-g">
+                    <!-- Username (uid) es obligatorio cuando aparece en accion = "creacion" -->
+                    <!-- TODO: Este campo no aparecerá siempre -->
+                    <div class="pure-u-1 pure-u-xl-1-2">
+                        <vt-entrada uid="uid" etiqueta="Username" :modelo="usuario.uid" @vt-cambio="cambios" :validaciones="validacion('uid')"></vt-entrada>
+                    </div>
+                    
+                    <!-- TODO: Hay que definir en la mejor manera posible la funcionalidad de este control -->
+                    <div class="pure-u-1 pure-u-xl-1-2">
+                        <div class="pure-g jt-form-component">
+                            <div class="pure-u-1">
+                                <label>Estado de la cuenta</label>
+                            </div>
+                            <vt-switch uid="sambaAcctFlags" :modelo="usuario.sambaAcctFlags" @vt-cambio="cambios"></vt-switch>
+                        </div>
+                    </div>
                     
                     <!-- Grupos Adicionales (grupos) no debería ser obligatorio. TODO: En realidad debería ser el control principal respecto a Grupo Principal -->
                     <div class="pure-u-1 pure-u-xl-1-2">
@@ -137,8 +177,71 @@ export default {
                         </vt-autocompleta>
                     </div>
                     
+                    <!-- Shell por defecto (shell) debería ser obligatoria. Nos aseguramos que tenga configurada /bin/false -->
+                    <div class="pure-u-1 pure-u-xl-1-2">
+                        <vt-autocompleta uid="loginShell" etiqueta="Shell predeterminada" :modelo="usuario.loginShell" @vt-cambio="cambios" :datos="shells" :validaciones="validacion('loginShell')">
+                            <template slot="requerido">Debe escoger una Shell Válida</template>
+                        </vt-autocompleta>
+                    </div>
+                    
                 </div>
             </fieldset>
+    
+            <fieldset v-show="mostrar('recuperacion')">
+                <legend>Recuperación de Contraseña</legend>
+    
+                <div class="pure-g">
+
+                    <!-- Pregunta Secreta (pregunta) es obligatorio cuando aparece en accion = "actualizacion", y como sólo aparecen allí no vale la pena hacer más trabajo -->
+                    <div class="pure-u-1 pure-u-xl-1-2">
+                        <vt-entrada uid="pregunta" etiqueta="Pregunta de Recuperación" :modelo="usuario.pregunta" @vt-cambios="cambios" :validaciones="validacion('pregunta')"></vt-entrada>
+                    </div>
+
+                    <!-- Respuesta (respuesta) es obligatorio cuando aparece en accion = "actualizacion" -->
+                    <div class="pure-u-1 pure-u-xl-1-2">
+                        <vt-entrada uid="respuesta" etiqueta="Respuesta" :modelo="usuario.respuesta" @vt-cambios="cambios" :validaciones="validacion('respuesta')"></vt-entrada>
+                    </div>
+                </div>
+
+            </fieldset>
+    
+            <fieldset v-show="mostrar('zimbra')">
+                <legend>Atributos Zimbra</legend>
+                <div class="pure-g">
+                    
+                    <!-- TODO: Hay que definir en la mejor manera posible la funcionalidad de este control, sobre todo su posición me parece -->
+                    <div class="pure-u-1 pure-u-xl-1-2">
+                        <div class="pure-g jt-form-component">
+                            <div class="pure-u-1">
+                                <label>Estado del Buzón</label>
+                            </div>
+                            <vt-switch uid="buzonStatus" :modelo="usuario.buzonStatus" @vt-cambio="cambios"></vt-switch>
+                        </div>
+                    </div>
+                    
+                    <!-- TODO: Hay que definir en la mejor manera posible la funcionalidad de este control, sobre todo su posición me parece -->
+                    <div class="pure-u-1 pure-u-xl-1-2">
+                        <div class="pure-g jt-form-component">
+                            <div class="pure-u-1">
+                                <label>Estado de la Cuenta</label>
+                            </div>
+                            <vt-switch uid="cuentaStatus" :modelo="usuario.cuentaStatus" @vt-cambio="cambios"></vt-switch>
+                        </div>
+                    </div>
+
+                    <!-- Tamaño del Buzón (volumenbuzon) es obligatorio, nos aseguramos que tenga configurado por defecto el menor tamaño posible -->
+                    <div class="pure-u-1">
+                        <div class="pure-g jt-form-component">
+                            <label class="pure-u-1 " for="volumenbuzon">Tamaño del Buzón</label>
+                            <select class="pure-u-1" id="volumenbuzon" name="volumenbuzon" ng-model="$ctrl.usuarioDetalle.volumenBuzon" ng-options="opcion.id as opcion.name for opcion in $ctrl.volumenes" ng-required="$ctrl.requerirCampo('volumenBuzon')">
+                            </select>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </fieldset>
+
     
             <div class="pure-g">
                 <div class="pure-u-1">

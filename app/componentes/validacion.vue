@@ -52,6 +52,7 @@ export default {
                  */
                 this.invalido = this.invalido && (! this.valido[validacion])
             },this);
+
             /** He terminado de validar, emito el resultado y el valor que se he validado */
             this.$emit('vt-validar', !this.invalido, valor) 
         }
@@ -95,6 +96,15 @@ export default {
                 return ! momento.isValid();
             }
 
+        },
+
+        telefono: function(valor){
+            if(valor.length > 0){
+                /** TODO: Probablemente querrás permitir espacios entre */
+                let re = /^(?:[0-9]+\-?){2}$/;
+                return ! re.test(valor);
+            }
+            return false;
         },
 
         encontrarElemento: function(valor, lista){

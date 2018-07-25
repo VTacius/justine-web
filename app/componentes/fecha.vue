@@ -70,8 +70,12 @@ export default {
 </script>
 <template>
     <div class="pure-g jt-form-component">
-        <label class="pure-u-1" :for="uid">{{etiqueta}} <span v-if="invalido">Es inválido</span></label>
-        <input class="pure-u-1" type="text" :id="uid" @change="cambios($event)" autocomplete="off">
+        <div class="pure-u-1">
+            <label :for="uid">{{etiqueta}} <span v-if="invalido">Es inválido</span></label>
+        </div>
+        <div class="pure-u-1">
+            <input type="text" :id="uid" @change="cambios($event)" autocomplete="off">
+        </div>
         <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" @vt-validar="validar">
             <template v-for="v in validaciones" :slot="v"><slot :name="v"></slot></template>
         </vt-validacion>

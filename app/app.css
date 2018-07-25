@@ -316,13 +316,6 @@ dd {
     Comienza CSS para componente usuario/edicion
 */
 
-.jt-form {
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: 0.6em;
-    margin-bottom: 0.9em;
-}
-
 .jt-form-auth {
     width: 50%;
     box-sizing: border-box;
@@ -355,6 +348,7 @@ dd {
 .pure-form input[type="text"], 
 .pure-form input[type="date"] {
     min-height: 2.5em; 
+    width: 100%;
     padding: 0.5em 0.6em 0.3em 0.6em;
     outline: none;
     box-shadow: none;
@@ -519,11 +513,7 @@ borrado-usuarios {
     position: relative;
     display: inline-block;
     width: 99%;
-    height: 1.8em;
-}
-
-label.vt-switch {
-    margin-bottom: 0em;
+    min-height: 2.12em;
 }
 
 .vt-switch input {
@@ -538,7 +528,7 @@ label.vt-switch {
     right: 0;
     bottom: 0;
     /* Estamos en off: Este es el color que se llega por defecto */
-     box-shadow: inset 5px -3px 0px 0px #d48585; 
+    box-shadow: inset 0px -3px 0px 0px #d48585; 
     -webkit-transition: .4s;
     transition: .4s;
     /* Esto permite que se vea el texto */
@@ -559,7 +549,7 @@ label.vt-switch {
 
 /* Estamos en On */
 .vt-switch input:checked + .slider {
-    box-shadow: inset -5px -3px 0em 0em #85bad4;
+    box-shadow: inset 0px -3px 0em 0em #85bad4;
 }
 
 /* Sigo sin tener idea de en que momento ocurre este */

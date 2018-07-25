@@ -7,6 +7,12 @@
     Sobreescribo algunos originales en búsqueda de legibilidad y ahorro de espacio
 */
 
+body {
+    background-color: #f2f2f2;
+    color:#565d64;
+    font-size: 0.9em;
+}
+
 p {
     margin-top: 0.3em;
     margin-bottom: 0.8em;
@@ -29,7 +35,7 @@ main {
 
 footer {
     margin-top: 4.5em;
-    background-color: #f5f5f5;
+    background-color: #f2f2f2;
 }
 
 footer p {
@@ -47,16 +53,14 @@ footer p {
 .pure-form fieldset {
     width: 100%;
     border: none;
-    margin: 0 2px;
-    margin-top: 0.5em;
-    letter-spacing: normal;
+    margin: 0.5em 0.2em 0 0.2em;
 }
 
 .pure-form legend {
     font-size: 1.15em;
     border: 0;
-    padding: 0em 0.3em;
-    padding-left: 0em;
+    padding: 0em 0.2em 0.3em 0.3em;
+    font-weight: 600;
     width: initial;
     letter-spacing: normal;
 }
@@ -125,11 +129,11 @@ button {
 }
 
 .button-success {
-    background: rgb(142, 212, 133);
+    background: #41b883;
 }
 
 .button-error {
-    background: rgb(212, 133, 133);
+    background: #DF6B01;
 }
 
 .button-warning {
@@ -209,11 +213,18 @@ table .pure-button {
     border-bottom-right-radius: 0;
 }
 
+/* TODO: ¿Podrías revisar la necesidad de margin-top */
+/**
+ * El problema ha sido que le puse margin a todos los demás, gran problema
+ */
 .pure-button.centro {
+    margin-top: 0;
     border-radius: 0px;
 }
 
+/* TODO: ¿Podrías revisar la necesidad de margin-top */
 .pure-button.derecha {
+    margin-top: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
@@ -323,7 +334,7 @@ dd {
 }
 
 .jt-form-component {
-    margin: 0.25em 0.3em;
+    margin: 0.25em 2em 0.3em 1.5em;
 }
 
 .jt-contenedor-boton-izquierda {
@@ -347,9 +358,10 @@ dd {
 .pure-form select,
 .pure-form input[type="text"], 
 .pure-form input[type="date"] {
-    min-height: 2.5em; 
+    background-color: #f2f2f2;
+    min-height: 2.55em; 
     width: 100%;
-    padding: 0.5em 0.6em 0.3em 0.6em;
+    padding: 0.5em 0.8em 0.3em 0.6em;
     outline: none;
     box-shadow: none;
     border: none;
@@ -520,6 +532,13 @@ borrado-usuarios {
     display:none;
 }
 
+.vt-switch .fa-check {
+    color: #2A6D76
+}
+
+.vt-switch .fa-ban {
+    color: #DF3D01;
+}
 .vt-switch .slider {
     position: absolute;
     cursor: pointer;
@@ -528,7 +547,7 @@ borrado-usuarios {
     right: 0;
     bottom: 0;
     /* Estamos en off: Este es el color que se llega por defecto */
-    box-shadow: inset 0px -3px 0px 0px #d48585; 
+    box-shadow: inset 0px -3px 0px 0px #DF3D01; 
     -webkit-transition: .4s;
     transition: .4s;
     /* Esto permite que se vea el texto */
@@ -540,7 +559,7 @@ borrado-usuarios {
     content: "";
     height: 100%;
     width: 50%;
-    background-color: white;
+    background-color: #f2f2f2;
     
     /* Animación al cambio */
     -webkit-transition: .3s;
@@ -549,12 +568,12 @@ borrado-usuarios {
 
 /* Estamos en On */
 .vt-switch input:checked + .slider {
-    box-shadow: inset 0px -3px 0em 0em #85bad4;
+    box-shadow: inset 0px -3px 0em 0em #2A6D76;
 }
 
 /* Sigo sin tener idea de en que momento ocurre este */
 .vt-switch input:focus + .slider {
-    box-shadow: 0 0 1px #85bad4;
+    box-shadow: 0 0 1px #2A6D76;
 }
 
 .vt-switch input:checked + .slider:before {
@@ -606,7 +625,8 @@ borrado-usuarios {
     /* Este lo agrego como propio pero temo en realidad por su comportamiento */
     width: 100%;
     /* Color que nav va a tener */
-    background-color: #f5f5f5;
+    background-color: #f2f2f2;
+    box-shadow: 0em 0.1em 1em 0.1em #cbcbcb;
     box-sizing: border-box;
     /* Nos ponemos serios con el diseño. El menú fijo es un éxito desde donde se le mire */
     position: fixed;
@@ -676,11 +696,11 @@ borrado-usuarios {
 }
 
 .jt-menu-seccion-central {
-    width: 70%;
+    width: 69.9%;
 }
 
 .jt-menu-seccion-derecha {
-    width: 30%;
+    width: 29.9%;
     text-align: end;
     padding-right: 1em;
     /* Para que parezca el enlace que no es */
@@ -706,7 +726,7 @@ borrado-usuarios {
 }
 
 
-@media (min-width: 36.24em) {
+@media (min-width: 36.26em) {
     .jt-menu {
         align-items: flex-end;
     }
@@ -803,7 +823,7 @@ borrado-usuarios {
     line-height: initial;
     position: relative;
     right: 1em;
-    background-color: #f5f5f5;
+    background-color: #f2f2f2;
     color: #565d64;
 }
 
@@ -850,7 +870,7 @@ borrado-usuarios {
 }
 
 .jt-menu-panel-usuario li {
-    background-color: #f5f5f5;
+    background-color: #f2f2f2;
     border-bottom-left-radius: 0.2em;
     border-bottom-right-radius: 0.2em;
 }
@@ -962,18 +982,28 @@ borrado-usuarios {
  *
  */
 
+.multiselect {
+    font-size: 0.9em;
+}
+
 .multiselect input[type="text"],
 .multiselect input[type="text"]:focus {
     min-height: unset; 
-    padding: 0.15em 0 0 0 ;   
+    padding: 0 0 0 0.35em;   
     vertical-align: top; 
     border: none;
 }
 
 .multiselect__tags {
+    background-color: #f2f2f2;
     box-shadow: none;
     border: none;
     border-bottom: solid 0.2em #c9c9c9;
     border-bottom-left-radius: 0.15em;
     border-bottom-right-radius: 0.15em;
+}
+.multiselect__input, 
+.multiselect__single{
+    background-color: unset;
+    font-size: 0.9em;
 }

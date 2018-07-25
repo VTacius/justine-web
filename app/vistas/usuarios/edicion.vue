@@ -1,7 +1,6 @@
 <script>
 import vtEntrada from './../../componentes/entrada.vue';
 import vtAutocompleta from './../../componentes/autocompleta.vue';
-import vtMultiautocompleta from './../../componentes/multiautocompleta.vue';
 import vtFecha from './../../componentes/fecha.vue';
 import vtSwitch from './../../componentes/switch.vue';
 import { plantilla } from "./configuracion.js";
@@ -9,7 +8,7 @@ import { plantilla } from "./configuracion.js";
 export default {
     name: 'vt-usuario-edicion',
     configuracion: plantilla,
-    components: { vtEntrada, vtAutocompleta, vtMultiautocompleta, vtFecha, vtSwitch },
+    components: { vtEntrada, vtAutocompleta, vtFecha, vtSwitch },
     props: ['configuracion', 'usuario', 'establecimientos', 'oficinas', 'grupos'],
     data: function(){
         return {
@@ -126,16 +125,16 @@ export default {
                     
                     <!-- Grupos Adicionales (grupos) no debería ser obligatorio. TODO: En realidad debería ser el control principal respecto a Grupo Principal -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-multiautocompleta uid="grupos" etiqueta="Grupos Posix" :modelo="usuario.grupos" @vt-cambio="cambiosGrupos" :datos="grupos" multiple :validaciones="validacion('grupos')">
+                        <vt-autocompleta uid="grupos" etiqueta="Grupos Posix" :modelo="usuario.grupos" @vt-cambio="cambiosGrupos" :datos="grupos" multiple :validaciones="validacion('grupos')">
                             <template slot="requerido">Al menos un grupo es requerido</template>
-                        </vt-multiautocompleta>
+                        </vt-autocompleta>
                     </div>
                     
                     <!-- Grupo Principal (grupo) siempre es obligatorio cuando esta presente -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-multiautocompleta uid="grupo" etiqueta="Grupos Principal" :modelo="usuario.grupo" @vt-cambio="cambios" :datos="grupos" :filtro="gruposSeleccionados" :validaciones="validacion('grupo')">
+                        <vt-autocompleta uid="grupo" etiqueta="Grupos Principal" :modelo="usuario.grupo" @vt-cambio="cambios" :datos="grupos" :filtro="gruposSeleccionados" :validaciones="validacion('grupo')">
                             <template slot="requerido">Al menos un grupo es requerido</template>
-                        </vt-multiautocompleta>
+                        </vt-autocompleta>
                     </div>
                     
                 </div>

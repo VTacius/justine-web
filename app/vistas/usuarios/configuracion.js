@@ -24,7 +24,7 @@ var plantilla = {
         validacion: ['listado']
     },
     grupo:{
-        validacion: ['requerido', 'existente']
+        validacion: ['listado', 'requerido', 'existente']
     },
     grupos:{
         validacion: ['requerido', 'existente']

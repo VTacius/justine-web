@@ -52,8 +52,8 @@ export default {
     		<ul class="jt-menu-panel-usuario" v-if="muestra(4)">
             	<li>
                 	<p>{{datos.usuario}}</p>
-                    <p>Editar Datos Personales</p>
-                    <p>Cerrar Sesión </p>
+                    <p><router-link to="/perfil">Datos Personales</router-link></p>
+                    <p><router-link to="/logout">Cerrar Sesión </router-link></p>
                 </li>
             </ul>
         </div> 

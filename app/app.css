@@ -258,64 +258,10 @@ table .pure-button {
     Empieza CSS para componente usuario/detalle 
 */
 
-dt, dd {
-    float: left;
-    letter-spacing: initial;
-    word-spacing: 0.04em;
-    box-sizing: border-box;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    padding: 0;
-    margin: 0;
-    color: #333;
-    line-height: 1.4em;
-}
-
-dl {
-    box-sizing: border-box;
-    padding: 0.6em 0.4em;
-    margin: 0;
-    display: flex;
-}
-
-dt {
-    width: 37%;
-    font-size: 1.0em;
-    text-align: end; 
-    font-weight: 600;
-}
-
-dd {
-    width: 63%;
-    padding-left: 0.9em;
-    font-size: 1.0em;
-}
-
-.jt-dt-titulo,.jt-dd-titulo {
-    font-size: 1.4em;
-}
-
-@media (max-width: 60em) {
-    dt,dd {
-        width: 100%;    
-    } 
-
-    dt{
-        text-align: left;
-    }
-
-}
-
-@media (min-width: 80em) {
-    dt {
-        width: 32%;    
-    } 
-
-    dd {
-        width: 68%;
-    }
-
-}
+/**
+  * TODO: Lo empiezas de cero
+  *
+  */
 
 /* 
     Termina CSS para componente usuario/detalle 

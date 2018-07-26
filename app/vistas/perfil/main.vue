@@ -1,12 +1,41 @@
 <script>
+
+import vtUsuarioDetalle from './../usuarios/detalle.vue';
+
 export default {
-    name: 'vtViewPerfil'
+    name: 'vtViewPerfil',
+    components: { vtUsuarioDetalle },
+    data: function(){
+        return {
+            usuario: {
+                uid: 'kpenate',
+                givenName: 'Karen',
+                sn: 'Peñate',
+                ou: 2002,
+                o: 2, 
+                userPassword: 'Pass_2025',
+                nit: '4444-666666-333-1',
+                dui: '12345678-0',
+                jvs: '',
+                fecha: '16/11/1990',
+                pregunta: '¿Quién soy?',
+                respuesta: 'Soi io',
+                mail: 'kpenate@salud.gob.sv',
+                grupos: [1003, 1005],
+                grupo: 1003,
+                title: 'Profesor designado',
+                sambaAcctFlags: true,
+                telephoneNumber: '7894',
+                loginShell: '/bin/bash',
+                cuentaStatus: true,
+                buzonStatus: true
+            },
+        }
+    }
 }
 </script>
 <template>
 	<div class="pure-u-1">
-        <h3> Este es contenido de prueba para la página personal </h3>
-        <p> De hecho, por acá va una versión del formulario del usuario para cuestiones de edición</p>
-        <p> Es muy probable que también se anoten TODOS los datos posibles que sea posible entregar al usuario, una de las grandes metas después de, precisamnete, hacerla de directorio </p>
+        <vt-usuario-detalle v-bind:usuario="usuario"></vt-usuario-detalle>
 	</div>
 </template>

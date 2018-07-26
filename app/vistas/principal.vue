@@ -68,12 +68,14 @@ export default {
 }
 </script>
 <template>
-        <vt-usuario-edicion 
-            configuracion="edicion" 
-            :usuario="usuario" 
-            :establecimientos="establecimientos" 
-            :oficinas="oficinas"
-            :grupos="grupos" 
-            @vt-cambio-establecimiento="obtenerOficina"></vt-usuario-edicion>
+	<div class="pure-u-1">
+       <vt-usuario-edicion 
+           configuracion="edicion" 
+           :usuario="usuario" 
+           :establecimientos="establecimientos" 
+           :oficinas="oficinas"
+           :grupos="grupos" 
+           @vt-cambio-establecimiento="obtenerOficina"></vt-usuario-edicion>
+	</div>
 </template>
 

@@ -3,11 +3,9 @@ import vtEntrada from './../../componentes/entrada.vue';
 import vtAutocompleta from './../../componentes/autocompleta.vue';
 import vtFecha from './../../componentes/fecha.vue';
 import vtSwitch from './../../componentes/switch.vue';
-import { plantilla } from "./configuracion.js";
 
 export default {
     name: 'vt-usuario-edicion',
-    configuracion: plantilla,
     components: { vtEntrada, vtAutocompleta, vtFecha, vtSwitch },
     props: ['configuracion', 'usuario', 'establecimientos', 'oficinas', 'grupos'],
     data: function(){
@@ -51,12 +49,12 @@ export default {
          * TODO: ¿MIXIN?
          */
         validacion: function(elemento){
-            let config = this.$options.configuracion;
+            let config = this.configuracion;
             let validacion = elemento in config ? config[elemento].validacion : [''];
             return validacion;
         },
         mostrar: function(elemento){
-            let config = this.$options.configuracion.componentes;
+            let config = this.configuracion.componentes;
             /** Por defecto, vamos a mostrar todos los componentes */
             let mostrar = elemento in config ? config[elemento].mostrar : true;
             return mostrar;
@@ -74,7 +72,6 @@ export default {
                 <legend>Datos Generales</legend>
                 <div class="pure-g">
 
-                    <!-- Nombre (givenname) siempre es obligatorio. No vamos a crear usuario sin al menos un nombre válido -->
                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-entrada uid="givenName" etiqueta="Nombre" :modelo="usuario.givenName" @vt-cambio="cambios" :validaciones="validacion('givenName')">
                             <template slot="requerido"> El nombre es requerido </template>
@@ -82,7 +79,6 @@ export default {
                         </vt-entrada>
                     </div>
                        
-                    <!-- Apellidos (sn) siempre es obligatorio, bajo las mismas condiciones que givenname -->
                     <div class="pure-u-1 pure-u-xl-1-2"> 
                         <vt-entrada uid="sn" etiqueta="Apellido" :modelo="usuario.sn" @vt-cambio="cambios" :validaciones="validacion('sn')"></vt-entrada>
                     </div>
@@ -147,7 +143,7 @@ export default {
                 </div>
             </fieldset>
 
-            <fieldset v-show="mostrar('samba')">    
+            <fieldset v-if="mostrar('samba')">    
                 <legend>Atributos Posix y Samba</legend>
 
                 <div class="pure-g">
@@ -191,7 +187,7 @@ export default {
                 </div>
             </fieldset>
     
-            <fieldset v-show="mostrar('recuperacion')">
+            <fieldset v-if="mostrar('recuperacion')">
                 <legend>Recuperación de Contraseña</legend>
     
                 <div class="pure-g">
@@ -209,7 +205,7 @@ export default {
 
             </fieldset>
     
-            <fieldset v-show="mostrar('zimbra')">
+            <fieldset v-if="mostrar('zimbra')">
                 <legend>Atributos Zimbra</legend>
                 <div class="pure-g">
                     

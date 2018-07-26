@@ -1,11 +1,13 @@
 <script>
 import vtUsuarioEdicion from './usuarios/edicion.vue';
+import { edicionUsuario } from './usuarios/configuracion.js'
 
 export default {
     name: 'vt-principal',
     components: {vtUsuarioEdicion},
     data: function(){
         return {
+            configuracion: edicionUsuario,
             usuario: {
                 uid: 'kpenate',
                 givenName: 'Karen',
@@ -70,7 +72,7 @@ export default {
 <template>
 	<div class="pure-u-1">
        <vt-usuario-edicion 
-           configuracion="edicion" 
+           :configuracion="configuracion" 
            :usuario="usuario" 
            :establecimientos="establecimientos" 
            :oficinas="oficinas"

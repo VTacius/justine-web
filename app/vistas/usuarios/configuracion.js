@@ -1,48 +1,48 @@
 var plantilla = {
     givenName: {
-        validacion: ['requerido', 'sustantivo', 'existente']
+        validacion: ['requerido', 'sustantivo']
     },
     sn: {
-        validacion: ['requerido', 'sustantivo', 'existente']
+        validacion: ['requerido', 'sustantivo']
     },
     dui: {
-        validacion: ['requerido', 'dui', 'existente']
+        validacion: ['dui']
     },
     nit: {
-        validacion: ['requerido', 'nit', 'existente']
+        validacion: ['nit']
     },
     jvs: {
-        validacion: ['existente']
+        validacion: []
     },
     fecha: {
-        validacion: ['requerido', 'fecha', 'existente']
+        validacion: ['fecha']
     },
     o:{
-        validacion: ['listado']
+        validacion: ['requerido']
     },
     ou:{
-        validacion: ['listado']
+        validacion: []
     },
     grupo:{
-        validacion: ['listado', 'requerido', 'existente']
+        validacion: []
     },
     grupos:{
-        validacion: ['requerido', 'existente']
+        validacion: []
     },
     title:{
-        validacion: ['existente']
+        validacion: []
     },
     telephoneNumber: {
-        validacion: ['telefono', 'existente']
+        validacion: []
     },
     pregunta: {
-        validacion: ['existente']
+        validacion: []
     },
     respuesta: {
-        validacion: ['existente']
+        validacion: []
     },
     loginShell: {
-        validacion: ['requerido']
+        validacion: []
     },
     componentes: {
         samba: {
@@ -57,4 +57,15 @@ var plantilla = {
     }
 };
 
-export { plantilla };
+let nuevo = Object.assign({}, plantilla);
+let edicion = Object.assign({}, plantilla);
+let edicionUsuario = Object.assign({}, plantilla);
+
+/**
+ * Componentes
+ */
+edicionUsuario.componentes.zimbra.mostrar = false;
+edicionUsuario.componentes.samba.mostrar = false;
+edicionUsuario.componentes.recuperacion.mostrar = false;
+
+export { nuevo, edicion, edicionUsuario };

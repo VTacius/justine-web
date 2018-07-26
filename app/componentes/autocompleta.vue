@@ -56,6 +56,7 @@ export default {
             <!-- TODO: El mismo creador dice que no deberías usar v-model -->
             <!-- TODO: cuando :multiple="false", es probable que quieras usar :hide-selected="false" y revisar :preselect-first-->
             <multiselect 
+                :id="uid"
                 v-model="seleccionados" 
                 selectLabel="Oprima Enter para seleccionar"
                 placeholder="Seleccione una opción"

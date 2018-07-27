@@ -7,6 +7,7 @@ Vue.use(VueRouter);
 /** Componentes personalizados: Vistas */
 import vtViewGrupos from './vistas/grupos.vue';
 import vtViewUsuarios from './vistas/usuarios/main.vue';
+import vtViewUsuarioCreacion from './vistas/usuarios/creacion.vue';
 import vtPrincipal from './vistas/principal.vue';
 import vtViewPerfil from './vistas/perfil/main.vue';
 import vtViewLogin from './vistas/login/login.vue';
@@ -33,7 +34,8 @@ const routes = [
     { path: '/logout', component: vtViewLogout },
     { path: '/perfil', component: vtViewPerfil, meta: {requireAuth: true} },
     { path: '/grupos', component: vtViewGrupos, meta: {requireAuth: true} },
-    { path: '/usuarios', component: vtViewUsuarios }
+    { path: '/usuarios', component: vtViewUsuarios },
+    { path: '/usuarios/nuevo', component: vtViewUsuarioCreacion }
 ];
 
 // 3. Create the router instance and pass the `routes` option

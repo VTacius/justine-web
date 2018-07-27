@@ -24,10 +24,10 @@ let plantilla = function(){
         ou:{
             validacion: []
         },
-        grupo:{
+        grupos:{
             validacion: []
         },
-        grupos:{
+        grupo:{
             validacion: []
         },
         title:{
@@ -35,6 +35,10 @@ let plantilla = function(){
         },
         telephoneNumber: {
             validacion: []
+        },
+        uid: {
+            validacion: [],
+            mostrar: false
         },
         pregunta: {
             validacion: []
@@ -121,7 +125,66 @@ edicionUsuario.title.validacion.push('requerido');
 edicion.telephoneNumber.validacion.push('existente');
 edicionUsuario.telephoneNumber.validacion.push('requerido');
 
+/**
+ * Username
+ * 
+ * Obligatorio cuando aparece en "creacion"
+ */
+nuevo.uid.validacion.push('requerido');
+nuevo.uid.mostrar = true;
 
+/**
+ * Grupos Adicionales 
+ * Obligatorio siempre, ya que del listado escogido depende el Principal
+ * El control no deja borrar el último, así que por necesidad habrá que escoger uno.
+ * Bastará validar entonces que haya escogido en creación, no veo la necesidad de validarlo despues
+ */
+nuevo.grupos.validacion.push('requerido');
+
+/**
+ * Grupo Principal 
+ * Obligatorio siempre. El control no escoge nada por defecto, así que de eliminar su grupo principal 
+ * actaul del control 'Grupos adicionales', le dejaría sin nada
+ */
+nuevo.grupo.validacion.push('requerido');
+edicion.grupo.validacion.push('requerido');
+
+/**
+ * Shell por defecto 
+ * Obligatorio en creación, además, ponemos un valor /bin/false por defecto
+ * TODO: Un control vt-switch debería considerarse
+ */
+nuevo.loginShell.validacion.push('requerido');
+
+/**
+ * Pregunta Secreta 
+ * Obligatorio edicionUsuario
+ */
+edicionUsuario.pregunta.validacion.push('requerido');
+
+/**
+ * Respuesta 
+ * Obligatorio en edicionUsuario 
+ */
+edicionUsuario.respuesta.validacion.push('requerido');
+
+/**
+ * Estado del buzón
+ * TODO: ¿Por defecto habilitado? 
+ */
+
+/**
+  * Estado de la cuenta
+ * TODO: ¿Por defecto habilitado? 
+  */
+
+/**
+ * Tamaño del buzón
+ * Es obligatorio
+ * TODO: Un proyecto de conversor es requerido. Calculo que podría ser algo bastante entretenido
+ */
+nuevo.buzonVolumen.validacion.push('requerido');
+edicion.buzonVolumen.validacion.push('requerido');
 
 /**
  * Recuperación de contraseña:

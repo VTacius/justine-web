@@ -1,36 +1,36 @@
 <script>
-import vtUsuarioEdicion from './usuarios/edicion.vue';
-import { edicion } from "./usuarios/configuracion.js";
+import vtUsuarioEdicion from './edicion.vue';
+import { nuevo } from "./configuracion.js";
 
 export default {
     name: 'vt-principal',
     components: {vtUsuarioEdicion},
     data: function(){
         return {
-            configuracion: edicion,
+            configuracion: nuevo,
             usuario: {
-                uid: 'kpenate',
-                givenName: 'Karen',
-                sn: 'Peñate',
-                ou: 2002,
-                o: 2, 
-                userPassword: 'Pass_2025',
-                nit: '4444-666666-333-1',
-                dui: '12345678-0',
+                uid: '',
+                givenName: '',
+                sn: '',
+                ou: '',
+                o: '', 
+                userPassword: '',
+                nit: '',
+                dui: '',
                 jvs: '',
-                fecha: '16/11/1990',
-                pregunta: '¿Quién soy?',
-                respuesta: 'Soi io',
-                mail: 'kpenate@salud.gob.sv',
-                grupos: [1003, 1005],
-                grupo: 1003,
-                title: 'Profesor designado',
+                fecha: '',
+                pregunta: '',
+                respuesta: '',
+                mail: '',
+                grupos: [],
+                grupo: '',
+                title: '',
                 sambaAcctFlags: true,
-                telephoneNumber: '7894',
-                loginShell: '/bin/bash',
+                telephoneNumber: '',
+                loginShell: '/bin/false',
                 cuentaStatus: true,
                 buzonStatus: true,
-                buzonVolumen: 786432000
+                buzonVolumen: ''
             },
             establecimientos : [
                 {label: 'Lugar 1', value: 1},

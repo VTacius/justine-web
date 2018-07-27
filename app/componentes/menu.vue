@@ -25,7 +25,7 @@ export default {
                     <a href="#"><span class="fa fa-user"></span><span class="texto">Usuarios</span></a>
                     <ul class="jt-menu-elemento-subenlace" v-if="muestra(1)">
                         <li><router-link to="/usuarios">Listado</router-link></li>
-                        <li>Creación</li>
+                        <li><router-link to="/usuarios/nuevo">Creación</router-link></li>
                         <li>Borrado</li>
                     </ul>
                 </li>

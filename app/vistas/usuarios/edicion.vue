@@ -7,29 +7,35 @@ import vtSwitch from './../../componentes/switch.vue';
 export default {
     name: 'vt-usuario-edicion',
     components: { vtEntrada, vtAutocompleta, vtFecha, vtSwitch },
-    props: ['configuracion', 'usuario', 'establecimientos', 'oficinas', 'grupos'],
+    props: ['configuracion', 'datos', 'establecimientos', 'oficinas', 'grupos'],
     data: function(){
         return {
-           gruposSeleccionados: this.usuario.grupos,
-           shells: [
-               {label: 'Bash', value: '/bin/bash'},
-               {label: 'False', value: '/bin/false'}
-           ]
+            usuario: this.datos,
+            resultado: {},
+            gruposSeleccionados: this.datos.grupos,
+            shells: [
+                {label: 'Bash', value: '/bin/bash'},
+                {label: 'False', value: '/bin/false'}
+            ]
         }
     },
     methods: {
         envio: function(e){
-            /**
-             * console.log(this.usuario.givenName);
-             * console.log(this.usuario.sn);
-             * console.log(this.usuario.dui);
-             * console.log(this.usuario.nit);
-             */
             e.preventDefault();
         },
         cambios: function(uid, modelo, validacion){
             let resultado = validacion ? "Inválido": "Válido";
             console.log('Sucede un algo en en ' + uid + ': "' + modelo + '" es ' + resultado );
+
+            /** 
+             * Recuerda que validacion=false significa que estamos bien 
+             * También recuerda que este no es reactivo, espero que poco importe 
+             */
+            this.resultado[uid] = {
+                modelo,
+                validacion,
+            }
+
         },
         cambiosEstablecimiento: function(uid, modelo, validacion){
             this.cambios(uid, modelo, validacion);
@@ -116,7 +122,6 @@ export default {
                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-autocompleta uid="o" etiqueta="Establecimiento" :modelo="usuario.o" @vt-cambio="cambiosEstablecimiento" :datos="establecimientos" :validaciones="validacion('o')">
                             <template slot="requerido">Debe escoger un establecimiento</template>
-                            <template slot="listado">No es un establecimiento válido</template>
                             <template slot="existente">No puede borrar el establecimiento. Escoja otro válido</template>
                         </vt-autocompleta>
                     </div>
@@ -125,7 +130,6 @@ export default {
                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-autocompleta uid="ou" etiqueta="Oficina" :modelo="usuario.ou" @vt-cambio="cambios" :datos="oficinas" :validaciones="validacion('ou')">
                             <template slot="requerido">Debe escoger una Oficina</template>
-                            <template slot="listado">No es una Oficina válida</template>
                             <template slot="existente">No puede borrar la Oficina. Escoja otro válido</template>
                         </vt-autocompleta>
                     </div>

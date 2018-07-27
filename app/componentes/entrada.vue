@@ -13,8 +13,8 @@ export default {
     },
     methods: {
         /** El gran cambio, ¿Podrían ambos métodos ser iguales con los de fecha y autocompleta? */
-        validar: function(valor){
-            this.invalido = valor;
+        validar: function(verificacion){
+            this.invalido = verificacion;
         },
         cambios: function(evento, valor, invalido){
            this.$emit('vt-cambio', this.uid, valor, invalido);

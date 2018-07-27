@@ -21,12 +21,20 @@ export default {
                 return resultado;
             },
             set: function(newValor){
-                /** TODO: Algo más sencillo que esto, por favor */
-                let valor = Array.isArray(newValor) ? newValor : [newValor];
-                let resultado = valor.map(function(elemento){
-                    return elemento.value;
-                }, this);
-                this.valor = resultado;
+                /**
+                 * Cuando multiple=true, se devuelve un Array con Objects coincidentes
+                 * Cuando multiple=false, se devuelve un Object, el coincidente, así que lo convierto a Array
+                 * En este último caso, al dejarle sin nada en el control, nos devuelve una cadena vacía
+                 */
+                if (newValor) {
+                    let valor = Array.isArray(newValor) ? newValor : [newValor];
+                    let resultado = valor.map(function(elemento){
+                            return elemento ? elemento.value : '';
+                    }, this);
+                    this.valor = resultado;
+                } else {
+                    this.valor = [];
+                }
             }
         },
         opciones: function(){
@@ -41,8 +49,8 @@ export default {
         }
     },
     methods: {
-        validar: function(evento, valor){
-            this.$emit('vt-cambio', this.uid, this.valor, this.invalido);
+        validar: function(verificacion){
+            this.$emit('vt-cambio', this.uid, this.valor, verificacion);
         }
     }
 }   
@@ -67,7 +75,7 @@ export default {
                 :hide-selected="true" 
                 :preselect-first="false"></multiselect>
         </div>
-        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" @vt-validar="validar" :datos="opciones">
+        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" valor-viejo="modelo" @vt-validar="validar" :datos="opciones">
             <template v-for="v in validaciones" :slot="v"><slot :name="v"></slot></template>
         </vt-validacion>
     </div>

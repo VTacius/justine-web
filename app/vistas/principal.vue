@@ -10,9 +10,9 @@ export default {
             configuracion: edicionUsuario,
             usuario: {
                 uid: 'kpenate',
-                givenName: 'Karen',
-                sn: 'Peñate',
-                ou: 2002,
+                givenName: '',
+                sn: '',
+                ou: '',
                 o: 2, 
                 userPassword: 'Pass_2025',
                 nit: '4444-666666-333-1',
@@ -73,7 +73,7 @@ export default {
 	<div class="pure-u-1">
        <vt-usuario-edicion 
            :configuracion="configuracion" 
-           :usuario="usuario" 
+           :datos="usuario" 
            :establecimientos="establecimientos" 
            :oficinas="oficinas"
            :grupos="grupos" 

@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="node_modules/purecss/build/grids.css">
     <link rel="stylesheet" href="node_modules/purecss/build/grids-responsive.css">
     <link rel="stylesheet" href="node_modules/pikaday/css/pikaday.css">
-    <link rel="stylesheet" href="node_modules/awesomplete/awesomplete.base.css">
-    <link rel="stylesheet" href="app/awesomplete.theme.css">
     <link rel="stylesheet" href="node_modules/vue-multiselect/dist/vue-multiselect.min.css">
     <!-- Sobreescribo lo necesario -->
     <link rel="stylesheet" href="app/app.css">
@@ -31,7 +29,7 @@
         <header class="pure-u-1">
             <vt-menu v-bind:datos="menu"></vt-menu>
         </header>
-        <main class="pure-u-1">
+        <main class="pure-u-1"><!-- Esta es la aplicación raíz -->
             <div class="pure-g">
                 <!-- La aplicación -->
 				<router-view></router-view>

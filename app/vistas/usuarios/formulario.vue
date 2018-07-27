@@ -5,7 +5,7 @@ import vtFecha from './../../componentes/fecha.vue';
 import vtSwitch from './../../componentes/switch.vue';
 
 export default {
-    name: 'vt-usuario-edicion',
+    name: 'vt-usuario-formulario',
     components: { vtEntrada, vtAutocompleta, vtFecha, vtSwitch },
     props: ['configuracion', 'datos', 'establecimientos', 'oficinas', 'grupos'],
     data: function(){
@@ -121,9 +121,8 @@ export default {
 }
 </script>
 <template>
-    <div class="pure-u-1">
         <!-- Acá había un alert, acá habrá un alert -->
-        <form class="pure-form jt-form" id="userForm" @submit="envio" novalidate>
+    <form class="pure-form" id="userForm" @submit="envio" novalidate>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-xl-3-5">
                 <fieldset>
@@ -267,7 +266,7 @@ export default {
                         </div>
 
                         <div class="pure-u-1 pure-u-lg-1-2">
-                            <vt-entrada uid="buzonVolumen" etiqueta="Tamaño del buzón" :modelo="usuario.buzonVolumen" @vt-cambios="cambios" :validaciones="validacion('buzonVolumen')"></vt-entrada>
+                            <vt-entrada uid="buzonVolumen" etiqueta="Tamaño del buzón" :modelo="usuario.buzonVolumen" @vt-cambio="cambiar" :validaciones="validacion('buzonVolumen')"></vt-entrada>
                         </div>
 
                     </div>
@@ -283,7 +282,6 @@ export default {
                 <button type="reset" class="button-warning jt-boton-formulario pure-button">Cancelar</button>
             </div>
         </div>
-        </form>
-    </div>
+    </form>
     
 </template>

@@ -3,12 +3,12 @@
 import vtPanel from './../../componentes/panel.vue';
 import vtPanelUsuarios from './panel.vue';
 import vtUsuarioDetalle from './detalle.vue';
-import vtUsuarioEdicion from './edicion.vue';
+import vtUsuarioFormulario from './formulario.vue';
 import vtUsuarioBorrado from './borrado.vue';
 
 export default {
     name: 'vtViewUsuarios',
-    components: { vtPanel, vtPanelUsuarios, vtUsuarioDetalle, vtUsuarioEdicion, vtUsuarioBorrado},
+    components: { vtPanel, vtPanelUsuarios, vtUsuarioFormulario, vtUsuarioFormulario, vtUsuarioBorrado},
     data: function(){
         return {
             mensaje: 'Esta es la muestra',
@@ -100,7 +100,7 @@ export default {
                             <vt-usuario-detalle v-bind:usuario="row"></vt-usuario-detalle>
                         </template> 
                         <template slot="edicion">
-                            <vt-usuario-edicion v-bind:usuario="row"></vt-usuario-edicion>
+                            <vt-usuario-formulario v-bind:usuario="row"></vt-usuario-formulario>
                         </template> 
                         <template slot="borrado">
                             <vt-usuario-borrado></vt-usuario-borrado>

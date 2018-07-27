@@ -273,6 +273,14 @@ table .pure-button {
     Comienza CSS para componente usuario/edicion
 */
 
+/**
+ * Al parecer es la mejor opción
+ * TODO: De hecho, parece que ya poco uso del original sobre formulario
+ */
+.pure-form {
+    width: 99.7%;
+}
+
 .jt-form-auth {
     width: 50%;
     box-sizing: border-box;

@@ -4,7 +4,6 @@
   "repository": "https://github.com/VTacius/justine-web",
   "license": "MIT",
   "dependencies": {
-    "awesomplete": "^1.1.2",
     "font-awesome": "^4.7.0",
     "pikaday": "^1.7.0",
     "purecss": "^1.0.0",

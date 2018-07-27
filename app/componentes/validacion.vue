@@ -1,5 +1,4 @@
 <script>
-import { Validar } from './../utils/validacion.js';
 import moment from 'moment';
 
 export default {

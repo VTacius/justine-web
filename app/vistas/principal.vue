@@ -1,10 +1,10 @@
 <script>
-import vtUsuarioEdicion from './usuarios/edicion.vue';
+import vtUsuarioFormulario from './usuarios/formulario.vue';
 import { edicion } from "./usuarios/configuracion.js";
 
 export default {
     name: 'vt-principal',
-    components: {vtUsuarioEdicion},
+    components: { vtUsuarioFormulario },
     data: function(){
         return {
             configuracion: edicion,
@@ -72,13 +72,13 @@ export default {
 </script>
 <template>
 	<div class="pure-u-1">
-       <vt-usuario-edicion 
+       <vt-usuario-formulario 
            :configuracion="configuracion"
            :datos="usuario" 
            :establecimientos="establecimientos" 
            :oficinas="oficinas"
            :grupos="grupos" 
-           @vt-cambio-establecimiento="obtenerOficina"></vt-usuario-edicion>
+           @vt-cambio-establecimiento="obtenerOficina"></vt-usuario-formulario>
 	</div>
 </template>
 

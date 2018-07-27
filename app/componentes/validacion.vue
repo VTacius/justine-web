@@ -8,13 +8,7 @@ export default {
         'uid': String, 
         'valor': [Number, String, Array], 
         'valorViejo': [Number, String, Array],
-        'validaciones': Array,
-        'datos': {
-            default: function(){
-                return ['']
-            },
-            type: Array
-        }
+        'validaciones': Array
     },
     data: function(){
         return {

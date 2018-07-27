@@ -22,6 +22,33 @@ export default {
     methods: {
         envio: function(e){
             e.preventDefault();
+            let elementosVisibles = [];
+            
+            let f = document.getElementById('userForm');
+            let ele = f.elements;
+            for (let i = 0; i < ele.length; i++) {
+                if(ele[i].type === "text"){
+                    elementosVisibles.push(ele[i].id);
+                }
+            }
+
+            console.log(elementosVisibles);
+            let elementos = Object.keys(this.usuario);
+            let vacio = {}; 
+            
+            elementos.forEach(function(e){
+                vacio[e] = "    "; 
+            }); 
+
+            let temp = Object.assign({}, this.datos);
+
+            this.$nextTick(function () {
+                this.usuario = Object.assign(this.datos, vacio);
+            });
+            this.$nextTick(function () {
+                this.usuario = Object.assign(this.usuario, temp);
+            });
+            debugger;
         },
         cambios: function(uid, modelo, validacion){
             let resultado = validacion ? "Inválido": "Válido";
@@ -72,7 +99,7 @@ export default {
 <template>
     <div class="pure-u-1">
         <!-- Acá había un alert, acá habrá un alert -->
-        <form class="pure-form jt-form" id="usuario" @submit="envio" novalidate>
+        <form class="pure-form jt-form" id="userForm" @submit="envio" novalidate>
             
             <fieldset>
                 <legend>Datos Generales</legend>

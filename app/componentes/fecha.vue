@@ -10,6 +10,7 @@ export default {
     data: function(){
         return {
             valor: this.modelo,
+            guarnecido: this.modelo,
             invalido: false,
             picker: ''
         }
@@ -46,6 +47,11 @@ export default {
         this.picker.setDate(fecha.toDate());
 
     },
+    watch:{
+        modelo: function(valor){
+            this.valor = valor;
+        }
+    },
     methods: {
         /**
          *  TODO: Debe conseguir el valor del evento
@@ -76,7 +82,7 @@ export default {
         <div class="pure-u-1">
             <input type="text" :id="uid" @change="cambios($event)" autocomplete="off">
         </div>
-        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" @vt-validar="validar">
+        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" :valor-viejo="guarnecido" @vt-validar="validar">
             <template v-for="v in validaciones" :slot="v"><slot :name="v"></slot></template>
         </vt-validacion>
     </div>

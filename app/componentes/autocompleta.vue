@@ -75,7 +75,7 @@ export default {
                 :hide-selected="true" 
                 :preselect-first="false"></multiselect>
         </div>
-        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" valor-viejo="modelo" @vt-validar="validar" :datos="opciones">
+        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" :valor-viejo="modelo" @vt-validar="validar">
             <template v-for="v in validaciones" :slot="v"><slot :name="v"></slot></template>
         </vt-validacion>
     </div>

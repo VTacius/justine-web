@@ -8,7 +8,13 @@ export default {
     data: function(){
         return {
             valor: this.modelo,
+            guarnecido: this.modelo,
             invalido: false
+        }
+    },
+    watch:{
+        modelo: function(valor){
+            this.valor = valor;
         }
     },
     methods: {
@@ -33,7 +39,7 @@ export default {
         <div class="pure-u-1">
             <input type="text" :id="uid" :name="uid" placeholder="Nombre" v-model="valor" @change="cambios($event, valor, invalido)" autocomplete="off">
         </div>
-        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" :valor-viejo="modelo" @vt-validar="validar">
+        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" :valor-viejo="guarnecido" @vt-validar="validar">
             <template v-for="v in validaciones" :slot="v"><slot :name="v"></slot></template>
         </vt-validacion>
     </div>

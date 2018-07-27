@@ -1,6 +1,6 @@
 var plantilla = {
     givenName: {
-        validacion: ['requerido', 'sustantivo']
+        validacion: ['existente', 'sustantivo']
     },
     sn: {
         validacion: ['requerido', 'sustantivo']
@@ -15,7 +15,7 @@ var plantilla = {
         validacion: []
     },
     fecha: {
-        validacion: ['fecha']
+        validacion: ['fecha', 'requerido']
     },
     o:{
         validacion: ['requerido', 'existente']

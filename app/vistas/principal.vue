@@ -10,10 +10,10 @@ export default {
             configuracion: edicionUsuario,
             usuario: {
                 uid: '',
-                givenName: 'Alexander',
+                givenName: '',
                 sn: '',
                 ou: '',
-                o: 2, 
+                o: '', 
                 userPassword: '',
                 nit: '',
                 dui: '',

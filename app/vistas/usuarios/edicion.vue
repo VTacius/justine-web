@@ -19,6 +19,13 @@ export default {
             ]
         }
     },
+    mounted: function(){
+        /** Nos aseguramos de mostrarle al usuario las oficinas para su establecimiento */
+        if (Number.isInteger(this.usuario.o)){
+            this.$emit('vt-cambio-establecimiento', this.usuario.o);
+        }
+
+    },
     methods: {
         envio: function(e){
             e.preventDefault();
@@ -37,7 +44,8 @@ export default {
              */
             let tmp = {};
             elementosVisibles.map(function(elemento){
-                tmp[elemento] = elemento in this.cambios ? this.cambios[elemento] : this.usuario[elemento];
+                tmp[elemento] = elemento in this.cambios ? this.cambios[elemento].modelo : this.usuario[elemento];
+                debugger;
             }, this);
            
             /** 
@@ -60,8 +68,6 @@ export default {
                     }, vm);
                 }
             );
-         
-            debugger;
         },
         cambiar: function(uid, modelo, validacion){
             let resultado = validacion ? "Inválido": "Válido";
@@ -129,24 +135,20 @@ export default {
                         <vt-entrada uid="sn" etiqueta="Apellido" :modelo="usuario.sn" @vt-cambio="cambiar" :validaciones="validacion('sn')"></vt-entrada>
                     </div>
                    
-                    <!-- DUI (dui) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-entrada uid="dui" etiqueta="DUI" :modelo="usuario.dui" @vt-cambio="cambiar" :validaciones="validacion('dui')">
                             <template slot="dui"> Revise el DUI ingresado </template>
                         </vt-entrada>
                     </div>
                    
-                    <!-- NIT (nit) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-entrada uid="nit" etiqueta="NIT" :modelo="usuario.nit" @vt-cambio="cambiar" :validaciones="validacion('nit')"></vt-entrada>
                     </div>
             
-                    <!-- JVS (jvs) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio cuando el control esta activo -->
                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-entrada uid="jvs" etiqueta="JVS" :modelo="usuario.jvs" @vt-cambio="cambiar" :validaciones="validacion('jvs')"></vt-entrada>
                     </div>
             
-                    <!-- Fecha de nacimiento (fecha) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-fecha uid="fecha" etiqueta="Fecha de nacimiento" :modelo="usuario.fecha" @vt-cambio="cambiar" :validaciones="validacion('fecha')"></vt-fecha>
                     </div>
@@ -158,7 +160,6 @@ export default {
 
                 <div class="pure-g">
 
-                    <!-- establecimiento (o) siempre es obligatorio. TODO: Revisar que todos los establecimientos sean seleccionables -->
                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-autocompleta uid="o" etiqueta="Establecimiento" :modelo="usuario.o" @vt-cambio="cambiarEstablecimiento" :datos="establecimientos" :validaciones="validacion('o')">
                             <template slot="requerido">Debe escoger un establecimiento</template>
@@ -166,7 +167,6 @@ export default {
                         </vt-autocompleta>
                     </div>
 
-                    <!-- Oficina (ou) es obligatorio siempre que haya sugerencias que mostrar. -->
                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-autocompleta uid="ou" etiqueta="Oficina" :modelo="usuario.ou" @vt-cambio="cambiar" :datos="oficinas" :validaciones="validacion('ou')">
                             <template slot="requerido">Debe escoger una Oficina</template>
@@ -174,12 +174,10 @@ export default {
                         </vt-autocompleta>
                     </div>
                     
-                    <!-- Cargo (title) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-entrada uid="title" etiqueta="Cargo" :modelo="usuario.title" @vt-cambio="cambiar" :validaciones="validacion('title')"></vt-entrada>
                     </div>
             
-                    <!-- Teléfono (telephoneNumber) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
                         <vt-entrada uid="telephoneNumber" etiqueta="Número teléfonico" :modelo="usuario.telephoneNumber" @vt-cambio="cambiar" :validaciones="validacion('telephoneNumber')"></vt-entrada>
                     </div>

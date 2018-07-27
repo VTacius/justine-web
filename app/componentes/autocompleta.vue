@@ -8,7 +8,8 @@ export default {
     props: ['uid', 'etiqueta', 'modelo', 'datos', 'validaciones', 'multiple', 'filtro'],
     data: function(){
         return {
-            valor: this.modelo
+            valor: this.modelo,
+            guarnecido: this.modelo
         }
     },
     computed: {
@@ -48,6 +49,11 @@ export default {
             }
         }
     },
+    watch:{
+        modelo: function(valor){
+            this.valor = valor;
+        }
+    },
     methods: {
         validar: function(verificacion){
             this.$emit('vt-cambio', this.uid, this.valor, verificacion);
@@ -75,7 +81,7 @@ export default {
                 :hide-selected="true" 
                 :preselect-first="false"></multiselect>
         </div>
-        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" :valor-viejo="modelo" @vt-validar="validar">
+        <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" :valor-viejo="guarnecido" @vt-validar="validar">
             <template v-for="v in validaciones" :slot="v"><slot :name="v"></slot></template>
         </vt-validacion>
     </div>

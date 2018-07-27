@@ -11,7 +11,7 @@ export default {
     data: function(){
         return {
             usuario: this.datos,
-            resultado: {},
+            cambios: {},
             gruposSeleccionados: this.datos.grupos,
             shells: [
                 {label: 'Bash', value: '/bin/bash'},
@@ -30,27 +30,40 @@ export default {
                 if(ele[i].type === "text"){
                     elementosVisibles.push(ele[i].id);
                 }
-            }
+            };
 
-            console.log(elementosVisibles);
-            let elementos = Object.keys(this.usuario);
-            let vacio = {}; 
-            
-            elementos.forEach(function(e){
-                vacio[e] = "    "; 
-            }); 
-
-            let temp = Object.assign({}, this.datos);
-
-            this.$nextTick(function () {
-                this.usuario = Object.assign(this.datos, vacio);
-            });
-            this.$nextTick(function () {
-                this.usuario = Object.assign(this.usuario, temp);
-            });
+            /**
+             * Guardamos los valores actuales: Los válidos del formulario, los por defecto
+             */
+            let tmp = {};
+            elementosVisibles.map(function(elemento){
+                tmp[elemento] = elemento in this.cambios ? this.cambios[elemento] : this.usuario[elemento];
+            }, this);
+           
+            /** 
+             * Configuramos un valor cualquiera: No debería haber problemas
+             * Excepto, claro, que no puede ser '' porque ese es el valor por defecto
+             */
+            elementosVisibles.forEach(function(e){
+                this.usuario[e] = " ";
+            }, this);
+         
+            /** 
+             * Incluso funciona sin la promesa; igual queda más bonito
+             * Parece que la promesa tiene su propio ámbito, ¿O es la función? Mira las cosas
+             */
+            let vm = this;
+            this.$nextTick().then(
+                function(){
+                    elementosVisibles.forEach(function(e){
+                        this.usuario[e] = tmp[e];
+                    }, vm);
+                }
+            );
+         
             debugger;
         },
-        cambios: function(uid, modelo, validacion){
+        cambiar: function(uid, modelo, validacion){
             let resultado = validacion ? "Inválido": "Válido";
             console.log('Sucede un algo en en ' + uid + ': "' + modelo + '" es ' + resultado );
 
@@ -58,20 +71,20 @@ export default {
              * Recuerda que validacion=false significa que estamos bien 
              * También recuerda que este no es reactivo, espero que poco importe 
              */
-            this.resultado[uid] = {
+            this.cambios[uid] = {
                 modelo,
                 validacion,
             }
 
         },
-        cambiosEstablecimiento: function(uid, modelo, validacion){
-            this.cambios(uid, modelo, validacion);
+        cambiarEstablecimiento: function(uid, modelo, validacion){
+            this.cambiar(uid, modelo, validacion);
             if (!validacion){
                 this.$emit('vt-cambio-establecimiento', modelo);
             }
         },
-        cambiosGrupos: function(uid, modelo, validacion){
-            this.cambios(uid, modelo, validacion);
+        cambiarGrupos: function(uid, modelo, validacion){
+            this.cambiar(uid, modelo, validacion);
             if (!validacion){
                 this.gruposSeleccionados = modelo;
             }
@@ -106,36 +119,36 @@ export default {
                 <div class="pure-g">
 
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="givenName" etiqueta="Nombre" :modelo="usuario.givenName" @vt-cambio="cambios" :validaciones="validacion('givenName')">
+                        <vt-entrada uid="givenName" etiqueta="Nombre" :modelo="usuario.givenName" @vt-cambio="cambiar" :validaciones="validacion('givenName')">
                             <template slot="requerido"> El nombre es requerido </template>
                             <template slot="sustantivo"> Revise el nombre escrito </template>
                         </vt-entrada>
                     </div>
                        
                     <div class="pure-u-1 pure-u-xl-1-2"> 
-                        <vt-entrada uid="sn" etiqueta="Apellido" :modelo="usuario.sn" @vt-cambio="cambios" :validaciones="validacion('sn')"></vt-entrada>
+                        <vt-entrada uid="sn" etiqueta="Apellido" :modelo="usuario.sn" @vt-cambio="cambiar" :validaciones="validacion('sn')"></vt-entrada>
                     </div>
                    
                     <!-- DUI (dui) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="dui" etiqueta="DUI" :modelo="usuario.dui" @vt-cambio="cambios" :validaciones="validacion('dui')">
+                        <vt-entrada uid="dui" etiqueta="DUI" :modelo="usuario.dui" @vt-cambio="cambiar" :validaciones="validacion('dui')">
                             <template slot="dui"> Revise el DUI ingresado </template>
                         </vt-entrada>
                     </div>
                    
                     <!-- NIT (nit) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="nit" etiqueta="NIT" :modelo="usuario.nit" @vt-cambio="cambios" :validaciones="validacion('nit')"></vt-entrada>
+                        <vt-entrada uid="nit" etiqueta="NIT" :modelo="usuario.nit" @vt-cambio="cambiar" :validaciones="validacion('nit')"></vt-entrada>
                     </div>
             
                     <!-- JVS (jvs) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio cuando el control esta activo -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="jvs" etiqueta="JVS" :modelo="usuario.jvs" @vt-cambio="cambios" :validaciones="validacion('jvs')"></vt-entrada>
+                        <vt-entrada uid="jvs" etiqueta="JVS" :modelo="usuario.jvs" @vt-cambio="cambiar" :validaciones="validacion('jvs')"></vt-entrada>
                     </div>
             
                     <!-- Fecha de nacimiento (fecha) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-fecha uid="fecha" etiqueta="Fecha de nacimiento" :modelo="usuario.fecha" @vt-cambio="cambios" :validaciones="validacion('fecha')"></vt-fecha>
+                        <vt-fecha uid="fecha" etiqueta="Fecha de nacimiento" :modelo="usuario.fecha" @vt-cambio="cambiar" :validaciones="validacion('fecha')"></vt-fecha>
                     </div>
                 </div>
             </fieldset>
@@ -147,7 +160,7 @@ export default {
 
                     <!-- establecimiento (o) siempre es obligatorio. TODO: Revisar que todos los establecimientos sean seleccionables -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-autocompleta uid="o" etiqueta="Establecimiento" :modelo="usuario.o" @vt-cambio="cambiosEstablecimiento" :datos="establecimientos" :validaciones="validacion('o')">
+                        <vt-autocompleta uid="o" etiqueta="Establecimiento" :modelo="usuario.o" @vt-cambio="cambiarEstablecimiento" :datos="establecimientos" :validaciones="validacion('o')">
                             <template slot="requerido">Debe escoger un establecimiento</template>
                             <template slot="existente">No puede borrar el establecimiento. Escoja otro válido</template>
                         </vt-autocompleta>
@@ -155,7 +168,7 @@ export default {
 
                     <!-- Oficina (ou) es obligatorio siempre que haya sugerencias que mostrar. -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-autocompleta uid="ou" etiqueta="Oficina" :modelo="usuario.ou" @vt-cambio="cambios" :datos="oficinas" :validaciones="validacion('ou')">
+                        <vt-autocompleta uid="ou" etiqueta="Oficina" :modelo="usuario.ou" @vt-cambio="cambiar" :datos="oficinas" :validaciones="validacion('ou')">
                             <template slot="requerido">Debe escoger una Oficina</template>
                             <template slot="existente">No puede borrar la Oficina. Escoja otro válido</template>
                         </vt-autocompleta>
@@ -163,12 +176,12 @@ export default {
                     
                     <!-- Cargo (title) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="title" etiqueta="Cargo" :modelo="usuario.title" @vt-cambios="cambios" :validaciones="validacion('title')"></vt-entrada>
+                        <vt-entrada uid="title" etiqueta="Cargo" :modelo="usuario.title" @vt-cambio="cambiar" :validaciones="validacion('title')"></vt-entrada>
                     </div>
             
                     <!-- Teléfono (telephoneNumber) no es obligatorio en creación, en edición es obligatorio si ya ha sido configurado antes y con actualización siempre es obligatorio -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="telephoneNumber" etiqueta="Número teléfonico" :modelo="usuario.telephoneNumber" @vt-cambios="cambios" :validaciones="validacion('telephoneNumber')"></vt-entrada>
+                        <vt-entrada uid="telephoneNumber" etiqueta="Número teléfonico" :modelo="usuario.telephoneNumber" @vt-cambio="cambiar" :validaciones="validacion('telephoneNumber')"></vt-entrada>
                     </div>
 
                 </div>
@@ -181,7 +194,7 @@ export default {
                     <!-- Username (uid) es obligatorio cuando aparece en accion = "creacion" -->
                     <!-- TODO: Este campo no aparecerá siempre -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="uid" etiqueta="Username" :modelo="usuario.uid" @vt-cambio="cambios" :validaciones="validacion('uid')"></vt-entrada>
+                        <vt-entrada uid="uid" etiqueta="Username" :modelo="usuario.uid" @vt-cambio="cambiar" :validaciones="validacion('uid')"></vt-entrada>
                     </div>
                     
                     <!-- TODO: Hay que definir en la mejor manera posible la funcionalidad de este control -->
@@ -190,27 +203,27 @@ export default {
                             <div class="pure-u-1">
                                 <label>Estado de la cuenta</label>
                             </div>
-                            <vt-switch uid="sambaAcctFlags" :modelo="usuario.sambaAcctFlags" @vt-cambio="cambios"></vt-switch>
+                            <vt-switch uid="sambaAcctFlags" :modelo="usuario.sambaAcctFlags" @vt-cambio="cambiar"></vt-switch>
                         </div>
                     </div>
                     
                     <!-- Grupos Adicionales (grupos) no debería ser obligatorio. TODO: En realidad debería ser el control principal respecto a Grupo Principal -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-autocompleta uid="grupos" etiqueta="Grupos Posix" :modelo="usuario.grupos" @vt-cambio="cambiosGrupos" :datos="grupos" multiple :validaciones="validacion('grupos')">
+                        <vt-autocompleta uid="grupos" etiqueta="Grupos Posix" :modelo="usuario.grupos" @vt-cambio="cambiarGrupos" :datos="grupos" multiple :validaciones="validacion('grupos')">
                             <template slot="requerido">Al menos un grupo es requerido</template>
                         </vt-autocompleta>
                     </div>
                     
                     <!-- Grupo Principal (grupo) siempre es obligatorio cuando esta presente -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-autocompleta uid="grupo" etiqueta="Grupos Principal" :modelo="usuario.grupo" @vt-cambio="cambios" :datos="grupos" :filtro="gruposSeleccionados" :validaciones="validacion('grupo')">
+                        <vt-autocompleta uid="grupo" etiqueta="Grupos Principal" :modelo="usuario.grupo" @vt-cambio="cambiar" :datos="grupos" :filtro="gruposSeleccionados" :validaciones="validacion('grupo')">
                             <template slot="requerido">Al menos un grupo es requerido</template>
                         </vt-autocompleta>
                     </div>
                     
                     <!-- Shell por defecto (shell) debería ser obligatoria. Nos aseguramos que tenga configurada /bin/false -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-autocompleta uid="loginShell" etiqueta="Shell predeterminada" :modelo="usuario.loginShell" @vt-cambio="cambios" :datos="shells" :validaciones="validacion('loginShell')">
+                        <vt-autocompleta uid="loginShell" etiqueta="Shell predeterminada" :modelo="usuario.loginShell" @vt-cambio="cambiar" :datos="shells" :validaciones="validacion('loginShell')">
                             <template slot="requerido">Debe escoger una Shell Válida</template>
                         </vt-autocompleta>
                     </div>
@@ -225,12 +238,12 @@ export default {
 
                     <!-- Pregunta Secreta (pregunta) es obligatorio cuando aparece en accion = "actualizacion", y como sólo aparecen allí no vale la pena hacer más trabajo -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="pregunta" etiqueta="Pregunta de Recuperación" :modelo="usuario.pregunta" @vt-cambios="cambios" :validaciones="validacion('pregunta')"></vt-entrada>
+                        <vt-entrada uid="pregunta" etiqueta="Pregunta de Recuperación" :modelo="usuario.pregunta" @vt-cambio="cambiar" :validaciones="validacion('pregunta')"></vt-entrada>
                     </div>
 
                     <!-- Respuesta (respuesta) es obligatorio cuando aparece en accion = "actualizacion" -->
                     <div class="pure-u-1 pure-u-xl-1-2">
-                        <vt-entrada uid="respuesta" etiqueta="Respuesta" :modelo="usuario.respuesta" @vt-cambios="cambios" :validaciones="validacion('respuesta')"></vt-entrada>
+                        <vt-entrada uid="respuesta" etiqueta="Respuesta" :modelo="usuario.respuesta" @vt-cambio="cambiar" :validaciones="validacion('respuesta')"></vt-entrada>
                     </div>
                 </div>
 
@@ -246,7 +259,7 @@ export default {
                             <div class="pure-u-1">
                                 <label>Estado del Buzón</label>
                             </div>
-                            <vt-switch uid="buzonStatus" :modelo="usuario.buzonStatus" @vt-cambio="cambios"></vt-switch>
+                            <vt-switch uid="buzonStatus" :modelo="usuario.buzonStatus" @vt-cambio="cambiar"></vt-switch>
                         </div>
                     </div>
                     
@@ -256,7 +269,7 @@ export default {
                             <div class="pure-u-1">
                                 <label>Estado de la Cuenta</label>
                             </div>
-                            <vt-switch uid="cuentaStatus" :modelo="usuario.cuentaStatus" @vt-cambio="cambios"></vt-switch>
+                            <vt-switch uid="cuentaStatus" :modelo="usuario.cuentaStatus" @vt-cambio="cambiar"></vt-switch>
                         </div>
                     </div>
 

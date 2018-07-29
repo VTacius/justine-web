@@ -18,7 +18,7 @@ export default {
 }
 </script>
 <template> <div class="jt-menu">
-        <div class="jt-menu-seccion-izquierda">{{datos.titulo}}</div> 
+        <div class="jt-menu-seccion-izquierda"><router-link to="/">{{datos.titulo}}</router-link></div> 
         <div class="jt-menu-seccion-central">
             <ul class="jt-menu-elemento">
                 <li class="jt-menu-elemento-enlace" v-on:mouseover="mostrar(1)" v-on:mouseout="mostrar(100)">
@@ -26,7 +26,6 @@ export default {
                     <ul class="jt-menu-elemento-subenlace" v-if="muestra(1)">
                         <li><router-link to="/usuarios">Listado</router-link></li>
                         <li><router-link to="/usuarios/nuevo">Creación</router-link></li>
-                        <li>Borrado</li>
                     </ul>
                 </li>
                 <li class="jt-menu-elemento-enlace" v-on:mouseover="mostrar(2)" v-on:mouseout="mostrar(100)">
@@ -34,7 +33,6 @@ export default {
                     <ul class="jt-menu-elemento-subenlace" v-if="muestra(2)">
                         <li><router-link to="/grupos">Listado</router-link></li>
                         <li>Creación</li>
-                        <li>Borrado</li>
                     </ul>
                 </li>
                 <li class="jt-menu-elemento-enlace" v-on:mouseover="mostrar(3)" v-on:mouseout="mostrar(100)">
@@ -42,7 +40,6 @@ export default {
                     <ul class="jt-menu-elemento-subenlace" v-if="muestra(3)">
                         <li>Listado</li>
                         <li>Creación</li>
-                        <li>Borrado</li>
                     </ul>
     			</li>
             </ul>

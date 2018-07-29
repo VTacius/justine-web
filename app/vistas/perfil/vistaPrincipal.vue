@@ -3,7 +3,7 @@
 import vtUsuarioDetalle from './../usuarios/detalle.vue';
 
 export default {
-    name: 'vtViewPerfil',
+    name: 'vtPrincipalPerfil',
     components: { vtUsuarioDetalle },
     data: function(){
         return {
@@ -31,7 +31,19 @@ export default {
                 buzonStatus: true
             },
         }
-    }
+    },
+    mounted: function () {
+        /** 
+         * Este es nuestro punto para desactivar el spinner 
+         * Es obvio que no será tan tortuosos. Lo desactivaré después de obtener los datos
+         * */
+        
+        let vm = this;
+        setTimeout(function(){
+            console.log('Acabo de cargar');
+            vm.$emit('vt-cargado', false);
+        }, 2000);
+    },
 }
 </script>
 <template>

@@ -5,16 +5,17 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 /** Componentes personalizados: Vistas */
-import vtViewGrupos from './vistas/grupos.vue';
-import vtViewUsuarios from './vistas/usuarios/main.vue';
-import vtViewUsuarioCreacion from './vistas/usuarios/creacion.vue';
+import vtPrincipalGrupos from './vistas/grupos/vistaPrincipal.vue';
+import vtPrincipalUsuarios from './vistas/usuarios/vistaPrincipal.vue';
+import vtCreacionUsuarios from './vistas/usuarios/vistaCreacion.vue';
 import vtPrincipal from './vistas/principal.vue';
-import vtViewPerfil from './vistas/perfil/main.vue';
+import vtViewPerfil from './vistas/perfil/vistaPrincipal.vue';
 import vtViewLogin from './vistas/login/login.vue';
 import vtViewLogout from './vistas/login/logout.vue';
 
 /** Componentes personalizados: componentes */
 import vtMenu from './componentes/menu.vue';
+import vtSpinner from './componentes/spinner.vue';
 
 /** La actual librería para manejar la autenticación */
 import Autenticacion from './autenticacion/main.js';
@@ -33,9 +34,9 @@ const routes = [
     { path: '/login', component: vtViewLogin, props: redireccion },
     { path: '/logout', component: vtViewLogout },
     { path: '/perfil', component: vtViewPerfil, meta: {requireAuth: true} },
-    { path: '/grupos', component: vtViewGrupos, meta: {requireAuth: true} },
-    { path: '/usuarios', component: vtViewUsuarios },
-    { path: '/usuarios/nuevo', component: vtViewUsuarioCreacion }
+    { path: '/grupos', component: vtPrincipalGrupos, meta: {requireAuth: true} },
+    { path: '/usuarios', component: vtPrincipalUsuarios },
+    { path: '/usuarios/nuevo', component: vtCreacionUsuarios }
 ];
 
 // 3. Create the router instance and pass the `routes` option
@@ -44,6 +45,8 @@ const router = new VueRouter({
 });
 
 router.beforeEach(function(to, from, next){
+    /** Activo el spinner */
+    router.app.spinner = true;
     if (to.meta.requireAuth){
         if (!auth.isLogin()){
             next({
@@ -64,10 +67,16 @@ new Vue({
     router,
     el: '#justine',
     data: {
+        spinner: false,
         menu: {
             titulo: 'MINSAL',
             usuario: 'Francisco Alexander Rodríguez Ortíz'
         }
     },
-    components: { vtMenu }
+    methods: {
+        ocultarSpinner: function(valor){
+            this.spinner = valor;
+        }
+    },
+    components: { vtMenu, vtSpinner }
 }).$mount('#justine');

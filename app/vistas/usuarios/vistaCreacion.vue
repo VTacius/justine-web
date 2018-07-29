@@ -3,7 +3,7 @@ import vtUsuarioFormulario from './formulario.vue';
 import { nuevo } from "./configuracion.js";
 
 export default {
-    name: 'vt-principal',
+    name: 'vtCreacionUsuarios',
     components: { vtUsuarioFormulario },
     data: function(){
         return {
@@ -57,6 +57,18 @@ export default {
                 {label: 'Usuarios', value: 1005}
             ]
         }
+    },
+    mounted: function () {
+        /** 
+         * Este es nuestro punto para desactivar el spinner 
+         * Es obvio que no será tan tortuosos. Lo desactivaré después de obtener los datos
+         * */
+        
+        let vm = this;
+        setTimeout(function(){
+            console.log('Acabo de cargar');
+            vm.$emit('vt-cargado', false);
+        }, 2000);
     },
     methods: {
         obtenerOficina: function(establecimiento){

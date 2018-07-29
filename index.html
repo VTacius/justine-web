@@ -30,9 +30,10 @@
             <vt-menu v-bind:datos="menu"></vt-menu>
         </header>
         <main class="pure-u-1"><!-- Esta es la aplicación raíz -->
+            <vt-spinner v-bind:activar="spinner"></vt-spinner>
             <div class="pure-g">
-                <!-- La aplicación -->
-				<router-view></router-view>
+              <!-- La aplicación -->
+              <router-view @vt-cargado="ocultarSpinner"></router-view>
             </div>
         </main>
         <footer class="pure-u-1">

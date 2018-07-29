@@ -58,6 +58,18 @@ export default {
             ]
         }
     },
+    mounted: function () {
+        /** 
+         * Este es nuestro punto para desactivar el spinner 
+         * Es obvio que no será tan tortuosos. Lo desactivaré después de obtener los datos
+         * */
+        
+        let vm = this;
+        setTimeout(function(){
+            console.log('Acabo de cargar');
+            vm.$emit('vt-cargado', false);
+        }, 2000);
+    },
     methods: {
         obtenerOficina: function(establecimiento){
             /** TODO: Esta es la idea. La fuente será una petición http seguramente */

@@ -1,12 +1,15 @@
 <script>
 import vtUsuarioFormulario from './formulario.vue';
+import formularioUsuario from './../../mixins/formularioUsuario.js';
 import { nuevo } from "./configuracion.js";
 
 export default {
     name: 'vtCreacionUsuarios',
+    mixins: [ formularioUsuario ],
     components: { vtUsuarioFormulario },
     data: function(){
         return {
+            cargado: false,
             configuracion: nuevo,
             usuario: {
                 uid: '',
@@ -32,53 +35,15 @@ export default {
                 buzonStatus: true,
                 buzonVolumen: ''
             },
-            establecimientos : [
-                {label: 'Lugar 1', value: 1},
-                {label: 'Establecimiento externo 2', value: 2},
-                {label: 'Establecimiento interno 3', value: 3},
-                {label: 'Lugar 4', value: 4}
-            ],
+            establecimientos : [],
             oficinas: [],
-            oficinasDatos: {
-                1: [
-                    {label: 'Administración', value: 1001},
-                    {label: 'Contaduría', value: 1002}
-                ],
-                2: [
-                    {label: 'Administración', value: 2001},
-                    {label: 'RRHH', value: 2002}
-                ]
-            },
-            grupos : [
-                {label: 'Administradores', value: 1001},
-                {label: 'Navegación Web', value: 1002},
-                {label: 'Navegación limitada', value: 1003},
-                {label: 'Técnicos', value: 1004},
-                {label: 'Usuarios', value: 1005}
-            ]
+            oficinasDatos: [],
+            grupos : []
         }
     },
-    mounted: function () {
-        /** 
-         * Este es nuestro punto para desactivar el spinner 
-         * Es obvio que no será tan tortuosos. Lo desactivaré después de obtener los datos
-         * */
-        
-        let vm = this;
-        setTimeout(function(){
-            console.log('Acabo de cargar');
-            vm.$emit('vt-cargado', false);
-        }, 2000);
-    },
-    methods: {
-        obtenerOficina: function(establecimiento){
-            /** TODO: Esta es la idea. La fuente será una petición http seguramente */
-            if(establecimiento in this.oficinasDatos){
-                this.oficinas = this.oficinasDatos[establecimiento];
-            } else {
-                this.oficinas = [];
-            }
-        }
+    created: function () {
+        this.peticion('/grupos', this, 'grupos', 'lista');
+        this.peticion('/establecimientos', this, 'establecimientos', 'lista', true);
     }
 }
 </script>

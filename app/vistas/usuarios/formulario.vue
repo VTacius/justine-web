@@ -33,33 +33,47 @@ export default {
 
     },
     methods: {
-        envio: function(e){
-            e.preventDefault();
-            let elementosVisibles = [];
-            
-            let f = document.getElementById('userForm');
+        elementosVisibles: function(formulario){
+            let elementos = [];
+            let f = document.getElementById(formulario);
             let ele = f.elements;
             for (let i = 0; i < ele.length; i++) {
                 if(ele[i].type === "text"){
-                    elementosVisibles.push(ele[i].id);
+                    elementos.push(ele[i].id);
                 }
             };
+            return elementos;
+
+        },
+        envio: function(ele){
+
+            ele.preventDefault();
+
+            /** Primero verificamos si todos los datos están bien o no */
+            let valido = this.verificacionDatos();
+            if(valido){
+                console.log('Estamos pronto a enviar los siguientes datos');
+                cosole.log(this.usuario);
+            } else {
+                console.log('¿Que podemos hacer? ¿Desactivar el botón?')
+            }
+        },
+        verificacionDatos: function(){
+            let elementos = this.elementosVisibles('userForm');
 
             /**
              * Guardamos los valores actuales: Los válidos del formulario, los por defecto
              */
             let tmp = {};
-            elementosVisibles.map(function(elemento){
+            elementos.map(function(elemento){
                 tmp[elemento] = elemento in this.cambios ? this.cambios[elemento].modelo : this.usuario[elemento];
-                debugger;
             }, this);
            
             /** 
-             * Configuramos un valor cualquiera: No debería haber problemas
-             * Excepto, claro, que no puede ser '' porque ese es el valor por defecto
+             * Configuramos un valor cualquiera: Excepto, '' porque ese es el valor por defecto
              */
-            elementosVisibles.forEach(function(e){
-                this.usuario[e] = " ";
+            elementos.forEach(function(e){
+                this.usuario[e] = ' ';
             }, this);
          
             /** 
@@ -69,11 +83,14 @@ export default {
             let vm = this;
             this.$nextTick().then(
                 function(){
-                    elementosVisibles.forEach(function(e){
+                    elementos.forEach(function(e){
                         this.usuario[e] = tmp[e];
                     }, vm);
                 }
             );
+
+            let valido = true;
+            return valido;
         },
         cambiar: function(uid, modelo, validacion){
             let resultado = validacion ? "Inválido": "Válido";
@@ -100,7 +117,6 @@ export default {
             if (!validacion){
                 this.gruposSeleccionados = modelo;
             }
-
         },
         /** 
          * TODO: Ahora que quiero hacerlo en otra parte, me doy cuenta que puede que esta no sea la mejor manera

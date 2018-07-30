@@ -1,5 +1,9 @@
 {
   "/api/*": "/$1",
   "/:resource/:id/show": "/:resource/:id",
-  "/usuarios/:uid": "/usuarios?uid=:uid"
+  "/usuarios/": "/usuarios",
+  "/usuarios/:uid": "/usuariosDetalle?uid=:uid",
+  "/grupos/:value": "/grupos?value=:value",
+  "/establecimientos/:value": "/establecimientos?value=:value",
+  "/oficinas/:codest": "/oficinas?codest=:codest"
 }

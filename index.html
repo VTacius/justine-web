@@ -25,15 +25,17 @@
 	
 </head>
 <body>
-    <div class="pure-g" id="justine">
-        <header class="pure-u-1">
+    <!-- TODO: Cuando dominés la idea de cancel en axios, el blackout debería aplicarse sólo a main:
+    La idea es que podríamos cambiar de ruta, pero habría que precisamente cancelar todas las peticiones requeridas -->
+    <div :class="{ 'pure-u-1': true, 'blackout-is-active': spinner}" id="justine">
+        <header class="pure-g">
             <vt-menu v-bind:datos="menu"></vt-menu>
         </header>
         <main class="pure-u-1"><!-- Esta es la aplicación raíz -->
             <vt-spinner v-bind:activar="spinner"></vt-spinner>
             <div class="pure-g">
               <!-- La aplicación -->
-              <router-view @vt-cargado="ocultarSpinner"></router-view>
+              <router-view @vt-cargado="controlSpinner"></router-view>
             </div>
         </main>
         <footer class="pure-u-1">

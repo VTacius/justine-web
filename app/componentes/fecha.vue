@@ -45,7 +45,6 @@ export default {
 
         let fecha = moment(this.valor, 'DD/MM/YYYY');
         this.picker.setDate(fecha.toDate());
-
     },
     watch:{
         modelo: function(valor){
@@ -80,6 +79,9 @@ export default {
             <label :for="uid">{{etiqueta}} <span v-if="invalido">Es inválido</span></label>
         </div>
         <div class="pure-u-1">
+            <!-- TODO: Debería ir de esta forma:
+            <input type="text" :id="uid" :value="valor" @change="cambios($event)" autocomplete="off">
+            Si después de revisarlo con creación funciona bien, pues si, más que nada por orden -->
             <input type="text" :id="uid" @change="cambios($event)" autocomplete="off">
         </div>
         <vt-validacion :uid="uid" :validaciones="validaciones" :valor="valor" :valor-viejo="guarnecido" @vt-validar="validar">

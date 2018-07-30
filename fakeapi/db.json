@@ -1,34 +1,106 @@
 {
-  "usuarios": [
-    {
-      "id": "1010",
-      "username": "alortiz",
-      "nombre": "Alexander Ortíz"
-    },
-    {
-      "id": "1020",
-      "username": "cpena",
-      "nombre": "Carolina Peña"
-    },
-    {
-      "id": "1030",
-      "username": "kpenate",
-      "nombre": "Karen Peñate"
-    },
-    {
-      "id": "1040",
-      "username": "opineda",
-      "nombre": "Olga Pineda"
-    }
-  ],
-  "grupos": [
-    {
-      "id": "1002",
-      "cn": "Grupo primario"
-    },
-    {
-      "id": "1004",
-      "cn": "Grupo secundario"
-    }
-  ]
+	"usuarios": [
+        {
+            "uidNumber": "1010",
+            "uid": "alortiz",
+            "givenName": "Alexander",
+            "sn": "Ortíz",
+			"o": 1,
+			"ou": 1001
+        },
+        {
+            "uidNumber": "1020",
+            "uid": "cpena",
+            "givenName": "Carolina",
+            "sn": "Peña",
+			"o": 1,
+			"ou": 1001
+        },
+        {
+            "uidNumber": "1030",
+            "uid": "kpenate",
+            "givenName": "Karen",
+            "sn": "Peñate",
+			"o": 1,
+			"ou": 1002
+        },
+        {
+            "uidNumber": "1040",
+            "uid": "opineda",
+            "givenName": "Olga",
+            "sn": "Pineda",
+			"o": 1,
+			"ou": 1003
+        },
+        {
+            "uidNumber": "1050",
+            "uid": "gsolis",
+            "givenName": "Gabriela",
+            "sn": "Solís",
+			"o": 1,
+			"ou": 1004
+        },
+        {
+            "uidNumber": "1060",
+            "uid": "rcarpio",
+            "givenName": "Rosibel",
+            "sn": "Carpio",
+			"o": 2,
+			"ou": 2001
+        },
+        {
+            "uidNumber": "1070",
+            "uid": "rcarpio",
+            "givenName": "Valeria",
+            "sn": "Castillo",
+			"o": 2,
+			"ou": 2001
+        }
+    ],
+	"usuariosDetalle": [
+		{
+			"uid": "kpenate",
+			"uidNumber": "1030",
+        	"givenName": "Karen",
+        	"sn": "Peñate",
+        	"ou": 2002,
+        	"o": 2, 
+        	"userPassword": "Pass_2025",
+        	"nit": "4444-666666-333-1",
+        	"dui": "12345678-0",
+        	"jvs": "",
+        	"fecha": "16/11/1990",
+        	"pregunta": "¿Quién soy?",
+        	"respuesta": "Soi io",
+        	"mail": "kpenate@salud.gob.sv",
+        	"grupos": [1003, 1005],
+        	"grupo": 1003,
+        	"title": "Profesor designado",
+        	"sambaAcctFlags": false,
+        	"telephoneNumber": "7894",
+        	"loginShell": "/bin/bash",
+        	"cuentaStatus": true,
+        	"buzonStatus": true,
+        	"buzonVolumen": 786432000
+		}	
+	],
+	"grupos": [
+    	{"label": "Administradores", "value": 1001},
+        {"label": "Navegación Web", "value": 1002},
+        {"label": "Navegación limitada", "value": 1003},
+        {"label": "Técnicos", "value": 1004},
+        {"label": "Usuarios", "value": 1005}
+    ],
+    "establecimientos": [
+        {"label": "Lugar 1", "value": 1},
+        {"label": "Establecimiento externo 2", "value": 2},
+        {"label": "Establecimiento interno 3", "value": 3},
+        {"label": "Lugar 4", "value": 4}
+    ],
+	"oficinas": [
+		{"label": "Administración", "value": 1001, "codest": 1},
+        {"label": "Contaduría", "value": 1002, "codest": 1},
+        {"label": "Administración", "value": 2001, "codest": 2},
+        {"label": "RRHH", "value": 2002, "codest": 2}
+	]
 }

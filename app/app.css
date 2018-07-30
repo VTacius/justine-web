@@ -1044,7 +1044,7 @@ borrado-usuarios {
     z-index: 7777;
 }
 
-body.blackout-is-active {
+.blackout-is-active {
     pointer-events:  none;
 }
 /*

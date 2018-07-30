@@ -19,6 +19,12 @@ export default {
             ]
         }
     },
+    /** TODO: ¿Podríamos usar directamente a datos? */
+    watch: {
+        datos: function(valor) {
+            this.usuario = valor;
+        }   
+    },
     mounted: function(){
         /** Nos aseguramos de mostrarle al usuario las oficinas para su establecimiento */
         if (Number.isInteger(this.usuario.o)){

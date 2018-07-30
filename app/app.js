@@ -47,6 +47,7 @@ const router = new VueRouter({
 router.beforeEach(function(to, from, next){
     /** Activo el spinner */
     router.app.spinner = true;
+    /** Verifico la autenticación */
     if (to.meta.requireAuth){
         if (!auth.isLogin()){
             next({
@@ -74,7 +75,7 @@ new Vue({
         }
     },
     methods: {
-        ocultarSpinner: function(valor){
+        controlSpinner: function(valor){
             this.spinner = valor;
         }
     },

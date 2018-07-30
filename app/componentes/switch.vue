@@ -7,6 +7,11 @@ export default {
             valor: this.modelo
         }
     },
+    watch: {
+        modelo: function(valor){
+            this.valor = valor;
+        }
+    },
     methods: {
         cambios: function(evento, valor){
             /** TODO: Recuerda que el false significa invalido = false */

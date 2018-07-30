@@ -11,7 +11,7 @@ export default {
         return {
             valor: this.modelo,
             guarnecido: this.modelo,
-            invalido: false,
+            valido: true,
             picker: ''
         }
     },
@@ -56,9 +56,9 @@ export default {
          *  TODO: Debe conseguir el valor del evento
          *  Pues parece que esto no existe
          */
-        validar: function(valor){
-            this.invalido = valor;
-            this.$emit('vt-cambio', this.uid, this.valor, this.invalido);
+        validar: function(validacion){
+            this.valido = validacion;
+            this.$emit('vt-cambio', this.uid, this.valor, this.valido);
         },
         /**
          * TODO: Estas usando moment por el momento. Por acá ya habías querido prescindir de ella 
@@ -76,7 +76,7 @@ export default {
 <template>
     <div class="pure-g jt-form-component">
         <div class="pure-u-1">
-            <label :for="uid">{{etiqueta}} <span v-if="invalido">Es inválido</span></label>
+            <label :for="uid">{{etiqueta}} <span v-if="!valido">Es inválido</span></label>
         </div>
         <div class="pure-u-1">
             <!-- TODO: Debería ir de esta forma:

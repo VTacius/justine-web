@@ -33,6 +33,24 @@ export default {
 
     },
     methods: {
+        envio: function(ele){
+            ele.preventDefault();
+            let vm = this;
+            let v = {};
+            
+            let elementos = this.elementosVisibles('userForm');
+            let tmp = this.guardaDatosActuales(elementos, this.cambios, this.usuario);
+            this.forzarValidacionFormulario(elementos, this.usuario, tmp);
+            setTimeout(function () {
+                v = vm.verificaEstadoFormulario(elementos, vm.cambios, vm.usuario);
+                if(v.validez && v.editado){
+                    console.log('Estamos pronto a enviar los siguientes datos');
+                    console.log(vm.usuario);
+                } else {
+                    console.log('¿Que podemos hacer? ¿Desactivar el botón?');
+                }
+            }, 200);
+        },
         elementosVisibles: function(formulario){
             let elementos = [];
             let f = document.getElementById(formulario);
@@ -45,61 +63,56 @@ export default {
             return elementos;
 
         },
-        envio: function(ele){
-
-            ele.preventDefault();
-
-            /** Primero verificamos si todos los datos están bien o no */
-            let valido = this.verificacionDatos();
-            if(valido){
-                console.log('Estamos pronto a enviar los siguientes datos');
-                cosole.log(this.usuario);
-            } else {
-                console.log('¿Que podemos hacer? ¿Desactivar el botón?')
-            }
-        },
-        verificacionDatos: function(){
-            let elementos = this.elementosVisibles('userForm');
-
-            /**
-             * Guardamos los valores actuales: Los válidos del formulario, los por defecto
-             */
+        guardaDatosActuales: function(elementos, cambio, original){
+            /** Estos son los datos al momento de pulsar el botón enviar */
             let tmp = {};
             elementos.map(function(elemento){
-                tmp[elemento] = elemento in this.cambios ? this.cambios[elemento].modelo : this.usuario[elemento];
-            }, this);
-           
-            /** 
-             * Configuramos un valor cualquiera: Excepto, '' porque ese es el valor por defecto
+                tmp[elemento] = (elemento in cambio) ? cambio[elemento].modelo : original[elemento];
+                original[elemento] = '  ';
+            })
+            return tmp;
+        },
+        forzarValidacionFormulario: function(elementos, original, tmp){
+            /** TODO: Podrías volver a intentar poner acá el original[elemento] = '  ', 
+             * al parecer es tu mejor opcion: Aún cuando ahorita funciona
              */
-            elementos.forEach(function(e){
-                this.usuario[e] = ' ';
-            }, this);
-         
             /** 
              * Incluso funciona sin la promesa; igual queda más bonito
              * Parece que la promesa tiene su propio ámbito, ¿O es la función? Mira las cosas
+             * TODO: ¿Servirá con un assign, cuidando de no enviar datos que no tengo activos
              */
             let vm = this;
-            this.$nextTick().then(
-                function(){
+            this.$nextTick().then(function(){
                     elementos.forEach(function(e){
-                        this.usuario[e] = tmp[e];
+                    original[e] = tmp[e];
                     }, vm);
+            });
+        },
+        verificaEstadoFormulario: function(elementos, cambio, original){
+            /** 
+             * TODO: ¿Editado debe ser una propiedad en la raíz de este componente
+             * TODO: Una vez resuelto lo anterior, ¿Un reduce no sería genial?
+             */
+            let validez = true;
+            let editado = false;
+            console.log(elementos);
+            elementos.map(function(elemento){
+                if (elemento in cambio){
+                    validez = validez && cambio[elemento].validacion;
+                    console.log(elemento + ' resulta ' + cambio[elemento].validacion);
+                    editado = true;
+                } 
+            });
+            return {
+                editado,
+                validez
                 }
-            );
-
-            let valido = true;
-            return valido;
         },
         cambiar: function(uid, modelo, validacion){
-            let resultado = validacion ? "Inválido": "Válido";
-            console.log('Sucede un algo en en ' + uid + ': "' + modelo + '" es ' + resultado );
+            let resultado = validacion ? "Válido" : "Inválido";
+            /* console.log('Sucede un algo en en ' + uid + ': "' + modelo + '" es ' + resultado ); */ 
 
-            /** 
-             * Recuerda que validacion=false significa que estamos bien 
-             * También recuerda que este no es reactivo, espero que poco importe 
-             */
+            /** Recuerda que este no es reactivo, espero que poco importe */
             this.cambios[uid] = {
                 modelo,
                 validacion,
@@ -108,13 +121,13 @@ export default {
         },
         cambiarEstablecimiento: function(uid, modelo, validacion){
             this.cambiar(uid, modelo, validacion);
-            if (!validacion){
+            if (validacion){
                 this.$emit('vt-cambio-establecimiento', modelo);
             }
         },
         cambiarGrupos: function(uid, modelo, validacion){
             this.cambiar(uid, modelo, validacion);
-            if (!validacion){
+            if (validacion){
                 this.gruposSeleccionados = modelo;
             }
         },

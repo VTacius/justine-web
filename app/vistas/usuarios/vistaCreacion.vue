@@ -50,7 +50,7 @@ export default {
 <template>
 	<div class="pure-u-1">
        <vt-usuario-formulario 
-           :configuracion="configuracion"
+           :configuracion="configuracion" v-if="cargado"
            :datos="usuario" 
            :establecimientos="establecimientos" 
            :oficinas="oficinas"

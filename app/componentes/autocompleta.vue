@@ -9,7 +9,8 @@ export default {
     data: function(){
         return {
             valor: this.modelo,
-            guarnecido: this.modelo
+            guarnecido: this.modelo,
+            valido: true
         }
     },
     computed: {
@@ -55,8 +56,9 @@ export default {
         }
     },
     methods: {
-        validar: function(verificacion){
-            this.$emit('vt-cambio', this.uid, this.valor, verificacion);
+        validar: function(validacion){
+            this.valido = validacion;
+            this.$emit('vt-cambio', this.uid, this.valor, validacion);
         }
     }
 }   
@@ -64,7 +66,7 @@ export default {
 <template>
     <div class="pure-g jt-form-component">
         <div class="pure-u-1">
-            <label class="pure-u-1" :for="uid">{{this.etiqueta}}</label>
+            <label class="pure-u-1" :for="uid">{{this.etiqueta}} <span v-if="!valido">Es inválido</span></label>
         </div>
         <div class="pure-u-1">
             <!-- TODO: El mismo creador dice que no deberías usar v-model -->

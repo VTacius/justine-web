@@ -37,14 +37,14 @@ export default {
                     this.valido[validacion] = verifica(valor)
                 }
                 /** 
-                 * Inválido es falso si todos las verifidaciones son falsas.
+                 * Inválido es falso si todos las verificaciones son falsas.
                  * Los cambiamos a true para hacer esto en una sola instrucción
                  */
                 this.invalido = this.invalido && (! this.valido[validacion])
             },this);
 
             /** He terminado de validar, emito el resultado y el valor que se he validado */
-            this.$emit('vt-validar', !this.invalido, valor) 
+            this.$emit('vt-validar', this.invalido, valor) 
         }
     },
     methods: {

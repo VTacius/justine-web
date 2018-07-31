@@ -52,10 +52,6 @@ export default {
         }
     },
     methods: {
-        /**
-         *  TODO: Debe conseguir el valor del evento
-         *  Pues parece que esto no existe
-         */
         validar: function(validacion){
             this.valido = validacion;
             this.$emit('vt-cambio', this.uid, this.valor, this.valido);

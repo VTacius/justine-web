@@ -18,12 +18,6 @@ export default {
         }
     },
     methods: {
-        /** 
-         * El gran cambio, ¿Podrían ambos métodos ser iguales con los de fecha y autocompleta? 
-         * Sí: El cambio ha sido necesario para que funcione con el formulario. Es decir, al forzar 
-         * la reactividad, nuestro resultado viene dado precisamente por el procesode validacion
-         * TODO: Eliminar esta respuesta
-        */
         validar: function(validacion){
             this.valido = validacion;
             this.$emit('vt-cambio', this.uid, this.valor, this.valido);

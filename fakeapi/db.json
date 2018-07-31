@@ -50,9 +50,25 @@
         },
         {
             "uidNumber": "1070",
-            "uid": "rcarpio",
+            "uid": "vcastillo",
             "givenName": "Valeria",
             "sn": "Castillo",
+			"o": 2,
+			"ou": 2001
+        },
+        {
+            "uidNumber": "1080",
+            "uid": "rcarpio",
+            "givenName": "Alejandra",
+            "sn": "Ramírez",
+			"o": 2,
+			"ou": 2001
+        },
+        {
+            "uidNumber": "1090",
+            "uid": "favelis",
+            "givenName": "Fátima",
+            "sn": "Velis",
 			"o": 2,
 			"ou": 2001
         }

@@ -10,6 +10,7 @@ export default {
     props: ['configuracion', 'datos', 'establecimientos', 'oficinas', 'grupos'],
     data: function(){
         return {
+            editado: false,
             usuario: this.datos,
             cambios: {},
             gruposSeleccionados: this.datos.grupos,
@@ -36,14 +37,12 @@ export default {
         envio: function(ele){
             ele.preventDefault();
             let vm = this;
-            let v = {};
             
             let elementos = this.elementosVisibles('userForm');
-            let tmp = this.guardaDatosActuales(elementos, this.cambios, this.usuario);
-            this.forzarValidacionFormulario(elementos, this.usuario, tmp);
+            this.forzarValidacionFormulario(elementos, this.cambios, this.usuario);
             setTimeout(function () {
-                v = vm.verificaEstadoFormulario(elementos, vm.cambios, vm.usuario);
-                if(v.validez && v.editado){
+                let validez = vm.verificaEstadoFormulario(elementos, vm.cambios, vm.usuario);
+                if (validez){
                     console.log('Estamos pronto a enviar los siguientes datos');
                     console.log(vm.usuario);
                 } else {
@@ -63,53 +62,39 @@ export default {
             return elementos;
 
         },
-        guardaDatosActuales: function(elementos, cambio, original){
-            /** Estos son los datos al momento de pulsar el botón enviar */
+        forzarValidacionFormulario: function(elementos, cambio, original){
+            /** Todo este código esta tan mal hecho que me quita el sueño */
             let tmp = {};
             elementos.map(function(elemento){
                 tmp[elemento] = (elemento in cambio) ? cambio[elemento].modelo : original[elemento];
-                original[elemento] = '  ';
+                original[elemento] = ' ';
             })
-            return tmp;
-        },
-        forzarValidacionFormulario: function(elementos, original, tmp){
-            /** TODO: Podrías volver a intentar poner acá el original[elemento] = '  ', 
-             * al parecer es tu mejor opcion: Aún cuando ahorita funciona
-             */
-            /** 
-             * Incluso funciona sin la promesa; igual queda más bonito
-             * Parece que la promesa tiene su propio ámbito, ¿O es la función? Mira las cosas
-             * TODO: ¿Servirá con un assign, cuidando de no enviar datos que no tengo activos
-             */
-            let vm = this;
+            
             this.$nextTick().then(function(){
-                    elementos.forEach(function(e){
+                elementos.forEach(function(e){
                     original[e] = tmp[e];
-                    }, vm);
+                });
             });
         },
         verificaEstadoFormulario: function(elementos, cambio, original){
             /** 
-             * TODO: ¿Editado debe ser una propiedad en la raíz de este componente
              * TODO: Una vez resuelto lo anterior, ¿Un reduce no sería genial?
+             * Respuesta: No, no va a funcionar
              */
             let validez = true;
-            let editado = false;
-            console.log(elementos);
             elementos.map(function(elemento){
                 if (elemento in cambio){
                     validez = validez && cambio[elemento].validacion;
-                    console.log(elemento + ' resulta ' + cambio[elemento].validacion);
-                    editado = true;
                 } 
             });
-            return {
-                editado,
-                validez
-                }
+            return validez;
         },
         cambiar: function(uid, modelo, validacion){
+            /* Este mensaje es más bien una debugeo chambón */
             let resultado = validacion ? "Válido" : "Inválido";
+
+            /** Desde la primer carga del formulario, resulta que este ya fue manipulado */
+            this.editado = true;
             /* console.log('Sucede un algo en en ' + uid + ': "' + modelo + '" es ' + resultado ); */ 
 
             /** Recuerda que este no es reactivo, espero que poco importe */

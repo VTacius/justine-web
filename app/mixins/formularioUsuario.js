@@ -24,7 +24,7 @@ const formularioUsuario = {
         },
         obtenerOficina: function(establecimiento){
             this.peticion('/oficinas/' + establecimiento, this, 'oficinas', 'lista');
-        }
+        },
     }
 };
 

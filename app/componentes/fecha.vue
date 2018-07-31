@@ -16,6 +16,13 @@ export default {
         }
     },
     mounted: function(){
+        /**
+         * TODO: Estas usando moment por el momento. Por acá ya habías querido prescindir de ella 
+         *   let anio = fecha.getFullYear();
+         *   let mes = fecha.getMonth();
+         *   let dia = fecha.getDate();
+         *   let valor = dia + '/' + mes + '/' + anio;
+         */
         let locale = {
             previousMonth : 'Mes anterior',
             nextMonth     : 'Mes siguiente',
@@ -56,13 +63,6 @@ export default {
             this.valido = validacion;
             this.$emit('vt-cambio', this.uid, this.valor, this.valido);
         },
-        /**
-         * TODO: Estas usando moment por el momento. Por acá ya habías querido prescindir de ella 
-         *   let anio = fecha.getFullYear();
-         *   let mes = fecha.getMonth();
-         *   let dia = fecha.getDate();
-         *   let valor = dia + '/' + mes + '/' + anio;
-         */
         cambios: function(evento){
             this.valor = evento.target.value;
         }

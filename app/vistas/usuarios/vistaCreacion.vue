@@ -55,7 +55,8 @@ export default {
            :establecimientos="establecimientos" 
            :oficinas="oficinas"
            :grupos="grupos" 
-           @vt-cambio-establecimiento="obtenerOficina"></vt-usuario-formulario>
+           @vt-cambio-establecimiento="obtenerOficina"
+           @vt-reseteo="reseteaFormulario"></vt-usuario-formulario>
 	</div>
 </template>
 

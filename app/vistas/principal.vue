@@ -22,6 +22,26 @@ export default {
         this.peticion('/grupos', this, 'grupos', 'lista');
         this.peticion('/establecimientos', this, 'establecimientos', 'lista', true);
     },
+    methods: {
+        reseteaFormulario: function(){
+            console.log('Reseteo formulario');
+            let vm = this;
+            let tmp = {};
+            let claves = Object.keys(this.usuario);
+            
+            claves.map(function(clave){
+                tmp[clave] = vm.usuario[clave];
+            });
+            
+            claves.map(function(clave){
+                vm.usuario[clave] = "  ";
+            });
+
+            this.$nextTick().then(function(){
+                vm.usuario = tmp;
+            });
+        }
+    }
 }
 </script>
 <template>
@@ -32,6 +52,7 @@ export default {
            :establecimientos="establecimientos" 
            :oficinas="oficinas"
            :grupos="grupos" 
-           @vt-cambio-establecimiento="obtenerOficina"></vt-usuario-formulario>
+           @vt-cambio-establecimiento="obtenerOficina"
+           @vt-reseteo="reseteaFormulario"></vt-usuario-formulario>
 	</div>
 </template>

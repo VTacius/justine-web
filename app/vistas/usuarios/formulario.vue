@@ -34,6 +34,12 @@ export default {
 
     },
     methods: {
+        /** El reseteo del formulario */
+        reseteo: function(ele){
+            ele.preventDefault();
+            this.$emit('vt-reseteo');
+        },
+        /** El envío de los datos a la API */
         envio: function(ele){
             ele.preventDefault();
             let vm = this;
@@ -299,7 +305,7 @@ export default {
                 <button type="submit" class="button-success jt-boton-formulario pure-button">Enviar</button>
             </div>
             <div class="pure-u-1-2">
-                <button type="reset" class="button-warning jt-boton-formulario pure-button">Cancelar</button>
+                <button type="reset" class="button-warning jt-boton-formulario pure-button" @click="reseteo">Cancelar</button>
             </div>
         </div>
     </form>

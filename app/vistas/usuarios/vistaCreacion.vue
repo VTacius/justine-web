@@ -59,4 +59,3 @@ export default {
            @vt-reseteo="reseteaFormulario"></vt-usuario-formulario>
 	</div>
 </template>
-

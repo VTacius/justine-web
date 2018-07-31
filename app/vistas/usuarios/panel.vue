@@ -16,7 +16,7 @@ export default {
 	    </div>
 	    <div class="pure-u-1 pure-u-lg-11-24 pure-u-xl-12-24 jt-celda">
 	        <i class="fa fa-map-marker"></i>
-	        <span class="texto"><i>{{usuario.ou}}</i><span v-show="usuario.ou && usuario.o.nombre"> en </span> <strong>{{usuario.o.nombre}}</strong></span>
+	        <span class="texto"><i>{{usuario.ou}}</i><span v-show="usuario.ou && usuario.o"> en </span> <strong>{{usuario.o}}</strong></span>
 	    </div>
 	</div>
 </template>

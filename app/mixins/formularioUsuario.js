@@ -22,6 +22,24 @@ const formularioUsuario = {
                     }
                 }); 
         },
+        reseteaFormulario: function(){
+            console.log('Reseteo formulario');
+            let vm = this;
+            let tmp = {};
+            let claves = Object.keys(this.usuario);
+            
+            claves.map(function(clave){
+                tmp[clave] = vm.usuario[clave];
+            });
+            
+            claves.map(function(clave){
+                vm.usuario[clave] = "  ";
+            });
+
+            this.$nextTick().then(function(){
+                vm.usuario = tmp;
+            });
+        },
         obtenerOficina: function(establecimiento){
             this.peticion('/oficinas/' + establecimiento, this, 'oficinas', 'lista');
         },

@@ -11,14 +11,16 @@ export default {
 	},
 	methods: {
 		mostrarPanel: function(panel){
-			this.panel = panel;
+			this.panel = this.panel === panel ? 0 : panel;
 		},
 		verificarPanelActivo: function (panel){
 			return panel == this.panel;
 		},
 		permisos: function(){
-            /* TODO: Los permisos son datos que se pasan desde el padre. En todo caso, no hay gran drama por almacenarse en local y que el usuario pueda modificarles: El backend devolverá error
-             */
+			/**
+			 * TODO: Los permisos son datos que se pasan desde el padre. 
+			 * En todo caso, no hay gran drama por almacenarse en local y que el usuario pueda modificarles: El backend devolverá error
+			 */
 			return false;
 		}
 		
@@ -44,13 +46,13 @@ export default {
         
 		<!-- Acá empiezan los paneles bien bonitos para mostrar al usuario -->
 
-		<div class="pure-g" v-if="verificarPanelActivo(1)">
+		<div v-if="verificarPanelActivo(1)">
 			<slot name="detalle"></slot>
 		</div>
-		<div class="pure-g" v-if="verificarPanelActivo(2)">
+		<div v-if="verificarPanelActivo(2)">
 			<slot name="edicion"></slot>
 		</div>
-		<div class="pure-g" v-if="verificarPanelActivo(3)">
+		<div v-if="verificarPanelActivo(3)">
 			<slot name="borrado"></slot>
 		</div>
 	</td>

@@ -5,89 +5,22 @@ import vtPanelUsuarios from './panel.vue';
 import vtUsuarioDetalle from './detalle.vue';
 import vtUsuarioFormulario from './formulario.vue';
 import vtUsuarioBorrado from './borrado.vue';
+import formularioUsuario from './../../mixins/formularioUsuario.js';
 
 export default {
     name: 'vtPrincipalUsuarios',
-    components: { vtPanel, vtPanelUsuarios, vtUsuarioFormulario, vtUsuarioFormulario, vtUsuarioBorrado},
+    mixins: [ formularioUsuario ],
+    components: { vtPanel, vtPanelUsuarios, vtUsuarioDetalle, vtUsuarioFormulario, vtUsuarioBorrado},
     data: function(){
         return {
-            mensaje: 'Esta es la muestra',
-            filtroBusqueda: 'Acá hablamos de filtros',
-            datos :	[
-                {
-                    uid: 'alortiz',
-                    givenName: 'Francisco',
-                    sn: 'Ortíz',
-                    ou: 'Oficina',
-                    o: {
-	                    nombre: "Lugar"
-                    },
-                    userPassword: "Pass_2025",
-                    nit: "000-000",
-                    dui: "000-000",
-                    jvs: "000-000",
-                    anio: "",
-                    pregunta: "¿Quién soy?",
-                    respuesta: "Soi io",
-                    mail: "alortiz@salud.gob.sv",
-                },
-                {
-                    uid: 'opineda',
-                    givenName: 'Olga',
-                    sn: 'Pineda',
-                    ou: 'Oficina',
-                    o: {
-                        nombre: 'Lugar'
-                    },
-                    userPassword: 'Pass_2025',
-                    nit: '000-000',
-                    dui: '000-000',
-                    jvs: '',
-                    anio: '23/01/1991',
-                    pregunta: '¿Quién soy?',
-                    respuesta: 'Soi io',
-                    mail: 'opineda@salud.gob.sv',
-
-                },
-                {
-                    uid: 'kpenate',
-                    givenName: 'Karen',
-                    sn: 'Peñate',
-                    ou: 'Oficina',
-                    o: {
-                        nombre: 'Lugar'
-                    },
-                    userPassword: 'Pass_2025',
-                    nit: '000-000',
-                    dui: '000-000',
-                    jvs: '',
-                    anio: '23/12/1991',
-                    pregunta: '¿Quién soy?',
-                    respuesta: 'Soi io',
-                    mail: 'kpenate@salud.gob.sv',
-
-                }
-            ]
+            cargado: false,
+            filtroBusqueda: '',
+            datos :	[]
         };
     },
-    mounted: function () {
-        /** 
-         * Este es nuestro punto para desactivar el spinner 
-         * Es obvio que no será tan tortuosos. Lo desactivaré después de obtener los datos
-         * */
-        
-        let vm = this;
-        setTimeout(function(){
-            console.log('Acabo de cargar');
-            vm.$emit('vt-cargado', false);
-        }, 2000);
-    },
-    methods: {
-        cambiarMensaje: function(){
-            this.mensaje = 'Este es el nuevo mensaje';
-        }
-    },
-
+    created: function () {
+        this.peticion('/usuarios', this, 'datos', 'listado', true);
+    }
 }
 </script>
 <template>

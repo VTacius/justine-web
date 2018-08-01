@@ -2,7 +2,7 @@
   "/api/*": "/$1",
   "/:resource/:id/show": "/:resource/:id",
   "/usuarios/": "/usuarios",
-  "/usuarios/:uid": "/usuariosDetalle?uid=:uid",
+  "/usuarios/:uid": "/usuarios?uid=:uid",
   "/grupos/:value": "/grupos?value=:value",
   "/establecimientos/:value": "/establecimientos?value=:value",
   "/oficinas/:codest": "/oficinas?codest=:codest"

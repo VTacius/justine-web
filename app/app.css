@@ -75,6 +75,7 @@ footer p {
 .contenido {
     color: #333;
     padding: 0em 0.6em;
+    box-sizing: border-box;
 }
 
 /* ######################################################################### */

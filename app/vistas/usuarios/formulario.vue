@@ -37,6 +37,7 @@ export default {
         /** El reseteo del formulario */
         reseteo: function(ele){
             ele.preventDefault();
+
             this.$emit('vt-reseteo');
         },
         /** El envío de los datos a la API */

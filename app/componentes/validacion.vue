@@ -7,7 +7,12 @@ export default {
         'uid': String, 
         'valor': [Number, String, Array], 
         'valorViejo': [Number, String, Array],
-        'validaciones': Array
+        'validaciones': {
+            type: Array,
+            default: function(){
+                return []
+            }
+        }
     },
     data: function(){
         return {
@@ -25,6 +30,7 @@ export default {
     },
     watch: {
         valor: function (valor){
+            console.log('validacion: Valor en ' + this.uid + ' cambió a ' + valor)
             /** Reseteamos el valor con cada verificación */
             this.invalido = true;
             this.validaciones.forEach(function(validacion){
@@ -43,6 +49,7 @@ export default {
                 this.invalido = this.invalido && (! this.valido[validacion])
             },this);
 
+            console.log('validacion: Veredicto es ' + this.invalido + ' ' + valor);
             /** He terminado de validar, emito el resultado y el valor que se he validado */
             this.$emit('vt-validar', this.invalido, valor) 
         }

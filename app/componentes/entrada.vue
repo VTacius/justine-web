@@ -43,5 +43,4 @@ export default {
             <template v-for="v in validaciones" :slot="v"><slot :name="v"></slot></template>
         </vt-validacion>
     </div>
-    
 </template>

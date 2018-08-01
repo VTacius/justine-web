@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 import vtPrincipalGrupos from './vistas/grupos/vistaPrincipal.vue';
 import vtPrincipalUsuarios from './vistas/usuarios/vistaPrincipal.vue';
 import vtCreacionUsuarios from './vistas/usuarios/vistaCreacion.vue';
+import vtPrincipalEquipos from './vistas/equipos/vistaPrincipal.vue';
 import vtPrincipal from './vistas/principal.vue';
 import vtViewPerfil from './vistas/perfil/vistaPrincipal.vue';
 import vtViewLogin from './vistas/login/login.vue';
@@ -35,6 +36,7 @@ const routes = [
     { path: '/logout', component: vtViewLogout },
     { path: '/perfil', component: vtViewPerfil, meta: {requireAuth: true} },
     { path: '/grupos', component: vtPrincipalGrupos, meta: {requireAuth: true} },
+    { path: '/equipos', component: vtPrincipalEquipos},
     { path: '/usuarios', component: vtPrincipalUsuarios },
     { path: '/usuarios/nuevo', component: vtCreacionUsuarios }
 ];

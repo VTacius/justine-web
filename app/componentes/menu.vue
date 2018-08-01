@@ -38,7 +38,7 @@ export default {
                 <li class="jt-menu-elemento-enlace" v-on:mouseover="mostrar(3)" v-on:mouseout="mostrar(100)">
     				<a href="#"><span class="fa fa-desktop"></span><span class="texto">Equipos</span></a>
                     <ul class="jt-menu-elemento-subenlace" v-if="muestra(3)">
-                        <li>Listado</li>
+                        <li><router-link to="/equipos">Listado</router-link></li>
                         <li>Creación</li>
                     </ul>
     			</li>

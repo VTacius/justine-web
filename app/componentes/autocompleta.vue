@@ -79,6 +79,7 @@ export default {
                 :options="opciones" 
                 track-by="value" 
                 label="label" 
+                :allow-empty="false"
                 :multiple="multiple" 
                 :hide-selected="true" 
                 :preselect-first="false"></multiselect>

@@ -28,7 +28,7 @@ export default {
 	<div class="pure-u-1">
        <vt-usuario-formulario v-if="cargado" 
            :configuracion="configuracion"
-           :datos="usuario" 
+           :modelo="usuario" 
            :establecimientos="establecimientos" 
            :oficinas="oficinas"
            :grupos="grupos" 

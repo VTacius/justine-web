@@ -30,7 +30,6 @@ export default {
         
         let vm = this;
         setTimeout(function(){
-            console.log('Acabo de cargar');
             vm.$emit('vt-cargado', false);
         }, 2000);
     },

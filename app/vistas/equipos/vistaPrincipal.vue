@@ -11,19 +11,58 @@ export default {
         return {
             configuracion: nuevo,
             equipo: {
-                hostname: 'c0128-4567',
-                descripcion: ''
-            }
+                uid: '',
+                givenName: '',
+                sn: '',
+                ou: '',
+                o: '', 
+                userPassword: '',
+                nit: '',
+                dui: '',
+                jvs: '',
+                fecha: '',
+                pregunta: '',
+                respuesta: '',
+                mail: '',
+                grupos: [],
+                grupo: '',
+                title: '',
+                sambaAcctFlags: true,
+                telephoneNumber: '',
+                loginShell: '/bin/false',
+                cuentaStatus: true,
+                buzonStatus: true,
+                buzonVolumen: ''
+            },
+            establecimientos : [],
+            oficinas: [],
+            grupos : []
         }
     },
-    mounted: function(){
-        this.cargado = true;
+    created: function () {
+        this.peticion('/grupos', this, 'grupos', 'lista');
+        this.peticion('/establecimientos', this, 'establecimientos', 'lista', true);
+    },
+    methods: {
+        obtenerOficina: function(establecimiento){
+            this.peticion('/oficinas/' + establecimiento, this, 'oficinas', 'lista');
+        },
+        reseteaFormulario: function(){
+            return;
+        }
     }
 }
 </script>
 <template>
     <div class="pure-u-1">
-        <vt-formulario-equipos :modelo="equipo" :configuracion="configuracion"></vt-formulario-equipos>
+        <vt-formulario-equipos 
+            :modelo="equipo" v-if="cargado" 
+            :configuracion="configuracion"
+            :establecimientos="establecimientos" 
+            :oficinas="oficinas"
+            :grupos="grupos" 
+            @vt-cambio-establecimiento="obtenerOficina"
+            @vt-reseteo="reseteaFormulario"></vt-formulario-equipos>
     </div>
 </template>
 

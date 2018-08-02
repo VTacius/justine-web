@@ -5,16 +5,15 @@ import vtPanelUsuarios from './panel.vue';
 import vtUsuarioDetalle from './detalle.vue';
 import vtUsuarioFormulario from './formulario.vue';
 import vtUsuarioBorrado from './borrado.vue';
-import formularioUsuario from './../../mixins/formularioUsuario.js';
+import vistaBase from './../../mixins/vistaBase.js';
 import { edicion } from "./configuracion.js";
 
 export default {
     name: 'vtPrincipalUsuarios',
-    mixins: [ formularioUsuario ],
+    mixins: [ vistaBase ],
     components: { vtPanel, vtPanelUsuarios, vtUsuarioDetalle, vtUsuarioFormulario, vtUsuarioBorrado},
     data: function(){
         return {
-            cargado: false,
             filtroBusqueda: '',
             datos :	[],
             configuracion: edicion,
@@ -27,6 +26,20 @@ export default {
         this.peticion('/grupos', this, 'grupos', 'lista');
         this.peticion('/establecimientos', this, 'establecimientos', 'lista');
         this.peticion('/usuarios', this, 'datos', 'listado', true);
+    },
+    methods: {
+        obtenerOficina: function(establecimiento){
+            this.peticion('/oficinas/' + establecimiento, this, 'oficinas', 'lista');
+        },
+        enviaDatos: function(datos){
+            console.log(datos);
+        },
+        reseteaFormulario: function(){
+            this.cargado = false;
+            this.$nextTick(function(){
+                this.cargado = true;
+            });
+        },
     }
 }
 </script>
@@ -46,25 +59,26 @@ export default {
 	            <tbody>
 	                <tr v-for="row in datos" v-bind:key="row.uid"> 
 	                	<vt-panel v-bind:entidad="row">
-                           <template slot="entidad">
-                               <vt-panel-usuarios :usuario="row"></vt-panel-usuarios>
-                           </template>
-                           <template slot="detalle">
-                               <vt-usuario-detalle :usuario="row"></vt-usuario-detalle>
-                           </template> 
-                           <template slot="edicion">
-                               <vt-usuario-formulario v-if="cargado" 
-                                   :configuracion="configuracion"
-                                   :datos="row" 
-                                   :establecimientos="establecimientos" 
-                                   :oficinas="oficinas"
-                                   :grupos="grupos" 
-                                   @vt-cambio-establecimiento="obtenerOficina"
-                                   @vt-reseteo="reseteaFormulario"></vt-usuario-formulario>
-                           </template> 
-                           <template slot="borrado">
-                               <vt-usuario-borrado></vt-usuario-borrado>
-                           </template> 
+                            <template slot="entidad">
+                                <vt-panel-usuarios :usuario="row"></vt-panel-usuarios>
+                            </template>
+                            <template slot="detalle">
+                                <vt-usuario-detalle :usuario="row"></vt-usuario-detalle>
+                            </template> 
+                            <template slot="edicion">
+                                 <vt-usuario-formulario 
+                                     :modelo="row" v-if="cargado"
+                                     :configuracion="configuracion"
+                                     :establecimientos="establecimientos" 
+                                     :oficinas="oficinas"
+                                     :grupos="grupos" 
+                                     @vt-cambio-establecimiento="obtenerOficina"
+                                     @vt-envio="enviaDatos"
+                                     @vt-reseteo="reseteaFormulario"></vt-usuario-formulario>
+                            </template> 
+                            <template slot="borrado">
+                                <vt-usuario-borrado></vt-usuario-borrado>
+                            </template> 
                        </vt-panel>
 	                </tr>
 	            </tbody>

@@ -47,9 +47,15 @@ export default {
         obtenerOficina: function(establecimiento){
             this.peticion('/oficinas/' + establecimiento, this, 'oficinas', 'lista');
         },
+        enviaDatos: function(datos){
+            console.log(datos);
+        },
         reseteaFormulario: function(){
-            return;
-        }
+            this.cargado = false;
+            this.$nextTick(function(){
+                this.cargado = true;
+            });
+        },
     }
 }
 </script>
@@ -62,6 +68,7 @@ export default {
             :oficinas="oficinas"
             :grupos="grupos" 
             @vt-cambio-establecimiento="obtenerOficina"
+            @vt-envio="enviaDatos"
             @vt-reseteo="reseteaFormulario"></vt-formulario-equipos>
     </div>
 </template>

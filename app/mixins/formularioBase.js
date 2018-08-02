@@ -1,9 +1,17 @@
 const formularioBase = {
     props: ['configuracion', 'modelo'],
     data: function(){
-        idFormulario: '';
+        return {
+            idFormulario: '',
+            cambios: {},
+            valido: true,
+            editado: false,
+        };
     },
     methods: {
+        /**
+         * Más que visibles, se trata de los elementos que efectivamente se han montado
+         */
         listarElementosVisibles: function(){
             let elementos = [];
             let f = document.getElementById(this.idFormulario);
@@ -16,6 +24,20 @@ const formularioBase = {
             return elementos;
 
         },
+        /**
+         * Almancenamos los cambios conforme el usuario los ingresa; o luego, si forzamos
+         * la validación de dichos datos 
+         */
+        registrarCambio(uid, valor, validacion){
+            console.log('formulario: He registrado un cambio de valor en ' + uid + ' por ' + valor + ' la cual es ' + validacion);
+            this.cambios[uid] = {
+                valor,
+                validacion
+            };
+        },
+        /**
+         * Obtiene la lista de validaciones que deben hacerse sobre dicho objeto
+         */
         validacion: function(uid){
             if (typeof(this.configuracion)=== 'undefined'){
                 return [];

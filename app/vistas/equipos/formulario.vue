@@ -13,9 +13,6 @@ export default {
     data: function(){
         return {
             datos: this.modelo,
-            cambios: {},
-            valido: true,
-            editado: false,
             gruposSeleccionados: this.modelo.grupos,
             shells: [
                 {label: 'Bash', value: '/bin/bash'},
@@ -59,6 +56,11 @@ export default {
                         console.log('Estoy por enviar estos datos para su procesamiento');
                         console.log(vm.datos);
                         console.log(vm.cambios);
+                        /** 
+                         * TODO: Aún falta procesar los datos para que sólo envie los 
+                         * de los referentes a los controles activos
+                         */
+                        this.$emit('vt-envio', vm.datos);
                     } else {
                         console.log('Tengo datos inválidos');
                     }
@@ -70,16 +72,8 @@ export default {
         /** Esta implementacion debería ser algo bastante propio de cada formulario. ¿O no? */
         reseteo: function(ele){
             ele.preventDefault();
-            
+            this.$emit('vt-reseteo'); 
             return;
-        },
-        registrarCambio(uid, valor, validacion){
-            console.log('formulario: He registrado un cambio de valor en ' + uid + ' por ' + valor + ' la cual es ' + validacion);
-            this.editado = true;
-            this.cambios[uid] = {
-                valor,
-                validacion
-            }
         },
         registrarCambioEstablecimiento: function(uid, modelo, validacion){
             this.registrarCambio(uid, modelo, validacion);
@@ -90,7 +84,7 @@ export default {
         registrarCambioGrupos: function(uid, modelo, validacion){
             this.registrarCambio(uid, modelo, validacion);
             this.gruposSeleccionados = modelo;
-        },
+        }
     }
 }
 </script>

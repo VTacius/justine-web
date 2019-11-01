@@ -1,7 +1,16 @@
 <script>
 export default {
 	name: 'vt-panel-usuarios',
-	props: ['usuario']
+	props: ['usuario', 'establecimientos', 'oficinas'],
+	methods: {
+		establecimentador: function(est){
+			/** TODO: Oficina también necesita algo de esta forma. O que rediseñes esta parte de la aplicación */
+			let lugar = this.establecimientos.find(function(elemento){
+				return elemento.value === est;
+			}); 
+			return lugar.label;
+		}
+	}
 }
 </script>
 <template>
@@ -16,7 +25,7 @@ export default {
 	    </div>
 	    <div class="pure-u-1 pure-u-lg-11-24 pure-u-xl-12-24 jt-celda">
 	        <i class="fa fa-map-marker"></i>
-	        <span class="texto"><i>{{usuario.ou}}</i><span v-show="usuario.ou && usuario.o"> en </span> <strong>{{usuario.o}}</strong></span>
+	        <span class="texto"><i>{{usuario.ou}}</i><span v-show="usuario.ou && usuario.o"> en </span> <strong>{{establecimentador(usuario.o)}}</strong></span>
 	    </div>
 	</div>
 </template>

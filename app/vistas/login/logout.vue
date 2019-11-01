@@ -1,12 +1,17 @@
 <script>
-/** La actual librería para manejar la autenticación */
-import Autenticacion from './../../autenticacion/main.js';
-const auth = new Autenticacion();
+import { vhttp } from './../../utils/peticion.js';
 
 export default {
     name: 'vtViewLogout',
     mounted: function(){
-        auth.logout();
+        let vm = this;
+        vhttp.post('/auth/logout')
+            .then(function(respuesta){
+                vm.$cookie.delete('logueado');
+            })
+            .catch(function(error){
+                console.log(error);
+            });
         this.$router.push('/');
     }
 }

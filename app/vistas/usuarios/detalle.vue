@@ -1,7 +1,7 @@
 <script>
 export default {
     name: 'vt-usuario-detalle',
-    props: ['usuario'],
+    props: ['usuario', 'extendido'],
     created: function(){
         console.log('He sido creado');
     },
@@ -17,18 +17,18 @@ export default {
             <div class="pure-g">
                 <!-- Este es un caso especial -->
                 <div class="pure-u-1">
-                   <dl>
+                   <dl class="atributo-titulo">
                        <dt>Contraseña:</dt>
                        <dd>{{usuario.userPassword}}</dd> 
                    </dl>
                 </div>
-                <div class="pure-u-1 pure-u-lg-1-2">
+                <div class="pure-u-1 pure-u-lg-1-2" v-show="extendido">
                    <dl>
                        <dt>Nombre:</dt>
                        <dd>{{usuario.givenName}}</dd> 
                    </dl>
                 </div>
-                <div class="pure-u-1 pure-u-lg-1-2">
+                <div class="pure-u-1 pure-u-lg-1-2" v-show="extendido">
                    <dl>
                        <dt>Apellido:</dt>
                        <dd>{{usuario.sn}}</dd> 

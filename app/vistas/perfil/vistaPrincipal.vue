@@ -48,6 +48,6 @@ export default {
 </script>
 <template>
 	<div class="pure-u-1">
-        <vt-usuario-detalle v-bind:usuario="usuario"></vt-usuario-detalle>
+        <vt-usuario-detalle :usuario="usuario" :extendido="true"></vt-usuario-detalle>
 	</div>
 </template>

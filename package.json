@@ -5,10 +5,13 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
+    "express": "^4.16.4",
     "font-awesome": "^4.7.0",
     "pikaday": "^1.7.0",
     "purecss": "^1.0.0",
+    "supported-browsers": "^1.1.0",
     "vue": "^2.5.16",
+    "vue-cookie": "^1.1.4",
     "vue-multiselect": "^2.1.0",
     "vue-router": "^3.0.1"
   },

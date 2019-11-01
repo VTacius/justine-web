@@ -258,11 +258,26 @@ table .pure-button {
     Empieza CSS para componente usuario/detalle 
 */
 
-/**
-  * TODO: Lo empiezas de cero
-  *
-  */
+dl.atributo-titulo dt{
+    float: left;
+    padding-right: 1em;
+    font-size: 1.2em;
+}
 
+dl.atributo-titulo dd{
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+
+dt {
+    font-size: 0.75em;
+}
+
+dd {
+    font-size: 1.1em;
+    color: #313233;
+    letter-spacing: 0.009em;
+}
 /* 
     Termina CSS para componente usuario/detalle 
 */

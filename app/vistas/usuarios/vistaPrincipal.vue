@@ -60,7 +60,10 @@ export default {
 	                <tr v-for="row in datos" v-bind:key="row.uid"> 
 	                	<vt-panel v-bind:entidad="row">
                             <template slot="entidad">
-                                <vt-panel-usuarios :usuario="row"></vt-panel-usuarios>
+                                <vt-panel-usuarios 
+                                    :usuario="row"
+                                    :establecimientos="establecimientos"
+                                    :oficinas="oficinas"></vt-panel-usuarios>
                             </template>
                             <template slot="detalle">
                                 <vt-usuario-detalle :usuario="row"></vt-usuario-detalle>

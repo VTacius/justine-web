@@ -2,6 +2,7 @@
 import vistaBase from './../../mixins/vistaBase.js';
 import vtUsuarioFormulario from './formulario.vue';
 import { nuevo } from "./configuracion.js";
+import { vhttp } from './../../utils/peticion.js';
 
 export default {
     name: 'vtCreacionUsuarios',
@@ -48,7 +49,15 @@ export default {
             this.peticion('/oficinas/' + establecimiento, this, 'oficinas', 'lista');
         },
         enviaDatos: function(datos){
+            console.log('Estoy a punto de contactar a la API');
             console.log(datos);
+            vhttp.post('/usuarios/', datos)
+                .then(function(respuesta){
+                    console.log(respuesta);
+                })
+                .catch(function(error){
+                    console.log(error);
+                });
         },
         reseteaFormulario: function(){
             this.cargado = false;

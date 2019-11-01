@@ -3,22 +3,20 @@ function Autenticacion (){
 }
 
 Autenticacion.prototype.isLogin = function(){
-    if ('usuario' in this.storage){
-        return true;
-    } else {
-        return false;
+    let data  = document.cookie;
+    
+    let partes = data.split(';');
+    let resultado = partes.find(function(item){
+        let datos = item.split('=');
+        if (datos.length === 2){
+            return datos[0].trim() === 'logueado';
+        }
+    });
+    if (resultado){
+        console.log('Estoy logueado');
     }
-};
-
-/** TODO: Precisamente acá tenemos el primer envio POST  */
-Autenticacion.prototype.login = function(usuario, contrasenia){
-    if (usuario === contrasenia){
-        this.storage.setItem('usuario', usuario);
-    } 
-};
-
-Autenticacion.prototype.logout = function(){
-    this.storage.removeItem('usuario');
+    return resultado;
+ 
 };
 
 export default Autenticacion;

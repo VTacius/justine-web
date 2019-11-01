@@ -1,8 +1,9 @@
 /** Los componentes principales */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-
+import VueCookie from 'vue-cookie';
 Vue.use(VueRouter);
+Vue.use(VueCookie);
 
 /** Componentes personalizados: Vistas */
 import vtPrincipalGrupos from './vistas/grupos/vistaPrincipal.vue';

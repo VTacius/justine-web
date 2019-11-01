@@ -1,10 +1,7 @@
 <script>
+import { vhttp } from './../../utils/peticion.js';
 import vtEntrada from './../../componentes/entrada.vue';
 import configuracion from './configuracion.js';
-
-/** La actual librería para manejar la autenticación */
-import Autenticacion from './../../autenticacion/main.js';
-const auth = new Autenticacion();
 
 export default {
     name: 'vtViewLogin',
@@ -23,27 +20,27 @@ export default {
         }
     },
     mounted: function () {
-        /** 
-         * Este es nuestro punto para desactivar el spinner 
-         * Es obvio que no será tan tortuosos. Lo desactivaré después de obtener los datos
-         * */
-        
-        let vm = this;
-        setTimeout(function(){
-            vm.$emit('vt-cargado', false);
-        }, 2000);
+        this.$emit('vt-cargado', false);
     },
     methods: {
         envio: function(e){
             e.preventDefault();
-            
-            let usuario = document.getElementById('usuario');
-            let contrasenia = document.getElementById('contrasenia');
-            auth.login(usuario.value, contrasenia.value);
-            let redireccion = this.redirect.length > 0 ? this.redirect : '/';
-            if (auth.isLogin()){
-                this.$router.push(redireccion);
-            }
+            this.$emit('vt-cargado', true);
+            let username = document.getElementById('usuario');
+            let password = document.getElementById('contrasenia');
+            let credenciales = { username: username.value, password: password.value }; 
+            let vm = this;
+            vhttp.post('/auth/login', credenciales)
+                .then(function(respuesta){
+                    let redireccion = vm.redirect.length > 0 ? vm.redirect : '/';
+                    vm.$cookie.set('logueado', true);
+                    vm.$router.push(redireccion);
+                })
+                .catch(function(error){
+                    console.log(error);
+                }).then(function(){
+                    vm.$emit('vt-cargado', false);
+                });
         },
         validacion: function(elemento){
             return this.$options.configuracion[elemento].validacion;

@@ -1,33 +1,29 @@
 {
   "name": "justine-web",
+  "version": "0.0.1",
   "description": "Una frontend web para una aplicación que aún no existe",
   "repository": "https://github.com/VTacius/justine-web",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0",
-    "express": "^4.16.4",
+    "axios": "^0.18.1",
     "font-awesome": "^4.7.0",
+    "moment": "^2.24.0",
     "pikaday": "^1.7.0",
     "purecss": "^1.0.0",
-    "supported-browsers": "^1.1.0",
-    "vue": "^2.5.16",
+    "vue": "^2.6.10",
     "vue-cookie": "^1.1.4",
     "vue-multiselect": "^2.1.0",
     "vue-router": "^3.0.1"
   },
   "scripts": {
-    "dev": "webpack-dev-server --watch --progress --colors",
-    "build": "webpack --mode development --progress --colors --watch"
+    "serve": "vue-cli-service serve --host 0.0.0.0",
+    "test": "vue-cli-service test:unit"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-es2015": "^6.24.1",
-    "eslint": "^5.1.0",
-    "vue-loader": "^15.2.4",
-    "vue-template-compiler": "^2.5.16",
-    "webpack": "^4.16.0",
-    "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4"
+    "@vue/cli-plugin-unit-mocha": "^4.0.5",
+    "@vue/cli-service": "^4.0.5",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "chai": "^4.2.0",
+    "vue-template-compiler": "^2.6.10"
   }
 }

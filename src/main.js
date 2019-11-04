@@ -2,6 +2,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueCookie from 'vue-cookie';
+import App from './App'
 Vue.use(VueRouter);
 Vue.use(VueCookie);
 
@@ -16,7 +17,6 @@ import vtViewLogin from './vistas/login/login.vue';
 import vtViewLogout from './vistas/login/logout.vue';
 
 /** Componentes personalizados: componentes */
-import vtMenu from './componentes/menu.vue';
 import vtSpinner from './componentes/spinner.vue';
 
 /** La actual librería para manejar la autenticación */
@@ -67,20 +67,9 @@ router.beforeEach(function(to, from, next){
     next();
 });
 
+Vue.component('vt-spinner', vtSpinner);
+
 new Vue({
     router,
-    el: '#justine',
-    data: {
-        spinner: false,
-        menu: {
-            titulo: 'MINSAL',
-            usuario: 'Francisco Alexander Rodríguez Ortíz'
-        }
-    },
-    methods: {
-        controlSpinner: function(valor){
-            this.spinner = valor;
-        }
-    },
-    components: { vtMenu, vtSpinner }
+    render: h => h(App),
 }).$mount('#justine');

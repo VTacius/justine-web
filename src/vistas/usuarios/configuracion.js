@@ -1,7 +1,7 @@
 let plantilla = function(){
     return {
         givenName: {
-            validacion: ['requerido', 'sustantivo']
+            validacion: ['existente', 'requerido', 'sustantivo']
         },
         sn: {
             validacion: ['requerido', 'sustantivo']

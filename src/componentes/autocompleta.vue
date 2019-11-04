@@ -1,5 +1,5 @@
 <script>
-import vtValidacion from './validacion.vue';
+import vtValidacion from './VtValidacion.vue';
 import Multiselect from 'vue-multiselect';
 
 export default {

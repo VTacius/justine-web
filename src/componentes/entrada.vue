@@ -1,5 +1,5 @@
 <script>
-import vtValidacion from './validacion.vue';
+import vtValidacion from './VtValidacion.vue';
 
 export default {
     name: 'vt-entrada',

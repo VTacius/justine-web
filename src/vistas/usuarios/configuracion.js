@@ -144,7 +144,7 @@ nuevo.grupos.validacion.push('requerido');
 /**
  * Grupo Principal 
  * Obligatorio siempre. El control no escoge nada por defecto, así que de eliminar su grupo principal 
- * actaul del control 'Grupos adicionales', le dejaría sin nada
+ * actual del control 'Grupos adicionales', le dejaría sin nada
  */
 nuevo.grupo.validacion.push('requerido');
 edicion.grupo.validacion.push('requerido');

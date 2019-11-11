@@ -1,14 +1,14 @@
 <script>
 import vtEntrada from './../../componentes/entrada.vue';
-import vtSwitch from './../../componentes/switch.vue';
-import vtAutocompleta from './../../componentes/autocompleta.vue';
+import VtSwitch from '@/componentes/VtSwitch';
+import VtAutocompleta from '@/componentes/VtAutocompleta';
 import vtFecha from './../../componentes/fecha.vue';
 import formularioBase from './../../mixins/formularioBase.js'
 
 export default {
     name: 'vt-usuario-formulario',
     mixins: [ formularioBase ],
-    components: { vtEntrada, vtAutocompleta, vtFecha, vtSwitch },
+    components: { vtEntrada, VtAutocompleta, vtFecha, VtSwitch },
     props: ['configuracion', 'modelo', 'establecimientos', 'oficinas', 'grupos'],
     data: function(){
         return {
@@ -177,12 +177,7 @@ export default {
                         </div>
 
                         <div class="pure-u-1 pure-u-lg-1-2">
-                            <div class="pure-g jt-form-component">
-                                <div class="pure-u-1">
-                                    <label>Estado de la cuenta</label>
-                                </div>
-                                <vt-switch uid="sambaAcctFlags" :modelo="datos.sambaAcctFlags" @vt-cambio="registrarCambio"></vt-switch>
-                            </div>
+                            <vt-switch uid="sambaAcctFlags" etiqueta="Estado de la cuenta" :modelo="datos.sambaAcctFlags" @vt-cambio="registrarCambio"></vt-switch>
                         </div>
 
                         <div class="pure-u-1 pure-u-lg-1-2">
@@ -220,7 +215,6 @@ export default {
                     </div>
 
                 </fieldset>
-
             </div>    
             <div class="pure-u-1 pure-u-xl-2-5">            
                 <fieldset v-if="mostrar('zimbra')">
@@ -228,21 +222,11 @@ export default {
                     <div class="pure-g">
 
                         <div class="pure-u-1 pure-u-lg-1-2">
-                            <div class="pure-g jt-form-component">
-                                <div class="pure-u-1">
-                                    <label>Estado del Buzón</label>
-                                </div>
-                                <vt-switch uid="buzonStatus" :modelo="datos.buzonStatus" @vt-cambio="registrarCambio"></vt-switch>
-                            </div>
+                            <vt-switch uid="buzonStatus" :modelo="datos.buzonStatus" etiqueta="Estado del Buzón" @vt-cambio="registrarCambio"></vt-switch>
                         </div>
 
                         <div class="pure-u-1 pure-u-lg-1-2">
-                            <div class="pure-g jt-form-component">
-                                <div class="pure-u-1">
-                                    <label>Estado de la Cuenta</label>
-                                </div>
-                                <vt-switch uid="cuentaStatus" :modelo="datos.cuentaStatus" @vt-cambio="registrarCambio"></vt-switch>
-                            </div>
+                            <vt-switch uid="cuentaStatus" :modelo="datos.cuentaStatus" etiqueta="Estado de la Cuenta" @vt-cambio="registrarCambio"></vt-switch>
                         </div>
 
                         <div class="pure-u-1 pure-u-lg-1-2">
@@ -252,7 +236,6 @@ export default {
                     </div>
                 </fieldset>
             </div>
-
         </div> 
         <div class="pure-g">
             <div class="pure-u-1-2 jt-contenedor-boton-izquierda">

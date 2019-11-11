@@ -41,15 +41,16 @@ export default {
 
 <style>
     @import "../node_modules/purecss/build/base.css";
+    @import "../node_modules/purecss/build/grids.css";
+    @import "../node_modules/purecss/build/grids-responsive.css";
     @import "../node_modules/purecss/build/forms.css";
     @import "../node_modules/purecss/build/tables.css";
     @import "../node_modules/purecss/build/buttons.css";
-    @import "../node_modules/purecss/build/grids.css";
-    @import "../node_modules/purecss/build/grids-responsive.css";
     @import "../node_modules/pikaday/css/pikaday.css";
-    @import "../node_modules/vue-multiselect/dist/vue-multiselect.min.css";
-    /* Sobreescribo lo necesario */
-    @import "app.css";
     /* Agrego los íconos, ahora en forma de fuentes */
     @import "../node_modules/font-awesome/css/font-awesome.css";
+    /* Sobreescribo lo necesario */
+    @import "app.css";
+    /* Pues espero que más bien sea por acá */
+    @import "./sass/app.scss";
 </style>

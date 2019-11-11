@@ -2,7 +2,6 @@
 import vistaBase from './../mixins/vistaBase.js';
 import vtUsuarioFormulario from './usuarios/formulario.vue';
 import { edicion } from "./usuarios/configuracion.js";
-import { vhttp } from './../utils/peticion.js';
 
 export default {
     name: 'vt-principal',

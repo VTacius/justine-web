@@ -1,275 +1,681 @@
 {
-	"usuarios": [
-		{
-			 "buzonStatus": true,
-   		     "buzonVolumen": 786432000,
-   		     "cuentaStatus": true,
-   		     "dui": "12345678-0",
-   		     "fecha": "16/11/1990",
-   		     "givenName": "Alexander",
-   		     "grupo": 1003,
-   		     "grupos": [
-   		         1003,
-   		         1005
-   		     ],
-   		     "jvs": "",
-   		     "loginShell": "/bin/bash",
-   		     "mail": "kpenate@salud.gob.sv",
-   		     "nit": "4444-666666-333-1",
-   		     "o": 1,
-   		     "ou": 1001,
-   		     "pregunta": "\u00bfQui\u00e9n soy?",
-   		     "respuesta": "Soi io",
-   		     "sambaAcctFlags": false,
-   		     "sn": "Ort\u00edz",
-   		     "telephoneNumber": "7894",
-   		     "title": "Profesor designado",
-   		     "uid": "alortiz",
-   		     "uidNumber": "1010",
-   		     "userPassword": "Pass_2035"
-   		 },
-   		 {
-   		     "buzonStatus": true,
-   		     "buzonVolumen": 786432000,
-   		     "cuentaStatus": true,
-   		     "dui": "12345678-0",
-   		     "fecha": "16/11/1990",
-   		     "givenName": "Carolina",
-   		     "grupo": 1003,
-   		     "grupos": [
-   		         1003,
-   		         1005
-   		     ],
-   		     "jvs": "",
-   		     "loginShell": "/bin/bash",
-   		     "mail": "kpenate@salud.gob.sv",
-   		     "nit": "4444-666666-333-1",
-   		     "o": 1,
-   		     "ou": 1001,
-   		     "pregunta": "\u00bfQui\u00e9n soy?",
-   		     "respuesta": "Soi io",
-   		     "sambaAcctFlags": false,
-   		     "sn": "Pe\u00f1a",
-   		     "telephoneNumber": "7894",
-   		     "title": "Profesor designado",
-   		     "uid": "cpena",
-   		     "uidNumber": "1020",
-   		     "userPassword": "Pass_2045"
-   		 },
-   		 {
-   		     "buzonStatus": true,
-   		     "buzonVolumen": 786432000,
-   		     "cuentaStatus": true,
-   		     "dui": "12345678-0",
-   		     "fecha": "16/11/1990",
-   		     "givenName": "Karen",
-   		     "grupo": 1003,
-   		     "grupos": [
-   		         1003,
-   		         1005
-   		     ],
-   		     "jvs": "",
-   		     "loginShell": "/bin/bash",
-   		     "mail": "kpenate@salud.gob.sv",
-   		     "nit": "4444-666666-333-1",
-   		     "o": 1,
-   		     "ou": 1002,
-   		     "pregunta": "\u00bfQui\u00e9n soy?",
-   		     "respuesta": "Soi io",
-   		     "sambaAcctFlags": false,
-   		     "sn": "Pe\u00f1ate",
-   		     "telephoneNumber": "7894",
-   		     "title": "Profesor designado",
-   		     "uid": "kpenate",
-   		     "uidNumber": "1030",
-   		     "userPassword": "Pass_2055"
-   		 },
-   		 {
-   		     "buzonStatus": true,
-   		     "buzonVolumen": 786432000,
-   		     "cuentaStatus": true,
-   		     "dui": "12345678-0",
-   		     "fecha": "16/11/1990",
-   		     "givenName": "Olga",
-   		     "grupo": 1003,
-   		     "grupos": [
-   		         1003,
-   		         1005
-   		     ],
-   		     "jvs": "",
-   		     "loginShell": "/bin/bash",
-   		     "mail": "kpenate@salud.gob.sv",
-   		     "nit": "4444-666666-333-1",
-   		     "o": 1,
-   		     "ou": 1003,
-   		     "pregunta": "\u00bfQui\u00e9n soy?",
-   		     "respuesta": "Soi io",
-   		     "sambaAcctFlags": false,
-   		     "sn": "Pineda",
-   		     "telephoneNumber": "7894",
-   		     "title": "Profesor designado",
-   		     "uid": "opineda",
-   		     "uidNumber": "1040",
-   		     "userPassword": "Pass_2065"
-   		 },
-   		 {
-   		     "buzonStatus": true,
-   		     "buzonVolumen": 786432000,
-   		     "cuentaStatus": true,
-   		     "dui": "12345678-0",
-   		     "fecha": "16/11/1990",
-   		     "givenName": "Gabriela",
-   		     "grupo": 1003,
-   		     "grupos": [
-   		         1003,
-   		         1005
-   		     ],
-   		     "jvs": "",
-   		     "loginShell": "/bin/bash",
-   		     "mail": "kpenate@salud.gob.sv",
-   		     "nit": "4444-666666-333-1",
-   		     "o": 1,
-   		     "ou": 1004,
-   		     "pregunta": "\u00bfQui\u00e9n soy?",
-   		     "respuesta": "Soi io",
-   		     "sambaAcctFlags": false,
-   		     "sn": "Sol\u00eds",
-   		     "telephoneNumber": "7894",
-   		     "title": "Profesor designado",
-   		     "uid": "gsolis",
-   		     "uidNumber": "1050",
-   		     "userPassword": "Pass_2075"
-   		 },
-   		 {
-   		     "buzonStatus": true,
-   		     "buzonVolumen": 786432000,
-   		     "cuentaStatus": true,
-   		     "dui": "12345678-0",
-   		     "fecha": "16/11/1990",
-   		     "givenName": "Rosibel",
-   		     "grupo": 1003,
-   		     "grupos": [
-   		         1003,
-   		         1005
-   		     ],
-   		     "jvs": "",
-   		     "loginShell": "/bin/bash",
-   		     "mail": "kpenate@salud.gob.sv",
-   		     "nit": "4444-666666-333-1",
-   		     "o": 2,
-   		     "ou": 2001,
-   		     "pregunta": "\u00bfQui\u00e9n soy?",
-   		     "respuesta": "Soi io",
-   		     "sambaAcctFlags": false,
-   		     "sn": "Carpio",
-   		     "telephoneNumber": "7894",
-   		     "title": "Profesor designado",
-   		     "uid": "rcarpio",
-   		     "uidNumber": "1060",
-   		     "userPassword": "Pass_2085"
-   		 },
-   		 {
-   		     "buzonStatus": true,
-   		     "buzonVolumen": 786432000,
-   		     "cuentaStatus": true,
-   		     "dui": "12345678-0",
-   		     "fecha": "16/11/1990",
-   		     "givenName": "Valeria",
-   		     "grupo": 1003,
-   		     "grupos": [
-   		         1003,
-   		         1005
-   		     ],
-   		     "jvs": "",
-   		     "loginShell": "/bin/bash",
-   		     "mail": "kpenate@salud.gob.sv",
-   		     "nit": "4444-666666-333-1",
-   		     "o": 2,
-   		     "ou": 2001,
-   		     "pregunta": "\u00bfQui\u00e9n soy?",
-   		     "respuesta": "Soi io",
-   		     "sambaAcctFlags": false,
-   		     "sn": "Castillo",
-   		     "telephoneNumber": "7894",
-   		     "title": "Profesor designado",
-   		     "uid": "vcastillo",
-   		     "uidNumber": "1070",
-   		     "userPassword": "Pass_2095"
-   		 },
-   		 {
-   		     "buzonStatus": true,
-   		     "buzonVolumen": 786432000,
-   		     "cuentaStatus": true,
-   		     "dui": "12345678-0",
-   		     "fecha": "16/11/1990",
-   		     "givenName": "Alejandra",
-   		     "grupo": 1003,
-   		     "grupos": [
-   		         1003,
-   		         1005
-   		     ],
-   		     "jvs": "",
-   		     "loginShell": "/bin/bash",
-   		     "mail": "kpenate@salud.gob.sv",
-   		     "nit": "4444-666666-333-1",
-   		     "o": 2,
-   		     "ou": 2001,
-   		     "pregunta": "\u00bfQui\u00e9n soy?",
-   		     "respuesta": "Soi io",
-   		     "sambaAcctFlags": false,
-   		     "sn": "Ram\u00edrez",
-   		     "telephoneNumber": "7894",
-   		     "title": "Profesor designado",
-   		     "uid": "aramirez",
-   		     "uidNumber": "1080",
-   		     "userPassword": "Pass_2005"
-   		 },
-   		 {
-   		     "buzonStatus": true,
-   		     "buzonVolumen": 786432000,
-   		     "cuentaStatus": true,
-   		     "dui": "12345678-0",
-   		     "fecha": "16/11/1990",
-   		     "givenName": "F\u00e1tima",
-   		     "grupo": 1003,
-   		     "grupos": [
-   		         1003,
-   		         1005
-   		     ],
-   		     "jvs": "",
-   		     "loginShell": "/bin/bash",
-   		     "mail": "kpenate@salud.gob.sv",
-   		     "nit": "4444-666666-333-1",
-   		     "o": 2,
-   		     "ou": 2001,
-   		     "pregunta": "\u00bfQui\u00e9n soy?",
-   		     "respuesta": "Soi io",
-   		     "sambaAcctFlags": false,
-   		     "sn": "Velis",
-   		     "telephoneNumber": "7894",
-   		     "title": "Profesor designado",
-   		     "uid": "favelis",
-   		     "uidNumber": "1090",
-   		     "userPassword": "Pass_2025"
-   		 }
-    ],
-	"grupos": [
-    	{"label": "Administradores", "value": 1001},
-        {"label": "Navegación Web", "value": 1002},
-        {"label": "Navegación limitada", "value": 1003},
-        {"label": "Técnicos", "value": 1004},
-        {"label": "Usuarios", "value": 1005}
-    ],
     "establecimientos": [
-        {"label": "Lugar 1", "value": 1},
-        {"label": "Establecimiento externo 2", "value": 2},
-        {"label": "Establecimiento interno 3", "value": 3},
-        {"label": "Lugar 4", "value": 4}
+        {
+            "label": "Sede Central",
+            "value": "000"
+        },
+        {
+            "label": "Lugar Externo",
+            "value": "001"
+        },
+        {
+            "label": "Establecimiento",
+            "value": "002"
+        },
+        {
+            "label": "Establecimiento Lejano",
+            "value": "003"
+        },
+        {
+            "label": "Oficina Dependiente",
+            "value": "004"
+        }
     ],
-	"oficinas": [
-		{"label": "Administración", "value": 1001, "codest": 1},
-        {"label": "Contaduría", "value": 1002, "codest": 1},
-        {"label": "Administración", "value": 2001, "codest": 2},
-        {"label": "RRHH", "value": 2002, "codest": 2}
-	]
+    "grupos": [
+        {
+            "label": "Administradores",
+            "value": 1001
+        },
+        {
+            "label": "Navegaci\u00f3n Web",
+            "value": 1002
+        },
+        {
+            "label": "Navegaci\u00f3n limitada",
+            "value": 1003
+        },
+        {
+            "label": "T\u00e9cnicos",
+            "value": 1004
+        },
+        {
+            "label": "Usuarios",
+            "value": 1005
+        },
+        {
+            "label": "Administraci\u00f3n de Servicios Web",
+            "value": 1006
+        },
+        {
+            "label": "Consumidor de WebServices",
+            "value": 1007
+        }
+    ],
+    "oficinas": [
+        {
+            "codest": "000",
+            "label": "Direcci\u00f3n General",
+            "value": "00"
+        },
+        {
+            "codest": "000",
+            "label": "Administraci\u00f3n",
+            "value": "01"
+        },
+        {
+            "codest": "000",
+            "label": "Inform\u00e1tica",
+            "value": "02"
+        },
+        {
+            "codest": "000",
+            "label": "Comunicaciones",
+            "value": "03"
+        },
+        {
+            "codest": "000",
+            "label": "Contadur\u00e9a",
+            "value": "04"
+        },
+        {
+            "codest": "000",
+            "label": "Administraci\u00f3n",
+            "value": "05"
+        },
+        {
+            "codest": "000",
+            "label": "Contadur\u00e9a",
+            "value": "04"
+        },
+        {
+            "codest": "001",
+            "label": "Inform\u00e1tica",
+            "value": "00"
+        },
+        {
+            "codest": "001",
+            "label": "Contadur\u00e9a",
+            "value": "01"
+        },
+        {
+            "codest": "002",
+            "label": "RRHH",
+            "value": "00"
+        },
+        {
+            "codest": "002",
+            "label": "Contadur\u00e9a",
+            "value": "01"
+        },
+        {
+            "codest": "003",
+            "label": "Administraci\u00f3n",
+            "value": "00"
+        },
+        {
+            "codest": "003",
+            "label": "Inform\u00e1tica",
+            "value": "01"
+        },
+        {
+            "codest": "004",
+            "label": "Contadur\u00e9a Externa",
+            "value": "00"
+        },
+        {
+            "codest": "004",
+            "label": "Auditor\u00eda Externa",
+            "value": "01"
+        }
+    ],
+    "usuarios": [
+        {
+            "buzonStatus": true,
+            "buzonVolumen": 786432000,
+            "cuentaStatus": true,
+            "dui": "12345678-0",
+            "fecha": "16/11/1990",
+            "givenName": "Alexander",
+            "grupo": [
+                {
+                    "label": "Administradores",
+                    "value": 1001
+                }
+            ],
+            "grupos": [
+                {
+                    "label": "Administradores",
+                    "value": 1001
+                },
+                {
+                    "label": "Navegaci\u00f3n Web",
+                    "value": 1002
+                },
+                {
+                    "label": "Usuarios",
+                    "value": 1005
+                }
+            ],
+            "jvs": "",
+            "loginShell": "/bin/bash",
+            "mail": "alortiz@dominio.com",
+            "nit": "4444-666666-333-1",
+            "o": [
+                {
+                    "label": "Sede Central",
+                    "value": "000"
+                }
+            ],
+            "ou": [
+                {
+                    "codest": "000",
+                    "label": "Administraci\u00f3n",
+                    "value": "01"
+                }
+            ],
+            "pregunta": "\u00bfQui\u00e9n soy?",
+            "respuesta": "Soi io",
+            "sambaAcctFlags": false,
+            "sn": "Ort\u00edz",
+            "telephoneNumber": "7894",
+            "title": "Profesor designado",
+            "uid": "alortiz",
+            "uidNumber": "1010",
+            "userPassword": "Pass_2035"
+        },
+        {
+            "buzonStatus": true,
+            "buzonVolumen": 786432000,
+            "cuentaStatus": true,
+            "dui": "12345678-0",
+            "fecha": "16/11/1990",
+            "givenName": "Carolina",
+            "grupo": [
+                {
+                    "label": "Navegaci\u00f3n Web",
+                    "value": 1002
+                }
+            ],
+            "grupos": [
+                {
+                    "label": "Navegaci\u00f3n Web",
+                    "value": 1002
+                },
+                {
+                    "label": "Usuarios",
+                    "value": 1005
+                },
+                {
+                    "label": "Consumidor de WebServices",
+                    "value": 1007
+                }
+            ],
+            "jvs": "",
+            "loginShell": "/bin/bash",
+            "mail": "cpena@dominio.com",
+            "nit": "4444-666666-333-1",
+            "o": [
+                {
+                    "label": "Sede Central",
+                    "value": "000"
+                }
+            ],
+            "ou": [
+                {
+                    "codest": "000",
+                    "label": "Comunicaciones",
+                    "value": "03"
+                }
+            ],
+            "pregunta": "\u00bfQui\u00e9n soy?",
+            "respuesta": "Soi io",
+            "sambaAcctFlags": false,
+            "sn": "Pe\u00f1a",
+            "telephoneNumber": "7894",
+            "title": "Profesor designado",
+            "uid": "cpena",
+            "uidNumber": "1020",
+            "userPassword": "Pass_2045"
+        },
+        {
+            "buzonStatus": true,
+            "buzonVolumen": 786432000,
+            "cuentaStatus": true,
+            "dui": "12345678-0",
+            "fecha": "16/11/1990",
+            "givenName": "Karen",
+            "grupo": [
+                {
+                    "label": "Navegaci\u00f3n limitada",
+                    "value": 1003
+                }
+            ],
+            "grupos": [
+                {
+                    "label": "Navegaci\u00f3n Web",
+                    "value": 1002
+                },
+                {
+                    "label": "Navegaci\u00f3n limitada",
+                    "value": 1003
+                },
+                {
+                    "label": "T\u00e9cnicos",
+                    "value": 1004
+                },
+                {
+                    "label": "Consumidor de WebServices",
+                    "value": 1007
+                }
+            ],
+            "jvs": "",
+            "loginShell": "/bin/bash",
+            "mail": "kpenate@dominio.com",
+            "nit": "4444-666666-333-1",
+            "o": [
+                {
+                    "label": "Lugar Externo",
+                    "value": "001"
+                }
+            ],
+            "ou": [
+                {
+                    "codest": "001",
+                    "label": "Inform\u00e1tica",
+                    "value": "00"
+                }
+            ],
+            "pregunta": "\u00bfQui\u00e9n soy?",
+            "respuesta": "Soi io",
+            "sambaAcctFlags": false,
+            "sn": "Pe\u00f1ate",
+            "telephoneNumber": "7894",
+            "title": "Profesor designado",
+            "uid": "kpenate",
+            "uidNumber": "1030",
+            "userPassword": "Pass_2055"
+        },
+        {
+            "buzonStatus": true,
+            "buzonVolumen": 786432000,
+            "cuentaStatus": true,
+            "dui": "12345678-0",
+            "fecha": "16/11/1990",
+            "givenName": "Olga",
+            "grupo": [
+                {
+                    "label": "T\u00e9cnicos",
+                    "value": 1004
+                }
+            ],
+            "grupos": [
+                {
+                    "label": "Administradores",
+                    "value": 1001
+                },
+                {
+                    "label": "Navegaci\u00f3n Web",
+                    "value": 1002
+                },
+                {
+                    "label": "T\u00e9cnicos",
+                    "value": 1004
+                },
+                {
+                    "label": "Usuarios",
+                    "value": 1005
+                }
+            ],
+            "jvs": "",
+            "loginShell": "/bin/bash",
+            "mail": "opineda@dominio.com",
+            "nit": "4444-666666-333-1",
+            "o": [
+                {
+                    "label": "Lugar Externo",
+                    "value": "001"
+                }
+            ],
+            "ou": [
+                {
+                    "codest": "001",
+                    "label": "Contadur\u00e9a",
+                    "value": "01"
+                }
+            ],
+            "pregunta": "\u00bfQui\u00e9n soy?",
+            "respuesta": "Soi io",
+            "sambaAcctFlags": false,
+            "sn": "Pineda",
+            "telephoneNumber": "7894",
+            "title": "Profesor designado",
+            "uid": "opineda",
+            "uidNumber": "1040",
+            "userPassword": "Pass_2065"
+        },
+        {
+            "buzonStatus": true,
+            "buzonVolumen": 786432000,
+            "cuentaStatus": true,
+            "dui": "12345678-0",
+            "fecha": "16/11/1990",
+            "givenName": "Gabriela",
+            "grupo": [
+                {
+                    "label": "Usuarios",
+                    "value": 1005
+                }
+            ],
+            "grupos": [
+                {
+                    "label": "Navegaci\u00f3n limitada",
+                    "value": 1003
+                },
+                {
+                    "label": "Navegaci\u00f3n Web",
+                    "value": 1002
+                },
+                {
+                    "label": "Usuarios",
+                    "value": 1005
+                }
+            ],
+            "jvs": "",
+            "loginShell": "/bin/bash",
+            "mail": "gsolis@dominio.com",
+            "nit": "4444-666666-333-1",
+            "o": [
+                {
+                    "label": "Establecimiento",
+                    "value": "002"
+                }
+            ],
+            "ou": [
+                {
+                    "codest": "002",
+                    "label": "RRHH",
+                    "value": "00"
+                }
+            ],
+            "pregunta": "\u00bfQui\u00e9n soy?",
+            "respuesta": "Soi io",
+            "sambaAcctFlags": false,
+            "sn": "Sol\u00eds",
+            "telephoneNumber": "7894",
+            "title": "Profesor designado",
+            "uid": "gsolis",
+            "uidNumber": "1050",
+            "userPassword": "Pass_2075"
+        },
+        {
+            "buzonStatus": true,
+            "buzonVolumen": 786432000,
+            "cuentaStatus": true,
+            "dui": "12345678-0",
+            "fecha": "16/11/1990",
+            "givenName": "Rosibel",
+            "grupo": [
+                {
+                    "label": "Administraci\u00f3n de Servicios Web",
+                    "value": 1006
+                }
+            ],
+            "grupos": [
+                {
+                    "label": "Administraci\u00f3n de Servicios Web",
+                    "value": 1006
+                },
+                {
+                    "label": "Navegaci\u00f3n Web",
+                    "value": 1002
+                },
+                {
+                    "label": "Usuarios",
+                    "value": 1005
+                }
+            ],
+            "jvs": "",
+            "loginShell": "/bin/bash",
+            "mail": "kpenate@dominio.com",
+            "nit": "4444-666666-333-1",
+            "o": [
+                {
+                    "label": "Establecimiento",
+                    "value": "002"
+                }
+            ],
+            "ou": [
+                {
+                    "codest": "002",
+                    "label": "Contadur\u00e9a",
+                    "value": "01"
+                }
+            ],
+            "pregunta": "\u00bfQui\u00e9n soy?",
+            "respuesta": "Soi io",
+            "sambaAcctFlags": false,
+            "sn": "Carpio",
+            "telephoneNumber": "7894",
+            "title": "Profesor designado",
+            "uid": "rcarpio",
+            "uidNumber": "1060",
+            "userPassword": "Pass_2085"
+        },
+        {
+            "buzonStatus": true,
+            "buzonVolumen": 786432000,
+            "cuentaStatus": true,
+            "dui": "12345678-0",
+            "fecha": "16/11/1990",
+            "givenName": "Valeria",
+            "grupo": [
+                {
+                    "label": "Consumidor de WebServices",
+                    "value": 1007
+                }
+            ],
+            "grupos": [
+                {
+                    "label": "Navegaci\u00f3n Web",
+                    "value": 1002
+                },
+                {
+                    "label": "Navegaci\u00f3n limitada",
+                    "value": 1003
+                },
+                {
+                    "label": "Usuarios",
+                    "value": 1005
+                },
+                {
+                    "label": "Consumidor de WebServices",
+                    "value": 1007
+                }
+            ],
+            "jvs": "",
+            "loginShell": "/bin/bash",
+            "mail": "kpenate@dominio.com",
+            "nit": "4444-666666-333-1",
+            "o": [
+                {
+                    "label": "Establecimiento Lejano",
+                    "value": "003"
+                }
+            ],
+            "ou": [
+                {
+                    "codest": "003",
+                    "label": "Administraci\u00f3n",
+                    "value": "00"
+                }
+            ],
+            "pregunta": "\u00bfQui\u00e9n soy?",
+            "respuesta": "Soi io",
+            "sambaAcctFlags": false,
+            "sn": "Castillo",
+            "telephoneNumber": "7894",
+            "title": "Profesor designado",
+            "uid": "vcastillo",
+            "uidNumber": "1070",
+            "userPassword": "Pass_2095"
+        },
+        {
+            "buzonStatus": true,
+            "buzonVolumen": 786432000,
+            "cuentaStatus": true,
+            "dui": "12345678-0",
+            "fecha": "16/11/1990",
+            "givenName": "Alejandra",
+            "grupo": [
+                {
+                    "label": "Navegaci\u00f3n Web",
+                    "value": 1002
+                }
+            ],
+            "grupos": [
+                {
+                    "label": "Navegaci\u00f3n Web",
+                    "value": 1002
+                },
+                {
+                    "label": "Usuarios",
+                    "value": 1005
+                }
+            ],
+            "jvs": "",
+            "loginShell": "/bin/bash",
+            "mail": "kpenate@dominio.com",
+            "nit": "4444-666666-333-1",
+            "o": [
+                {
+                    "label": "Establecimiento Lejano",
+                    "value": "003"
+                }
+            ],
+            "ou": [
+                {
+                    "codest": "003",
+                    "label": "Inform\u00e1tica",
+                    "value": "01"
+                }
+            ],
+            "pregunta": "\u00bfQui\u00e9n soy?",
+            "respuesta": "Soi io",
+            "sambaAcctFlags": false,
+            "sn": "Ram\u00edrez",
+            "telephoneNumber": "7894",
+            "title": "Profesor designado",
+            "uid": "aramirez",
+            "uidNumber": "1080",
+            "userPassword": "Pass_2005"
+        },
+        {
+            "buzonStatus": true,
+            "buzonVolumen": 786432000,
+            "cuentaStatus": true,
+            "dui": "12345678-0",
+            "fecha": "16/11/1990",
+            "givenName": "F\u00e1tima",
+            "grupo": [
+                {
+                    "label": "Navegaci\u00f3n limitada",
+                    "value": 1003
+                }
+            ],
+            "grupos": [
+                {
+                    "label": "Navegaci\u00f3n Web",
+                    "value": 1002
+                },
+                {
+                    "label": "Navegaci\u00f3n limitada",
+                    "value": 1003
+                },
+                {
+                    "label": "Usuarios",
+                    "value": 1005
+                }
+            ],
+            "jvs": "",
+            "loginShell": "/bin/bash",
+            "mail": "kpenate@dominio.com",
+            "nit": "4444-666666-333-1",
+            "o": [
+                {
+                    "label": "Oficina Dependiente",
+                    "value": "004"
+                }
+            ],
+            "ou": [
+                {
+                    "codest": "004",
+                    "label": "Contadur\u00e9a Externa",
+                    "value": "00"
+                }
+            ],
+            "pregunta": "\u00bfQui\u00e9n soy?",
+            "respuesta": "Soi io",
+            "sambaAcctFlags": false,
+            "sn": "Velis",
+            "telephoneNumber": "7894",
+            "title": "Profesor designado",
+            "uid": "favelis",
+            "uidNumber": "1090",
+            "userPassword": "Pass_2025"
+        },
+        {
+            "buzonStatus": true,
+            "buzonVolumen": 786432000,
+            "cuentaStatus": true,
+            "dui": "12345678-0",
+            "fecha": "16/11/1990",
+            "givenName": "Rebeca",
+            "grupo": [
+                {
+                    "label": "Consumidor de WebServices",
+                    "value": 1007
+                }
+            ],
+            "grupos": [
+                {
+                    "label": "Navegaci\u00f3n Web",
+                    "value": 1002
+                },
+                {
+                    "label": "Consumidor de WebServices",
+                    "value": 1007
+                },
+                {
+                    "label": "Usuarios",
+                    "value": 1005
+                }
+            ],
+            "jvs": "",
+            "loginShell": "/bin/bash",
+            "mail": "rmolina@dominio.com",
+            "nit": "4444-666666-333-1",
+            "o": [
+                {
+                    "label": "Oficina Dependiente",
+                    "value": "004"
+                }
+            ],
+            "ou": [
+                {
+                    "codest": "004",
+                    "label": "Auditor\u00eda Externa",
+                    "value": "01"
+                }
+            ],
+            "pregunta": "\u00bfQui\u00e9n soy?",
+            "respuesta": "Soi io",
+            "sambaAcctFlags": false,
+            "sn": "Molina",
+            "telephoneNumber": "7894",
+            "title": "Contadora",
+            "uid": "rmolina",
+            "uidNumber": "1090",
+            "userPassword": "Pass_2025"
+        }
+    ]
 }

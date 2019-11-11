@@ -1,14 +1,14 @@
 <script>
 import vtEntrada from './../../componentes/entrada.vue';
-import vtSwitch from './../../componentes/switch.vue';
-import vtAutocompleta from './../../componentes/autocompleta.vue';
+import VtSwitch from '@/componentes/VtSwitch';
+import VtAutocompleta from '@/componentes/VtAutocompleta';
 import vtFecha from './../../componentes/fecha.vue';
 import formularioBase from './../../mixins/formularioBase.js'
 
 export default {
     name: 'vtFormularioEquipos',
     mixins: [ formularioBase ],
-    components: { vtEntrada, vtAutocompleta, vtFecha, vtSwitch },
+    components: { vtEntrada, VtAutocompleta, vtFecha, VtSwitch },
     props: ['configuracion', 'modelo', 'establecimientos', 'oficinas', 'grupos'],
     data: function(){
         return {

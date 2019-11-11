@@ -122,7 +122,7 @@ button {
 /* TODO: Esto necesitará eliminar aún más componentes si nos les veo uso */
 .button-success,
 .button-error,
-.button-warning,{
+.button-warning {
     color: white;
     border-radius: 4px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -482,96 +482,6 @@ borrado-usuarios {
 
 /*
     Termina CSS para componente usuario/borrado
-*/
-
-/* ######################################################################### */
-
-/*
-    Comienza CSS para componente vt-switch
-*/
-
-.vt-switch {
-    height: 32px;
-    position: relative;
-    display: inline-block;
-    width: 99%;
-    min-height: 2.12em;
-    margin: 0;
-}
-
-.vt-switch input {
-    display:none;
-}
-
-.vt-switch .fa-check {
-    color: #2A6D76
-}
-
-.vt-switch .fa-ban {
-    color: #DF3D01;
-}
-.vt-switch .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* Estamos en off: Este es el color que se llega por defecto */
-    box-shadow: inset 0px -3px 0px 0px #DF3D01; 
-    -webkit-transition: .4s;
-    transition: .4s;
-    /* Esto permite que se vea el texto */
-    z-index: -1;
-}
-
-.vt-switch .slider:before {
-    position: absolute;
-    content: "";
-    height: 100%;
-    width: 50%;
-    background-color: #f2f2f2;
-    
-    /* Animación al cambio */
-    -webkit-transition: .3s;
-    transition: .3s;
-}
-
-/* Estamos en On */
-.vt-switch input:checked + .slider {
-    box-shadow: inset 0px -3px 0em 0em #2A6D76;
-}
-
-/* Sigo sin tener idea de en que momento ocurre este */
-.vt-switch input:focus + .slider {
-    box-shadow: 0 0 1px #2A6D76;
-}
-
-.vt-switch input:checked + .slider:before {
-    -webkit-transform: translateX(100%);
-    -ms-transform: translateX(100%);
-    transform: translateX(100%);
-    /* Forma de bottón */
-    border-radius: initial;
-}
-
-.vt-switch-text {
-    z-index: 1;
-    display: flex;
-    position: relative;
-    font-size: 1.3em;
-    top: 20%;
-}
-
-.vt-switch-text .on,
-.vt-switch-text .off {
-    display: block;
-    width: 50%;
-    text-align:center;
-}
-
-/*
-    Termina CSS para componente jt-switch
 */
 
 /* ######################################################################### */

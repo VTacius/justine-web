@@ -1,7 +1,5 @@
 <script>
 
-import vtUsuarioDetalle from './../usuarios/detalle.vue';
-
 export default {
     name: 'vtPrincipalPerfil',
     components: { vtUsuarioDetalle },
@@ -48,6 +46,6 @@ export default {
 </script>
 <template>
 	<div class="pure-u-1">
-        <vt-usuario-detalle :usuario="usuario" :extendido="true"></vt-usuario-detalle>
+        <p>Contenido</p>
 	</div>
 </template>

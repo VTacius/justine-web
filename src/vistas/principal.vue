@@ -1,63 +1,129 @@
-<script>
-import vistaBase from './../mixins/vistaBase.js';
-import vtUsuarioFormulario from './usuarios/formulario.vue';
-import { edicion } from "./usuarios/configuracion.js";
+<template>
+    <vt-panel :usuario="usuarios[0]"></vt-panel>
+</template>
 
+<script>
+import VtPanel from "@/componentes/VtPanel";
 export default {
-    name: 'vt-principal',
-    mixins: [ vistaBase ],
-    components: { vtUsuarioFormulario },
+    name: 'Principal',
+    components: { VtPanel },
     data: function(){
         return {
-            configuracion: edicion,
-            usuario: {},
-            establecimientos : [],
-            oficinas: [],
-            grupos : []
-        }
-    },
-    created: function () {
-        this.peticion('/usuarios/kpenate', this, 'usuario', 'elemento');
-        this.peticion('/grupos', this, 'grupos', 'lista');
-        this.peticion('/establecimientos', this, 'establecimientos', 'lista', true);
-    },
-    methods: {
-        obtenerOficina: function(establecimiento){
-            this.peticion('/oficinas/' + establecimiento, this, 'oficinas', 'lista');
-        },
-        enviaDatos: function(datos){
-            console.log('Estoy a punto de contactar a la API');
-            console.log(datos);
-            vhttp.post('/usuarios/', datos)
-                .then(function(respuesta){
-                    console.log(respuesta);
-                })
-                .catch(function(error){
-                    console.log(error);
-                    if(error.response){
-                        console.log(error.response);
-                    }
-                });
-        },
-        reseteaFormulario: function(){
-            this.cargado = false;
-            this.$nextTick(function(){
-                this.cargado = true;
-            });
-        },
+             'usuarios': [
+                 {
+                     'buzonStatus': true,
+                     'buzonVolumen': 786432000,
+                     'cuentaStatus': true,
+                     'dui': '12345678-0',
+                     'fecha': '16/11/1990',
+                     'givenName': 'Francisco Alexander',
+                     'grupo': [
+                         {
+                             'label': 'Administradores',
+                             'value': 1001
+                         }
+                     ],
+                     'grupos': [
+                         {
+                             'label': 'Administradores',
+                             'value': 1001
+                         },
+                         {
+                             'label': 'Navegaci\u00f3n Web',
+                             'value': 1002
+                         },
+                         {
+                             'label': 'Usuarios',
+                             'value': 1005
+                         }
+                     ],
+                     'jvs': '',
+                     'loginShell': '/bin/bash',
+                     'mail': 'alortiz@dominio.com',
+                     'nit': '4444-666666-333-1',
+                     'o': [
+                         {
+                             'label': 'Sede Central',
+                             'value': '000'
+                         }
+                     ],
+                     'ou': [
+                         {
+                             'codest': '000',
+                             'label': 'Administraci\u00f3n',
+                             'value': '01'
+                         }
+                     ],
+                     'pregunta': '\u00bfQui\u00e9n soy?',
+                     'respuesta': 'Soi io',
+                     'sambaAcctFlags': false,
+                     'sn': 'Figueroa Ortega & Garset',
+                     'telephoneNumber': '7894',
+                     'title': 'Profesor designado',
+                     'uid': 'abcdefghijabcdefghijk',
+                     'uidNumber': '1010',
+                     'userPassword': 'Pass_2035'
+                 },
+                 {
+                     'buzonStatus': true,
+                     'buzonVolumen': 786432000,
+                     'cuentaStatus': true,
+                     'dui': '12345678-0',
+                     'fecha': '16/11/1990',
+                     'givenName': 'Carolina',
+                     'grupo': [
+                         {
+                             'label': 'Navegaci\u00f3n Web',
+                             'value': 1002
+                         }
+                     ],
+                     'grupos': [
+                         {
+                             'label': 'Navegaci\u00f3n Web',
+                             'value': 1002
+                         },
+                         {
+                             'label': 'Usuarios',
+                             'value': 1005
+                         },
+                         {
+                             'label': 'Consumidor de WebServices',
+                             'value': 1007
+                         }
+                     ],
+                     'jvs': '',
+                     'loginShell': '/bin/bash',
+                     'mail': 'cpena@dominio.com',
+                     'nit': '4444-666666-333-1',
+                     'o': [
+                         {
+                             'label': 'Sede Central',
+                             'value': '000'
+                         }
+                     ],
+                     'ou': [
+                         {
+                             'codest': '000',
+                             'label': 'Comunicaciones',
+                             'value': '03'
+                         }
+                     ],
+                     'pregunta': '\u00bfQui\u00e9n soy?',
+                     'respuesta': 'Soi io',
+                     'sambaAcctFlags': false,
+                     'sn': 'Pe\u00f1a',
+                     'telephoneNumber': '7894',
+                     'title': 'Profesor designado',
+                     'uid': 'cpena',
+                     'uidNumber': '1020',
+                     'userPassword': 'Pass_2045'
+                 },
+             ] 
+         }
     }
 }
 </script>
-<template>
-	<div class="pure-u-1">
-        <vt-usuario-formulario 
-            :modelo="usuario" v-if="cargado"
-            :configuracion="configuracion"
-            :establecimientos="establecimientos" 
-            :oficinas="oficinas"
-            :grupos="grupos" 
-            @vt-cambio-establecimiento="obtenerOficina"
-            @vt-envio="enviaDatos"
-            @vt-reseteo="reseteaFormulario"></vt-usuario-formulario>
-	</div>
-</template>
+
+<style lang="scss" scoped>
+
+</style>

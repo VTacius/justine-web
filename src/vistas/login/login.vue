@@ -1,5 +1,4 @@
 <script>
-import { vhttp } from './../../utils/peticion.js';
 import vtEntrada from './../../componentes/entrada.vue';
 import configuracion from './configuracion.js';
 
@@ -29,18 +28,6 @@ export default {
             let username = document.getElementById('usuario');
             let password = document.getElementById('contrasenia');
             let credenciales = { username: username.value, password: password.value }; 
-            let vm = this;
-            vhttp.post('/auth/login', credenciales)
-                .then(function(respuesta){
-                    let redireccion = vm.redirect.length > 0 ? vm.redirect : '/';
-                    vm.$cookie.set('logueado', true);
-                    vm.$router.push(redireccion);
-                })
-                .catch(function(error){
-                    console.log(error);
-                }).then(function(){
-                    vm.$emit('vt-cargado', false);
-                });
         },
         validacion: function(elemento){
             return this.$options.configuracion[elemento].validacion;

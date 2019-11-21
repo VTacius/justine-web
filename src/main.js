@@ -2,17 +2,17 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueCookie from 'vue-cookie';
-import App from './App'
+import App from './App';
+import axios from 'axios';
+
 Vue.use(VueRouter);
 Vue.use(VueCookie);
 
 /** Componentes personalizados: Vistas */
-import vtPrincipalGrupos from './vistas/grupos/vistaPrincipal.vue';
-import vtPrincipalUsuarios from './vistas/usuarios/vistaPrincipal.vue';
-import vtCreacionUsuarios from './vistas/usuarios/vistaCreacion.vue';
-import vtPrincipalEquipos from './vistas/equipos/vistaPrincipal.vue';
+import vtPrincipalGrupos from './vistas/grupos/index.vue';
+import vtPrincipalEquipos from './vistas/equipos/index.vue';
+import vtPrincipalUsuarios from './vistas/usuarios/index.vue';
 import vtPrincipal from './vistas/principal.vue';
-import vtViewPerfil from './vistas/perfil/vistaPrincipal.vue';
 import vtViewLogin from './vistas/login/login.vue';
 import vtViewLogout from './vistas/login/logout.vue';
 
@@ -30,16 +30,20 @@ let redireccion = function(route){
     };
 };
 
+const peticion = axios.create({
+    baseURL: 'https://api.github.com/'
+});
+
+Vue.prototype.$peticion = peticion;
+
 /** Las rutas */
 const routes = [
     { path: '/', component: vtPrincipal },
     { path: '/login', component: vtViewLogin, props: redireccion },
     { path: '/logout', component: vtViewLogout },
-    { path: '/perfil', component: vtViewPerfil, meta: {requireAuth: true} },
-    { path: '/grupos', component: vtPrincipalGrupos, meta: {requireAuth: true} },
+    { path: '/grupos', component: vtPrincipalGrupos, meta: {requireAuth: false} },
     { path: '/equipos', component: vtPrincipalEquipos},
-    { path: '/usuarios', component: vtPrincipalUsuarios },
-    { path: '/usuarios/nuevo', component: vtCreacionUsuarios }
+    { path: '/usuarios', component: vtPrincipalUsuarios }
 ];
 
 // 3. Create the router instance and pass the `routes` option

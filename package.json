@@ -5,8 +5,10 @@
   "repository": "https://github.com/VTacius/justine-web",
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2",
     "axios": "^0.18.1",
     "font-awesome": "^4.7.0",
+    "fontawesome": "^5.6.3",
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
     "pikaday": "^1.7.0",

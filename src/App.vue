@@ -7,10 +7,8 @@
         </header>
         <main class="pure-u-1"><!-- Esta es la aplicación raíz -->
             <vt-spinner v-bind:activar="spinner"></vt-spinner>
-            <div class="pure-g">
-              <!-- La aplicación -->
-              <router-view @vt-cargado="controlSpinner"></router-view>
-            </div>
+            <!-- La aplicación -->
+            <router-view @vt-cargado="controlSpinner"></router-view>
         </main>
         <footer class="pure-u-1">
             <p>Este es un footer, en algún momento pondré un poco de contenido por aquí</p>
@@ -47,10 +45,13 @@ export default {
     @import "../node_modules/purecss/build/tables.css";
     @import "../node_modules/purecss/build/buttons.css";
     @import "../node_modules/pikaday/css/pikaday.css";
-    /* Agrego los íconos, ahora en forma de fuentes */
-    @import "../node_modules/font-awesome/css/font-awesome.css";
+    @import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
     /* Sobreescribo lo necesario */
     @import "app.css";
     /* Pues espero que más bien sea por acá */
     @import "./sass/app.scss";
+
+    html {
+        overflow-y: scroll;
+    }
 </style>

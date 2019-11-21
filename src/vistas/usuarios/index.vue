@@ -1,0 +1,596 @@
+<template>
+    <div class="contenedor">
+        <vt-buscador v-model="filtro"></vt-buscador>
+        <vt-panel v-for="usuario in listaUsuarios" :key="usuario.uid">
+            <vt-informacion-usuario :usuario="usuario"></vt-informacion-usuario>
+        </vt-panel>
+    </div>
+</template>
+
+<script>
+import VtPanel from "@/componentes/VtPanel";
+import VtBuscador from '@/componentes/VtBuscador';
+import VtInformacionUsuario from "@/componentes/usuarios/VtInformacion";
+export default {
+    name: 'index',
+    components: { VtBuscador, VtPanel, VtInformacionUsuario },
+    data: function(){
+        return {
+            confBotones: {
+                detalle: true, 
+                edicion: true,
+                borrado: false
+            },
+            filtro: '',
+            'usuarios': [
+                {
+                    'buzonStatus': true,
+                    'buzonVolumen': 786432000,
+                    'cuentaStatus': true,
+                    'dui': '12345678-0',
+                    'fecha': '16/11/1990',
+                    'givenName': 'Alexander',
+                    'grupo': [
+                        {
+                            'label': 'Administradores',
+                            'value': 1001
+                        }
+                    ],
+                    'grupos': [
+                        {
+                            'label': 'Administradores',
+                            'value': 1001
+                        },
+                        {
+                            'label': 'Navegaci\u00f3n Web',
+                            'value': 1002
+                        },
+                        {
+                            'label': 'Usuarios',
+                            'value': 1005
+                        }
+                    ],
+                    'jvs': '',
+                    'loginShell': '/bin/bash',
+                    'mail': 'alortiz@dominio.com',
+                    'nit': '4444-666666-333-1',
+                    'o': [
+                        {
+                            'label': 'Sede Central',
+                            'value': '000'
+                        }
+                    ],
+                    'ou': [
+                        {
+                            'codest': '000',
+                            'label': 'Administraci\u00f3n',
+                            'value': '01'
+                        }
+                    ],
+                    'pregunta': '\u00bfQui\u00e9n soy?',
+                    'respuesta': 'Soi io',
+                    'sambaAcctFlags': false,
+                    'sn': 'Ort\u00edz',
+                    'telephoneNumber': '7894',
+                    'title': 'Profesor designado',
+                    'uid': 'alortiz',
+                    'uidNumber': '1010',
+                    'userPassword': 'Pass_2035'
+                },
+                {
+                    'buzonStatus': true,
+                    'buzonVolumen': 786432000,
+                    'cuentaStatus': true,
+                    'dui': '12345678-0',
+                    'fecha': '16/11/1990',
+                    'givenName': 'Carolina',
+                    'grupo': [
+                        {
+                            'label': 'Navegaci\u00f3n Web',
+                            'value': 1002
+                        }
+                    ],
+                    'grupos': [
+                        {
+                            'label': 'Navegaci\u00f3n Web',
+                            'value': 1002
+                        },
+                        {
+                            'label': 'Usuarios',
+                            'value': 1005
+                        },
+                        {
+                            'label': 'Consumidor de WebServices',
+                            'value': 1007
+                        }
+                    ],
+                    'jvs': '',
+                    'loginShell': '/bin/bash',
+                    'mail': 'cpena@dominio.com',
+                    'nit': '4444-666666-333-1',
+                    'o': [
+                        {
+                            'label': 'Sede Central',
+                            'value': '000'
+                        }
+                    ],
+                    'ou': [
+                        {
+                            'codest': '000',
+                            'label': 'Comunicaciones',
+                            'value': '03'
+                        }
+                    ],
+                    'pregunta': '\u00bfQui\u00e9n soy?',
+                    'respuesta': 'Soi io',
+                    'sambaAcctFlags': false,
+                    'sn': 'Pe\u00f1a',
+                    'telephoneNumber': '7894',
+                    'title': 'Profesor designado',
+                    'uid': 'cpena',
+                    'uidNumber': '1020',
+                    'userPassword': 'Pass_2045'
+                },
+                {
+                    'buzonStatus': true,
+                    'buzonVolumen': 786432000,
+                    'cuentaStatus': true,
+                    'dui': '12345678-0',
+                    'fecha': '16/11/1990',
+                    'givenName': 'Karen',
+                    'grupo': [
+                        {
+                            'label': 'Navegaci\u00f3n limitada',
+                            'value': 1003
+                        }
+                    ],
+                    'grupos': [
+                        {
+                            'label': 'Navegaci\u00f3n Web',
+                            'value': 1002
+                        },
+                        {
+                            'label': 'Navegaci\u00f3n limitada',
+                            'value': 1003
+                        },
+                        {
+                            'label': 'T\u00e9cnicos',
+                            'value': 1004
+                        },
+                        {
+                            'label': 'Consumidor de WebServices',
+                            'value': 1007
+                        }
+                    ],
+                    'jvs': '',
+                    'loginShell': '/bin/bash',
+                    'mail': 'kpenate@dominio.com',
+                    'nit': '4444-666666-333-1',
+                    'o': [
+                        {
+                            'label': 'Lugar Externo',
+                            'value': '001'
+                        }
+                    ],
+                    'ou': [
+                        {
+                            'codest': '001',
+                            'label': 'Inform\u00e1tica',
+                            'value': '00'
+                        }
+                    ],
+                    'pregunta': '\u00bfQui\u00e9n soy?',
+                    'respuesta': 'Soi io',
+                    'sambaAcctFlags': false,
+                    'sn': 'Pe\u00f1ate',
+                    'telephoneNumber': '7894',
+                    'title': 'Profesor designado',
+                    'uid': 'kpenate',
+                    'uidNumber': '1030',
+                    'userPassword': 'Pass_2055'
+                },
+                {
+                    'buzonStatus': true,
+                    'buzonVolumen': 786432000,
+                    'cuentaStatus': true,
+                    'dui': '12345678-0',
+                    'fecha': '16/11/1990',
+                    'givenName': 'Olga',
+                    'grupo': [
+                        {
+                            'label': 'T\u00e9cnicos',
+                            'value': 1004
+                        }
+                    ],
+                    'grupos': [
+                        {
+                            'label': 'Administradores',
+                            'value': 1001
+                        },
+                        {
+                            'label': 'Navegaci\u00f3n Web',
+                            'value': 1002
+                        },
+                        {
+                            'label': 'T\u00e9cnicos',
+                            'value': 1004
+                        },
+                        {
+                            'label': 'Usuarios',
+                            'value': 1005
+                        }
+                    ],
+                    'jvs': '',
+                    'loginShell': '/bin/bash',
+                    'mail': 'opineda@dominio.com',
+                    'nit': '4444-666666-333-1',
+                    'o': [
+                        {
+                            'label': 'Lugar Externo',
+                            'value': '001'
+                        }
+                    ],
+                    'ou': [
+                        {
+                            'codest': '001',
+                            'label': 'Contadur\u00e9a',
+                            'value': '01'
+                        }
+                    ],
+                    'pregunta': '\u00bfQui\u00e9n soy?',
+                    'respuesta': 'Soi io',
+                    'sambaAcctFlags': false,
+                    'sn': 'Pineda',
+                    'telephoneNumber': '7894',
+                    'title': 'Profesor designado',
+                    'uid': 'opineda',
+                    'uidNumber': '1040',
+                    'userPassword': 'Pass_2065'
+                },
+                {
+                    'buzonStatus': true,
+                    'buzonVolumen': 786432000,
+                    'cuentaStatus': true,
+                    'dui': '12345678-0',
+                    'fecha': '16/11/1990',
+                    'givenName': 'Gabriela',
+                    'grupo': [
+                        {
+                            'label': 'Usuarios',
+                            'value': 1005
+                        }
+                    ],
+                    'grupos': [
+                        {
+                            'label': 'Navegaci\u00f3n limitada',
+                            'value': 1003
+                        },
+                        {
+                            'label': 'Navegaci\u00f3n Web',
+                            'value': 1002
+                        },
+                        {
+                            'label': 'Usuarios',
+                            'value': 1005
+                        }
+                    ],
+                    'jvs': '',
+                    'loginShell': '/bin/bash',
+                    'mail': 'gsolis@dominio.com',
+                    'nit': '4444-666666-333-1',
+                    'o': [
+                        {
+                            'label': 'Establecimiento',
+                            'value': '002'
+                        }
+                    ],
+                    'ou': [
+                        {
+                            'codest': '002',
+                            'label': 'RRHH',
+                            'value': '00'
+                        }
+                    ],
+                    'pregunta': '\u00bfQui\u00e9n soy?',
+                    'respuesta': 'Soi io',
+                    'sambaAcctFlags': false,
+                    'sn': 'Sol\u00eds',
+                    'telephoneNumber': '7894',
+                    'title': 'Profesor designado',
+                    'uid': 'gsolis',
+                    'uidNumber': '1050',
+                    'userPassword': 'Pass_2075'
+                },
+                {
+                    'buzonStatus': true,
+                    'buzonVolumen': 786432000,
+                    'cuentaStatus': true,
+                    'dui': '12345678-0',
+                    'fecha': '16/11/1990',
+                    'givenName': 'Rosibel',
+                    'grupo': [
+                        {
+                            'label': 'Administraci\u00f3n de Servicios Web',
+                            'value': 1006
+                        }
+                    ],
+                    'grupos': [
+                        {
+                            'label': 'Administraci\u00f3n de Servicios Web',
+                            'value': 1006
+                        },
+                        {
+                            'label': 'Navegaci\u00f3n Web',
+                            'value': 1002
+                        },
+                        {
+                            'label': 'Usuarios',
+                            'value': 1005
+                        }
+                    ],
+                    'jvs': '',
+                    'loginShell': '/bin/bash',
+                    'mail': 'kpenate@dominio.com',
+                    'nit': '4444-666666-333-1',
+                    'o': [
+                        {
+                            'label': 'Establecimiento',
+                            'value': '002'
+                        }
+                    ],
+                    'ou': [
+                        {
+                            'codest': '002',
+                            'label': 'Contadur\u00e9a',
+                            'value': '01'
+                        }
+                    ],
+                    'pregunta': '\u00bfQui\u00e9n soy?',
+                    'respuesta': 'Soi io',
+                    'sambaAcctFlags': false,
+                    'sn': 'Carpio',
+                    'telephoneNumber': '7894',
+                    'title': 'Profesor designado',
+                    'uid': 'rcarpio',
+                    'uidNumber': '1060',
+                    'userPassword': 'Pass_2085'
+                },
+                {
+                    'buzonStatus': true,
+                    'buzonVolumen': 786432000,
+                    'cuentaStatus': true,
+                    'dui': '12345678-0',
+                    'fecha': '16/11/1990',
+                    'givenName': 'Valeria',
+                    'grupo': [
+                        {
+                            'label': 'Consumidor de WebServices',
+                            'value': 1007
+                        }
+                    ],
+                    'grupos': [
+                        {
+                            'label': 'Navegaci\u00f3n Web',
+                            'value': 1002
+                        },
+                        {
+                            'label': 'Navegaci\u00f3n limitada',
+                            'value': 1003
+                        },
+                        {
+                            'label': 'Usuarios',
+                            'value': 1005
+                        },
+                        {
+                            'label': 'Consumidor de WebServices',
+                            'value': 1007
+                        }
+                    ],
+                    'jvs': '',
+                    'loginShell': '/bin/bash',
+                    'mail': 'kpenate@dominio.com',
+                    'nit': '4444-666666-333-1',
+                    'o': [
+                        {
+                            'label': 'Establecimiento Lejano',
+                            'value': '003'
+                        }
+                    ],
+                    'ou': [
+                        {
+                            'codest': '003',
+                            'label': 'Administraci\u00f3n',
+                            'value': '00'
+                        }
+                    ],
+                    'pregunta': '\u00bfQui\u00e9n soy?',
+                    'respuesta': 'Soi io',
+                    'sambaAcctFlags': false,
+                    'sn': 'Castillo',
+                    'telephoneNumber': '7894',
+                    'title': 'Profesor designado',
+                    'uid': 'vcastillo',
+                    'uidNumber': '1070',
+                    'userPassword': 'Pass_2095'
+                },
+                {
+                    'buzonStatus': true,
+                    'buzonVolumen': 786432000,
+                    'cuentaStatus': true,
+                    'dui': '12345678-0',
+                    'fecha': '16/11/1990',
+                    'givenName': 'Alejandra',
+                    'grupo': [
+                        {
+                            'label': 'Navegaci\u00f3n Web',
+                            'value': 1002
+                        }
+                    ],
+                    'grupos': [
+                        {
+                            'label': 'Navegaci\u00f3n Web',
+                            'value': 1002
+                        },
+                        {
+                            'label': 'Usuarios',
+                            'value': 1005
+                        }
+                    ],
+                    'jvs': '',
+                    'loginShell': '/bin/bash',
+                    'mail': 'kpenate@dominio.com',
+                    'nit': '4444-666666-333-1',
+                    'o': [
+                        {
+                            'label': 'Establecimiento Lejano',
+                            'value': '003'
+                        }
+                    ],
+                    'ou': [
+                        {
+                            'codest': '003',
+                            'label': 'Inform\u00e1tica',
+                            'value': '01'
+                        }
+                    ],
+                    'pregunta': '\u00bfQui\u00e9n soy?',
+                    'respuesta': 'Soi io',
+                    'sambaAcctFlags': false,
+                    'sn': 'Ram\u00edrez',
+                    'telephoneNumber': '7894',
+                    'title': 'Profesor designado',
+                    'uid': 'aramirez',
+                    'uidNumber': '1080',
+                    'userPassword': 'Pass_2005'
+                },
+                {
+                    'buzonStatus': true,
+                    'buzonVolumen': 786432000,
+                    'cuentaStatus': true,
+                    'dui': '12345678-0',
+                    'fecha': '16/11/1990',
+                    'givenName': 'F\u00e1tima',
+                    'grupo': [
+                        {
+                            'label': 'Navegaci\u00f3n limitada',
+                            'value': 1003
+                        }
+                    ],
+                    'grupos': [
+                        {
+                            'label': 'Navegaci\u00f3n Web',
+                            'value': 1002
+                        },
+                        {
+                            'label': 'Navegaci\u00f3n limitada',
+                            'value': 1003
+                        },
+                        {
+                            'label': 'Usuarios',
+                            'value': 1005
+                        }
+                    ],
+                    'jvs': '',
+                    'loginShell': '/bin/bash',
+                    'mail': 'kpenate@dominio.com',
+                    'nit': '4444-666666-333-1',
+                    'o': [
+                        {
+                            'label': 'Oficina Dependiente',
+                            'value': '004'
+                        }
+                    ],
+                    'ou': [
+                        {
+                            'codest': '004',
+                            'label': 'Contadur\u00e9a Externa',
+                            'value': '00'
+                        }
+                    ],
+                    'pregunta': '\u00bfQui\u00e9n soy?',
+                    'respuesta': 'Soi io',
+                    'sambaAcctFlags': false,
+                    'sn': 'Velis',
+                    'telephoneNumber': '7894',
+                    'title': 'Profesor designado',
+                    'uid': 'favelis',
+                    'uidNumber': '1090',
+                    'userPassword': 'Pass_2025'
+                },
+                {
+                    'buzonStatus': true,
+                    'buzonVolumen': 786432000,
+                    'cuentaStatus': true,
+                    'dui': '12345678-0',
+                    'fecha': '16/11/1990',
+                    'givenName': 'Rebeca',
+                    'grupo': [
+                        {
+                            'label': 'Consumidor de WebServices',
+                            'value': 1007
+                        }
+                    ],
+                    'grupos': [
+                        {
+                            'label': 'Navegaci\u00f3n Web',
+                            'value': 1002
+                        },
+                        {
+                            'label': 'Consumidor de WebServices',
+                            'value': 1007
+                        },
+                        {
+                            'label': 'Usuarios',
+                            'value': 1005
+                        }
+                    ],
+                    'jvs': '',
+                    'loginShell': '/bin/bash',
+                    'mail': 'rmolina@dominio.com',
+                    'nit': '4444-666666-333-1',
+                    'o': [
+                        {
+                            'label': 'Oficina Dependiente',
+                            'value': '004'
+                        }
+                    ],
+                    'ou': [
+                        {
+                            'codest': '004',
+                            'label': 'Auditor\u00eda Externa',
+                            'value': '01'
+                        }
+                    ],
+                    'pregunta': '\u00bfQui\u00e9n soy?',
+                    'respuesta': 'Soi io',
+                    'sambaAcctFlags': false,
+                    'sn': 'Molina',
+                    'telephoneNumber': '7894',
+                    'title': 'Contadora',
+                    'uid': 'rmolina',
+                    'uidNumber': '1090',
+                    'userPassword': 'Pass_2025'
+                }
+            ] 
+        }
+    },
+    methods: {
+        filtrarUsuarios: function(filtro){
+            return this.usuarios.filter(function(elemento){
+                return elemento.uid.search(filter) >= 0;
+            });    
+        }
+    },
+    computed: {
+        listaUsuarios: function(){
+            let resultado = this.usuarios.filter(function(elemento){
+                return elemento.uid.search(this.filtro) >= 0;
+            }, this);
+            return resultado;
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+</style>

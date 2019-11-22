@@ -1,7 +1,7 @@
 <template>
     <div class="pure-g">
         <div class="pure-u-1">
-            <h2>Esta es la vista general</h2>
+            <h2>Esta es la vista de grupos</h2>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue felis, congue at mauris non, eleifend vulputate dolor. In eu convallis sem. Vivamus laoreet est ut leo dignissim, quis aliquam risus mollis. Donec mollis leo quis urna sagittis, et malesuada ex vestibulum. Praesent porttitor condimentum sapien, nec sagittis neque vehicula at. In finibus cursus enim eu consequat. Donec a cursus mauris. Proin nec purus vel lectus auctor porta. Pellentesque ac urna laoreet, auctor sem eget, efficitur nisl. Praesent ornare sapien eget nibh efficitur fringilla. Ut vel nunc a enim vestibulum volutpat.</p>
 
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-    name: 'principal'
+    name: 'grupo'
 }
 </script>
 

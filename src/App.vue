@@ -1,41 +1,65 @@
 <template>
-    <!-- TODO: Cuando dominés la idea de cancel en axios, el blackout debería aplicarse sólo a main:
-    La idea es que podríamos cambiar de ruta, pero habría que precisamente cancelar todas las peticiones requeridas -->
-    <div :class="{ 'pure-u-1': true, 'blackout-is-active': spinner}">
-        <header class="pure-g">
-            <vt-menu v-bind:datos="menu"></vt-menu>
+    <div class="pure-g pantalla">
+        <header class="pure-u-1 pure-u-xl-1-8">
+            <vt-cabecera :usuario="usuario"></vt-cabecera>
         </header>
-        <main class="pure-u-1"><!-- Esta es la aplicación raíz -->
-            <vt-spinner v-bind:activar="spinner"></vt-spinner>
-            <div class="pure-g">
-              <!-- La aplicación -->
-              <router-view @vt-cargado="controlSpinner"></router-view>
-            </div>
+        <main class="pure-u-2 pure-u-xl-7-8">
+            <router-view @logueo="logueo" @logout="logout"></router-view>
         </main>
-        <footer class="pure-u-1">
-            <p>Este es un footer, en algún momento pondré un poco de contenido por aquí</p>
-        </footer>
     </div>
 </template>
 
 <script>
-import vtMenu from './componentes/menu';
+import vtCabecera from "./componentes/vtCabecera";
+import { obtener, configurar, borrar} from "./utils/cookies";
 export default {
-    components: {vtMenu},
+    name: 'app', 
+    components: { vtCabecera, obtener },
     data: function(){
         return {
-            spinner: false,
-            menu: {
-                titulo: 'MINSAL',
-                usuario: 'Francisco Alexander Rodríguez Ortíz'
-            }
+            usuario: {}
+        };
+    },
+    mounted: function(){
+        let nombre = obtener('dUsuario') || '';
+        let username = obtener('dUsername') || '';
+        let administrador = obtener('dAdministrador');
+        console.log('Estos son los datos al montar');
+        this.usuario = {
+            nombre, administrador, username
         }
+        console.log(this.usuario);
     },
     methods: {
-        controlSpinner: function(valor){
-            this.spinner = valor;
+        logueo: function(valor){
+            let nombre = valor.gecos;
+            let username = 'alortiz';
+            let administrador = valor.rol === 'administrador';
+            
+            this.usuario = {
+                nombre, administrador, username
+            }
+
+            configurar('dUsuario', nombre);
+            configurar('dUsername', username);
+            configurar('dAdministrador', administrador);
+            configurar('token', valor.token);
+        },
+        logout: function(valor){
+            let nombre = '';
+            let username = '';
+            let administrador = false;
+            
+            this.usuario = {
+                nombre, administrador, username
+            }
+
+            borrar('dUsuario');
+            borrar('dUsername');
+            borrar('dAdministrador');
+            borrar('token');
         }
-    },
+    }
 }
 </script>
 
@@ -43,14 +67,36 @@ export default {
     @import "../node_modules/purecss/build/base.css";
     @import "../node_modules/purecss/build/grids.css";
     @import "../node_modules/purecss/build/grids-responsive.css";
-    @import "../node_modules/purecss/build/forms.css";
-    @import "../node_modules/purecss/build/tables.css";
-    @import "../node_modules/purecss/build/buttons.css";
-    @import "../node_modules/pikaday/css/pikaday.css";
-    /* Agrego los íconos, ahora en forma de fuentes */
-    @import "../node_modules/font-awesome/css/font-awesome.css";
-    /* Sobreescribo lo necesario */
-    @import "app.css";
-    /* Pues espero que más bien sea por acá */
-    @import "./sass/app.scss";
-</style>
+    @import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+    /*
+     * La idea fue tomar idea de esto https://encycolorpedia.es/313945 
+     */
+    body {
+        color: #23282f;
+        background-color: #d9dbdd;
+    } 
+    
+    body, header, main, .pantalla {
+        box-sizing: border-box;
+        height: auto;
+    }
+    
+    main {
+        font-size: 0.96em;
+        padding-top: 0.2em;
+        padding-left: 0.2em;
+        max-height: 100%;
+        overflow-y: scroll;
+    }
+    
+    @media screen and (min-width: 80em) {
+        header, main, .pantalla {
+            height: 100%;
+        }
+        
+        main {
+            padding-top: 0;
+        }
+
+    }
+ </style>

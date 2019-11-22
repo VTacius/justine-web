@@ -1,32 +1,28 @@
 {
-  "name": "justine-web",
-  "version": "0.0.1",
-  "description": "Una frontend web para una aplicación que aún no existe",
-  "repository": "https://github.com/VTacius/justine-web",
-  "license": "MIT",
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "vue-cli-service serve --host 0.0.0.0",
+    "build": "vue-cli-service build"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.1",
-    "font-awesome": "^4.7.0",
+    "@vue/cli-service": "^4.0.5",
+    "axios": "^0.19.0",
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
-    "pikaday": "^1.7.0",
-    "purecss": "^1.0.0",
+    "purecss": "^1.0.1",
     "vue": "^2.6.10",
-    "vue-cookie": "^1.1.4",
-    "vue-multiselect": "^2.1.0",
-    "vue-router": "^3.0.1"
-  },
-  "scripts": {
-    "serve": "vue-cli-service serve --host 0.0.0.0",
-    "test": "vue-cli-service test:unit"
+    "vue-router": "^3.1.3",
+    "vue-template-compiler": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/cli-plugin-unit-mocha": "^4.0.5",
-    "@vue/cli-service": "^4.0.5",
-    "@vue/test-utils": "^1.0.0-beta.29",
-    "chai": "^4.2.0",
+    "@fortawesome/fontawesome-free": "^5.11.2",
     "node-sass": "^4.13.0",
-    "sass-loader": "^8.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "sass-loader": "^8.0.0"
   }
 }

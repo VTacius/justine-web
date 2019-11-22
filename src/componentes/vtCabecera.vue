@@ -1,13 +1,13 @@
 <template>
     <div class="lateral">
         <div class="logo">
-            <img src="@/img/logo.png">
+            <router-link to="/"><img src="@/img/logo.png"></router-link>
         </div>
         <div class="menu">
             <ul>
-                <li><router-link to="/usuarios"><i class="fas fa-user"></i>Usuarios</router-link></li>
-                <li><router-link to="/grupos"><i class="fas fa-users"></i>Grupos</router-link></li>
-                <li><router-link to="/computadoras"><i class="fas fa-desktop"></i>Equipos</router-link></li>
+                <li><router-link to="/usuarios"><i class="fas fa-user"></i><span>Usuarios</span></router-link></li>
+                <li><router-link to="/grupos"><i class="fas fa-users"></i><span>Grupos</span></router-link></li>
+                <li><router-link to="/equipos"><i class="fas fa-desktop"></i><span>Equipos</span></router-link></li>
             </ul>
         </div>
         <div class="administrador" v-if="usuario.administrador">
@@ -44,16 +44,21 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    $color-fondo: #313945;
+    $color-fuente: #d2d2d2;
+    $color-fuente-resaltado: #2a313c;
+    
     img {
         max-width: 100%;
         height: auto;
+        display: none;
     }
 
     .lateral {
+        background-color: $color-fondo;
+        color: $color-fuente;
         /** Será del alto de la página diponible */
-        background-color: #313945;
-        color: #d2d2d2;
         height: 100%;
         display: flex;
         /** Se dispondrán en varias columnas, sin intentar ubicarse en una línea */
@@ -61,17 +66,23 @@ export default {
         justify-content: space-between;
         align-items: stretch;
     }
+    
     i.fas {
-        margin-right: 0.3em;
-        margin-left: 0.4em;
+        margin-right: 0.3rem;
+        margin-left: 0.4rem;
     } 
+    
     span.texto {
-        padding: 0.8em;
+        padding: 0.8rem;
         display: block;
         text-decoration: none;  
 
     } 
-
+    
+    span {
+        display: none;
+    }
+    
     ul {
         list-style: none;
         padding: 0;
@@ -79,14 +90,14 @@ export default {
     }
 
     ul a {
-        color: #d2d2d2;
-        padding: 0.8em;
+        color: $color-fuente;
+        padding: 0.8rem;
         display: block;
         text-decoration: none;  
     }
 
     ul a:hover {
-        background-color:#2a313c;
+        background-color: $color-fuente-resaltado;
     }
 
     li {
@@ -96,13 +107,13 @@ export default {
     .toolbox {
         display: none;
         width: auto;
-        position: absolute;
-        background-color: #313945;
+        position: fixed;
+        background-color: $color-fondo;
         right:0;
     }
     
     .toolbox h2 {
-        margin: 0.9em 0.8em 0.4em 0.8em;
+        margin: 0.9rem 0.8rem 0.4rem 0.8rem;
     }
 
     .toolbox li {
@@ -110,7 +121,7 @@ export default {
     } 
     
     .medalla .texto:hover {
-        background-color:#2a313c;
+        background-color: $color-fuente-resaltado;
         cursor: pointer;
     }
 
@@ -118,8 +129,21 @@ export default {
         /** TODO: ¿Debería cambiar el esquema para que este dentro de .text:hover  */
         display: block;
     }
+
+    @media screen and (min-width: 34.375rem){
+        img { 
+            display: block;
+        }
+           
+    }    
     
-    @media screen and (min-width: 80em) {
+    @media screen and (min-width: 60rem){
+        span {
+            display: unset;
+        }
+    }    
+    
+    @media screen and (min-width: 80rem) {
         .lateral {
             flex-flow: column wrap;
         }
@@ -139,4 +163,5 @@ export default {
         }
     
     }
+
 </style>

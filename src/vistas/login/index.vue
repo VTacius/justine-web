@@ -49,6 +49,6 @@ export default {
     }
 
     .login {
-        flex: 0 0 20%;
+        flex: 0 0 40%;
     }
 </style>

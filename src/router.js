@@ -4,11 +4,11 @@ import VueRouter from 'vue-router'
 import Login from "@/vistas/login";
 import Logout from "@/vistas/logout";
 import Autenticacion from "@/utils/login";
-
-import Grupo from '@/vistas/grupos'
-import Usuario from '@/vistas/usuario'
-import UsuarioEdicion from '@/vistas/usuarios/Edicion'
-import Principal from '@/vistas/principal'
+import VistaGrupos from '@/vistas/grupos/index';
+import VistaEquipos from '@/vistas/equipos/index';
+import VistaUsuarios from '@/vistas/usuarios/index';
+import UsuarioEdicion from '@/vistas/usuarios/Edicion';
+import Principal from '@/vistas/principal';
 
 Vue.use(VueRouter);
 
@@ -23,9 +23,10 @@ const auth = new Autenticacion();
 const router = new VueRouter({
     routes: [
         {path: '/', component: Principal},
-        {path: '/usuarios', component: Usuario},
+        {path: '/grupos', component: VistaGrupos, meta: {loginRequired: true}},
+        {path: '/equipos', component: VistaEquipos, meta: {loginRequired: true}},
+        {path: '/usuarios', component: VistaUsuarios},
         {path: '/usuarios/:username/edicion', component: UsuarioEdicion, meta: {loginRequired: true}, props: true, name: 'UsuarioEdicion'},
-        {path: '/grupos', component: Grupo, meta: {loginRequired: true}},
         {path: '/login', component: Login, props: redireccion},
         {path: '/logout', component: Logout}
     ]

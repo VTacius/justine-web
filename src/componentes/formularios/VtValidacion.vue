@@ -56,7 +56,7 @@ export default {
     label {
         display: block;
         width: 100%;
-        margin-top: 0.45em;
+        margin: 0.45rem 0;
         font-size: 80%;
         color: #dc3545;
     }
@@ -67,12 +67,12 @@ export default {
     
     .fa{
         float: left;
-        margin-right: 0.46em;
+        margin-right: 0.46rem;
     }
     
     span {
         float: left;
-        width: 4.6em;
+        width: 4.6rem;
     }
 
 </style>

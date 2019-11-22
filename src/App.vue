@@ -1,9 +1,9 @@
 <template>
-    <div class="pure-g pantalla">
-        <header class="pure-u-1 pure-u-xl-1-8">
+    <div class="pantalla">
+        <header>
             <vt-cabecera :usuario="usuario"></vt-cabecera>
         </header>
-        <main class="pure-u-2 pure-u-xl-7-8">
+        <main>
             <router-view @logueo="logueo" @logout="logout"></router-view>
         </main>
     </div>
@@ -21,9 +21,10 @@ export default {
         };
     },
     mounted: function(){
-        let nombre = obtener('dUsuario') || '';
-        let username = obtener('dUsername') || '';
-        let administrador = obtener('dAdministrador');
+        let nombre = obtener('dUsuario') || 'Alexander Ortiz';
+        let username = obtener('dUsername') || 'alortiz';
+        /*let administrador = obtener('dAdministrador');*/
+        let administrador = true;
         console.log('Estos son los datos al montar');
         this.usuario = {
             nombre, administrador, username
@@ -64,29 +65,72 @@ export default {
 </script>
 
 <style>
-    @import "../node_modules/purecss/build/base.css";
-    @import "../node_modules/purecss/build/grids.css";
-    @import "../node_modules/purecss/build/grids-responsive.css";
+    @import "../node_modules/normalize.css/normalize.css";
     @import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
     /*
      * La idea fue tomar idea de esto https://encycolorpedia.es/313945 
      */
+    
+    html {
+        font-size: 100%;
+    }
+    
     body {
         color: #23282f;
         background-color: #d9dbdd;
+        min-width: 400px;
+        padding-left: 0 !important;
     } 
+    .pantalla {
+        letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
+        *letter-spacing: normal; /* reset IE < 8 */
+        *word-spacing: -0.43em; /* IE < 8: collapse white-space between units */
+        text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+
+
+        /* Use flexbox when possible to avoid `letter-spacing` side-effects. */
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-flow: row wrap;
+            -ms-flex-flow: row wrap;
+                flex-flow: row wrap;
+
+        /* Prevents distributing space between rows */
+        -webkit-align-content: flex-start;
+            -ms-flex-line-pack: start;
+                align-content: flex-start;
+
+    }
     
     body, header, main, .pantalla {
+        font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
         box-sizing: border-box;
         height: auto;
     }
     
+    header,  
     main {
-        font-size: 0.96em;
-        padding-top: 0.2em;
-        padding-left: 0.2em;
-        max-height: 100%;
-        overflow-y: scroll;
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        letter-spacing: normal;
+        word-spacing: normal;
+        letter-spacing: normal;
+        word-spacing: normal;
+        text-rendering: auto;
+    }
+    
+    header {
+        position: fixed;
+        z-index: 5;
+    }
+
+    main {
+        margin-top: 3.50rem;
     }
     
     @media screen and (min-width: 80em) {
@@ -94,9 +138,20 @@ export default {
             height: 100%;
         }
         
-        main {
-            padding-top: 0;
+        header {
+            width: 12.5000%;
+            *width: 12.4690%;
         }
 
+        main {
+            display: inline-block;
+            *display: inline;
+            width: 87.5000%;
+            *width: 87.4690%;
+            padding-top: 0.875rem;
+            margin: 0rem;
+            margin-left: 12.5000%;
+            *margin-left: 12.4690%;
+        }
     }
  </style>

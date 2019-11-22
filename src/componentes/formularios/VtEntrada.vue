@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="componente">
         <div>
             <label :for="uid">{{etiqueta}} <span v-show="!this.valido">Es inválido</span></label>
         </div>
@@ -69,5 +69,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    @import "@/sass/variables.scss";
+    input[type="text"],
+    input[type="password"] {
+        background-color: $color-fondo;
+        min-height: 2.25rem;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.5rem 0.8rem 0.3rem 0.6rem;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        border-bottom: solid 0.2rem $color-borde-input;
+        border-bottom-left-radius: 0.15rem;
+        border-bottom-right-radius: 0.15rem;
+    }
+
+    .componente {
+        min-height: 5.36em;
+    }
+        
 
 </style>

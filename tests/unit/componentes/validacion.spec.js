@@ -1,5 +1,5 @@
-import { expect } from "chai";
-import { shallowMount } from "@vue/test-utils";
+import { expect } from 'chai';
+import { shallowMount } from '@vue/test-utils';
 import VtValidacion from '@/componentes/VtValidacion';
 
 describe('VtValidacion.vue', () => {

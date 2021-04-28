@@ -1,4 +1,4 @@
-import { obtener } from "./cookies";
+import { obtener } from './cookies';
 
 class Autenticacion {
     

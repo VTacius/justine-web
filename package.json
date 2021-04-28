@@ -4,31 +4,56 @@
   "description": "Una frontend web para una aplicación que aún no existe",
   "repository": "https://github.com/VTacius/justine-web",
   "license": "MIT",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.11.2",
     "axios": "^0.18.1",
+    "core-js": "^3.6.5",
     "font-awesome": "^4.7.0",
     "fontawesome": "^5.6.3",
     "moment": "^2.29.1",
     "normalize.css": "^8.0.1",
     "pikaday": "^1.7.0",
     "purecss": "^1.0.0",
-    "vue": "^2.6.10",
+    "sass-loader": "^10",
+    "vue": "^2.6.11",
     "vue-cookie": "^1.1.4",
+    "vue-loader": "^15.9.6",
     "vue-multiselect": "^2.1.0",
     "vue-router": "^3.0.1"
   },
-  "scripts": {
-    "serve": "vue-cli-service serve --host 0.0.0.0",
-    "test": "vue-cli-service test:unit"
-  },
   "devDependencies": {
-    "@vue/cli-plugin-unit-mocha": "^4.0.5",
-    "@vue/cli-service": "^4.0.5",
-    "@vue/test-utils": "^1.0.0-beta.29",
-    "chai": "^4.2.0",
-    "node-sass": "^4.13.0",
-    "sass-loader": "^8.0.0",
-    "vue-template-compiler": "^2.6.10"
-  }
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "sass": "^1.32.11",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "plugin:vue/base",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }

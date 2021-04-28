@@ -6,9 +6,9 @@ import PrincipalUsuarios from '@/vistas/usuarios';
 import PrincipalGrupos from '@/vistas/grupos';
 import PrincipalEquipos from './vistas/equipos';
 import Principal from '@/vistas/principal';
-import Login from "@/vistas/login";
-import Logout from "@/vistas/logout";
-import Autenticacion from "@/utils/login";
+import Login from '@/vistas/login';
+import Logout from '@/vistas/logout';
+import Autenticacion from '@/utils/login';
 
 Vue.use(VueRouter);
 

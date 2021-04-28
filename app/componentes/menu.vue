@@ -21,26 +21,14 @@ export default {
         <div class="jt-menu-seccion-izquierda"><router-link to="/">{{datos.titulo}}</router-link></div> 
         <div class="jt-menu-seccion-central">
             <ul class="jt-menu-elemento">
-                <li class="jt-menu-elemento-enlace" v-on:mouseover="mostrar(1)" v-on:mouseout="mostrar(100)">
-                    <a href="#"><span class="fa fa-user"></span><span class="texto">Usuarios</span></a>
-                    <ul class="jt-menu-elemento-subenlace" v-if="muestra(1)">
-                        <li><router-link to="/usuarios">Listado</router-link></li>
-                        <li><router-link to="/usuarios/nuevo">Creación</router-link></li>
-                    </ul>
+                <li class="jt-menu-elemento-enlace">
+                    <a href="#"><span class="fa fa-user"></span><router-link class="texto" to="/usuarios">Usuarios</router-link></a>
                 </li>
-                <li class="jt-menu-elemento-enlace" v-on:mouseover="mostrar(2)" v-on:mouseout="mostrar(100)">
-                    <a href="#"><span class="fa fa-users"></span><span class="texto">Grupos</span></a>
-                    <ul class="jt-menu-elemento-subenlace" v-if="muestra(2)">
-                        <li><router-link to="/grupos">Listado</router-link></li>
-                        <li>Creación</li>
-                    </ul>
+                <li class="jt-menu-elemento-enlace">
+                    <a href="#"><span class="fa fa-users"></span><router-link class="texto" to="/grupos">Grupos</router-link></a>
                 </li>
-                <li class="jt-menu-elemento-enlace" v-on:mouseover="mostrar(3)" v-on:mouseout="mostrar(100)">
-    				<a href="#"><span class="fa fa-desktop"></span><span class="texto">Equipos</span></a>
-                    <ul class="jt-menu-elemento-subenlace" v-if="muestra(3)">
-                        <li><router-link to="/equipos">Listado</router-link></li>
-                        <li>Creación</li>
-                    </ul>
+                <li class="jt-menu-elemento-enlace">
+    				<a href="#"><span class="fa fa-desktop"></span><router-link class="texto" to="/equipos">Equipos</router-link></a>
     			</li>
             </ul>
         </div> 
